@@ -22,7 +22,7 @@ public class TSLogger : NSObject {
         DDLog.addLogger(logger)
     }
 
-    @objc func log(logText: String, level: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+    @objc func log(logText: String, level: String, domain: String, file: String, function: String, line: Int) {
         let lvl = defaultDebugLevel
         let flg: DDLogFlag
         switch level {
@@ -42,7 +42,8 @@ public class TSLogger : NSObject {
         }
         
         if lvl.rawValue & flg.rawValue != 0 {
-            let logMessage = DDLogMessage(message: logText, level: lvl, flag: flg, context: 0, file: file, function: function, line: UInt(line), tag: nil, options: [.CopyFile, .CopyFunction], timestamp: nil)
+            let tag = (domain.length == 0) ? "js" : domain
+            let logMessage = DDLogMessage(message: logText, level: lvl, flag: flg, context: 0, file: file, function: function, line: UInt(line), tag: tag, options: [.CopyFile, .CopyFunction], timestamp: nil)
             DDLog.log(true, message: logMessage)
         }
     }

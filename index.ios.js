@@ -17,7 +17,7 @@ let LayoutContainer = require('./components/LayoutContainer');
 // polyfill the process functionality needed
 global.process = require("./lib/process.polyfill");
 
-TSLogger.log('JS App Launched', 'debug', 'index.io.js', '', 0);
+TSLogger.log('JS App Launched', 'debug', '', 'index.io.js', '', 0);
 console.log('bundle url', BridgeManager.bundleUrlScheme());
 
 let ddp = new TSDDPClient(BridgeManager.serverUrl());

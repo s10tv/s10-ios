@@ -11,6 +11,6 @@
 
 @interface RCT_EXTERN_MODULE(TSLogger, NSObject)
 
-RCT_EXTERN_METHOD(log:(NSString *)logText level:(NSString *)level function:(NSString *)function file:(NSString *)file line:(int)line)
+RCT_EXTERN_METHOD(log:(NSString *)logText level:(NSString *)level domain:(NSString *)domain file:(NSString *)file function:(NSString *)function line:(int)line)
 
 @end
