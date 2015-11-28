@@ -103,6 +103,8 @@ class OnboardingNavigator extends React.Component {
               me: me,
             })
           }
+        } else {
+          AlertIOS.alert('Connect Services', 'Please connect at least one service.');
         }
         break;
 
