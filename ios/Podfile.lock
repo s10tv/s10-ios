@@ -67,15 +67,15 @@ PODS:
   - NSLogger/Standard (1.5.1)
   - OneSignal (1.10.5)
   - Ouralabs (2.7.0)
-  - React/Core (0.14.2)
-  - React/RCTImage (0.14.2):
+  - React/Core (0.15.0)
+  - React/RCTImage (0.15.0):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.14.2):
+  - React/RCTNetwork (0.15.0):
     - React/Core
-  - React/RCTText (0.14.2):
+  - React/RCTText (0.15.0):
     - React/Core
-  - React/RCTWebSocket (0.14.2):
+  - React/RCTWebSocket (0.15.0):
     - React/Core
   - ReactiveCocoa (4.0.4-alpha-1):
     - ReactiveCocoa/UI (= 4.0.4-alpha-1)
@@ -181,7 +181,7 @@ SPEC CHECKSUMS:
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   OneSignal: eebefa7b7a94440fe5749defcb16b80f97a457ff
   Ouralabs: f76d5c1a96f5d63fcc3bb8520c41721cf9469080
-  React: e0dc1498eee8800999917f437a027223f49d731d
+  React: cd73f89941e4288b8daa8e506b95aa33f398e815
   ReactiveCocoa: 618a2fc13d4ed80e380aa6fa56547cef43c7341d
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
