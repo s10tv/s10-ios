@@ -17,12 +17,15 @@ class DDNSLogger : DDAbstractLogger {
     let logger = LoggerInit()
     
     override init() {
-        LoggerSetOptions(logger, UInt32(
-            kLoggerOption_BufferLogsUntilConnection |
-            kLoggerOption_BrowseBonjour |
-            kLoggerOption_BrowseOnlyLocalDomain
-        ))
-        LoggerSetupBonjour(logger, nil, "tony-mbp-nslogger")
+        var options = kLoggerOption_BufferLogsUntilConnection
+        if let hostName = NSProcessInfo().environment["NSLoggerViewerHost"] {
+            LoggerSetViewerHost(logger, hostName, 50000)
+        }
+        if let bonjourName = NSProcessInfo().environment["NSLoggerBonjourName"] {
+            LoggerSetupBonjour(logger, nil, bonjourName)
+            options = options | kLoggerOption_BrowseBonjour | kLoggerOption_BrowseOnlyLocalDomain
+        }
+        LoggerSetOptions(logger, UInt32(options))
         LoggerStart(logger)
         super.init()
         logFormatter = TagLogFormatter(timestamp: false, level: false, domain: false)
