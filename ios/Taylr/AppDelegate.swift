@@ -68,12 +68,6 @@ class AppDelegate : UIResponder {
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
         Analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         
-        // TODO: Refactor this lifecycle management stuff outside of Analytics
-        // Do not persist meteor user account across app installs, make it harder to test and is unexpected
-        if Analytics.isNewInstall {
-            METAccount.setDefaultAccount(nil)
-        }
-        
         // Setup Layer
         layer = LayerService(layerAppID: config.layerURL)
         
@@ -82,6 +76,13 @@ class AppDelegate : UIResponder {
         appHubBuild = AppHub.buildManager()
         appHubBuild.cellularDownloadsEnabled = true
         appHubBuild.debugBuildsEnabled = (config.audience != .AppStore)
+        
+        // TODO: Refactor this lifecycle management stuff outside of Analytics
+        // Do not persist meteor user account across app installs, make it harder to test and is unexpected
+        // NOTE: Hack alert. we use layer as a proxy to know whether this was an upgrade rather than new install
+        if Analytics.isNewInstall && layer.layerClient.authenticatedUserID == nil {
+            METAccount.setDefaultAccount(nil)
+        }
         
         // Start React Native App
         bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
