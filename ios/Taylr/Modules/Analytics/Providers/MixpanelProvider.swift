@@ -14,20 +14,22 @@ public class MixpanelProvider : BaseAnalyticsProvider {
     
     let mixpanel: Mixpanel
     var people: MixpanelPeople? {
-        return mixpanel.people // People Records for all for now
-//        return context.userId != nil ? mixpanel.people : nil
+        return context.userId != nil ? mixpanel.people : nil
     }
     
     init(apiToken: String, launchOptions: [NSObject: AnyObject]?) {
         mixpanel = Mixpanel.sharedInstanceWithToken(apiToken, launchOptions: launchOptions)
     }
     
+    func identifyAnonymousDevice() {
+        mixpanel.identify(context.deviceId)
+        mixpanel.nameTag = context.deviceName
+        mixpanel.registerSuperProperties(["Device ID": context.deviceId])
+    }
+    
     override func appLaunch() {
         if context.isNewInstall {
-            mixpanel.identify(context.deviceId)
-            mixpanel.nameTag = context.deviceName
-            mixpanel.registerSuperProperties(["Device ID": context.deviceId])
-            people?.set("Device Name", to: context.deviceName)
+            identifyAnonymousDevice()
             track("App: Install")
         }
     }
@@ -37,10 +39,9 @@ public class MixpanelProvider : BaseAnalyticsProvider {
             mixpanel.createAlias(context.userId, forDistinctID: context.deviceId)
             DDLogInfo("Mixpanel createAlias userI=\(context.userId!) deviceId=\(context.deviceId)")
         }
-        // Intentionally set User ID before new identify, so it shows for repeat logins
         mixpanel.registerSuperProperties(["User ID": context.userId!])
-        people?.set("User ID", to: context.userId)
         mixpanel.identify(context.userId)
+        people?.set("User ID", to: context.userId)
         track("Login", properties: ["New User": isNewUser])
     }
     
@@ -48,10 +49,7 @@ public class MixpanelProvider : BaseAnalyticsProvider {
         track("Logout")
         flush()
         mixpanel.reset()
-        mixpanel.identify(context.deviceId)
-        mixpanel.nameTag = context.deviceName
-        mixpanel.registerSuperProperties(["Device ID": context.deviceId])
-        people?.set("Device Name", to: context.deviceName)
+        identifyAnonymousDevice()
     }
     
     override func updatePhone() {

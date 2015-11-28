@@ -30,59 +30,38 @@ public class IntercomProvider : BaseAnalyticsProvider {
 //        Intercom.enableLogging()
     }
     
-    override func updateIdentity() {
-        if let userId = context.userId {
-            DDLogDebug("registerUser userId=\(userId)")
-            if let email = context.email {
-                Intercom.registerUserWithUserId(userId, email: email)
-            } else {
-                Intercom.registerUserWithUserId(userId)
-            }
-            setUserProperties([
-                "Taylr URL": "https://\(config.serverHostName)/admin/users/\(userId)",
-                "Identified": true
-            ])
+    override func appLaunch() { }
+    
+    override func appOpen() { }
+    
+    override func appClose() { }
+    
+    override func login(isNewUser: Bool) {
+        guard let userId = context.userId else { return }
+        DDLogDebug("registerUser userId=\(userId)")
+        if let email = context.email {
+            Intercom.registerUserWithUserId(userId, email: email)
         } else {
-            DDLogDebug("registerUnidentifiedUser")
-            Intercom.registerUnidentifiedUser()
-            Intercom.updateUserWithAttributes([
-                "name": context.deviceName,
-                "custom_attributes": ["Identified": false]
-            ])
+            Intercom.registerUserWithUserId(userId)
         }
         setUserProperties([
             "Device ID": context.deviceId,
             "Device Name": context.deviceName,
+            "Taylr URL": "https://\(config.serverHostName)/admin/users/\(userId)",
             "Mixpanel URL": "https://mixpanel.com/report/\(config.mixpanel.projectId)/explore/#user?distinct_id=\(context.deviceId)",
-            "Amplitude URL": "https://amplitude.com/app/\(config.amplitude.appId)/activity/search?userId=\(context.userId ?? context.deviceId)"
+            "Amplitude URL": "https://amplitude.com/app/\(config.amplitude.appId)/activity/search?userId=\(userId)",
+            "UXCam URL": "http://\(UXCam.urlForCurrentUser())",
         ])
         // Explicit dependency please
         OneSignal.defaultClient().IdsAvailable { [weak self] userId, _ in
             self?.setUserProperties(["OneSignal UserID": userId])
         }
-    }
-    
-    override func appLaunch() {
-        updateIdentity()
-    }
-    
-    override func appOpen() { }
-    
-    override func appClose() {
-        if let url = UXCam.urlForCurrentUser() {
-            setUserProperties(["UXCam URL": "http://\(url)"])
-        }
-    }
-    
-    override func login(isNewUser: Bool) {
-        updateIdentity()
         track("Login", properties: ["New User": isNewUser])
     }
     
     override func logout() {
         track("Logout")
         Intercom.reset()
-        updateIdentity()
         DDLogInfo("Logout from Intercom")
     }
     
