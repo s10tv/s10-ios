@@ -35,7 +35,7 @@ public class UXCamProvider : NSObject, AnalyticsProvider {
     
     func logout() {
         UXCam.markSessionAsFavorite()
-        UXCam.tagUsersName(nil)
+        UXCam.tagUsersName(context.deviceName) // Going back to deviceId
     }
     
     func track(event: String, properties: [NSObject : AnyObject]?) {

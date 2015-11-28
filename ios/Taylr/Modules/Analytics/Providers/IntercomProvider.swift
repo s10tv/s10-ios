@@ -42,6 +42,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
         } else {
             DDLogDebug("registerUnidentifiedUser")
             Intercom.registerUnidentifiedUser()
+            Intercom.updateUserWithAttributes(["name": context.deviceName])
         }
         setUserProperties([
             "Device ID": context.deviceId,
@@ -76,6 +77,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
         track("Logout")
         Intercom.reset()
         updateIdentity()
+        DDLogInfo("Logout from Intercom")
     }
     
     override func updateEmail() {
@@ -87,7 +89,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
     }
     
     override func setUserProperties(properties: [NSObject : AnyObject]) {
-        DDLogDebug("Intercom setUserProperties properties=\(properties)")
+        DDLogDebug("setUserProperties properties=\(properties)")
         Intercom.updateUserWithAttributes(["custom_attributes": properties])
     }
     
