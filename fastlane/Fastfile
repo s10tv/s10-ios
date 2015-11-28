@@ -126,7 +126,7 @@ platform :ios do
     notes = release_notes
     options[:ipa_path] ||= ENV['IPA_PATH']
     crashlytics(
-      crashlytics_path: 'ios/Pods/Crashlytics/Crashlytics.framework',
+      crashlytics_path: 'ios/Pods/Crashlytics/iOS/Crashlytics.framework',
       api_token: '67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53',
       build_secret: '1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215',
       groups: 'team',
