@@ -10,6 +10,7 @@ let {
 
 let Analytics = require('../modules/Analytics');
 let BridgeManager = require('../modules/BridgeManager');
+let Intercom = require('../modules/Intercom');
 
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
 let RootNavigator = require('./RootNavigator');
@@ -146,6 +147,7 @@ class LayoutContainer extends React.Component {
 
     Analytics.userDidLogin(userId, isNewUser);
 
+
     if (account.isNewUser) {
       // might be useful for showing first time user tutorials.
       this.setState({
@@ -158,6 +160,7 @@ class LayoutContainer extends React.Component {
 
     this.setState({ loggedIn: true });
     this.__layerLogin()
+    // this.__intercomLogin(userId);
 
     this.subscribeSettings()
 
@@ -271,6 +274,15 @@ class LayoutContainer extends React.Component {
       });
     })
     .catch(err => { this.logger.error(JSON.stringify(err)) });
+  }
+
+  async __intercomLogin(userId) {
+    try {
+      let result = await this.ddp.call({ methodName: 'intercom/auth', params: [userId]})
+      Intercom.setHMAC(result.hash, result.identifier);
+    } catch (err) {
+      this.logger.error(`Unable to login to Intercom: ${err.toString()}`);
+    }
   }
 
   async __layerLogin() {
