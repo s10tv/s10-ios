@@ -60,7 +60,7 @@ extension BridgeManager {
         // For some reason if we use SignalProducer.promise here it breaks build...
         azure.put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
             reject(error)
-            DDLogError("Unable to upload to azure error=\(error)")
+            DDLogError("Unable to upload to azure", tag: error)
         }, completed: {
             resolve(nil)
             DDLogDebug("Successfully uploaded to azure")

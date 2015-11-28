@@ -33,7 +33,7 @@ class ConversationViewManager : RCTViewManager {
             do {
                 try conv = layer.getOrCreateConversation([currentUser, recipientUser])
             } catch let error as NSError {
-                DDLogError("Unable to getOrCreateConversation for user \(recipientUser) error=\(error)")
+                DDLogError("Unable to getOrCreateConversation for user \(recipientUser)", tag: error)
             }
         }
         guard let conversation = conv else {

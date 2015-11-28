@@ -117,7 +117,7 @@ class AudioController {
                     try audioSession.setCategory(category.string)
                 }
             } catch let error as NSError {
-                DDLogError("Failed to set audioSession category \(error)")
+                DDLogError("Failed to set audioSession category", tag: error)
             }
             assert(audioSession.audioCategory == category, "Failed to set audio category")
         }

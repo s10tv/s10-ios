@@ -25,6 +25,7 @@ public class MixpanelProvider : BaseAnalyticsProvider {
         mixpanel.identify(context.deviceId)
         mixpanel.nameTag = context.deviceName
         mixpanel.registerSuperProperties(["Device ID": context.deviceId])
+        DDLogInfo("Identify anonymous device deviceId=\(context.deviceId) deviceName=\(context.deviceName)")
     }
     
     override func appLaunch() {
@@ -44,6 +45,7 @@ public class MixpanelProvider : BaseAnalyticsProvider {
         mixpanel.identify(context.userId)
         people?.set("User ID", to: context.userId)
         track("Login", properties: ["New User": isNewUser])
+        DDLogInfo("Identify registered user userId=\(context.userId!)")
     }
     
     override func logout() {

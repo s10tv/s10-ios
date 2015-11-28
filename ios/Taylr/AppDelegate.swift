@@ -162,7 +162,7 @@ extension AppDelegate : UIApplicationDelegate {
         do {
             try layer.layerClient.updateRemoteNotificationDeviceToken(deviceToken)
         } catch let error as NSError {
-            DDLogError("Unable to update Layer with push token \(error)")
+            DDLogError("Unable to update Layer with push token", tag: error)
         }
     }
 
@@ -177,7 +177,7 @@ extension AppDelegate : UIApplicationDelegate {
         assert(layer != nil)
         let handled = layer.layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
             if let error = error {
-                DDLogError("Failed to synchronize remote notification with layer \(error)")
+                DDLogError("Failed to synchronize remote notification with layer", tag: error)
                 completionHandler(.Failed)
             } else {
                 let changes = changes ?? []
@@ -199,7 +199,7 @@ extension AppDelegate : UIApplicationDelegate {
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
         layer.layerClient.handleBackgroundContentTransfersForSession(identifier) { changes, error in
             if let error = error {
-                DDLogError("Failed to handle layer background transfer \(error)")
+                DDLogError("Failed to handle layer background transfer", tag: error)
             } else {
                 DDLogInfo("Handled layer background transfer with \(changes?.count) changes")
             }

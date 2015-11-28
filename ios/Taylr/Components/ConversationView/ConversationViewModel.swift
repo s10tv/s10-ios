@@ -99,7 +99,7 @@ public class ConversationViewModel: NSObject {
             ])
             try conversation.sendMessage(message)
         } catch let error as NSError {
-            DDLogError("Unable to send video \(error)")
+            DDLogError("Unable to send video", tag: error)
         }
     }
     
@@ -126,14 +126,14 @@ public class ConversationViewModel: NSObject {
                 _ = try? thumbnailPart.purgeContent()
                 try thumbnailPart.downloadContent()
             } catch let error as NSError {
-                DDLogError("Unable to re-download thumbnail content \(error)")
+                DDLogError("Unable to re-download thumbnail content", tag: error)
             }
         }
         if let videoPart = message.videoPart where videoPart.fileURL == nil {
             do {
                 try videoPart.downloadContent()
             } catch let error as NSError {
-                DDLogError("Unable to download video content \(error)")
+                DDLogError("Unable to download video content", tag: error)
             }
         }
     }
@@ -152,7 +152,7 @@ public class ConversationViewModel: NSObject {
             let messages = try layer.layerClient.executeQuery(query).map { $0 as! LYRMessage }
             try layer.layerClient.markMessagesAsRead(Set(messages))
         } catch let error as NSError {
-            DDLogError("Unable to find unread non-video messages \(error)")
+            DDLogError("Unable to find unread non-video messages", tag: error)
         }
     }
     

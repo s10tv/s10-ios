@@ -43,7 +43,7 @@ class LayerService: NSObject {
             try allConversationsQueryController?.execute()
             queryControllerDidChangeContent(allConversationsQueryController!)
         } catch let error as NSError {
-            DDLogError("Unable to setup queries \(error)")
+            DDLogError("Unable to setup queries", tag: error)
         }
     }
     
@@ -93,7 +93,7 @@ class LayerService: NSObject {
             query.predicate = LYRPredicate(property: "identifier", predicateOperator: .IsEqualTo, value: NSURL(messageId))
             return try layerClient.executeQuery(query).firstObject as? LYRMessage
         } catch let error as NSError {
-            DDLogError("Unable to find message with id \(messageId) \(error)")
+            DDLogError("Unable to find message messageId=\(messageId)", tag: error)
         }
         return nil
     }
@@ -119,7 +119,7 @@ class LayerService: NSObject {
         do {
             return try layerClient.executeQuery(query).map { $0 as! LYRMessage }
         } catch let error as NSError {
-            DDLogError("Unable to find video messages \(error)")
+            DDLogError("Unable to find video messages", tag: error)
             return []
         }
     }
@@ -140,7 +140,7 @@ class LayerService: NSObject {
         do {
             return try layerClient.countForQuery(LYRQuery.uploadingMessages(conversation))
         } catch let error as NSError {
-            DDLogError("Unable to count uploads messages \(error)")
+            DDLogError("Unable to count uploads messages", tag: error)
         }
         return 0
     }
@@ -149,7 +149,7 @@ class LayerService: NSObject {
         do {
             return try layerClient.countForQuery(LYRQuery.downloadingMessages(conversation))
         } catch let error as NSError {
-            DDLogError("Unable to count downloads messages \(error)")
+            DDLogError("Unable to count downloads messages", tag: error)
         }
         return 0
     }
@@ -188,7 +188,7 @@ extension LayerService : LYRClientDelegate {
     }
     
     func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
-        DDLogError("Layer failed to perform operation \(error)")
+        DDLogError("Layer failed to perform operation", tag: error)
     }
 
     // TODO: Implement JavaScript get identity token then call LayerService.authenticate
@@ -222,7 +222,7 @@ extension LayerService {
 
         DDLogDebug("Will connect to layer")
         layerClient.connect().promise(resolve, reject).start(Event.sink(error: { error in
-            DDLogError("Unable to connect to layer \(error)")
+            DDLogError("Unable to connect to layer", tag: error)
         }, completed: {
             DDLogInfo("Successfully connected to Layer authenticated:\(self.layerClient.isAuthenticated)")
             self.setupQueries()
@@ -236,7 +236,7 @@ extension LayerService {
     @objc func requestAuthenticationNonce(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         DDLogDebug("Will request authentication nonce")
         layerClient.requestAuthenticationNonce().promise(resolve, reject).start(Event.sink(error: { error in
-            DDLogError("Unable to get authentication nonce \(error)")
+            DDLogError("Unable to get authentication nonce", tag: error)
         }, next: { nonce in
             DDLogDebug("Did receive requested authentication nonce \(nonce)")
         }))
@@ -245,7 +245,7 @@ extension LayerService {
     @objc func authenticate(identityToken: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         DDLogDebug("Will authenticate with layer \(identityToken)")
         layerClient.authenticate(identityToken).promise(resolve, reject).start(Event.sink(error: { error in
-            DDLogError("Unable to update user in Layer session \(error)")
+            DDLogError("Unable to update user in Layer session", tag: error)
         }, next: { userId in
             DDLogInfo("Updated user in Layer session userId=\(userId)")
             self.setupQueries()
@@ -259,7 +259,7 @@ extension LayerService {
         }
         DDLogDebug("Will deauthenticate from layer")
         layerClient.deauthenticate().promise(resolve, reject).start(Event.sink(error: { error in
-            DDLogError("Unable to deauthenticate \(error)")
+            DDLogError("Unable to deauthenticate", tag: error)
         }, completed: {
             DDLogInfo("Successfully deauthenticated from layer")
         }))
