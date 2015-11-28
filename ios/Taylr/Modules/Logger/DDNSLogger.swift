@@ -33,28 +33,25 @@ class DDNSLogger : DDAbstractLogger {
     
     override func logMessage(logMessage: DDLogMessage!) {
         let level: Int32
-        switch logMessage.flag {
-        case DDLogFlag.Verbose:
+        switch logMessage.logLevel {
+        case .Verbose:
             level = 4
-        case DDLogFlag.Debug:
+        case .Debug:
             level = 3
-        case DDLogFlag.Info:
+        case .Info:
             level = 2
-        case DDLogFlag.Warning:
+        case .Warn:
             level = 1
-        case DDLogFlag.Error:
+        case .Error:
             level = 0
-        default:
-            return
         }
-        let formatter = self.valueForKey("_logFormatter") as? DDLogFormatter // Make this performant
         LogMessageRawToF(logger,
             (logMessage.fileName as NSString).UTF8String,
             Int32(logMessage.line),
             (logMessage.function as NSString).UTF8String,
             logMessage.domain,
             level,
-            formatter?.formatLogMessage(logMessage) ?? logMessage.message
+            formatMessage(logMessage)
         )
     }
     #endif

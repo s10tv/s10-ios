@@ -49,6 +49,14 @@ public class TSLogger : NSObject {
     }
 }
 
+extension DDAbstractLogger {
+    func formatMessage(logMessage: DDLogMessage) -> String {
+        // Make this more performant
+        let formatter = valueForKey("_logFormatter") as? DDLogFormatter
+        return formatter?.formatLogMessage(logMessage) ?? logMessage.message
+    }
+}
+
 class TagLogFormatter : NSObject, DDLogFormatter {
     let showTimestamp: Bool
     let showLevel: Bool

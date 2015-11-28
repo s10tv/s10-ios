@@ -27,19 +27,17 @@ class DDOuralabsLogger : DDAbstractLogger {
     
     override func logMessage(logMessage: DDLogMessage!) {
         let level: OULogLevel
-        switch logMessage.flag {
-        case DDLogFlag.Verbose:
+        switch logMessage.logLevel {
+        case .Verbose:
             level = .Trace
-        case DDLogFlag.Debug:
+        case .Debug:
             level = .Debug
-        case DDLogFlag.Info:
+        case .Info:
             level = .Info
-        case DDLogFlag.Warning:
+        case .Warn:
             level = .Warn
-        case DDLogFlag.Error:
+        case .Error:
             level = .Error
-        default:
-            return
         }
         // We're constructing KVP 3 times, any perf issue?
         let tag = logMessage.domain
