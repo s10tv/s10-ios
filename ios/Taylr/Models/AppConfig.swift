@@ -52,7 +52,8 @@ class AppConfig {
             branchKey = "key_test_nmeOiHF7jxXUcZPa8UdDbaacBxdYkU1J"
             segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
             amplitude = (appId: "137713", apiKey: "0ef2064f5f59aca8b1224ec4374064d3")
-            mixpanel = (projectId: "773277", token: "9d5d89ba988e52622278165d91ccf937")
+            mixpanel = (projectId: "816345", token: "9d5d89ba988e52622278165d91ccf937")
+//            mixpanel = (projectId: "816491", token: "f3b659d1af487ccbbcd8be46bb1af6fa") // Taylr Test proj
             intercom = (
                 appId: "qh519efm",
                 apiKey: "ios_sdk-25fc29ac38aa81d8f4aff0d387b84dabf06bd397"

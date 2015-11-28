@@ -22,6 +22,7 @@ class DDNSLogger : DDAbstractLogger {
             kLoggerOption_BrowseBonjour |
             kLoggerOption_BrowseOnlyLocalDomain
         ))
+        LoggerSetupBonjour(logger, nil, "tony-mbp-nslogger")
         LoggerStart(logger)
         super.init()
     }
