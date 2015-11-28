@@ -95,7 +95,7 @@ class LayoutContainer extends React.Component {
 
   subscribeSettings(userRequired = true) {
     let ddp = this.ddp;
-    console.log('subscribing settings', userRequired);
+    this.logger.debug('subscribing settings', userRequired);
 
     ddp.subscribe({ pubName: 'settings', userRequired: userRequired })
     .then(() => {
@@ -104,7 +104,7 @@ class LayoutContainer extends React.Component {
           return ddp.collections.settings.find({});
         }
       }).subscribe(settings => {
-        console.log('got settings', settings);
+        this.logger.debug('got settings', settings);
         indexedSettings =  {};
         settings.forEach((setting) => {
           indexedSettings[setting._id] = setting;

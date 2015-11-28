@@ -11,14 +11,14 @@ let {
 
 let TSDDPClient = require('./lib/ddpclient');
 let BridgeManager = require('./modules/BridgeManager');
-let TSLogger = React.NativeModules.TSLogger; // not wrapping because dont have callerInstance.
+const logger = new (require('./lib/Logger'))('index.ios');
 let LayoutContainer = require('./components/LayoutContainer');
 
 // polyfill the process functionality needed
 global.process = require("./lib/process.polyfill");
 
-TSLogger.log('JS App Launched', 'debug', '', 'index.io.js', '', 0);
-console.log('bundle url', BridgeManager.bundleUrlScheme());
+logger.info('JS App Launched');
+logger.debug(`bundle url ${BridgeManager.bundleUrlScheme()}`);
 
 let ddp = new TSDDPClient(BridgeManager.serverUrl());
 
