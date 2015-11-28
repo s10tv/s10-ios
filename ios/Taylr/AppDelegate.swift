@@ -59,6 +59,7 @@ class AppDelegate : UIResponder {
         #endif
         
         // Setup Analytics
+        // NOTE: When OneSignal inits it automatically calls application.registerForRemoteNotifications()
         oneSignal = OneSingalProvider(appId: config.oneSignalAppId, launchOptions: launchOptions)
         branch = BranchProvider(branchKey: config.branchKey)
         amplitude = AmplitudeProvider(apiKey: config.amplitude.apiKey)
@@ -110,7 +111,6 @@ extension AppDelegate : UIApplicationDelegate {
 //                DDLogDebug("\(build.name): Compat Version - \(version)")
 //            }
         }
-        application.registerForRemoteNotifications()
     
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         Analytics.appDidLaunch(launchOptions)
@@ -149,12 +149,12 @@ extension AppDelegate : UIApplicationDelegate {
         DDLogInfo("Registered for push \(deviceToken)")
         Analytics.appDidRegisterForPushToken(deviceToken)
         if let apsEnv = env.apsEnvironment?.rawValue {
-            // TODO: Handle push notification registration in JS
+            let pushToken = deviceToken.hexString()
             rnSendAppEvent(.RegisteredPushToken, body: [
                 "apsEnv": apsEnv,
-                "deviceToken": deviceToken.hexString()
+                "deviceToken": pushToken
             ])
-            Analytics.setUserProperties(["RegisteredPush": true])
+            Analytics.setUserProperties(["Push Token": pushToken])
         } else if !env.isRunningInSimulator {
             DDLogError("Non-simulator build should have valid APS environment")
             // fatalError("Non-simulator build should have valid APS environment")
@@ -167,8 +167,12 @@ extension AppDelegate : UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        DDLogWarn("Faild to register for push \(error)")
-        Analytics.setUserProperties(["RegisteredPush": false])
+        if error.code != 3010 {
+            DDLogError("Faild to register for push", tag: error)
+        } else {
+            DDLogWarn("Register for push is not supported in simulator")
+        }
+        Analytics.setUserProperties(["Push Token": NSNull()])
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
