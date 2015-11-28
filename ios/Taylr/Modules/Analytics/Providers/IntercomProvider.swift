@@ -38,11 +38,17 @@ public class IntercomProvider : BaseAnalyticsProvider {
             } else {
                 Intercom.registerUserWithUserId(userId)
             }
-            setUserProperties(["Taylr URL": "https://\(config.serverHostName)/admin/users/\(userId)"])
+            setUserProperties([
+                "Taylr URL": "https://\(config.serverHostName)/admin/users/\(userId)",
+                "Identified": true
+            ])
         } else {
             DDLogDebug("registerUnidentifiedUser")
             Intercom.registerUnidentifiedUser()
-            Intercom.updateUserWithAttributes(["name": context.deviceName])
+            Intercom.updateUserWithAttributes([
+                "name": context.deviceName,
+                "custom_attributes": ["Identified": false]
+            ])
         }
         setUserProperties([
             "Device ID": context.deviceId,
