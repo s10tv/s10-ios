@@ -37,7 +37,8 @@ public class MixpanelProvider : BaseAnalyticsProvider {
     override func login(isNewUser: Bool) {
         if isNewUser {
             mixpanel.createAlias(context.userId, forDistinctID: context.deviceId)
-            DDLogInfo("Mixpanel createAlias userI=\(context.userId!) deviceId=\(context.deviceId)")
+            mixpanel.flush()
+            DDLogInfo("Mixpanel createAlias userId=\(context.userId!) deviceId=\(context.deviceId)")
         }
         mixpanel.registerSuperProperties(["User ID": context.userId!])
         mixpanel.identify(context.userId)
