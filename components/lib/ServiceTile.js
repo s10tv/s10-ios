@@ -55,7 +55,7 @@ class ServiceTile extends React.Component {
       </View>
     )
 
-    if (service.name === 'facebook') {
+    if (service.name === 'facebook' && service.status === 'linked') {
       return <Card>{ cardInfo }</Card>
     } else {
       return (
