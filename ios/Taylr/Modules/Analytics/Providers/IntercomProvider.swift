@@ -107,7 +107,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
 
 // MARK: - JS API
 
-extension Intercom {
+extension IntercomProvider {
     
     @objc func setHMAC(hmac: String, data: String) {
         Intercom.setHMAC(hmac, data: data)
