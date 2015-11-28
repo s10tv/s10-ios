@@ -70,6 +70,7 @@ class ProfileEditCard extends React.Component {
             value={this.props.me[info.key]}
             placeHolder={info.display}
             tapElement={info.tapElement}
+            isVisible={info.isVisible}
             ddp={this.props.ddp}
             multiline={info.multiline}
             onChangeText={(text) => {
@@ -113,6 +114,10 @@ class ProfileEditCard extends React.Component {
     let eligibeYears = ['2009', '2010', '2011', '2012', '2013', '2014', '2015',
     '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
 
+    let gradYearText = this.props.me.gradYear ?
+      <Text>{ this.props.me.gradYear } </Text> :
+      <Text style={{ color: '#B1B1B1' }}>Graduation Year *</Text>;
+
     let tapElement = (
       <TouchableOpacity
         key={'gradYear'}
@@ -120,7 +125,8 @@ class ProfileEditCard extends React.Component {
         onPress={() => {
           this.setState({ modalVisible: true })
         }}>
-        <Text>{ this.props.me.gradYear } </Text>
+        
+        {gradYearText}
       </TouchableOpacity>
     );
 
@@ -128,6 +134,7 @@ class ProfileEditCard extends React.Component {
       key: 'gradYear',
       display: 'Graduation Year',
       tapElement: tapElement,
+      isVisible: true,
     })
 
     return(

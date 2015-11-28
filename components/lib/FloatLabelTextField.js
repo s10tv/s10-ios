@@ -100,7 +100,7 @@ class FloatLabelTextField extends React.Component {
         <View style={styles.viewContainer}>
           <View style={styles.paddingView}></View>
           <View style={styles.fieldContainer}>
-            <FloatingLabel visible={this.state.text}>
+            <FloatingLabel visible={this.state.text || this.props.value}>
               <Text style={[styles.fieldLabel, this.labelStyle(), SHEET.baseText]}>
                 {this.placeHolderValue()}
               </Text>
@@ -139,7 +139,7 @@ class FloatLabelTextField extends React.Component {
   }
 
   placeHolderValue() {
-    if (this.state.text) {
+    if (this.state.text || this.props.value) {
       return this.props.placeHolder;
     }
   }
