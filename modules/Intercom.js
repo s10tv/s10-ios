@@ -8,7 +8,6 @@ const {
 
 class Intercom {
   static async setHMAC(hmac, data) {
-    console.log('setting hmac', hmac, data);
     return TSIntercomProvider.setHMAC(hmac, data);
   }
 }

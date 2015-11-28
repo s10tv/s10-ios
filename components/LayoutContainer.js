@@ -160,7 +160,7 @@ class LayoutContainer extends React.Component {
 
     this.setState({ loggedIn: true });
     this.__layerLogin()
-    // this.__intercomLogin(userId);
+    this.__intercomLogin(userId);
 
     this.subscribeSettings()
 
