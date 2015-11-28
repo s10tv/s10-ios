@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react-native');
-var { StyleSheet, Text, View, TextInput, Animated } = React;
+var { StyleSheet, Text, View, TextInput, Animated, TouchableOpacity } = React;
 
 let SHEET = require('../CommonStyles').SHEET;
 
@@ -77,6 +77,18 @@ class FloatLabelTextField extends React.Component {
     let textInputExtra = this.props.multiline ? { height: this.state.height + 10 } : null;
     let containerExtra = this.props.multiline? { height: this.state.height + 35 } : null;
 
+    let changeableElement = this.props.tapElement ? this.props.tapElement : (
+      <TextInput
+        placeholder={this.props.placeHolder}
+        style={[styles.valueText, textInputExtra]}
+        value={this.state.text}
+        multiline={this.props.multiline}
+        onFocus={this.setFocus.bind(this)}
+        onBlur={this.unsetFocus.bind(this)}
+        onChangeText={this.setText.bind(this)}
+        secureTextEntry={this.props.secureTextEntry} />
+    )
+
     return(
       <View style={[styles.container, containerExtra]}>
         <Text
@@ -94,15 +106,7 @@ class FloatLabelTextField extends React.Component {
               </Text>
             </FloatingLabel>
             <TextFieldHolder withValue={this.state.text}>
-              <TextInput
-                placeholder={this.props.placeHolder}
-                style={[styles.valueText, textInputExtra]}
-                value={this.state.text}
-                multiline={this.props.multiline}
-                onFocus={this.setFocus.bind(this)}
-                onBlur={this.unsetFocus.bind(this)}
-                onChangeText={this.setText.bind(this)}
-                secureTextEntry={this.props.secureTextEntry} />
+              { changeableElement } 
             </TextFieldHolder>
           </View>
         </View>
