@@ -25,6 +25,7 @@ class DDNSLogger : DDAbstractLogger {
         LoggerSetupBonjour(logger, nil, "tony-mbp-nslogger")
         LoggerStart(logger)
         super.init()
+        logFormatter = TagLogFormatter(timestamp: false, level: false, domain: false)
     }
     
     override func logMessage(logMessage: DDLogMessage!) {
@@ -43,13 +44,14 @@ class DDNSLogger : DDAbstractLogger {
         default:
             return
         }
+        let formatter = self.valueForKey("_logFormatter") as? DDLogFormatter // Make this performant
         LogMessageRawToF(logger,
             (logMessage.fileName as NSString).UTF8String,
             Int32(logMessage.line),
             (logMessage.function as NSString).UTF8String,
             logMessage.domain,
             level,
-            logMessage.message
+            formatter?.formatLogMessage(logMessage) ?? logMessage.message
         )
     }
     #endif

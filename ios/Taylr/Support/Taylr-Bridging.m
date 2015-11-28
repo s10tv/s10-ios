@@ -27,7 +27,7 @@ NSString *formatLogMessageTimestamp(NSDate *timestamp) {
     NSTimeInterval epoch = [timestamp timeIntervalSinceReferenceDate];
     int milliseconds = (int)((epoch - floor(epoch)) * 1000);
     
-    len = snprintf(ts, 24, "%04ld-%02ld-%02ld %02ld:%02ld:%02ld:%03d", // yyyy-MM-dd HH:mm:ss:SSS
+    len = snprintf(ts, 24, "%04ld-%02ld-%02ld %02ld:%02ld:%02ld.%03d", // yyyy-MM-dd HH:mm:ss:SSS
                    (long)components.year,
                    (long)components.month,
                    (long)components.day,
@@ -37,5 +37,13 @@ NSString *formatLogMessageTimestamp(NSDate *timestamp) {
     
     tsLen = (NSUInteger)MAX(MIN(24 - 1, len), 0);
     
-    return [NSString stringWithCString:ts encoding:NSUTF8StringEncoding];
+    NSString *tsStr = [NSString stringWithCString:ts encoding:NSUTF8StringEncoding];
+    
+    NSTimeZone *timeZone = components.timeZone ?: [NSTimeZone systemTimeZone];
+    NSString *tzStr = [timeZone abbreviationForDate:timestamp] ?: timeZone.name;
+    
+    if (tzStr != nil) {
+        return [NSString stringWithFormat:@"%@ %@", tsStr, tzStr];
+    }
+    return tsStr;
 }

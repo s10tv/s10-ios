@@ -49,16 +49,34 @@ public class TSLogger : NSObject {
 }
 
 class TagLogFormatter : NSObject, DDLogFormatter {
+    let showTimestamp: Bool
+    let showLevel: Bool
+    let showDomain: Bool
+    
+    init(timestamp: Bool = true, level: Bool = true, domain: Bool = true) {
+        showTimestamp = timestamp
+        showLevel = level
+        showDomain = domain
+        super.init()
+    }
+    
     func formatLogMessage(logMessage: DDLogMessage!) -> String! {
         let message = NSMutableString()
-        if let ts = logMessage.timestamp, let tsStr = formatLogMessageTimestamp(ts) {
-            message.appendString("\(tsStr) ")
+
+        if showTimestamp {
+            if let ts = logMessage.timestamp, let tsStr = formatLogMessageTimestamp(ts) {
+                message.appendString("\(tsStr) ")
+            }
+        }
+
+        if showLevel {
+            message.appendString("[\(logMessage.logLevel.rawValue)] ")
         }
         
-        message.appendString("[\(logMessage.logLevel.rawValue)] ")
-        
-        if let domain = logMessage.domain where domain.length > 0 {
-            message.appendString("{\(domain)} ")
+        if showDomain {
+            if let domain = logMessage.domain where domain.length > 0 {
+                message.appendString("{\(domain)} ")
+            }
         }
         
         message.appendString(logMessage.message)
@@ -66,7 +84,7 @@ class TagLogFormatter : NSObject, DDLogFormatter {
         var periodAppended = false
         
         if let kvp = logMessage.kvp where kvp.count > 0 {
-            message.appendString(". ")
+            message.appendString(".")
             periodAppended = true
             for (key, value) in kvp {
                 message.appendString(" \(key)=\"\(value)\"")
@@ -75,7 +93,7 @@ class TagLogFormatter : NSObject, DDLogFormatter {
         
         if let error = logMessage.error {
             if !periodAppended {
-                message.appendString(". ")
+                message.appendString(".")
             }
             message.appendString(" error=\(error)")
         }
