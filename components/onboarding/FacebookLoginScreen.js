@@ -131,7 +131,7 @@ class FacebookLoginScreen extends React.Component {
             style={styles.fbButton}
             onLoginFinished={(error, result) => {
               if (error) {
-                this.logger.error(`Error logging in with Facebook ${error.toString()}`);
+                this.logger.error(`Error logging in with Facebook ${JSON.stringify(error)}`);
                 alert('Error logging you in :C Please try again later.');
               } else {
                 if (!result.isCancelled) {
