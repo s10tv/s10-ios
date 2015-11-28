@@ -54,8 +54,8 @@ class AppConfig {
             amplitude = (appId: "137713", apiKey: "0ef2064f5f59aca8b1224ec4374064d3")
             mixpanel = (projectId: "773277", token: "9d5d89ba988e52622278165d91ccf937")
             intercom = (
-                appId: "q6ihw9uw",
-                apiKey: "ios_sdk-d849f0f2673a478473e25615616acf139b0e28a9"
+                appId: "qh519efm",
+                apiKey: "ios_sdk-25fc29ac38aa81d8f4aff0d387b84dabf06bd397"
             )
         case .Beta, .AppStore:
             serverHostName = "taylr-prod.herokuapp.com"
@@ -67,8 +67,8 @@ class AppConfig {
             amplitude = (appId: "137712", apiKey: "ff96d68f3ff2efd39284b33a78dbbf2c")
             mixpanel = (projectId: "671741", token: "39194eed490fa8abcc026256631a4230")
             intercom = (
-                appId: "nlh15x8h",
-                apiKey: "ios_sdk-730b1bc6652f4d4d6a3f3a7472d2247330cc1ad7"
+                appId: "q6ihw9uw",
+                apiKey: "ios_sdk-d849f0f2673a478473e25615616acf139b0e28a9"
             )
         }
     }
