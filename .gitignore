@@ -1,31 +1,15 @@
 .env
+node_modules
+npm-debug.log
 
-# Project Specific Excludes
-
-scripts/env.sh
-
-###### Generic iOS project excludes
-
-# Exclude temp nibs and swap files
-*~.nib
-*.swp
-
-# Exclude OS X folder attributes
+#### From React Native
+# OSX
+#
 .DS_Store
-
-# Exclude AppCode files
-.idea
-**/.idea
 
 # Xcode
 #
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
-## Build generated
 build/
-DerivedData
-
-## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -35,28 +19,23 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-
-## Other
 *.xccheckout
 *.moved-aside
-*.xcuserstate
-*.xcscmblueprint
-
-## Obj-C/Swift specific
+DerivedData
 *.hmap
 *.ipa
+*.xcuserstate
+project.xcworkspace
 
-# CocoaPods
+# Android/IJ
 #
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
-#
-Pods/
+.idea
+.gradle
+local.properties
 
-# Carthage
+# node.js
 #
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-Carthage/Checkouts
+node_modules/
+npm-debug.log
 
-Carthage/Build
+*.zip

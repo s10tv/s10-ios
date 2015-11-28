@@ -23,11 +23,6 @@ Follow [raywenderlich's swift style guide](https://github.com/raywenderlich/swif
 
 Except we'll leave 4 spaces instead of two space for indentation.
 
-Due to limitations with Swift, files in GenericExtensions folder will need to be individually
-added by every single target that needs it.
-https://github.com/pNre/ExSwift/issues/82
-
-
 ## Make IPAs
 By default project should be building with dev configuration. To change, use explicity xcconfig
 

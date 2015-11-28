@@ -1,0 +1,8 @@
+{
+    "whitelist": [
+        "es7.classProperties",
+        "es7.decorators",
+        "es7.asyncFunctions",
+        "regenerator"
+    ]
+}

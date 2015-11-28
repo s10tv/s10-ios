@@ -1,89 +1,35 @@
 machine:
   xcode:
-    version: "7.0"
-  environment:
-    XCODE_WORKSPACE: S10.xcworkspace
-    XCODE_SCHEME: Core
-    CRASHLYTICS_API_KEY: 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53
-    CRASHLYTICS_BUILD_SECRET: 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215
-    CRASHLYTICS_FRAMEWORK_PATH: Pods/Crashlytics/Crashlytics.framework
-    APPSTORE_PROFILE_NAME: tvs10taylrappstore.mobileprovision
-    APPSTORE_PROFILE_PATH: $HOME/s10-ios/scripts/tvs10taylrappstore.mobileprovision
-    SIGNING_IDENTITY: "iPhone Distribution: S10 Inc. (227D5X5CZY)"
+    version: "7.1"
 
 dependencies:
   override:
   pre:
     - brew update
-    # - brew upgrade xctool
-    - sudo gem uninstall highline commander --ignore-dependencies -x -a
-    - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
-    - sudo gem install cupertino shenzhen sigh xcpretty gym
-    - ./scripts/import_credentials.sh
+    - brew install node
+    - sudo gem update fastlane gym
+    - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
   override:
-    - pod update Meteor SugarRecord PKHUD
+    - npm install
+    - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
+    - fastlane pod_install
+  post:
+    - fastlane import_certs
   cache_directories:
-    - "Pods"
+    - "node_modules"
+    - "ios/Pods"
 
 test:
-  # TODO: Add testing back to circle as soon as we can (Swift 2 / Xcode 7)?
   override:
-    # First build the core dependency so that later building of main target can be super fast
-    - |
-      xcodebuild -sdk iphoneos -workspace $XCODE_WORKSPACE -scheme "Core" \
-       -configuration 'Release' build | tee $CIRCLE_ARTIFACTS/core_build.log | xcpretty
-    - ? |
-        source ./scripts/circle_env.sh
-        gym build --scheme Taylr \
-                  --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
-                  --xcargs BUNDLE_BUILD=$BN \
-                  --export_method $EXPORT_METHOD \
-                  --buildlog_path $CIRCLE_ARTIFACTS \
-                  --output_directory $CIRCLE_ARTIFACTS \
-                  --output_name ${BN}.ipa
-        ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
-      : timeout: 1800
-    - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
+    - fastlane circle_archive
 
 deployment:
- Taylr Dev:
-   branch: master
-   commands:
-     - |
-       source ./scripts/circle_env.sh
-       ./scripts/deploy_crashlytics.sh
-       cd scripts
-       brew install node
-       npm install
-       node deploy_dev.js
+  master:
+    branch: master
+    commands:
+      - fastlane upload_crashlytics
 
- Taylr Beta:
-   branch: beta
-   commands:
-     - |
-       source ./scripts/circle_env.sh
-       ./scripts/deploy_crashlytics.sh
-       cd scripts
-       brew install node
-       npm install
-       node deploy_beta.js
-
- Taylr:
-   branch: prod
-   commands:
-     - |
-       source ./scripts/circle_env.sh
-       ./scripts/deploy_crashlytics.sh
-     - |
-       source ./scripts/circle_env.sh
-       gym build --scheme Taylr \
-                 --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
-                 --xcargs BUNDLE_BUILD=$BN \
-                 --export_method "app-store" \
-                 --buildlog_path $CIRCLE_ARTIFACTS \
-                 --output_directory $CIRCLE_ARTIFACTS \
-                 --output_name ${BN}_appstore.ipa \
-                 --provisioning_profile_path scripts/profiles/f331e97e-2ea1-426f-879e-972eaff3d115.mobileprovision
-       cd $CIRCLE_ARTIFACTS
-       ipa distribute:itunesconnect --apple-id 1015154738 --file "${BN}_appstore.ipa" --upload \
-        --warnings --errors --account "$APPLE_ID" --password "$APPLE_ID_PASSWORD" --verbose
+  prod:
+    branch: prod
+    commands:
+      - fastlane upload_itunesconnect

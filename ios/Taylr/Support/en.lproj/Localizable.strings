@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Taylr
+
+  Created by Tony Xiao on 2/9/15.
+  Copyright (c) 2015 S10 Inc. All rights reserved.
+*/
+
+"ViewProfile" = "View Profile";
+"MoreSheetBlock" = "Block %@";
+"MoreSheetReport" = "Report %@";
+"MoreSheetCancel" = "Cancel";
+"ReportAlertTitle" = "Thank you for your feedback";
+"ReportAlertMessage" = "Why did you report this user?";
+"ReportAlertCancel" = "Cancel";
+"ReportAlertConfirm" = "Confirm";

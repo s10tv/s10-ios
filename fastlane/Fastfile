@@ -1,0 +1,161 @@
+# Customise this file, documentation can be found here:
+# https://github.com/KrauseFx/fastlane/tree/master/docs
+# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+fastlane_version '1.41.1'
+default_platform :ios
+
+platform :ios do
+  before_all do
+    # Handle Circle specific logic
+    circle_build_number = ENV['CIRCLE_BUILD_NUM']
+    if circle_build_number
+      circle_artifacts = ENV['CIRCLE_ARTIFACTS']
+      case ENV['CIRCLE_BRANCH']
+      when 'master'
+        build_number = "#{circle_build_number}d"
+      when 'prod'
+        build_number = "#{circle_build_number}"
+      else
+        build_number = "#{circle_build_number}*"
+      end
+      ENV['BUILD_NUMBER'] = build_number
+      ENV['OUTPUT_DIR'] = circle_artifacts
+      ENV['IPA_PATH'] = "#{circle_artifacts}/#{build_number}.ipa"
+    end
+  end
+
+  after_all do |lane|
+    desktop_notification(title: "fastlane: [#{lane.to_s}]", message: "Success")
+  end
+
+  error do |lane, exception|
+    desktop_notification(title: "fastlane: [#{lane.to_s}]", message: "Error #{exception}")
+  end
+
+  private_lane :desktop_notification do |options|
+    if !is_ci
+      notification(**options)
+    end
+  end
+
+  desc 'Import certificates into taylr keychain'
+  lane :import_certs do
+    create_keychain(name: 'taylr', password: 'serendipity', unlock: true, timeout: false)
+    import_certificate(keychain_name: 'taylr', certificate_path: 'fastlane/certs/apple_developer_relations.cer')
+    import_certificate(keychain_name: 'taylr', certificate_path: 'fastlane/keys/development.p12',
+                                               certificate_password: ENV['DEV_P12_PASS'])
+    import_certificate(keychain_name: 'taylr', certificate_path: 'fastlane/keys/distribution.p12',
+                                               certificate_password: ENV['DIST_P12_PASS'])
+  end
+
+  desc 'Remove taylr keychain along with imported certificates'
+  lane :remove_certs do
+    delete_keychain(name: 'taylr')
+  end
+
+  desc 'Download provisioning profile for desired variants :dev :adhoc :appstore'
+  lane :download_profiles do |options|
+    ENV['SIGH_OUTPUT_PATH'] = '/tmp'
+    sigh(app_identifier: 'tv.s10.taylr.dev', development: true) if options[:dev]
+    sigh(app_identifier: 'tv.s10.taylr', adhoc: true) if options[:adhoc]
+    sigh(app_identifier: 'tv.s10.taylr') if options[:appstore]
+  end
+
+  desc 'Install cocoapods'
+  lane :pod_install do
+    cocoapods(podfile: 'ios/', verbose: true)
+  end
+
+  desc 'Runs all available iOS tests (none so far)'
+  lane :test do |options|
+    puts 'TODO: Add some tests please'
+  end
+
+  desc 'Build a new ipa file :variant defaults to nil, :build_number optional'
+  lane :archive do |options|
+    # Configure Build number if needed
+    build_number = options[:build_number] || ENV['BUILD_NUMBER'] || '0'
+
+    # Other build configuration
+    case options[:variant]
+    when 'adhoc'
+      configuration = 'Release'
+      export_method = 'ad-hoc'
+    when 'appstore'
+      configuration = 'Release'
+      export_method = 'app-store'
+    else # Assume dev
+      configuration = 'Debug'
+      export_method = 'development'
+    end
+
+    gym(
+      workspace: 'ios/Taylr.xcworkspace',
+      scheme: 'Taylr',
+      configuration: configuration,
+      xcargs: "BUILD_NUMBER=#{build_number}",
+      export_method: export_method,
+      buildlog_path: ENV['OUTPUT_DIR'],
+      output_directory: ENV['OUTPUT_DIR'],
+      output_name: "#{build_number}.ipa"
+    )
+    desktop_notification(message: "Successfully archived #{options}")
+  end
+
+  desc 'Generate automatic release notes from current git status and environment'
+  lane :release_notes do |options|
+    commit_message = sh 'git log -n 1 --pretty=format:%s head'
+    date = sh 'date'
+    branch = git_branch
+    commit_hash = sh 'git rev-parse HEAD'
+    build_number = options[:build_number] || ENV['BUILD_NUMBER'] || '0'
+    %{
+      #{commit_message}
+      Branch: #{branch} [#{build_number}]
+      Commit: https://github.com/s10tv/s10-ios/commit/#{commit_hash}
+      Date: #{date}
+    }.gsub(/^\s+/, "").strip
+  end
+
+  desc 'Upload an existing build to crashlytics. Pass in :ipa_file to specify exact file'
+  lane :upload_crashlytics do |options|
+    notes = release_notes
+    options[:ipa_file] ||= ENV['IPA_PATH']
+    crashlytics(
+      crashlytics_path: 'ios/Pods/Crashlytics/Crashlytics.framework',
+      api_token: '67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53',
+      build_secret: '1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215',
+      groups: 'team',
+      notifications: false,
+      notes: notes,
+      **options
+    )
+  end
+
+  desc 'Upload an existing build to iTunesConnect/TestFlight. Pass in :ipa to specify exact file'
+  lane :upload_itunesconnect do |options|
+    notes = release_notes
+    options[:ipa] ||= ENV['IPA_PATH']
+    pilot(skip_submission: true, changelog: notes, **options)
+  end
+
+  desc 'Archive build according to current $CIRCLE_BRANCH'
+  lane :circle_archive do
+    case ENV['CIRCLE_BRANCH']
+      when 'prod'
+        download_profiles(appstore: true)
+        archive(variant: 'appstore')
+      else
+        download_profiles(dev: true)
+        archive(variant: 'dev')
+    end
+    sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ../ios/Pods/'
+    # TODO: Figure out path to xcarchive and backup the archive along with the Pods
+    # backup_xcarchive(destination: ENV['CIRCLE_ARTIFACTS'])
+  end  
+
+end
