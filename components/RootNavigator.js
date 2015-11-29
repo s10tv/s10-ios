@@ -14,8 +14,10 @@ let {
 
 var TabNavigator = require('react-native-tab-navigator');
 
+// Native
 let Analytics = require('../modules/Analytics');
 let BridgeManager = require('../modules/BridgeManager');
+let Logger = require('../lib/Logger');
 
 let TSTabNavigator = require('./TSTabNavigator');
 let TSNavigationBar = require('./lib/TSNavigationBar');
@@ -31,6 +33,11 @@ let ConversationListView = require('./chat/ConversationListView');
 let Activities = require('./lib/Activities');
 
 class RootNavigator extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.logger = new Logger(this);
+  }
 
   componentWillMount() {
     BridgeManager.registerForPushNotifications();
@@ -141,20 +148,10 @@ class RootNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
+    this.logger.debug(`Root Navigator rendering ${route}`);
     let me = this.props.me;
 
-    if (!me) {
-      return <Loader />
-    }
-
-    let user = {
-      userId: me._id,
-      firstName: me.firstName,
-      lastName: me.lastName,
-      avatarUrl: me.avatar.url,
-      coverUrl: 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg',
-      displayName: `${me.firstName} ${me.lastName}`,
-    }
+    this.logger.debug(`me=${me}`);
 
     switch (route.id) {
       case 'viewprofile':
@@ -187,7 +184,7 @@ class RootNavigator extends React.Component {
           navigator={nav}
           style={{flex: 1}}
           recipientUser={route.recipientUser}
-          currentUser={user} />
+          currentUser={me} />
 
       case 'conversation':
         Analytics.screen("Conversation", {
@@ -197,7 +194,7 @@ class RootNavigator extends React.Component {
           navigator={nav}
           style={{flex: 1}}
           conversationId={route.conversationId}
-          currentUser={user} />
+          currentUser={me} />
 
       case 'base':
         return <TSTabNavigator

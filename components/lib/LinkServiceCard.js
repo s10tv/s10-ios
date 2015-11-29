@@ -7,16 +7,24 @@ let {
 } = React;
 
 let ServiceTile = require('./ServiceTile');
+let Loader = require('./Loader');
 
 class LinkServiceCard extends React.Component {
 
   render() {
-    let services = this.props.services.map((service) => {
-      return <ServiceTile key={service._id} 
-        navigator={this.props.navigator}
-        ddp={this.props.ddp}
-        service={service} />
-    });
+    let services = null;
+    if (this.props.services) {
+      services = this.props.services.map((service) => {
+        return <ServiceTile key={service._id} 
+          navigator={this.props.navigator}
+          ddp={this.props.ddp}
+          service={service} />
+      });
+    } else {
+      services = (
+        <Loader />
+      )
+    }
 
     return(
       <View style={styles.cards}>

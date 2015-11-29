@@ -93,8 +93,8 @@ class EditMyPhotoHeader extends React.Component {
     let shadow = <View style={[{ height: this.props.height }, styles.coverShadow]}></View>;
 
     var cover = null
-    if (this.state.coverSource || (me && me.cover && me.cover.url)) {
-      let coverUrl =  this.state.coverSource ? this.state.coverSource.uri : me.cover.url;
+    if (this.state.coverSource || (me && me.coverUrl)) {
+      let coverUrl =  this.state.coverSource ? this.state.coverSource.uri : me.coverUrl;
       cover = (
         <Image style={[{ height: this.props.height }, styles.cover]} source={{ uri: coverUrl }}>
           { shadow } 
@@ -109,20 +109,31 @@ class EditMyPhotoHeader extends React.Component {
     }
 
     let avatarUrl = this.state.avatarSource ? this.state.avatarSource.uri :
-      me.avatar.url;
+      me.avatarUrl;
 
     let loader = this.state.uploading ? <OverlayLoader /> : null;
 
     return ( 
       <TouchableOpacity onPress={() => {
+        if (!this.props.ddp.connected) {
+          return;
+        }
+
         return this.__selectAndUploadImage.bind(this)({
           type: 'COVER_PIC', stateKey: 'coverSource'
         })
       }}>
         { loader }
         { cover }
-        <Button onPress={() => { return this.__selectAndUploadImage.bind(this)({
-          type: 'PROFILE_PIC', stateKey: 'avatarSource'})}}>
+        <Button onPress={() => {
+          if (!this.props.ddp.connected) { 
+            return
+          } 
+
+          return this.__selectAndUploadImage.bind(this)({
+            type: 'PROFILE_PIC', 
+            stateKey: 'avatarSource'})
+        }}>
           <View style={styles.avatarContainer}>
             <Image style={styles.avatar} source={{ uri: avatarUrl }} />
             <View style={styles.button}>
@@ -132,8 +143,15 @@ class EditMyPhotoHeader extends React.Component {
         </Button>
 
         <View style={[styles.buttonContainer, styles.editCoverButtonContainer]}>
-          <Button onPress={() => { return this.__selectAndUploadImage.bind(this)({
-            type: 'COVER_PIC', stateKey: 'coverSource'})}}>
+          <Button onPress={() => { 
+            if (!this.props.ddp.connected) { 
+              return
+            } 
+
+            return this.__selectAndUploadImage.bind(this)({
+              type: 'COVER_PIC', 
+              stateKey: 'coverSource'})
+          }}>
               <View style={styles.button}>
                 <Text style={[styles.editText, SHEET.baseText]}>Edit Cover</Text>
               </View>

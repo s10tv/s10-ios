@@ -83,7 +83,7 @@ class MeHeader extends React.Component {
 
     return (
       <View style={styles.meHeader}>
-        <Image style={styles.avatar} source={{ uri: me.avatar.url }} />
+        <Image style={styles.avatar} source={{ uri: me.avatarUrl}} />
         <View style={styles.headerContent}>
           <Text style={[styles.headerText, SHEET.baseText]}>
             {me.shortDisplayName}
@@ -121,11 +121,6 @@ class Me extends React.Component {
       return <Loader />
     }
 
-    let coverUrl = 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg';
-    if (me && me.cover && me.cover.url) {
-      coverUrl = me.cover.url;
-    }
-
     return (
       <View style={SHEET.container}>
         <ScrollView 
@@ -139,7 +134,7 @@ class Me extends React.Component {
                 me: me,
               })
             }}>
-            <HeaderBanner url={coverUrl} height={ height / 4 }>
+            <HeaderBanner url={me.coverUrl} height={ height / 4 }>
               <MeHeader
                 parentNavigator={this.props.parentNavigator}
                 navigator={this.props.navigator}

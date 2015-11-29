@@ -34,7 +34,7 @@ class ActivityHeader extends React.Component {
     return (
       <HeaderBanner url={ coverUrl } height={ height / 3 }>
         <View style={[ { height: height / 3, top: height / 12 }, styles.activityUser]}>
-          <Image source={{ uri: me.avatar.url }} style={{ width: height / 6, height: height / 6,
+          <Image source={{ uri: me.avatarUrl }} style={{ width: height / 6, height: height / 6,
               borderRadius: height / 12, borderColor: 'white', borderWidth: 2.5 }} />
           <Text style={[{ marginTop: height / 96}, styles.activityUserTitle, SHEET.baseText]}>
             {me.longDisplayName}
@@ -253,21 +253,25 @@ class Activities extends React.Component {
     }
 
     let connectedProfiles = {};
-    let profiles = me.connectedProfiles.map(profile => {
-      connectedProfiles[profile.id] = profile;
 
-      let source = this.state[profile._id] ?
-        iconMapping[profile.integrationName] :
-        grayToIconMapping[profile.integrationName];
+    let profiles = null;
+    if (me.connectedProfiles) {
+      profiles = me.connectedProfiles.map(profile => {
+        connectedProfiles[profile.id] = profile;
 
-      return <ActivityServiceIcon
-        key={profile.id}
-        onPress={this._switchService.bind(this)}
-        activeProfile={this.state.activeProfile}
-        profile={profile}
-        iconMapping={iconMapping}
-        grayToIconMapping={grayToIconMapping} />
-    })
+        let source = this.state[profile._id] ?
+          iconMapping[profile.integrationName] :
+          grayToIconMapping[profile.integrationName];
+
+        return <ActivityServiceIcon
+          key={profile.id}
+          onPress={this._switchService.bind(this)}
+          activeProfile={this.state.activeProfile}
+          profile={profile}
+          iconMapping={iconMapping}
+          grayToIconMapping={grayToIconMapping} />
+      })
+    }
 
     var activityData = null;
     if (this.props.activities) {

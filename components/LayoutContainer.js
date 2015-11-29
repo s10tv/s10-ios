@@ -59,6 +59,7 @@ class LayoutContainer extends React.Component {
     if (!user) {
       return user;
     }
+    user.userId = user._id; // for layer
 
     let {firstName, lastName, gradYear} = user;
 
@@ -75,18 +76,44 @@ class LayoutContainer extends React.Component {
     }
 
     user.shortDisplayName = generateDisplayName(20);
+    user.displayName = user.shortDisplayName; // for Layer
+
     user.longDisplayName = generateDisplayName(30);
+
+    // for layer
+    user.avatarUrl = (user.avatar ? user.avatar.url : undefined) ||
+      'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg';
+
+    user.coverUrl = (user.cover ? user.cover.url : undefined) ||
+      'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg';
+
     return user;
   }
 
   async onLogout() {
     Analytics.userDidLogout();
 
-    await TSLayerService.deauthenticateAsync();
+    try {
+      await TSLayerService.deauthenticateAsync();
+    } catch (err) {
+      this.logger.warning(`Cannot deauthenticate Layer ${err}`);
+    }
+
     DigitsAuthenticateManager.logout();
     FBSDKLoginManager.logOut();
-    await this.ddp.logout()
-    await BridgeManager.setDefaultAccount(null)
+
+    try {
+      await this.ddp.logout()
+    } catch (err) {
+      this.logger.warning(`Cannot logout of Meteor ${err}`);
+    }
+
+    try {
+      await BridgeManager.setDefaultAccount(null)
+    } catch (err) {
+      this.logger.warning(`Cannot deauthenticate from METAccount ${err}`);
+    }
+    
     this.setState({ 
       loggedIn: false,
       isActive: false,
@@ -104,7 +131,7 @@ class LayoutContainer extends React.Component {
     });
   }
 
-  subscribeSettings(userRequired = true) {
+  _subscribeSettings(userRequired = true) {
     let ddp = this.ddp;
 
     ddp.subscribe({ pubName: 'settings', userRequired: userRequired })
@@ -143,39 +170,113 @@ class LayoutContainer extends React.Component {
   /** 
    * account: { userId, resumeToken, expiryDate, isNewUser, hash }
    */
-  async onLogin(account) {
+  async onUserLogin(account) {
     if (!account) {
-      this.logger.warning('invalid account for onLogin');
+      this.logger.warning('invalid account for onUserLogin');
       return;
     }
 
     const { userId, resumeToken, expiryDate, isNewUser, intercom, userTriggered } = account;
     if (!userId || !resumeToken || !expiryDate || (isNewUser == undefined)) {
-      this.logger.warning('invalid info provided to onLogin');
+      this.logger.warning('invalid info provided to onUserLogin');
       return
     }
 
-    this.logger.debug(`onLogin intercom=${JSON.stringify(intercom)} newUser=${isNewUser} userTriggered=${userTriggered}`);
-    if (userTriggered == true) {
-      if (intercom != null) {
-        Intercom.setHMAC(intercom.hmac, intercom.data);
-      }
-      Analytics.userDidLogin(userId, isNewUser);
+    this.logger.debug(`onLogin intercom=${JSON.stringify(intercom)}
+      newUser=${isNewUser} userTriggered=${userTriggered}`);
+
+    if (intercom != null) {
+      Intercom.setHMAC(intercom.hmac, intercom.data);
     }
 
-    if (account.isNewUser) {
-      // might be useful for showing first time user tutorials.
-      this.setState({
-        isNewUser: true
-      })
-    }
+    Analytics.userDidLogin(userId, isNewUser);
 
-    const ddp = this.ddp;
     await BridgeManager.setDefaultAccount(account)
 
+    this.onLogin()
+  }
+
+  async _layerLogin() {
+    try {
+      await TSLayerService.connectAsync();
+      const isAuthenticated = await TSLayerService.isAuthenticatedAsync();
+      if (isAuthenticated) {
+        return;
+      }
+      const nonce = await TSLayerService.requestAuthenticationNonceAsync();
+      const sessionId = await this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
+      await TSLayerService.authenticateAsync(sessionId);
+
+      this.logger.debug('Layer authenticated.');
+    } catch (error) {
+      this.logger.warning(`Unable to complete layer flow: ${error.toString()}`)
+    }
+  }
+
+  async _ddpLogin() {
+    this.logger.debug('On DDP Loggin');
+    let ddp = this.ddp;
+
+    const defaultAccount = await BridgeManager.getDefaultAccountAsync()
+
+    if (defaultAccount) {
+
+      const { userId, resumeToken } = defaultAccount;
+
+      // token exists. assume that the user is logged in until proven wrong.
+      if (resumeToken) {
+        this.logger.debug(`Resume token exists. Logging in`);
+
+        this.setState({ loggedIn: true, isActive: true });
+
+        if (!this.state.me) {
+          let defaultUser = {
+            userId: userId, 
+            firstName: 'FirstName',
+            lastName: 'lastName',
+            displayName: 'FirstName LastName',
+            avatarUrl: 'https://s3.amazonaws.com/profile_photos/25339545481234.vWxFtxXy7Xw3ntEkiPMu_27x27.png',
+            coverUrl: 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg',
+            connectedProfiles: []
+          }
+          this.setState({ me: defaultUser });
+        }
+
+        await this._layerLogin()
+
+        try {
+          await ddp.initialize()
+        } catch (err) {
+          // there is no network
+          this.logger.warning(JSON.stringify(err));
+          return; 
+        }
+
+        try {
+          this._subscribeSettings(false);
+          await ddp.loginWithToken(resumeToken)
+          this.onLogin()
+        } catch (err) {
+          // This token is stale. Need the user to re-login
+          this.logger.warning(JSON.stringify(err));
+          this.setState({ loggedIn: false });
+        }
+
+        return;
+      }
+    }
+    
+    await ddp.initialize()
+    this._subscribeSettings(false);
+    this.setState({ loggedIn: false });
+  }
+
+  async onLogin() {
+    const ddp = this.ddp;
+
     this.setState({ loggedIn: true });
-    this.__layerLogin()
-    this.subscribeSettings()
+    this._layerLogin()
+    this._subscribeSettings()
 
     this.ddp.subscribe({ pubName: 'me' })
     .then(() => {
@@ -289,44 +390,6 @@ class LayoutContainer extends React.Component {
     .catch(err => { this.logger.error(JSON.stringify(err)) });
   }
 
-  async __layerLogin() {
-    try {
-      await TSLayerService.connectAsync();
-      const isAuthenticated = await TSLayerService.isAuthenticatedAsync();
-      if (isAuthenticated) {
-        return;
-      }
-      const nonce = await TSLayerService.requestAuthenticationNonceAsync();
-      const sessionId = await this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
-      await TSLayerService.authenticateAsync(sessionId);
-    } catch (error) {
-      this.logger.error(`Unable to complete layer flow: ${error.toString()}`)
-    }
-  }
-
-  async _ddpLogin() {
-    let ddp = this.ddp;
-
-    await ddp.initialize()
-    const defaultAccount = await BridgeManager.getDefaultAccountAsync()
-
-    if (defaultAccount) {
-      const { resumeToken } = defaultAccount;
-      let loginResult = await ddp.loginWithToken(resumeToken)
-
-      if (loginResult.resumeToken) {
-        this.onLogin(loginResult);
-      } else {
-        this.setState({ loggedIn: false });
-        this.subscribeSettings(false);
-      }
-
-    } else {
-      this.setState({ loggedIn: false });
-      this.subscribeSettings(false);
-    }
-  }
-
   reportUser(user) {
     if (user) {
       AlertIOS.alert(
@@ -376,6 +439,9 @@ class LayoutContainer extends React.Component {
   }
 
   render() {
+    this.logger.debug(`Rendering layout container. loggedIn=${this.state.loggedIn}
+      isActive=${this.state.isActive}`);
+
     if (!this.state.loggedIn || !this.state.isActive) {
       return <OnboardingNavigator
         loggedIn={this.state.loggedIn}
@@ -384,7 +450,7 @@ class LayoutContainer extends React.Component {
         me={this.state.me} 
         categories={this.state.categories}
         myTags={this.state.myTags}
-        onLogin={this.onLogin.bind(this)}
+        onLogin={this.onUserLogin.bind(this)}
         onLogout={this.onLogout.bind(this)}
         settings={this.state.settings}
         isCWLRequired={this.state.isCWLRequired}
@@ -400,7 +466,7 @@ class LayoutContainer extends React.Component {
       loggedIn={this.state.loggedIn}
       reportUser={this.reportUser.bind(this)}
       onLogout={this.onLogout.bind(this)}
-      onLogin={this.onLogin.bind(this)}
+      onLogin={this.onUserLogin.bind(this)}
       candidate={this.state.candidate}
       history={this.state.history}
       users={this.state.users}

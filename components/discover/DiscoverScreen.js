@@ -17,6 +17,8 @@ let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
 let Analytics = require('../../modules/Analytics');
+let Logger = require('../../lib/Logger');
+
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let HeaderBanner = require('../lib/HeaderBanner');
@@ -32,6 +34,8 @@ class Discover extends React.Component {
     this.state = {
       pan: new Animated.ValueXY()
     };
+
+    this.logger = new Logger(this);
   }
 
   componentWillMount() {
@@ -80,6 +84,8 @@ class Discover extends React.Component {
   }
 
   render() {
+    this.logger.debug('rendering discover screen');
+
     const candidate = this.props.candidate;
     const settings = this.props.settings;
 

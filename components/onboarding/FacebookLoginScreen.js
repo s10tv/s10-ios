@@ -2,7 +2,6 @@ let React = require('react-native');
 
 let {
   AppRegistry,
-  ActivityIndicatorIOS,
   View,
   Text,
   Image,
@@ -102,10 +101,10 @@ class FacebookLoginScreen extends React.Component {
     let logoutComponent = null;
     let loginComponent = null;
 
-    if (this.props.loggedIn && me) {
+    if (this.props.loggedIn) {
 
       let buttonText = 'Continue';
-      if (me.firstName || me.lastName) {
+      if (me && (me.firstName || me.lastName)) {
         buttonText = `Continue as ${me.firstName} ${me.lastName}`
       }
 
@@ -129,7 +128,7 @@ class FacebookLoginScreen extends React.Component {
           this.props.onLogout()
         }}>Logout</Text>
       )
-    } else if (this.props.loggedIn == false) {
+    } else {
       loginComponent = (
         <View style={styles.loginSheet}>
           <FBSDKLoginButton
@@ -217,15 +216,6 @@ class FacebookLoginScreen extends React.Component {
           </View>
         </View>
       );
-    } else {
-      loginComponent = (
-        <View style={styles.loginSheet}>
-          <ActivityIndicatorIOS
-            animating={true}
-            style={{ justifyContent: 'center' }}
-            size="small" />
-        </View>
-      )
     }
 
     return (

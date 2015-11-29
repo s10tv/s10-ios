@@ -82,6 +82,7 @@ class FloatLabelTextField extends React.Component {
         placeholder={this.props.placeHolder}
         style={[styles.valueText, textInputExtra]}
         value={this.state.text}
+        editable={this.props.ddp.connected && this.props.ddp.loggedIn}
         multiline={this.props.multiline}
         onFocus={this.setFocus.bind(this)}
         onBlur={this.unsetFocus.bind(this)}

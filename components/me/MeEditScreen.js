@@ -23,9 +23,8 @@ class MeEdit extends React.Component {
 
   render() {
     let me = this.props.me;
-    let integrations = this.props.integrations;
 
-    if (!me || !integrations) {
+    if (!me) {
       return <Loader />
     } 
 
@@ -42,7 +41,7 @@ class MeEdit extends React.Component {
             <LinkServiceCard 
               ddp={this.props.ddp}
               navigator={this.props.navigator}
-              services={integrations} />
+              services={this.props.integrations} />
 
             <SectionTitle title={'MY INFO'} />
             <View style={SHEET.separator} />

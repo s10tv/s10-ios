@@ -17,6 +17,7 @@ let TabNavigator = require('react-native-tab-navigator');
 
 // Native
 let BridgeManager = require('../modules/BridgeManager');
+let Logger = require('../lib/Logger');
 
 // Common
 let SHEET = require('./CommonStyles').SHEET;
@@ -48,6 +49,8 @@ class TSTabNavigator extends React.Component {
       currentTab: 'Today',
       editProfileCurrentlyFocused: false,
     }
+
+    this.logger = new Logger(this);
   }
 
   onEditProfileChange(activeText) {
@@ -177,19 +180,6 @@ class TSTabNavigator extends React.Component {
   renderScene(route, nav) {
     let me = this.props.me;
 
-    if (!me) {
-      return <Loader />
-    }
-
-    let user = {
-      userId: me._id,
-      firstName: me.firstName,
-      lastName: me.lastName,
-      avatarUrl: me.avatar.url,
-      coverUrl: 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg',
-      displayName: `${me.firstName} ${me.lastName}`,
-    }
-
     switch (route.id) {
       case 'edit':
         Analytics.screen("EditProfile");
@@ -292,7 +282,7 @@ class TSTabNavigator extends React.Component {
                 navigator={nav}
                 numTotalConversations={this.props.numTotalConversations}
                 style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
-                currentUser={user} />
+                currentUser={me} />
                 
             </TabNavigator.Item>
           </TabNavigator>
