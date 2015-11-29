@@ -88,20 +88,12 @@ class ConversationViewController : UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = true
         }
         
+        let page: Page = vm.hasUnreadText ? .ChatHistory : .Producer
         swipeView.vertical = true
         swipeView.bounces = false
-        // Need to set currentItemIndex before dataSource
-//        if vm.hasUnreadText {
-        // NOTE: we're not able to start on the video producer page without causing screen glitch
-        // TODO: Fix me, either change the UI or view controller hierarchy such that
-        // camera view can be the first view that shows up
-            swipeView.currentItemIndex = Page.ChatHistory.rawValue
-//        } else {
-//            swipeView.currentItemIndex = Page.Producer.rawValue
-//        }
         swipeView.dataSource = self
         swipeView.delegate = self
-        swipeView.layoutIfNeeded()
+        swipeView.currentPage = page.rawValue
         
         if vm.hasUnplayedVideo {
             presentViewController(videoPlayer, animated: false, completion: nil)
