@@ -132,7 +132,12 @@ extension METAccount {
                 return nil
         }
         let expiryDate = RCTConvert.NSDate(json["expiryDate"])
-        return Taylr.METAccount(userID: userID, resumeToken: resumeToken, expiryDate: expiryDate)
+        let account = Taylr.METAccount(userID: userID, resumeToken: resumeToken, expiryDate: expiryDate)
+        account.firstName = json["firstName"] as? String
+        account.lastName = json["lastName"] as? String
+        account.avatarUrl = json["avatarUrl"] as? String
+        account.coverUrl = json["coverUrl"] as? String
+        return account
     }
 }
 

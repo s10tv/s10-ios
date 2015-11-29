@@ -72,14 +72,23 @@ NSString * const METAccountKeychainItemName = @"MeteorAccount";
     NSString *userID = [coder decodeObjectForKey:@"userID"];
     NSString *resumeToken = [coder decodeObjectForKey:@"resumeToken"];
     NSDate *expiryDate = [coder decodeObjectForKey:@"expiryDate"];
-    
-    return [self initWithUserID:userID resumeToken:resumeToken expiryDate:expiryDate];
+    if (self = [self initWithUserID:userID resumeToken:resumeToken expiryDate:expiryDate]) {
+        _firstName = [coder decodeObjectForKey:@"firstName"];
+        _lastName = [coder decodeObjectForKey:@"lastName"];
+        _avatarUrl = [coder decodeObjectForKey:@"avatarUrl"];
+        _coverUrl = [coder decodeObjectForKey:@"coverUrl"];
+    }
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:_userID forKey:@"userID"];
     [coder encodeObject:_resumeToken forKey:@"resumeToken"];
     [coder encodeObject:_expiryDate forKey:@"expiryDate"];
+    [coder encodeObject:_firstName forKey:@"firstName"];
+    [coder encodeObject:_lastName forKey:@"lastName"];
+    [coder encodeObject:_avatarUrl forKey:@"avatarUrl"];
+    [coder encodeObject:_coverUrl forKey:@"coverUrl"];
 }
 
 #pragma mark - NSCopying
