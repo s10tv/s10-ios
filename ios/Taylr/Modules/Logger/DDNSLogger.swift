@@ -17,14 +17,16 @@ class DDNSLogger : DDAbstractLogger {
     let logger = LoggerInit()
     
     override init() {
-        var options = kLoggerOption_BufferLogsUntilConnection | kLoggerOption_UseSSL
         let hostName = NSProcessInfo().environment["NSLoggerViewerHost"] ?? "localhost"
+        let bonjourName = NSProcessInfo().environment["NSLoggerBonjourName"] ?? "taylr-nslogger"
         LoggerSetViewerHost(logger, hostName, 50000)
-        if let bonjourName = NSProcessInfo().environment["NSLoggerBonjourName"] {
-            LoggerSetupBonjour(logger, nil, bonjourName)
-            options = options | kLoggerOption_BrowseBonjour | kLoggerOption_BrowseOnlyLocalDomain
-        }
-        LoggerSetOptions(logger, UInt32(options))
+        LoggerSetupBonjour(logger, nil, bonjourName)
+        LoggerSetOptions(logger, UInt32(
+            kLoggerOption_BufferLogsUntilConnection |
+            kLoggerOption_UseSSL |
+            kLoggerOption_BrowseBonjour |
+            kLoggerOption_BrowseOnlyLocalDomain
+        ))
         LoggerStart(logger)
         super.init()
         logFormatter = TagLogFormatter(timestamp: false, level: false, domain: false)
