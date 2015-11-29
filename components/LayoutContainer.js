@@ -34,25 +34,23 @@ class LayoutContainer extends React.Component {
     this.ddp = props.ddp;
     this.logger = new Logger(this);
 
+    const state = props.layerService.store.getState();
     this.state = {
-      layerAllCountListener: NativeAppEventEmitter
-        .addListener('Layer.allConversationsCountUpdate', (count) => {
-          this.setState({ numTotalConversations: count })
-        }),
-      layerUnreadCountListener: NativeAppEventEmitter
-        .addListener('Layer.unreadConversationsCountUpdate', (count) => {
-          this.setState({ numUnreadConversations: count })
-        }),
+      numTotalConversations: state.allCount,
+      numUnreadConversations:  state.unreadCount,
     }
   }
 
-  componentWillUnmount() {
-    this.state.layerListener.remove();
-    this.state.layerUnreadCountListener.remove();
+  componentWillMount() {
+    this.props.layerService.store.subscribe(this.updateLayerState);
+  }
+
+  updateLayerState() {
+    const state = this.props.layerService.store.getState();
     this.setState({
-      layerListener: null,
-      layerUnreadCountListener: null,
-    });
+      numTotalConversations: state.allCount,
+      numUnreadConversations: state.unreadCount,
+    }) 
   }
 
   formatUser(user) {

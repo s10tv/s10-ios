@@ -10,6 +10,7 @@ let {
 } = React;
 
 let TSDDPClient = require('./lib/ddpclient');
+let LayerService = require('./lib/LayerService');
 let BridgeManager = require('./modules/BridgeManager');
 const logger = new (require('./lib/Logger'))('index.ios');
 let LayoutContainer = require('./components/LayoutContainer');
@@ -21,6 +22,7 @@ logger.info('JS App Launched');
 logger.debug(`bundle url ${BridgeManager.bundleUrlScheme()}`);
 
 let ddp = new TSDDPClient(BridgeManager.serverUrl());
+let layerService = new LayerService();
 
 NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
   if (!tokenInfo) {
@@ -36,16 +38,18 @@ NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
 
   ddp.call({ methodName: 'device/update/push', params: tokenInfo })
   .then(() => {
-    TSLogger.log('Registered push token', 'debug', 'index.io.js', '', 0);
+    logger.debug('Registered push token', 'debug', 'index.io.js', '', 0);
   })
   .catch(err => {
-    TSLogger.log(JSON.stringify(err), 'error', 'index.io.js', '', 0);
+    logger.debug(JSON.stringify(err), 'error', 'index.io.js', '', 0);
   })
 });
 
+
+
 class Main extends React.Component {
   render() {
-    return <LayoutContainer ddp={ddp} />;
+    return <LayoutContainer ddp={ddp} layerService={layerService} />;
   }
 }
 
