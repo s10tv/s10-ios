@@ -96,7 +96,7 @@ class TagLogFormatter : NSObject, DDLogFormatter {
             message.appendString(".")
             periodAppended = true
             for (key, value) in kvp {
-                message.appendString(" \(key)=\"\(value)\"")
+                message.appendString(" \(key.description.camelCasedString)=\"\(value)\"")
             }
         }
         

@@ -29,8 +29,10 @@ extension DDCrashlyticsLogger : AnalyticsProvider {
     
     func appLaunch() {
         if let userId = context.userId {
+            DDLogInfo("Will set user identifyer userId=\(userId)")
             crashlytics.setUserIdentifier(userId)
         }
+        DDLogDebug("Will set deviceId=\(context.deviceId) deviceName=\(context.deviceName)")
         crashlytics.setObjectValue(context.deviceId, forKey: "Device Id")
         crashlytics.setObjectValue(context.deviceName, forKey: "Device Name")
     }
@@ -45,14 +47,17 @@ extension DDCrashlyticsLogger : AnalyticsProvider {
     }
     
     func logout() {
+        DDLogInfo("Will clear user identifier")
         crashlytics.setUserIdentifier(nil)
     }
 
     func updateEmail() {
+        DDLogDebug("Will setUserEmail email=\(context.email)")
         crashlytics.setUserEmail(context.email)
     }
     
     func updateFullname() {
+        DDLogDebug("Will setUserName fullname=\(context.fullname)")
         crashlytics.setUserName(context.fullname)
     }
     
@@ -66,6 +71,7 @@ extension DDCrashlyticsLogger : AnalyticsProvider {
     
     func setUserProperties(properties: [NSObject : AnyObject]) {
         for (key, value) in properties {
+            DDLogDebug("Will set key=\(key) value=\(value)")
             if let key = key as? String {
                 switch value {
                 case let value as Int:

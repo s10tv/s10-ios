@@ -18,13 +18,6 @@ class DDOuralabsLogger : DDAbstractLogger {
         super.init()
     }
     
-    func setAttribute(key: String, value: AnyObject?) {
-        assert([OUAttr1, OUAttr2, OUAttr3].contains(key), "Key must be one of 3 predefined attributes")
-        var attrs = Ouralabs.getAttributes() ?? [:]
-        attrs[key] = value
-        Ouralabs.setAttributes(attrs)
-    }
-    
     override func logMessage(logMessage: DDLogMessage!) {
         let level: OULogLevel
         switch logMessage.logLevel {
@@ -50,6 +43,14 @@ class DDOuralabsLogger : DDAbstractLogger {
 }
 
 extension DDOuralabsLogger : AnalyticsProvider {
+    
+    func setAttribute(key: String, value: AnyObject?) {
+        assert([OUAttr1, OUAttr2, OUAttr3].contains(key), "Key must be one of 3 predefined attributes")
+        DDLogDebug("Will update attribute \(key)=\(value)")
+        var attrs = Ouralabs.getAttributes() ?? [:]
+        attrs[key] = value
+        Ouralabs.setAttributes(attrs)
+    }
     
     func appLaunch() {
         setAttribute(OUAttr1, value: context.deviceName)
