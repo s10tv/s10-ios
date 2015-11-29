@@ -52,7 +52,7 @@ extension DDOuralabsLogger : AnalyticsProvider {
         Ouralabs.setAttributes(attrs)
     }
     
-    func appLaunch() {
+    func launch(currentBuild: String, previousBuild: String?) {
         setAttribute(OUAttr1, value: context.deviceName)
         setAttribute(OUAttr2, value: context.userId)
         setAttribute(OUAttr3, value: context.fullname)

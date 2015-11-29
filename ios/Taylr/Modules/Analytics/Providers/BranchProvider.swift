@@ -18,6 +18,12 @@ public class BranchProvider : NSObject, AnalyticsProvider {
         branch = Branch.getInstance(branchKey)
     }
     
+    func launch(currentBuild: String, previousBuild: String?) {
+        if let userId = context.userId {
+            branch.setIdentity(userId)
+        }
+    }
+    
     func login(isNewUser: Bool) {
         branch.setIdentity(context.userId)
     }

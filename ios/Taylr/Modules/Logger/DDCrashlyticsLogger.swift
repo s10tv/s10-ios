@@ -27,7 +27,7 @@ class DDCrashlyticsLogger : DDAbstractLogger {
 
 extension DDCrashlyticsLogger : AnalyticsProvider {
     
-    func appLaunch() {
+    func launch(currentBuild: String, previousBuild: String?) {
         if let userId = context.userId {
             DDLogInfo("Will set user identifyer userId=\(userId)")
             crashlytics.setUserIdentifier(userId)

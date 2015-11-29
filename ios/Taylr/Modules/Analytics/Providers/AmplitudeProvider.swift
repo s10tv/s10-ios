@@ -8,6 +8,7 @@
 
 import Foundation
 import Amplitude_iOS
+import CocoaLumberjack
 
 public class AmplitudeProvider : BaseAnalyticsProvider {
     
@@ -18,10 +19,28 @@ public class AmplitudeProvider : BaseAnalyticsProvider {
         amplitude.trackingSessionEvents = true
     }
     
-    override func updateIdentity() {
+    func updateIdentity() {
         amplitude.setUserId(context.userId)
         amplitude.setDeviceId(context.deviceId)
         setUserProperties(["Device Name": context.deviceName])
+    }
+    
+    override func launch(currentBuild: String, previousBuild: String?) {
+        updateIdentity()
+        super.launch(currentBuild, previousBuild: previousBuild)
+        DDLogInfo("Did Login")
+    }
+    
+    override func login(isNewUser: Bool) {
+        updateIdentity()
+        super.login(isNewUser)
+        DDLogInfo("Did Login")
+    }
+    
+    override func logout() {
+        super.logout()
+        updateIdentity()
+        DDLogInfo("Did Logout")
     }
     
     override func setUserProperties(properties: [NSObject : AnyObject]) {

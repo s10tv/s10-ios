@@ -18,6 +18,9 @@ class OneSingalProvider : NSObject, AnalyticsProvider {
         oneSignal.enableInAppAlertNotification(true)
         OneSignal.setDefaultClient(oneSignal)
     }
+    
+    func launch(currentBuild: String, previousBuild: String?) {
+    }
 
     func login(isNewUser: Bool) {
     }

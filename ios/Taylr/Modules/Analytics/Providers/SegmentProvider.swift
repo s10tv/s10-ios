@@ -8,7 +8,7 @@
 
 import Foundation
 import AnalyticsSwift
-
+import CocoaLumberjack
 
 public class SegmentProvider : BaseAnalyticsProvider {
     
@@ -20,13 +20,31 @@ public class SegmentProvider : BaseAnalyticsProvider {
     
     // MARK: -
     
-    override func updateIdentity() {
+    func updateIdentity() {
         if let userId = context.userId {
             segment.enqueue(IdentifyMessageBuilder().anonymousId(userId))
         } else {
             segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
         }
         setUserProperties(["Device Name": context.deviceName])
+    }
+    
+    override func launch(currentBuild: String, previousBuild: String?) {
+        updateIdentity()
+        super.launch(currentBuild, previousBuild: previousBuild)
+        DDLogInfo("Did Login")
+    }
+    
+    override func login(isNewUser: Bool) {
+        updateIdentity()
+        super.login(isNewUser)
+        DDLogInfo("Did Login")
+    }
+    
+    override func logout() {
+        super.logout()
+        updateIdentity()
+        DDLogInfo("Did Logout")
     }
     
     override func track(event: String, properties: [NSObject : AnyObject]?) {

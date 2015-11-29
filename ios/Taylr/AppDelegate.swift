@@ -80,8 +80,7 @@ class AppDelegate : UIResponder {
         
         // TODO: Refactor this lifecycle management stuff outside of Analytics
         // Do not persist meteor user account across app installs, make it harder to test and is unexpected
-        // NOTE: Hack alert. we use layer as a proxy to know whether this was an upgrade rather than new install
-        if Analytics.isNewInstall && layer.layerClient.authenticatedUserID == nil {
+        if Analytics.previousBuild == nil && METAccount.defaultAccount() != nil {
             METAccount.setDefaultAccount(nil)
         }
         
@@ -117,7 +116,12 @@ extension AppDelegate : UIApplicationDelegate {
 
         // Pre-heat the camera if we can
         VideoMakerViewController.preloadRecorderAsynchronously()
-        DDLogInfo("App Did Launch \(env.deviceName)", tag: ["deviceId": env.deviceId, "deviceName": env.deviceName])
+        DDLogInfo("App Did Launch", tag: [
+            "deviceId": env.deviceId,
+            "deviceName": env.deviceName,
+            "previousBuild": Analytics.previousBuild ?? NSNull(),
+            "currentBuild": env.build
+        ])
         return true
     }
     

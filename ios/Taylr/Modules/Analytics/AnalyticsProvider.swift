@@ -8,8 +8,16 @@
 
 import Foundation
 
+enum LifecycleEvent : String {
+    case Install = "App: Install"
+    case Upgrade = "App: Upgrade"
+    case AppOpen = "App: Open"
+    case AppClose = "App: Close"
+    case Login = "Login"
+    case Logout = "Logout"
+}
+
 @objc protocol AnalyticsContext : class {
-    var isNewInstall: Bool { get }
     var deviceId: String { get }
     var deviceName: String { get }
     var userId: String? { get }
@@ -22,12 +30,12 @@ import Foundation
 @objc protocol AnalyticsProvider : class {
     var context: AnalyticsContext! { get set }
     
-    optional func appLaunch()
-    optional func appOpen()
-    optional func appClose()
-    
+    func launch(currentBuild: String, previousBuild: String?)
     func login(isNewUser: Bool)
     func logout()
+    
+    optional func appOpen()
+    optional func appClose()
     
     // Only gets called after user is authenticated
     optional func updateUsername()
@@ -42,13 +50,15 @@ import Foundation
     optional func registerPushToken(pushToken: NSData)
     optional func trackPushNotification(userInfo: [NSObject : AnyObject])
     
-    // Utils
     optional func flush()
 }
 
 extension AnalyticsProvider {
     
-    // Helper
+    func track(event: LifecycleEvent, properties: [NSObject : AnyObject]? = nil) {
+        track?(event.rawValue, properties: properties)
+    }
+
     func convertProperties(properties: [NSObject : AnyObject]?) -> [String: AnyObject] {
         if let properties = properties {
             var props : [String: AnyObject] = [:]
@@ -67,39 +77,36 @@ extension AnalyticsProvider {
 
 public class BaseAnalyticsProvider : NSObject {
     var context: AnalyticsContext!
-    
-    func updateIdentity() {
-        // To be overwridden by subclass, called at appLaunch, login and logout
-    }
 }
 
 extension BaseAnalyticsProvider : AnalyticsProvider {
     
-    func appLaunch() {
-        updateIdentity()
-        if context.isNewInstall {
-            track("App: Install")
+    func launch(currentBuild: String, previousBuild: String?) {
+        if previousBuild == nil {
+            track(.Install)
+        } else if let previousBuild = previousBuild where previousBuild != currentBuild {
+            // Env should be dependency injected
+            track(.Upgrade, properties: [
+                "From Build": previousBuild,
+                "To Build": currentBuild
+            ])
         }
     }
     
-    func appOpen() {
-        track("App: Open")
-    }
-    
-    func appClose() {
-        track("App: Close")
-    }
-    
     func login(isNewUser: Bool) {
-        assert(context.userId != nil, "userId should not be nil after login")
-        updateIdentity()
-        track("Login", properties: ["New User": isNewUser])
+        track(.Login, properties: ["New User": isNewUser])
     }
     
     func logout() {
-        assert(context.userId == nil, "userId should be nil after logout")
-        track("Logout")
-        updateIdentity()
+        track(.Logout)
+    }
+    
+    func appOpen() {
+        track(.AppOpen)
+    }
+    
+    func appClose() {
+        track(.AppClose)
     }
     
     func updateUsername() {
@@ -126,4 +133,5 @@ extension BaseAnalyticsProvider : AnalyticsProvider {
     func screen(name: String, properties: [NSObject : AnyObject]? = nil) {
         track("Screen: \(name)", properties: properties)
     }
+
 }

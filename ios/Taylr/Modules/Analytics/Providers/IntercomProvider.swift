@@ -30,7 +30,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
 //        Intercom.enableLogging()
     }
     
-    override func login(isNewUser: Bool) {
+    func updateIdentity() {
         guard let userId = context.userId else { return }
         DDLogInfo("Will registerUser userId=\(userId)")
         if let email = context.email {
@@ -51,31 +51,46 @@ public class IntercomProvider : BaseAnalyticsProvider {
         OneSignal.defaultClient().IdsAvailable { [weak self] userId, _ in
             self?.setUserProperties(["OneSignal UserID": userId])
         }
-        track("Login", properties: ["New User": isNewUser])
+    }
+    
+    override func launch(currentBuild: String, previousBuild: String?) {
+        updateIdentity()
+        super.launch(currentBuild, previousBuild: previousBuild)
+        DDLogInfo("Did launch")
+    }
+    
+    override func login(isNewUser: Bool) {
+        updateIdentity()
+        super.login(isNewUser)
+        DDLogInfo("Did login")
     }
     
     override func logout() {
-        track("Logout")
+        super.logout()
         Intercom.reset()
-        DDLogInfo("Did logout from Intercom")
+        DDLogInfo("Did login")
     }
     
     override func updateEmail() {
+        if context.userId == nil { return }
         DDLogDebug("Will update user attribute email=\(context.email)")
         Intercom.updateUserWithAttributes(["email": context.email ?? NSNull()])
     }
     
     override func updateFullname() {
+        if context.userId == nil { return }
         DDLogDebug("Will update user attribute fullname=\(context.fullname)")
         Intercom.updateUserWithAttributes(["name": context.fullname ?? NSNull()])
     }
     
     override func setUserProperties(properties: [NSObject : AnyObject]) {
+        if context.userId == nil { return }
         DDLogDebug("Will update custom attributes", tag: properties)
         Intercom.updateUserWithAttributes(["custom_attributes": properties])
     }
     
     override func track(event: String, properties: [NSObject : AnyObject]? = nil) {
+        if context.userId == nil { return }
         DDLogVerbose("Will logEvent name=\(event)", tag: properties)
         if let properties = properties {
             Intercom.logEventWithName(event, metaData: properties)

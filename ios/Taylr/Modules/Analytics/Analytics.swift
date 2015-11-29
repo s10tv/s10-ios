@@ -16,16 +16,20 @@ public let Analytics = TSAnalytics()
 public class TSAnalytics : NSObject {
     private var providers: [AnalyticsProvider] = []
     
-    let isNewInstall: Bool
-    let deviceId: String
-    let deviceName: String
+    let env = Environment() // How do we dependency inject this? If at all
+    let previousBuild: String?
     
     override init() {
-        isNewInstall = (Defaults[.appDidInstall] == false)
-        Defaults[.appDidInstall] = true
-        let env = Environment() // How do we dependency inject this? If at all
-        deviceId = env.deviceId
-        deviceName = env.deviceName
+        if let previousBuild = Defaults[.previousBuild] {
+            self.previousBuild = previousBuild
+        } else if let account = METAccount.defaultAccount() {
+            // HACK ALERT: Special case, pre ReactNative builds did not persist previousBuild into UserDefaults
+            // We use METAccount as a proxy to know whether this was an upgrade rather than new install
+            previousBuild = "0.2.1"
+            Defaults[.userId] = account.userID
+        } else {
+            previousBuild = nil
+        }
     }
     
     func addProviders(providers: [AnalyticsProvider]) {
@@ -49,7 +53,7 @@ public class TSAnalytics : NSObject {
 // MARK: - AnalyticsContext
 
 extension DefaultsKeys {
-    private static let appDidInstall = DefaultsKey<Bool>("ts_appDidInstall")
+    private static let previousBuild = DefaultsKey<String?>("ts_previousBuild")
     private static let userId = DefaultsKey<String?>("ts_userId")
     private static let username = DefaultsKey<String?>("ts_username")
     private static let email = DefaultsKey<String?>("ts_email")
@@ -58,6 +62,8 @@ extension DefaultsKeys {
 }
 
 extension TSAnalytics : AnalyticsContext {
+    var deviceId: String { return env.deviceId }
+    var deviceName: String { return env.deviceName }
     var userId: String? {
         get { return Defaults[.userId] }
         set { Defaults[.userId] = newValue }
@@ -85,7 +91,9 @@ extension TSAnalytics : AnalyticsContext {
 extension TSAnalytics {
     
     func appDidLaunch(launchOptions: [NSObject: AnyObject]?) {
-        eachProvider { $0.appLaunch?() }
+        let currentBuild = Environment().build
+        eachProvider { $0.launch(currentBuild, previousBuild: self.previousBuild) }
+        Defaults[.previousBuild] = env.build
         eachProvider { $0.appOpen?() }
     }
     
