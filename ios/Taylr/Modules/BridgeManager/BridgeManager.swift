@@ -30,6 +30,14 @@ extension NSObject {
     }
 }
 
+extension RCTBridge {
+    
+    func sendAppEvent(name: String, body: AnyObject?) {
+        DDLogDebug("Will sendAppEvent name=\(name)", tag: body)
+        eventDispatcher.sendAppEventWithName(name, body: body)
+    }
+}
+
 @objc(TSBridgeManager)
 class BridgeManager : NSObject {
     
@@ -43,11 +51,8 @@ class BridgeManager : NSObject {
         self.config = config
         super.init()
         listenForNotification(kRNSendAppEventNotificationName).startWithNext { [weak self] note in
-            if let dispatcher = self?.bridge?.eventDispatcher,
-                let name = note.userInfo?["name"] as? String {
-                    let body = note.userInfo?["body"]
-                    DDLogInfo("Will send AppEvent \(name) body=\(body)")
-                    dispatcher.sendAppEventWithName(name, body: body)
+            if let bridge = self?.bridge, let name = note.userInfo?["name"] as? String {
+                bridge.sendAppEvent(name, body: note.userInfo?["body"])
             }
         }
     }

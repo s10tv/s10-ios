@@ -14,7 +14,11 @@ import React
 
 @objc(TSLayerService)
 class LayerService: NSObject {
-    @objc weak var bridge: RCTBridge?
+    @objc weak var bridge: RCTBridge? {
+        didSet {
+            if layerClient.isAuthenticated { setupQueries() }
+        }
+    }
     
     let layerClient: LYRClient
     var unreadQueryController: LYRQueryController?
@@ -31,20 +35,36 @@ class LayerService: NSObject {
     }
     
     func setupQueries() {
+        DDLogDebug("Will setup conversation queryies isConnected=\(layerClient.isConnected)")
+        guard let bridge = bridge else {
+            DDLogError("self.bridge must exist before calling setupQueries")
+            return
+        }
         do {
             unreadQueryController = try layerClient.queryControllerWithQuery(LYRQuery.unreadConversations(), error: ())
-            unreadQueryController?.delegate = self
-            try unreadQueryController?.execute()
-            queryControllerDidChangeContent(unreadQueryController!)
+            if let query = unreadQueryController {
+                query.delegate = self
+                try query.execute()
+                DDLogDebug("Will send initial unread converssations count=\(query.count())")
+                bridge.sendAppEvent("Layer.unreadConversationsCountUpdate", body: query.count())
+            }
             
             allConversationsQueryController = try layerClient.queryControllerWithQuery(
                 LYRQuery(queryableClass: LYRConversation.self), error: ())
-            allConversationsQueryController?.delegate = self
-            try allConversationsQueryController?.execute()
-            queryControllerDidChangeContent(allConversationsQueryController!)
+            if let query = allConversationsQueryController {
+                query.delegate = self
+                try query.execute()
+                DDLogDebug("Will send initial all converssations count=\(query.count())")
+                bridge.sendAppEvent("Layer.allConversationsCountUpdate", body: query.count())
+            }
         } catch let error as NSError {
             DDLogError("Unable to setup queries", tag: error)
         }
+    }
+    
+    func teardownQueries() {
+        unreadQueryController = nil
+        allConversationsQueryController = nil
     }
     
     // MARK: -
@@ -195,7 +215,7 @@ extension LayerService : LYRClientDelegate {
     func layerClient(client: LYRClient!, didReceiveAuthenticationChallengeWithNonce nonce: String!) {
         assert(bridge != nil, "Bridge should not be nil")
         DDLogInfo("Received authentication nonce in delegate \(nonce)")
-        bridge?.eventDispatcher.sendAppEventWithName("Layer.didReceiveNonce", body: nonce)
+        bridge?.sendAppEvent("Layer.didReceiveNonce", body: nonce)
     }
 }
 
@@ -204,9 +224,11 @@ extension LayerService : LYRClientDelegate {
 extension LayerService : LYRQueryControllerDelegate {
     func queryControllerDidChangeContent(queryController: LYRQueryController!) {
         if queryController == unreadQueryController {
-            bridge?.eventDispatcher.sendAppEventWithName("Layer.unreadConversationsCountUpdate", body: queryController.count())
+            bridge?.sendAppEvent("Layer.unreadConversationsCountUpdate", body: queryController.count())
+            DDLogDebug("Unread conversations did update count=\(queryController.count())")
         } else if queryController == allConversationsQueryController {
-            bridge?.eventDispatcher.sendAppEventWithName("Layer.allConversationsCountUpdate", body: queryController.count())
+            bridge?.sendAppEvent("Layer.allConversationsCountUpdate", body: queryController.count())
+            DDLogDebug("All conversations did update count=\(queryController.count())")
         }
     }
 }
@@ -214,18 +236,11 @@ extension LayerService : LYRQueryControllerDelegate {
 extension LayerService {
     
     @objc func connect(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        guard layerClient.isConnected == false else {
-            self.setupQueries()
-            resolve(nil)
-            return
-        }
-
         DDLogDebug("Will connect to layer")
         layerClient.connect().promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to connect to layer", tag: error)
         }, completed: {
-            DDLogInfo("Successfully connected to Layer authenticated:\(self.layerClient.isAuthenticated)")
-            self.setupQueries()
+            DDLogInfo("Successfully connected to Layer")
         }))
     }
     
@@ -253,12 +268,9 @@ extension LayerService {
     }
     
     @objc func deauthenticate(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        guard layerClient.isConnected else {
-            resolve(nil)
-            return
-        }
         DDLogDebug("Will deauthenticate from layer")
         layerClient.deauthenticate().promise(resolve, reject).start(Event.sink(error: { error in
+            self.teardownQueries()
             DDLogError("Unable to deauthenticate", tag: error)
         }, completed: {
             DDLogInfo("Successfully deauthenticated from layer")
