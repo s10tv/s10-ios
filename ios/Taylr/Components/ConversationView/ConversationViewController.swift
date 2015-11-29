@@ -42,7 +42,7 @@ class ConversationViewController : UIViewController {
     var vm: ConversationViewModel!
     
     deinit {
-        DDLogDebug("ConversationVC deinit")
+        DDLogVerbose("ConversationVC deinit")
     }
     
     override func viewDidLoad() {
@@ -106,7 +106,7 @@ class ConversationViewController : UIViewController {
         if vm.hasUnplayedVideo {
             presentViewController(videoPlayer, animated: false, completion: nil)
         }
-        DDLogVerbose("Conversation - viewDidLoad")
+        DDLogVerbose("Finish viewDidLoad")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -115,28 +115,32 @@ class ConversationViewController : UIViewController {
         if let view = navigationBar.topItem?.titleView {
             view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         }
-        DDLogVerbose("Conversation - viewWillAppear")
+        DDLogVerbose("Finish viewWillAppear animated=\(animated)")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        DDLogVerbose("Conversation - viewDidAppear")
+        DDLogVerbose("Finish viewDidAppear animated=\(animated)")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationBar.setBackgroundColor(nil)
-        DDLogVerbose("Conversation - viewWillDisappear")
+        DDLogVerbose("Finish viewWillDisappear animated=\(animated)")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        DDLogVerbose("Conversation - viewDidDisappear")
+        DDLogVerbose("Finish viewDidDisappear animated=\(animated)")
     }
     
     // MARK: -
 
     @IBAction func didTapBackButton(sender: AnyObject) {
+        // HACK ALERT: Due to NeactNative not calling viewWillDisappear at the right time
+        // we have to manually make the textinput animate away as the view goes away
+        // See https://app.asana.com/0/34520227311296/69398492475084
+        chatHistory.view.resignFirstResponder()
         rnNavigationPop()
     }
     
@@ -146,6 +150,8 @@ class ConversationViewController : UIViewController {
     
     @IBAction func didTapProfileView(sender: AnyObject) {
         if let user = vm.recipientUser()  {
+            // Same hack as in didTapBackButton
+            chatHistory.view.resignFirstResponder()
             rnNavigationPush(.Profile, args: [
                 "userId": user.userId
             ])
