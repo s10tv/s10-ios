@@ -44,7 +44,7 @@ class AppDelegate : UIResponder {
         env = Environment()
         config = AppConfig(env: env)
         
-        // Setup Logging
+        // MARK: Setup Logging
         ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
         crashlytics = DDCrashlyticsLogger(crashlytics: Crashlytics.sharedInstance())
         crashlytics.logFormatter = TagLogFormatter()
@@ -57,8 +57,11 @@ class AppDelegate : UIResponder {
         #if Debug
         Logger.addLogger(DDNSLogger())
         #endif
+         // Capture NSLog statements emitted by 3rd party
+        DDASLLogCapture.setCaptureLevel(.Info)
+        DDASLLogCapture.start()
         
-        // Setup Analytics
+        // MARK: Setup Analytics
         // NOTE: When OneSignal inits it automatically calls application.registerForRemoteNotifications()
         oneSignal = OneSingalProvider(appId: config.oneSignalAppId, launchOptions: launchOptions)
         branch = BranchProvider(branchKey: config.branchKey)
@@ -69,10 +72,10 @@ class AppDelegate : UIResponder {
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
         Analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         
-        // Setup Layer
+        // MARK: Setup Layer (used for receiving remote notifications and such)
         layer = LayerService(layerAppID: config.layerURL)
         
-        // Over the air app update
+        // MARK: Setup AppHub (over the air app update)
         AppHub.setApplicationID(config.appHubApplicationId)
         appHubBuild = AppHub.buildManager()
         appHubBuild.cellularDownloadsEnabled = true
@@ -84,7 +87,7 @@ class AppDelegate : UIResponder {
             METAccount.setDefaultAccount(nil)
         }
         
-        // Start React Native App
+        // MARK: Start React Native
         bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
     }
 }

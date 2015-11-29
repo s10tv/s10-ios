@@ -12,6 +12,13 @@ import CocoaLumberjack
 import NSLogger
 #endif
 
+func getUTF8String(string: String?) -> UnsafePointer<Int8> {
+    if let string = string {
+        return (string as NSString).UTF8String
+    }
+    return UnsafePointer()
+}
+
 class DDNSLogger : DDAbstractLogger {
     #if Debug
     let logger = LoggerInit()
@@ -46,10 +53,11 @@ class DDNSLogger : DDAbstractLogger {
         case .Error:
             level = 0
         }
+        (logMessage.fileName as NSString)
         LogMessageRawToF(logger,
-            (logMessage.fileName as NSString).UTF8String,
+            getUTF8String(logMessage.fileName),
             Int32(logMessage.line),
-            (logMessage.function as NSString).UTF8String,
+            getUTF8String(logMessage.function),
             logMessage.domain,
             level,
             formatMessage(logMessage)
