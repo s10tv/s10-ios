@@ -51,10 +51,7 @@ NSString * const METAccountKeychainItemName = @"MeteorAccount";
 + (A0SimpleKeychain *)keychain {
     NSString *bundleIdentifier = [NSBundle mainBundle].bundleIdentifier;
     if (!bundleIdentifier) return nil;
-    A0SimpleKeychain *keychain = [A0SimpleKeychain keychainWithService:bundleIdentifier];
-    // NOTE: We're doing this because Taylr is it's iOS 8+ only
-    keychain.useAccessControl = YES;
-    return keychain;
+    return [A0SimpleKeychain keychainWithService:bundleIdentifier];
 }
 
 #pragma mark - Lifecycle

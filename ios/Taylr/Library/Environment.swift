@@ -22,7 +22,6 @@ public class Environment {
     }
     public var deviceId: String {
         let keychain = A0SimpleKeychain(service: appId)
-        keychain.useAccessControl = true
         let kDeviceId = "deviceId"
         var identifier = keychain.stringForKey(kDeviceId)
         if identifier == nil {
