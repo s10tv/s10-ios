@@ -26,25 +26,21 @@ class LayerService {
       });
   }
 
-  static allConversationCount(state = { allConversationCount: 0 }, action) {
+  static allConversationCount(state = 0 , action) {
     switch (action.type) {
       case 'CHANGE_ALL_COUNT':
-        return Object.assign({}, state, {
-          allConversationCount: action.count
-        });
+        return action.count
       default:
-      return state;
+        return state;
     }
   }
 
-  static unreadConversationCount(state = { unreadConversationCount: 0 }, action) {
+  static unreadConversationCount(state = 0 , action) {
     switch (action.type) {
       case 'CHANGE_UNREAD_COUNT':
-        return Object.assign({}, state, {
-          unreadConversationCount: action.count
-        });
+        action.count
       default:
-      return state;
+        return state;
     }
   }
 }

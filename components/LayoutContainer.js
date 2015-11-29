@@ -37,9 +37,12 @@ class LayoutContainer extends React.Component {
     this.ddp = props.ddp;
 
     const state = props.store.getState();
+
+    logger.debug(JSON.stringify(state.allConversationCount));
+
     this.state = {
-      numTotalConversations: state.allConversationCount,
-      numUnreadConversations:  state.unreadConversationCount,
+      allConversationCount: state.allConversationCount,
+      unreadConversationCount: state.unreadConversationCount,
     }
   }
 
@@ -50,8 +53,8 @@ class LayoutContainer extends React.Component {
   updateLayerState() {
     const state = this.props.store.getState();
     this.setState({
-      numTotalConversations: state.allConversationCount,
-      numUnreadConversations: state.unreadConversationCount,
+      allConversationCount: state.allConversationCount,
+      unreadConversationCount: state.unreadConversationCount,
     }) 
   }
 
@@ -471,8 +474,8 @@ class LayoutContainer extends React.Component {
       history={this.state.history}
       users={this.state.users}
       settings={this.state.settings}
-      numTotalConversations={this.state.numTotalConversations}
-      numUnreadConversations={this.state.numUnreadConversations}
+      numTotalConversations={this.state.allConversationCount}
+      numUnreadConversations={this.state.unreadConversationCount}
       updateProfile={this.updateProfile.bind(this)}
       ddp={this.ddp} />
   }
