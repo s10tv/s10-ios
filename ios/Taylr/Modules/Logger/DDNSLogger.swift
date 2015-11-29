@@ -17,10 +17,9 @@ class DDNSLogger : DDAbstractLogger {
     let logger = LoggerInit()
     
     override init() {
-        var options = kLoggerOption_BufferLogsUntilConnection
-        if let hostName = NSProcessInfo().environment["NSLoggerViewerHost"] {
-            LoggerSetViewerHost(logger, hostName, 50000)
-        }
+        var options = kLoggerOption_BufferLogsUntilConnection | kLoggerOption_UseSSL
+        let hostName = NSProcessInfo().environment["NSLoggerViewerHost"] ?? "localhost"
+        LoggerSetViewerHost(logger, hostName, 50000)
         if let bonjourName = NSProcessInfo().environment["NSLoggerBonjourName"] {
             LoggerSetupBonjour(logger, nil, bonjourName)
             options = options | kLoggerOption_BrowseBonjour | kLoggerOption_BrowseOnlyLocalDomain
