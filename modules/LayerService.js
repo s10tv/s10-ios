@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import { createStore } from 'redux'
+
 let {
   NativeAppEventEmitter,
   NativeModules: {
@@ -14,34 +14,39 @@ let {
 const logger = new (require('./Logger'))('LayerServiceJs');
 
 class LayerService {
-  constructor() {
-    this.store = createStore(this.reduceFn);
-
+  constructor(store) {
     this.unreadListener = NativeAppEventEmitter
       .addListener('Layer.unreadConversationsCountUpdate', (count) => {
-        this.store.dispatch({ type: 'CHANGE_UNREAD_COUNT', count: count })
+        store.dispatch({ type: 'CHANGE_UNREAD_COUNT', count: count })
       });
 
     this.allListener = NativeAppEventEmitter
       .addListener('Layer.allConversationsCountUpdate', (count) => {
-        this.store.dispatch({ type: 'CHANGE_ALL_COUNT', count: count })
+        store.dispatch({ type: 'CHANGE_ALL_COUNT', count: count })
       });
   }
 
-  reduceFn(state = { unreadCount: 0, unreadCount: 0}, action) {
+  static allConversationCount(state = { allConversationCount: 0 }, action) {
+    switch (action.type) {
+      case 'CHANGE_ALL_COUNT':
+        return Object.assign({}, state, {
+          allConversationCount: action.count
+        });
+      default:
+      return state;
+    }
+  }
+
+  static unreadConversationCount(state = { unreadConversationCount: 0 }, action) {
     switch (action.type) {
       case 'CHANGE_UNREAD_COUNT':
         return Object.assign({}, state, {
-          unreadCount: action.count
-        });
-      case 'CHANGE_ALL_COUNT':
-        return Object.assign({}, state, {
-          allCount: action.count
+          unreadConversationCount: action.count
         });
       default:
-        return state;
-    } 
+      return state;
+    }
   }
 }
 
-module.exports = LayerService;
+export { LayerService }

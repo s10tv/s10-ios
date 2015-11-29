@@ -10,7 +10,6 @@ let {
   StyleSheet,
 } = React;
 
-let Logger = require('../../lib/Logger');
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 let Button = require('react-native-button');
@@ -21,12 +20,13 @@ let UIImagePickerManager = require('NativeModules').UIImagePickerManager;
 
 let OverlayLoader = require('./OverlayLoader');
 
+const logger = new (require('../../modules/Logger'))('EditMyPhotoHeader');
+
 class EditMyPhotoHeader extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {}
-    this.logger = new Logger(this);
   }
 
   __selectAndUploadImage(options) {
@@ -52,7 +52,7 @@ class EditMyPhotoHeader extends React.Component {
 
     UIImagePickerManager.showImagePicker(options, (didCancel, response) => {
       if (didCancel) {
-        this.logger.info('Cancelled image picker');
+        logger.info('Cancelled image picker');
       } else {
         const source = {uri: response.uri.replace('file://', ''), isStatic: true};
 
@@ -80,7 +80,7 @@ class EditMyPhotoHeader extends React.Component {
         })
         .catch(err => {
           this.setState({ uploading: false })
-          this.logger.error(`Error in file upload: ${JSON.stringify(err)}`);
+          logger.error(`Error in file upload: ${JSON.stringify(err)}`);
           alert('There was an error with your file upload. Please try again later.');
         })
       }

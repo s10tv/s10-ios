@@ -8,6 +8,8 @@ let {
   TabBarIOS,
 } = React;
 
+import { BridgeManger } from '../modules/BridgeManager';
+
 let Analytics = require('../modules/Analytics');
 let BridgeManager = require('../modules/BridgeManager');
 let Intercom = require('../modules/Intercom');
@@ -19,7 +21,6 @@ let Loader = require('./lib/Loader');
 let TSLayerService = React.NativeModules.TSLayerService;
 
 let SHEET = require('./CommonStyles').SHEET;
-let Logger = require('../lib/Logger');
 
 let Digits = require('react-native-fabric-digits');
 let { DigitsAuthenticateManager } = Digits;
@@ -27,29 +28,30 @@ let { DigitsAuthenticateManager } = Digits;
 let FBSDKLogin = require('react-native-fbsdklogin');
 let { FBSDKLoginManager } = FBSDKLogin;
 
+const logger = new (require('../modules/Logger'))('LayoutContainer');
+
 class LayoutContainer extends React.Component {
 
   constructor(props: {}) {
     super(props);
     this.ddp = props.ddp;
-    this.logger = new Logger(this);
 
-    const state = props.layerService.store.getState();
+    const state = props.store.getState();
     this.state = {
-      numTotalConversations: state.allCount,
-      numUnreadConversations:  state.unreadCount,
+      numTotalConversations: state.allConversationCount,
+      numUnreadConversations:  state.unreadConversationCount,
     }
   }
 
   componentWillMount() {
-    this.props.layerService.store.subscribe(this.updateLayerState);
+    this.props.store.subscribe(this.updateLayerState);
   }
 
   updateLayerState() {
-    const state = this.props.layerService.store.getState();
+    const state = this.props.store.getState();
     this.setState({
-      numTotalConversations: state.allCount,
-      numUnreadConversations: state.unreadCount,
+      numTotalConversations: state.allConversationCount,
+      numUnreadConversations: state.unreadConversationCount,
     }) 
   }
 
@@ -94,7 +96,7 @@ class LayoutContainer extends React.Component {
     try {
       await TSLayerService.deauthenticateAsync();
     } catch (err) {
-      this.logger.warning(`Cannot deauthenticate Layer ${err}`);
+      logger.warning(`Cannot deauthenticate Layer ${err}`);
     }
 
     DigitsAuthenticateManager.logout();
@@ -103,13 +105,13 @@ class LayoutContainer extends React.Component {
     try {
       await this.ddp.logout()
     } catch (err) {
-      this.logger.warning(`Cannot logout of Meteor ${err}`);
+      logger.warning(`Cannot logout of Meteor ${err}`);
     }
 
     try {
       await BridgeManager.setDefaultAccount(null)
     } catch (err) {
-      this.logger.warning(`Cannot deauthenticate from METAccount ${err}`);
+      logger.warning(`Cannot deauthenticate from METAccount ${err}`);
     }
     
     this.setState({ 
@@ -139,7 +141,7 @@ class LayoutContainer extends React.Component {
           return ddp.collections.settings.find({});
         }
       }).subscribe(settings => {
-        this.logger.debug('got settings', settings);
+        logger.debug('got settings', settings);
         indexedSettings =  {};
         settings.forEach((setting) => {
           indexedSettings[setting._id] = setting;
@@ -162,7 +164,7 @@ class LayoutContainer extends React.Component {
         }
       });
     })
-    .catch(err => { this.logger.error(JSON.stringify(err)) })
+    .catch(err => { logger.error(JSON.stringify(err)) })
   }
 
   /** 
@@ -170,17 +172,17 @@ class LayoutContainer extends React.Component {
    */
   async onUserLogin(account) {
     if (!account) {
-      this.logger.warning('invalid account for onUserLogin');
+      logger.warning('invalid account for onUserLogin');
       return;
     }
 
     const { userId, resumeToken, expiryDate, isNewUser, intercom, userTriggered } = account;
     if (!userId || !resumeToken || !expiryDate || (isNewUser == undefined)) {
-      this.logger.warning('invalid info provided to onUserLogin');
+      logger.warning('invalid info provided to onUserLogin');
       return
     }
 
-    this.logger.debug(`onLogin intercom=${JSON.stringify(intercom)}
+    logger.debug(`onLogin intercom=${JSON.stringify(intercom)}
       newUser=${isNewUser} userTriggered=${userTriggered}`);
 
     if (intercom != null) {
@@ -205,14 +207,14 @@ class LayoutContainer extends React.Component {
       const sessionId = await this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
       await TSLayerService.authenticateAsync(sessionId);
 
-      this.logger.debug('Layer authenticated.');
+      logger.debug('Layer authenticated.');
     } catch (error) {
-      this.logger.warning(`Unable to complete layer flow: ${error.toString()}`)
+      logger.warning(`Unable to complete layer flow: ${error.toString()}`)
     }
   }
 
   async _ddpLogin() {
-    this.logger.debug('On DDP Loggin');
+    logger.debug('On DDP Loggin');
     let ddp = this.ddp;
 
     const defaultAccount = await BridgeManager.getDefaultAccountAsync()
@@ -223,7 +225,7 @@ class LayoutContainer extends React.Component {
 
       // token exists. assume that the user is logged in until proven wrong.
       if (resumeToken) {
-        this.logger.debug(`Resume token exists. Logging in`);
+        logger.debug(`Resume token exists. Logging in`);
 
         this.setState({ loggedIn: true, isActive: true });
 
@@ -246,7 +248,7 @@ class LayoutContainer extends React.Component {
           await ddp.initialize()
         } catch (err) {
           // there is no network
-          this.logger.warning(JSON.stringify(err));
+          logger.warning(JSON.stringify(err));
           return; 
         }
 
@@ -256,7 +258,7 @@ class LayoutContainer extends React.Component {
           this.onLogin()
         } catch (err) {
           // This token is stale. Need the user to re-login
-          this.logger.warning(JSON.stringify(err));
+          logger.warning(JSON.stringify(err));
           this.setState({ loggedIn: false });
         }
 
@@ -305,7 +307,7 @@ class LayoutContainer extends React.Component {
         }
       });
     })
-    .catch(err => { this.logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(JSON.stringify(err)) });
 
     this.ddp.subscribe({ pubName: 'integrations' })
     .then(() => {
@@ -320,7 +322,7 @@ class LayoutContainer extends React.Component {
         this.setState({ integrations: integrations });
       });
     })
-    .catch(err => { this.logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(JSON.stringify(err)) });
 
     this.ddp.subscribe({ pubName: 'hashtag-categories' })
     .then(() => {
@@ -332,7 +334,7 @@ class LayoutContainer extends React.Component {
         this.setState({ categories: categories });
       });
     })
-    .catch(err => { this.logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(JSON.stringify(err)) });
 
     this.ddp.subscribe({ pubName: 'my-tags' })
     .then(() => {
@@ -349,7 +351,7 @@ class LayoutContainer extends React.Component {
         }
       });
     })
-    .catch(err => { this.logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(JSON.stringify(err)) });
 
     this.ddp.subscribe({ pubName: 'candidate-discover' })
     .then(() => {
@@ -373,7 +375,7 @@ class LayoutContainer extends React.Component {
         this.setState({ history: historyCandidates });
       });
     })
-    .catch(err => { this.logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(JSON.stringify(err)) });
 
     this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
     .then(() => {
@@ -385,7 +387,7 @@ class LayoutContainer extends React.Component {
         this.setState({ myActivities: activities });
       });
     })
-    .catch(err => { this.logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(JSON.stringify(err)) });
   }
 
   reportUser(user) {
@@ -413,7 +415,7 @@ class LayoutContainer extends React.Component {
     myInfo[key] = value;
     return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
     .catch(err => {
-      this.logger.error(JSON.stringify(err));
+      logger.error(JSON.stringify(err));
       AlertIOS.alert('Missing Some Info!', err.reason);
     })
   }
@@ -437,7 +439,7 @@ class LayoutContainer extends React.Component {
   }
 
   render() {
-    this.logger.debug(`Rendering layout container. loggedIn=${this.state.loggedIn}
+    logger.debug(`Rendering layout container. loggedIn=${this.state.loggedIn}
       isActive=${this.state.isActive}`);
 
     if (!this.state.loggedIn || !this.state.isActive) {
@@ -476,4 +478,4 @@ class LayoutContainer extends React.Component {
   }
 }
 
-module.exports = LayoutContainer;
+export { LayoutContainer }

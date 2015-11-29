@@ -37,19 +37,14 @@ let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 
-let Logger = require('../../lib/Logger');
+const logger = new (require('../../modules/Logger'))('FacebookLoginScreen');
 
 class FacebookLoginScreen extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.logger = new Logger(this);
-  }
 
   digitsLogin(error, response) {
     if (error) {
       // warning here because when you click 'cancel' that also results in an error.
-      this.logger.warning(JSON.stringify(error))
+      logger.warning(JSON.stringify(error))
       return;
     }
 
@@ -77,7 +72,7 @@ class FacebookLoginScreen extends React.Component {
       }
     })
     .catch((err) => {
-      this.logger.error(JSON.stringify(err)); 
+      logger.error(JSON.stringify(err)); 
     })
   }
 
@@ -135,7 +130,7 @@ class FacebookLoginScreen extends React.Component {
             style={styles.fbButton}
             onLoginFinished={(error, result) => {
               if (error) {
-                this.logger.error(`Error logging in with Facebook ${JSON.stringify(error)}`);
+                logger.error(`Error logging in with Facebook ${JSON.stringify(error)}`);
                 alert('Error logging you in :C Please try again later.');
               } else {
                 if (!result.isCancelled) {
@@ -164,10 +159,10 @@ class FacebookLoginScreen extends React.Component {
                         }
                       })
                       .catch(err => {
-                        this.logger.error(JSON.stringify(error));
+                        logger.error(JSON.stringify(error));
                       })
                     } else {
-                      this.logger.info('Welcome: Cancelled FB Verification'); 
+                      logger.info('Welcome: Cancelled FB Verification'); 
                     }
                   });
                 }

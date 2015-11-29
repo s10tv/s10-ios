@@ -10,10 +10,13 @@ let {
 } = React;
 
 let TSDDPClient = require('./lib/ddpclient');
-let LayerService = require('./lib/LayerService');
 let BridgeManager = require('./modules/BridgeManager');
-const logger = new (require('./lib/Logger'))('index.ios');
-let LayoutContainer = require('./components/LayoutContainer');
+
+import { LayerService } from './modules/LayerService';
+import { LayoutContainer } from './components/LayoutContainer';
+import { createStore, combineReducers } from 'redux';
+
+const logger = new (require('./modules/Logger'))('index.ios');
 
 // polyfill the process functionality needed
 global.process = require("./lib/process.polyfill");
@@ -21,8 +24,13 @@ global.process = require("./lib/process.polyfill");
 logger.info('JS App Launched');
 logger.debug(`bundle url ${BridgeManager.bundleUrlScheme()}`);
 
+let store = createStore(combineReducers({
+  allConversationCount: LayerService.allConversationCount,
+  unreadConversationCount: LayerService.unreadConversationCount,
+}))
+
 let ddp = new TSDDPClient(BridgeManager.serverUrl());
-let layerService = new LayerService();
+let layerService = new LayerService(store);
 
 NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
   if (!tokenInfo) {
@@ -45,11 +53,9 @@ NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
   })
 });
 
-
-
 class Main extends React.Component {
   render() {
-    return <LayoutContainer ddp={ddp} layerService={layerService} />;
+    return <LayoutContainer ddp={ddp} store={store} />;
   }
 }
 

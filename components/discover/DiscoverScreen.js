@@ -23,7 +23,7 @@ let CountdownTimer = require('../lib/CountdownTimer');
 let Card = require('../lib/Card').Card;
 let Loader = require('../lib/Loader');
 
-const logger = new (require('../../lib/Logger'))('index.ios');
+const logger = new (require('../../modules/Logger'))('index.ios');
 
 class Discover extends React.Component {
 

@@ -17,7 +17,6 @@ let TabNavigator = require('react-native-tab-navigator');
 
 // Native
 let BridgeManager = require('../modules/BridgeManager');
-let Logger = require('../lib/Logger');
 
 // Common
 let SHEET = require('./CommonStyles').SHEET;
@@ -40,6 +39,7 @@ let ConversationListView = require('./chat/ConversationListView');
 let HashtagListView = require('./lib/HashtagListView');
 let TSNavigationBar = require('./lib/TSNavigationBar');
 
+const logger = new (require('../modules/Logger'))('TSTabNavigator');
 
 class TSTabNavigator extends React.Component {
 
@@ -49,8 +49,6 @@ class TSTabNavigator extends React.Component {
       currentTab: 'Today',
       editProfileCurrentlyFocused: false,
     }
-
-    this.logger = new Logger(this);
   }
 
   onEditProfileChange(activeText) {

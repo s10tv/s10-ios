@@ -13,7 +13,6 @@ let SHEET = require('../CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
 let Card = require('./Card').Card;
 let Analytics = require('../../modules/Analytics');
-let Logger = require('../../lib/Logger');
 
 let FBSDKLogin = require('react-native-fbsdklogin');
 let {
@@ -25,13 +24,9 @@ let {
   FBSDKAccessToken,
 } = FBSDKCore;
 
+const logger = new (require('../../modules/Logger'))('ServiceTile');
+
 class ServiceTile extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.logger = new Logger(this);
-  }
 
   _handleServiceTouch(service) {
     if (service.status == 'linked') {
@@ -88,7 +83,7 @@ class ServiceTile extends React.Component {
 
               FBSDKLoginManager.logInWithReadPermissions(permissions, (error, result) => {
                 if (error) {
-                  this.logger.error(`Error logging in with Facebook ${JSON.stringify(error)}`);
+                  logger.error(`Error logging in with Facebook ${JSON.stringify(error)}`);
                   alert('Error logging you in :C Please try again later.');
                 } else {
                   if (!result.isCancelled) {
@@ -99,12 +94,12 @@ class ServiceTile extends React.Component {
                           params: ['facebook', accessToken.tokenString]
                         })
                         .catch(err => {
-                          this.logger.error(JSON.stringify(error));
+                          logger.error(JSON.stringify(error));
                        })
                       }
                     });
                   } else {
-                    this.logger.info('Welcome: Cancelled FB Verification'); 
+                    logger.info('Welcome: Cancelled FB Verification'); 
                   }
                 }
               });

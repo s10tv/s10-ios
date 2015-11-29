@@ -17,7 +17,6 @@ var TabNavigator = require('react-native-tab-navigator');
 // Native
 let Analytics = require('../modules/Analytics');
 let BridgeManager = require('../modules/BridgeManager');
-let Logger = require('../lib/Logger');
 
 let TSTabNavigator = require('./TSTabNavigator');
 let TSNavigationBar = require('./lib/TSNavigationBar');
@@ -32,12 +31,9 @@ let ConversationListView = require('./chat/ConversationListView');
 // Supporting
 let Activities = require('./lib/Activities');
 
-class RootNavigator extends React.Component {
+const logger = new (require('../modules/Logger'))('RootNavigator');
 
-  constructor(props) {
-    super(props);
-    this.logger = new Logger(this);
-  }
+class RootNavigator extends React.Component {
 
   componentWillMount() {
     BridgeManager.registerForPushNotifications();
@@ -148,10 +144,10 @@ class RootNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
-    this.logger.debug(`Root Navigator rendering ${route}`);
+    logger.debug(`Root Navigator rendering ${route}`);
     let me = this.props.me;
 
-    this.logger.debug(`me=${me}`);
+    logger.debug(`me=${me}`);
 
     switch (route.id) {
       case 'viewprofile':

@@ -15,7 +15,8 @@ let Card = require('./Card').Card;
 let Hashtag = require('./Hashtag');
 let Loader = require('./Loader');
 let SearchBar = require('react-native-search-bar');
-let Logger = require('../../lib/Logger');
+
+const logger = new (require('../../modules/Logger'))('HashtagListView');
 
 class HashtagListView extends React.Component {
   constructor(props: {}) {
@@ -27,7 +28,6 @@ class HashtagListView extends React.Component {
       suggestions: [],
       searchSuggestions: [],
     }
-    this.logger = new Logger(this);
   }
 
   componentWillUnmount() {
@@ -78,7 +78,7 @@ class HashtagListView extends React.Component {
         this.setState({ searchSuggestions: tags })
       })
       .catch(err => {
-        this.logger.error(`Error in search tag: ${JSON.stringify(err)}`);
+        logger.error(`Error in search tag: ${JSON.stringify(err)}`);
       })
     }
   }
@@ -89,7 +89,7 @@ class HashtagListView extends React.Component {
       params: [hashtag.text, hashtag.type]
     })
     .catch(err => {
-      this.logger.error(`Error in adding search suggestion: ${JSON.stringify(err)}`);
+      logger.error(`Error in adding search suggestion: ${JSON.stringify(err)}`);
     })
 
     this.setState({ searchSuggestions: [] })

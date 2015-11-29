@@ -23,9 +23,9 @@ let FloatLabelTextInput = require('./FloatLabelTextField');
 let SHEET = require('../CommonStyles').SHEET;
 let Card = require('./Card').Card;
 let TappableCard = require('./Card').TappableCard;
-let Logger = require('../../lib/Logger');
 
-let PickerItemIOS = PickerIOS.Item;
+const logger = new (require('../../modules/Logger'))('index.ios');
+const PickerItemIOS = PickerIOS.Item;
 
 class ProfileEditCard extends React.Component {
 
@@ -36,7 +36,6 @@ class ProfileEditCard extends React.Component {
       modalVisible: false,
       gradYear: props.me.gradYear,
     }
-    this.logger = new Logger(this);
   } 
 
   keyboardWillShow (e) {
