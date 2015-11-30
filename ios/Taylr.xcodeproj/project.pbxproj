@@ -211,6 +211,7 @@
 		EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA3225FA1BFDAEEB00FF5074 /* ConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationListView.m; sourceTree = "<group>"; };
 		EA3226361BFDB9C000FF5074 /* RACBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACBindings.swift; sourceTree = "<group>"; };
+		EA32DA2B1C0C0EC2001D5978 /* Session.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Session.js; path = ../../../../native_modules/Session.js; sourceTree = "<group>"; };
 		EA3336721BFEC39000BF9A87 /* ConversationListView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationListView.js; path = ../../../../components/chat/ConversationListView.js; sourceTree = "<group>"; };
 		EA3336761BFEC39900BF9A87 /* ConversationView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationView.js; path = ../../../../components/chat/ConversationView.js; sourceTree = "<group>"; };
 		EA3336861BFF062800BF9A87 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
@@ -640,6 +641,7 @@
 			children = (
 				EAD7A8E21C0BCBDF00E4A447 /* Session.swift */,
 				EAD7A8E11C0BCBDF00E4A447 /* Session.m */,
+				EA32DA2B1C0C0EC2001D5978 /* Session.js */,
 			);
 			path = Session;
 			sourceTree = "<group>";

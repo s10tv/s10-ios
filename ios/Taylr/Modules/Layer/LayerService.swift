@@ -94,11 +94,23 @@ class LayerService: NSObject {
                     metadata[k] = v // Better dic merge wanted
                 }
             }
-            DDLogInfo("Creating new conversation with metadata \(metadata)")
-            return try layerClient.newConversationWithParticipants(Set(users.map { $0.userId }), options: [
+            let ids = Set(users.map { $0.userId })
+            let options: [NSObject: AnyObject] = [
                 LYRConversationOptionsDistinctByParticipantsKey: true,
                 LYRConversationOptionsMetadataKey: metadata
-            ])
+            ]
+
+            DDLogInfo("Creating new conversation with metadata \(metadata)")
+            do {
+                return try layerClient.newConversationWithParticipants(ids, options: options)
+            } catch let error as NSError {
+                // Small hack, see http://stackoverflow.com/q/33975928/692499
+                if error.domain == "FMDatabase" && error.code == 0 {
+                    DDLogWarn("Got false positive FMDB error, will attempt refetch error=\(error)")
+                    return try layerClient.newConversationWithParticipants(ids, options: options)
+                }
+                throw error
+            }
         } catch let error as NSError {
             if let c = error.userInfo[LYRExistingDistinctConversationKey] as? LYRConversation {
                 return c

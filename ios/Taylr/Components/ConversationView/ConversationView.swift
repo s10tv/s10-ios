@@ -25,6 +25,8 @@ class ConversationViewManager : RCTViewManager {
     // TODO: Derive currentUser from session
     override func viewWithProps(props: [NSObject : AnyObject]!) -> UIView! {
         guard let currentUser = RCTConvert.userViewModel(props["currentUser"]) else {
+            assertionFailure("currentUser must exist when initializing ConversationView")
+            DDLogError("currentUser must exist when initializing ConversationView")
             return nil
         }
         let conversationId: String? = RCTConvert.NSString(props["conversationId"])
@@ -36,10 +38,11 @@ class ConversationViewManager : RCTViewManager {
             do {
                 try conv = layer.getOrCreateConversation([currentUser, recipientUser])
             } catch let error as NSError {
-                DDLogError("Unable to getOrCreateConversation for user \(recipientUser)", tag: error)
+                DDLogError("Unable to getOrCreateConversation for user \(recipientUser.userId)", tag: error)
             }
         }
         guard let conversation = conv else {
+            assertionFailure("conversation must exist before rendering ConversationView")
             return nil
         }
         
