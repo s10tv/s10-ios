@@ -237,8 +237,22 @@ extension ConversationViewController : SwipeViewDataSource {
 }
 
 extension ConversationViewController : SwipeViewDelegate {
-    
+    func swipeViewWillBeginDragging(swipeView: SwipeView!) {
+        DDLogVerbose("swipeView willBeginDragging currentPage=\(swipeView.currentPage)")
+    }
+    func swipeViewDidEndDragging(swipeView: SwipeView!, willDecelerate decelerate: Bool) {
+        DDLogVerbose("swipeView didEndDragging decelerate=\(decelerate)")
+    }
+    func swipeViewWillBeginDecelerating(swipeView: SwipeView!) {
+        DDLogVerbose("swipeView willBeginDecelerating")
+    }
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
         DDLogVerbose("SwipeView index changed index=\(swipeView.currentItemIndex)")
+        // https://app.asana.com/0/34520227311296/69638659203585
+        if swipeView.currentItemIndex == Page.ChatHistory.rawValue {
+            chatHistory.view.becomeFirstResponder()
+        } else {
+            chatHistory.view.resignFirstResponder()
+        }
     }
 }
