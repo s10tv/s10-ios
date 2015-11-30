@@ -8,8 +8,8 @@ let {
   TabBarIOS,
 } = React;
 
-import { BridgeManger } from '../modules/BridgeManager';
 import Session from '../native_modules/Session';
+let BridgeManager = require('../modules/BridgeManager');
 let Analytics = require('../modules/Analytics');
 let Intercom = require('../modules/Intercom');
 
@@ -161,7 +161,7 @@ class LayoutContainer extends React.Component {
         }
       });
     })
-    .catch(err => { logger.error(JSON.stringify(err)) })
+    .catch(err => { logger.error(err) })
   }
 
   /** 
