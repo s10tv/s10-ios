@@ -28,10 +28,11 @@ const logger = new (require('../../modules/Logger'))('index.ios');
 class Discover extends React.Component {
 
   render() {
+    const users = this.props.users;
     const candidate = this.props.candidate;
     const settings = this.props.settings;
 
-    if (!candidate || !settings) {
+    if (!candidate || !users) {
       return <Loader />;
     }
 
@@ -40,12 +41,13 @@ class Discover extends React.Component {
     });
 
     if (candidateUsers.length == 0) {
-      return <Loader />;
+       return <Loader />;
     }
 
     const [candidateUser] = candidateUsers;
-    let { firstName, lastName, gradYear, cover, connectedProfiles,
-      avatar, major, hometown, shortDisplayName } = candidateUser;
+
+    let { coverUrl, connectedProfiles, avatarUrl, major, hometown,
+      shortDisplayName } = candidateUser;
 
     let serviceIcons = [<Image
       key="ubc"
@@ -78,9 +80,9 @@ class Discover extends React.Component {
                   isCurrentCandidate: true,
                 })
               }}>
-                <HeaderBanner url={cover.url} height={height / 2.5}>
+                <HeaderBanner url={coverUrl} height={height / 2.5}>
                   <View style={styles.header}>
-                    <Image source={{ uri: avatar.url }} style={styles.avatar} />
+                    <Image source={{ uri: avatarUrl }} style={styles.avatar} />
                   </View>
 
                   <View style={styles.bottomInfo}>

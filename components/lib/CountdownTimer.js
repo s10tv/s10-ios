@@ -65,7 +65,6 @@ class CountdownTimer extends React.Component {
   }
 
   render() {
-    let settings = this.props.settings;
     return (
       <Button
         onPress={() => {

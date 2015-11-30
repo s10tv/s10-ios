@@ -274,8 +274,8 @@ class LayoutContainer extends React.Component {
 
     this.setState({ loggedIn: true });
     this._layerLogin()
-    this._subscribeSettings()
 
+    ////// ME 
     this.ddp.subscribe({ pubName: 'me' })
     .then(() => {
       ddp.collections.observe(() => {
@@ -291,67 +291,9 @@ class LayoutContainer extends React.Component {
 
           this.setState({ me: this.formatUser(currentUser) });
         }
-      });
+    });
 
-      ddp.collections.observe(() => {
-        if (ddp.collections.users) {
-          return ddp.collections.users.find({});
-        }
-      }).subscribe(users => {
-        if (users) {
-          let formattedUsers = users.map(user => {
-            return this.formatUser(user);
-          })
-          this.setState({ users: formattedUsers });
-        }
-      });
-    })
-    .catch(err => { logger.error(JSON.stringify(err)) });
-
-    this.ddp.subscribe({ pubName: 'integrations' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.integrations) {
-          return ddp.collections.integrations.find({});
-        }
-      }).subscribe(integrations=> {
-        integrations.sort((one, two) => {
-          return one.status == 'linked' ? -1 : 1;
-        })
-        this.setState({ integrations: integrations });
-      });
-    })
-    .catch(err => { logger.error(JSON.stringify(err)) });
-
-    this.ddp.subscribe({ pubName: 'hashtag-categories' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.categories) {
-          return ddp.collections.categories.find({});
-        }
-      }).subscribe(categories=> {
-        this.setState({ categories: categories });
-      });
-    })
-    .catch(err => { logger.error(JSON.stringify(err)) });
-
-    this.ddp.subscribe({ pubName: 'my-tags' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.mytags) {
-          return ddp.collections.mytags.findOne({});
-        }
-      }).subscribe(user => {
-        if (user && user.tags) {
-          user.tags.forEach((tag) => {
-            tag.isMine = true;
-          })
-          this.setState({ myTags: user.tags });
-        }
-      });
-    })
-    .catch(err => { logger.error(JSON.stringify(err)) });
-
+    ////// candidates
     this.ddp.subscribe({ pubName: 'candidate-discover' })
     .then(() => {
       ddp.collections.observe(() => {
@@ -368,13 +310,78 @@ class LayoutContainer extends React.Component {
         })
 
         if (activeCandidates.length > 0) {
+          logger.debug('got candidate');
           this.setState({ candidate: activeCandidates[0] })
         }
 
         this.setState({ history: historyCandidates });
       });
     })
-    .catch(err => { logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(err) });
+
+
+    ////// users 
+    ddp.collections.observe(() => {
+        if (ddp.collections.users) {
+          return ddp.collections.users.find({});
+        }
+      }).subscribe(users => {
+        if (users) {
+          let formattedUsers = users.map(user => {
+            return this.formatUser(user);
+          })
+          this.setState({ users: formattedUsers });
+        }
+      });
+    })
+    .catch(err => { logger.error(err) });
+    
+    ///// SETTINGS
+    this._subscribeSettings()
+
+    this.ddp.subscribe({ pubName: 'integrations' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.integrations) {
+          return ddp.collections.integrations.find({});
+        }
+      }).subscribe(integrations=> {
+        integrations.sort((one, two) => {
+          return one.status == 'linked' ? -1 : 1;
+        })
+        this.setState({ integrations: integrations });
+      });
+    })
+    .catch(err => { logger.error(err) });
+
+    this.ddp.subscribe({ pubName: 'hashtag-categories' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.categories) {
+          return ddp.collections.categories.find({});
+        }
+      }).subscribe(categories=> {
+        this.setState({ categories: categories });
+      });
+    })
+    .catch(err => { logger.error(err) });
+
+    this.ddp.subscribe({ pubName: 'my-tags' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.mytags) {
+          return ddp.collections.mytags.findOne({});
+        }
+      }).subscribe(user => {
+        if (user && user.tags) {
+          user.tags.forEach((tag) => {
+            tag.isMine = true;
+          })
+          this.setState({ myTags: user.tags });
+        }
+      });
+    })
+    .catch(err => { logger.error(err) });
 
     this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
     .then(() => {
@@ -386,7 +393,7 @@ class LayoutContainer extends React.Component {
         this.setState({ myActivities: activities });
       });
     })
-    .catch(err => { logger.error(JSON.stringify(err)) });
+    .catch(err => { logger.error(err) });
   }
 
   reportUser(user) {
@@ -414,7 +421,7 @@ class LayoutContainer extends React.Component {
     myInfo[key] = value;
     return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
     .catch(err => {
-      logger.error(JSON.stringify(err));
+      logger.error(err);
       AlertIOS.alert('Missing Some Info!', err.reason);
     })
   }
