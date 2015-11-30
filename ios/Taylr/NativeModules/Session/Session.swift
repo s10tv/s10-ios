@@ -91,20 +91,9 @@ class Session : NSObject {
     }
     
     func reset() {
-        DDLogInfo("Will reset")
-        // Should we just clear the userdefaults? Will need to handle previousBuild tho
-        self.userId = nil
-        self.resumeToken = nil
-        self.tokenExpiry = nil
-        self.username = nil
-        self.phone = nil
-        self.email = nil
-        self.firstName = nil
-        self.lastName = nil
-        self.fullname = nil
-        self.displayName = nil
-        self.avatarURL = nil
-        self.coverURL = nil
+        DDLogInfo("Will reset NSUserDefaults.standardUserDefaults(). Will also remove value persisted outside Session")
+        ud.removePersistentDomainForName(env.appId)
+        ud[.previousBuild] = env.build
         ud.synchronize()
     }
 }
