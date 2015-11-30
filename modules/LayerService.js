@@ -17,11 +17,13 @@ class LayerService {
   constructor(store) {
     this.unreadListener = NativeAppEventEmitter
       .addListener('Layer.unreadConversationsCountUpdate', (count) => {
+        logger.debug(`set unreadConversationsCountUpdate=${count}`)
         store.dispatch({ type: 'CHANGE_UNREAD_COUNT', count: count })
       });
 
     this.allListener = NativeAppEventEmitter
       .addListener('Layer.allConversationsCountUpdate', (count) => {
+        logger.debug(`set allConversationsCountUpdate=${count}`)
         store.dispatch({ type: 'CHANGE_ALL_COUNT', count: count })
       });
   }
@@ -38,7 +40,7 @@ class LayerService {
   static unreadConversationCount(state = 0 , action) {
     switch (action.type) {
       case 'CHANGE_UNREAD_COUNT':
-        action.count
+        return action.count
       default:
         return state;
     }

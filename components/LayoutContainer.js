@@ -37,7 +37,7 @@ class LayoutContainer extends React.Component {
 
     const state = props.store.getState();
 
-    logger.debug(JSON.stringify(state.allConversationCount));
+    logger.debug(`state=${JSON.stringify(state.unreadConversationCount)}`);
 
     this.state = {
       allConversationCount: state.allConversationCount,
@@ -46,8 +46,25 @@ class LayoutContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.store.subscribe(this.updateLayerState);
+    this.props.store.subscribe(this.updateLayerState.bind(this));
+    
+    this._ddpLogin()
+
+    this.setState({
+      showMoreOptionsListener: NativeAppEventEmitter.addListener('Profile.showMoreOptions', (userId) => {
+        let user = this.ddp.collections.users.findOne({ _id: userId });
+        this.reportUser(user)
+      }.bind(this)),
+    })
   }
+
+  componentWillUnmount() {
+    this.state.showMoreOptionsListener.remove()
+    this.setState({
+      showMoreOptionsListener: null
+    })
+  }
+
 
   updateLayerState() {
     const state = this.props.store.getState();
@@ -423,24 +440,6 @@ class LayoutContainer extends React.Component {
     .catch(err => {
       logger.error(err);
       AlertIOS.alert('Missing Some Info!', err.reason);
-    })
-  }
-
-  componentWillMount() {
-    this._ddpLogin()
-
-    this.setState({
-      showMoreOptionsListener: NativeAppEventEmitter.addListener('Profile.showMoreOptions', (userId) => {
-        let user = this.ddp.collections.users.findOne({ _id: userId });
-        this.reportUser(user)
-      }.bind(this)),
-    })
-  }
-
-  componentWillUnmount() {
-    this.state.showMoreOptionsListener.remove()
-    this.setState({
-      showMoreOptionsListener: null
     })
   }
 
