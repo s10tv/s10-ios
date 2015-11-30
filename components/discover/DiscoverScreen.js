@@ -7,6 +7,7 @@ let {
   ScrollView,
   Text,
   Image,
+  TouchableHighlight,
   TouchableOpacity,
   StyleSheet,
 } = React;
@@ -69,64 +70,71 @@ class Discover extends React.Component {
           </Text>
         </View>
         <View style={{flex: 1, paddingTop: 74}}>
-          <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
-            cardOverride={[{ flex: 1, padding: 0 }]}>
-              <TouchableOpacity onPress={() => {
-                Analytics.track("Today: TapProfile")
-                this.props.parentNavigator.push({
-                  id: 'viewprofile',
-                  me: candidateUser,
-                  candidateUser: candidateUser,
-                  isCurrentCandidate: true,
-                })
-              }}>
-                <HeaderBanner url={coverUrl} height={height / 2.5}>
-                  <View style={styles.header}>
-                    <Image source={{ uri: avatarUrl }} style={styles.avatar} />
-                  </View>
+          <TouchableHighlight onPress={() => {
+            Analytics.track("Today: TapProfile")
+            this.props.parentNavigator.push({
+              id: 'viewprofile',
+              me: candidateUser,
+              candidateUser: candidateUser,
+              isCurrentCandidate: true,
+            })
+          }} style={{ flex: 1}} underlayColor={'transparent'}>
+            <View style={{flex: 1}}>
+              <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
+                cardOverride={[{ flex: 1, padding: 0 }]}>
 
-                  <View style={styles.bottomInfo}>
-                    <View style={styles.userInfo}>
-                      <Text style={[styles.userNameText, SHEET.baseText]}>
-                      { shortDisplayName }
-                    </Text>
+                <View style={{ height: height / 2.5 }}>
+                  <HeaderBanner url={coverUrl} height={height / 2.5}>
+                    <View style={styles.header}>
+                      <Image source={{ uri: avatarUrl }} style={styles.avatar} />
                     </View>
-                    <View style={{ right: 10 }}>
-                      <View style={{ flex: 1 }}></View>
-                      <View style={styles.serviceInfo}>
-                        { serviceIcons }
+
+                    <View style={styles.bottomInfo}>
+                      <View style={styles.userInfo}>
+                        <Text style={[styles.userNameText, SHEET.baseText]}>
+                        { shortDisplayName }
+                      </Text>
+                      </View>
+                      <View style={{ right: 10 }}>
+                        <View style={{ flex: 1 }}></View>
+                        <View style={styles.serviceInfo}>
+                          { serviceIcons }
+                        </View>
                       </View>
                     </View>
-                  </View>
-                </HeaderBanner>
-              </TouchableOpacity>
+                  </HeaderBanner>
+                </View>
 
-            <View style={[styles.infoSection, SHEET.innerContainer]}>
-              <IconTextRow
-                style={{ padding: 5 }}
-                icon={require('../img/ic-mortar.png')}
-                text={major} />
-              <IconTextRow
-                style={{ padding: 5 }}
-                icon={require('../img/ic-house.png')}
-                text={hometown} />
+
+                <View style={[styles.infoSection, SHEET.innerContainer]}>
+                  <IconTextRow
+                    style={{ padding: 5 }}
+                    icon={require('../img/ic-mortar.png')}
+                    text={major} />
+                  <IconTextRow
+                    style={{ padding: 5 }}
+                    icon={require('../img/ic-house.png')}
+                    text={hometown} />
+                </View>
+
+                <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
+                
+                <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
+                  <Text style={[SHEET.baseText]}>
+                    { candidate.reason }
+                  </Text>
+                </View>
+
+                <CountdownTimer
+                  navigator={this.props.parentNavigator}
+                  candidateUser={candidateUser}
+                  me={this.props.me}
+                  settings={this.props.settings} />
+              </Card>
             </View>
-
-            <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
-            
-            <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
-              <Text style={[SHEET.baseText]}>
-                { candidate.reason }
-              </Text>
-            </View>
-
-            <CountdownTimer
-              navigator={this.props.parentNavigator}
-              candidateUser={candidateUser}
-              me={this.props.me}
-              settings={this.props.settings} />
-          </Card>
-        </View>
+            </TouchableHighlight>
+          </View>
+        
       </View>
     )
   }

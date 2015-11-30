@@ -92,7 +92,7 @@ class CountdownTimer extends React.Component {
 
 var styles = StyleSheet.create({
   messageButton: {
-    height: 40,
+    height: 50, 
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
