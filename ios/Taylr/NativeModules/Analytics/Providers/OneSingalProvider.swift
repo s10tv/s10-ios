@@ -15,7 +15,7 @@ class OneSingalProvider : NSObject, AnalyticsProvider {
     
     init(appId: String, launchOptions: [NSObject: AnyObject]?) {
         oneSignal = OneSignal(launchOptions: launchOptions, appId: appId, handleNotification: nil, autoRegister: false)
-        oneSignal.enableInAppAlertNotification(true)
+        oneSignal.enableInAppAlertNotification(false)
         OneSignal.setDefaultClient(oneSignal)
     }
     
