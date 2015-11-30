@@ -32,52 +32,17 @@ class Session : NSObject {
     weak var bridge: RCTBridge?
     private(set) var userId: String? {
         get { return ud[.userId] }
-        set { ud[.userId] = newValue }
+        set { set(.userId, newValue) }
     }
     private(set) var resumeToken: String? {
         get { return ud[.resumeToken] }
-        set { ud[.resumeToken] = newValue }
+        set { set(.resumeToken, newValue) }
     }
     private(set) var tokenExpiry: NSDate? {
         get { return ud[.tokenExpiry] }
-        set { ud[.tokenExpiry] = newValue }
+        set { set(.tokenExpiry, newValue) }
     }
-    private(set) var username: String? {
-        get { return ud[.username] }
-        set { ud[.username] = newValue }
-    }
-    private(set) var email: String? {
-        get { return ud[.email] }
-        set { ud[.email] = newValue }
-    }
-    private(set) var phone: String? {
-        get { return ud[.phone] }
-        set { ud[.phone] = newValue }
-    }
-    private(set) var firstName: String? {
-        get { return ud[.firstName] }
-        set { ud[.firstName] = newValue }
-    }
-    private(set) var lastName: String? {
-        get { return ud[.lastName] }
-        set { ud[.lastName] = newValue }
-    }
-    private(set) var fullname: String? {
-        get { return ud[.fullname] }
-        set { ud[.fullname] = newValue }
-    }
-    private(set) var displayName: String? {
-        get { return ud[.displayName] }
-        set { ud[.displayName] = newValue }
-    }
-    private(set) var avatarURL: NSURL? {
-        get { return ud[.avatarURL] }
-        set { ud[.avatarURL] = newValue }
-    }
-    private(set) var coverURL: NSURL? {
-        get { return ud[.coverURL] }
-        set { ud[.coverURL] = newValue }
-    }
+    
     var loggedIn: Bool {
         assert((userId == nil) == (resumeToken == nil), "userId and resumeToken out of sync")
         return userId != nil
@@ -86,7 +51,17 @@ class Session : NSObject {
     let env: Environment
     let previousBuild: String?
     
-    init(userDefaults: NSUserDefaults, env: Environment) {
+    override convenience init() {
+        self.init(userDefaults: Defaults, env: Environment())
+    }
+    
+    private func set<T>(key: DefaultsKey<T>, _ value: Any?) {
+        // Consider adding assertion for trying to set session attr when user is not logged in yet
+        DDLogDebug("Will update session \(key._key)=\(value)")
+        ud[key._key] = value
+    }
+    
+    init(userDefaults: NSUserDefaults = Defaults, env: Environment = Environment()) {
         self.ud = userDefaults
         self.env = env
         if let previousBuild = ud[.previousBuild] {
@@ -117,6 +92,7 @@ class Session : NSObject {
     
     func reset() {
         DDLogInfo("Will reset")
+        // Should we just clear the userdefaults? Will need to handle previousBuild tho
         self.userId = nil
         self.resumeToken = nil
         self.tokenExpiry = nil
@@ -136,6 +112,42 @@ class Session : NSObject {
 // MARK: - JavaScript API
 
 extension Session {
+    @objc var username: String? {
+        get { return ud[.username] }
+        set { set(.username, newValue) }
+    }
+    @objc var email: String? {
+        get { return ud[.email] }
+        set { set(.email, newValue) }
+    }
+    @objc var phone: String? {
+        get { return ud[.phone] }
+        set { set(.phone, newValue) }
+    }
+    @objc var firstName: String? {
+        get { return ud[.firstName] }
+        set { set(.firstName, newValue) }
+    }
+    @objc var lastName: String? {
+        get { return ud[.lastName] }
+        set { set(.lastName, newValue) }
+    }
+    @objc var fullname: String? {
+        get { return ud[.fullname] }
+        set { set(.fullname, newValue) }
+    }
+    @objc var displayName: String? {
+        get { return ud[.displayName] }
+        set { set(.displayName, newValue) }
+    }
+    @objc var avatarURL: NSURL? {
+        get { return ud[.avatarURL] }
+        set { set(.avatarURL, newValue) }
+    }
+    @objc var coverURL: NSURL? {
+        get { return ud[.coverURL] }
+        set { set(.coverURL, newValue) }
+    }
     
     @objc func login(userId: String, resumeToken: String, tokenExpiry: NSDate?) {
         assert(!loggedIn, "Must be logged out before login")
@@ -150,60 +162,6 @@ extension Session {
         assert(loggedIn, "Must be loggedIn before logout")
         reset()
         DDLogInfo("logout")
-    }
-    // TODO: See if we can combine with property declaration above
-    @objc func setUserUsername(username: String?) {
-        assert(loggedIn)
-        self.username = username
-        DDLogInfo("setUserUsername username=\(username)")
-    }
-    
-    @objc func setUserPhone(phone: String?) {
-        assert(loggedIn)
-        self.phone = phone
-        DDLogInfo("setUserPhone phone=\(phone)")
-    }
-    
-    @objc func setUserEmail(email: String?) {
-        assert(loggedIn)
-        self.email = email
-        DDLogInfo("setUserEmail email=\(email)")
-    }
-    
-    @objc func setUserFirstName(firstName: String?) {
-        assert(loggedIn)
-        self.firstName = firstName
-        DDLogInfo("setUserFirstName firstName=\(firstName)")
-    }
-    
-    @objc func setUserLastName(lastName: String?) {
-        assert(loggedIn)
-        self.lastName = lastName
-        DDLogInfo("setUserLastName lastName=\(lastName)")
-    }
-
-    @objc func setUserFullname(fullname: String?) {
-        assert(loggedIn)
-        self.fullname = fullname
-        DDLogInfo("setUserFullName fullname=\(fullname)")
-    }
-
-    @objc func setUserDisplayName(displayName: String?) {
-        assert(loggedIn)
-        self.displayName = displayName
-        DDLogInfo("setUserDisplayName displayName=\(displayName)")
-    }
-
-    @objc func setUserAvatarURL(avatarURL: NSURL?) {
-        assert(loggedIn)
-        self.avatarURL = avatarURL
-        DDLogInfo("setUserAvatarURL avatarURL=\(avatarURL)")
-    }
-    
-    @objc func setUserCoverURL(coverURL: NSURL?) {
-        assert(loggedIn)
-        self.coverURL = coverURL
-        DDLogInfo("setUserCoverURL coverURL=\(coverURL)")
     }
     
     @objc func constantsToExport() -> [NSObject: AnyObject] {
