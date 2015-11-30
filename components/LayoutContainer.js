@@ -9,9 +9,8 @@ let {
 } = React;
 
 import { BridgeManger } from '../modules/BridgeManager';
-
+import { Session } from '../native_modules/Session';
 let Analytics = require('../modules/Analytics');
-let BridgeManager = require('../modules/BridgeManager');
 let Intercom = require('../modules/Intercom');
 
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
@@ -94,6 +93,7 @@ class LayoutContainer extends React.Component {
   }
 
   async onLogout() {
+    Session.logout();
     Analytics.userDidLogout();
 
     try {
@@ -109,12 +109,6 @@ class LayoutContainer extends React.Component {
       await this.ddp.logout()
     } catch (err) {
       logger.warning(`Cannot logout of Meteor ${err}`);
-    }
-
-    try {
-      await BridgeManager.setDefaultAccount(null)
-    } catch (err) {
-      logger.warning(`Cannot deauthenticate from METAccount ${err}`);
     }
     
     this.setState({ 
@@ -188,13 +182,12 @@ class LayoutContainer extends React.Component {
     logger.debug(`onLogin intercom=${JSON.stringify(intercom)}
       newUser=${isNewUser} userTriggered=${userTriggered}`);
 
+    logger.debug(`Will login with userId=${userId} resumeToken=${resumeToken} tokenExpiry=${expiryDate}`);
+    Session.login(userId, resumeToken, expiryDate);
     if (intercom != null) {
       Intercom.setHMAC(intercom.hmac, intercom.data);
     }
-
-    Analytics.userDidLogin(userId, isNewUser);
-
-    await BridgeManager.setDefaultAccount(account)
+    Analytics.userDidLogin(isNewUser);
 
     this.onLogin()
   }
@@ -220,7 +213,9 @@ class LayoutContainer extends React.Component {
     logger.debug('On DDP Loggin');
     let ddp = this.ddp;
 
-    const defaultAccount = await BridgeManager.getDefaultAccountAsync()
+    logger.debug('Will get session initialValue');
+    const defaultAccount = Session.initialValue;
+    logger.debug(`Received initialValue for session ${defaultAccount}`);
 
     if (defaultAccount) {
 
@@ -290,7 +285,8 @@ class LayoutContainer extends React.Component {
       }).subscribe(currentUser => {
         if (currentUser) {
           if (currentUser.firstName && currentUser.lastName) {
-            Analytics.setUserFullname(`${currentUser.firstName} ${currentUser.lastName}`);
+            Session.setUserFullname(`${currentUser.firstName} ${currentUser.lastName}`);
+            Analytics.updateFullname();
           }
 
           this.setState({ me: this.formatUser(currentUser) });

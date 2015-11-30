@@ -44,7 +44,6 @@ class AppDelegate : UIResponder {
         
         env = Environment()
         config = AppConfig(env: env)
-        session = Session(userDefaults: NSUserDefaults.standardUserDefaults(), env: env)
         
         // MARK: Setup Logging
         ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
@@ -62,6 +61,9 @@ class AppDelegate : UIResponder {
          // Capture NSLog statements emitted by 3rd party
         DDASLLogCapture.setCaptureLevel(.Info)
         DDASLLogCapture.start()
+
+        // MARK: Setup Session
+        session = Session(userDefaults: NSUserDefaults.standardUserDefaults(), env: env)
         
         // MARK: Setup Analytics
         // NOTE: When OneSignal inits it automatically calls application.registerForRemoteNotifications()
@@ -72,6 +74,7 @@ class AppDelegate : UIResponder {
         intercom = IntercomProvider(config: config)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
+        Analytics.session = session
         Analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         
         // MARK: Setup Layer (used for receiving remote notifications and such)

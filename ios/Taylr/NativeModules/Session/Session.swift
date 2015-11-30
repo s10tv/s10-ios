@@ -88,10 +88,31 @@ class Session : NSObject {
         } else {
             previousBuild = nil
         }
+        super.init()
+        if (userId == nil) != (resumeToken == nil) {
+            DDLogError("userId and resumeToken not in sync userId=\(userId) resumeToken=\(resumeToken)")
+            reset()
+        }
+        DDLogInfo("Session initialized userId=\(userId) previousBuild=\(previousBuild)")
     }
     
     func appDidLaunch() {
         ud[.previousBuild] = env.build
+        DDLogDebug("appDidLaunch")
+    }
+    
+    func reset() {
+        DDLogInfo("Will reset")
+        self.userId = nil
+        self.resumeToken = nil
+        self.tokenExpiry = nil
+        self.username = nil
+        self.phone = nil
+        self.email = nil
+        self.fullname = nil
+        self.avatarURL = nil
+        self.coverURL = nil
+        ud.synchronize()
     }
 }
 
@@ -110,16 +131,7 @@ extension Session {
     
     @objc func logout() {
         assert(loggedIn, "Must be loggedIn before logout")
-        self.userId = nil
-        self.resumeToken = nil
-        self.tokenExpiry = nil
-        self.username = nil
-        self.phone = nil
-        self.email = nil
-        self.fullname = nil
-        self.avatarURL = nil
-        self.coverURL = nil
-        ud.synchronize()
+        reset()
         DDLogInfo("logout")
     }
     // TODO: See if we can combine with property declaration above
@@ -170,6 +182,7 @@ extension Session {
         json["fullname"] = fullname
         json["avatarURL"] = avatarURL
         json["coverURL"] = coverURL
+        DDLogInfo("Will export constants initialValue=\(json)")
         return ["initialValue": json]
     }
 }

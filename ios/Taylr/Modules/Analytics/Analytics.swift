@@ -19,6 +19,7 @@ public class TSAnalytics : NSObject {
     var session: Session!
     
     func addProviders(providers: [AnalyticsProvider]) {
+        assert(session != nil)
         for provider in providers {
             provider.context = session
             self.providers.append(provider)

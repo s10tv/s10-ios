@@ -159,7 +159,7 @@ class FacebookLoginScreen extends React.Component {
                         }
                       })
                       .catch(err => {
-                        logger.error(JSON.stringify(error));
+                        logger.error(err);
                       })
                     } else {
                       logger.info('Welcome: Cancelled FB Verification'); 

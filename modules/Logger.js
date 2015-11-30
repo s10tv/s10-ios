@@ -42,9 +42,13 @@ class Logger {
     TSLogger.log(message, 'warning', this.domain, '', '', 0);
   }
 
-  error(message) {
+  error(messageOrError) {
     // We'll let error logs go to console intentionally
-    console.error(message);
+    console.error(messageOrError);
+    let message = messageOrError;
+    if (typeof messageOrError != 'string') {
+      message = JSON.stringify(message);
+    }
     TSLogger.log(message, 'error', this.domain, '', '', 0);
   }
 

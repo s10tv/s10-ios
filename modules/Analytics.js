@@ -13,43 +13,30 @@ const {
 class Analytics {
   
   /**
-   * userId: String
    * isNewUser: Bool
    */
-  static async userDidLogin(userId, isNewUser) {
-    return TSAnalytics.userDidLogin(userId, isNewUser);
+  static async userDidLogin(isNewUser) {
+    return TSAnalytics.userDidLogin(isNewUser);
   }
 
   static async userDidLogout() {
     return TSAnalytics.userDidLogout(); 
   }
 
-  /**
-   * username: String
-   */
-  static async setUserUsername(username) {
-    return TSAnalytics.setUserUsername(username);
+  static async updateUsername() {
+    return TSAnalytics.updateUsername();
   }
 
-  /**
-   * phone: String
-   */
-  static async setUserPhone(phone) {
-    return TSAnalytics.setUserPhone(phone)
+  static async updatePhone() {
+    return TSAnalytics.updatePhone()
   }
 
-  /**
-   * email: String
-   */
-  static async setUserEmail(email) {
-    return TSAnalytics.setUserEmail(email);
+  static async updateEmail() {
+    return TSAnalytics.updateEmail();
   }
 
-  /**
-   * fullname: String
-   */
-  static async setUserFullname(fullname) {
-     return TSAnalytics.setUserFullname(fullname);
+  static async updateFullname() {
+     return TSAnalytics.updateFullname();
   }
 
   /**
