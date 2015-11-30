@@ -53,6 +53,28 @@ extension UserViewModel {
 
 // MARK: -
 
+extension LYRMessage {
+    enum MessageType: String {
+        case Text = "Text"
+        case Video = "Video"
+        case Location = "Location"
+        case Other = "Other"
+    }
+    
+    var messageType: MessageType {
+        for part in messageParts {
+            switch part.MIMEType {
+            case kMIMETypeText: return .Text
+            case kMIMETypeVideo: return .Video
+            case kMIMETypeLocation: return .Location
+            default:
+                break
+            }
+        }
+        return .Other
+    }
+}
+
 extension LYRConversation {
     var kTitle: String { return "title" }
     var kAvatarUrl: String { return "avatarUrl" }

@@ -113,6 +113,10 @@ class ConversationViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         DDLogVerbose("Finish viewDidAppear animated=\(animated)")
+        TSATrack("Conversation: Show", properties: [
+            "Page": (swipeView.currentItemIndex == Page.ChatHistory.rawValue) ? "ChatHistory" : "Producer",
+            "ConversationId": vm.conversationId,
+        ])
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -170,13 +174,18 @@ extension ConversationViewController : VideoMakerDelegate {
     }
     
     func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: VideoSession) {
+        DDLogDebug("Will send message conversationId=\(vm.conversationId) messageType=Video")
         SVProgressHUD.show()
         session.exportWithFirstFrame { url, thumbnail, duration in
             SVProgressHUD.dismiss()
             self.scrollDownHint.hidden = false
             self.scrollView.scrollEnabled = true
             self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
-            TSATrack("Message: Send", properties: ["ConversationName": self.vm.displayName.value])
+            TSATrack("Message: Send", properties: [
+                "MessageType": "Video",
+                "ConversationId": self.vm.conversationId
+            ])
+            DDLogInfo("Did send video message conversationId=\(self.vm.conversationId) messageType=Video")
         }
     }
 }

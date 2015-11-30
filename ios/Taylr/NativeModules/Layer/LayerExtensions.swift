@@ -59,6 +59,9 @@ extension LYRMessage {
     public var messageParts: [LYRMessagePart] {
         return parts.map { $0 as! LYRMessagePart }
     }
+    public var locationPart: LYRMessagePart? {
+        return messageParts.filter { $0.MIMEType == kMIMETypeLocation }.first
+    }
     public var textPart: LYRMessagePart? {
         return messageParts.filter { $0.MIMEType == kMIMETypeText }.first
     }

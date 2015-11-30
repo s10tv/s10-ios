@@ -18,6 +18,9 @@ public class ConversationViewModel: NSObject {
     let uploading: PropertyOf<UInt>
     let downloading: PropertyOf<UInt>
     let lastMessage: PropertyOf<LYRMessage?>
+    public var conversationId: String {
+        return conversation.identifier.absoluteString
+    }
     public let conversation: LYRConversation
     public let avatar: PropertyOf<NSURL?>
     public let cover: PropertyOf<NSURL?>
