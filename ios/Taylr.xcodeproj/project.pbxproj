@@ -944,7 +944,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ] && [ -n \"$CI\" ]; then\n\tINFOPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\techo \"Debug config, will embed dev machine IP to to $INFOPLIST\"\n\tPLISTCMD=\"Add :DevMachineIP string $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\n\tPLISTCMD=\"Set :DevMachineIP $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\nelse\n\techo \"Release config, skip embedding dev machine IP\"\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ] && [ -z ${CI+x} ]; then\n\tINFOPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\techo \"Debug config, will embed dev machine IP to to $INFOPLIST\"\n\tPLISTCMD=\"Add :DevMachineIP string $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\n\tPLISTCMD=\"Set :DevMachineIP $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\nelse\n\techo \"Release config, skip embedding dev machine IP\"\nfi\n";
 		};
 		EA42164B1B3E211E00613EFA /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
