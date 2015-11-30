@@ -8,92 +8,25 @@
 
 import Foundation
 import CocoaLumberjack
-import SwiftyUserDefaults
 
 public let Analytics = TSAnalytics()
 
 @objc(TSAnalytics)
 public class TSAnalytics : NSObject {
     private var providers: [AnalyticsProvider] = []
-    
-    let env = Environment() // How do we dependency inject this? If at all
-    let previousBuild: String?
-    
-    override init() {
-        if let previousBuild = Defaults[.previousBuild] {
-            self.previousBuild = previousBuild
-        } else if let account = METAccount.defaultAccount() {
-            // HACK ALERT: Special case, pre ReactNative builds did not persist previousBuild into UserDefaults
-            // We use METAccount as a proxy to know whether this was an upgrade rather than new install
-            previousBuild = "0.2.1"
-            Defaults[.userId] = account.userID
-        } else {
-            previousBuild = nil
-        }
-    }
+
+    // Session should be set before any call to analytics gets made
+    var session: Session!
     
     func addProviders(providers: [AnalyticsProvider]) {
         for provider in providers {
-            provider.context = self
+            provider.context = session
             self.providers.append(provider)
         }
     }
     
-    // MARK: Helper
-    
-    private func eachProvider(authOnly authOnly: Bool = false, block: (AnalyticsProvider) -> ()) {
-        if authOnly == false || userId != nil {
-            for provider in providers {
-                block(provider)
-            }
-        }
-    }
-}
-
-// MARK: - AnalyticsContext
-
-extension DefaultsKeys {
-    private static let previousBuild = DefaultsKey<String?>("ts_previousBuild")
-    private static let userId = DefaultsKey<String?>("ts_userId")
-    private static let username = DefaultsKey<String?>("ts_username")
-    private static let email = DefaultsKey<String?>("ts_email")
-    private static let phone = DefaultsKey<String?>("ts_phone")
-    private static let fullname = DefaultsKey<String?>("ts_fullname")
-}
-
-extension TSAnalytics : AnalyticsContext {
-    var deviceId: String { return env.deviceId }
-    var deviceName: String { return env.deviceName }
-    var userId: String? {
-        get { return Defaults[.userId] }
-        set { Defaults[.userId] = newValue }
-    }
-    var username: String? {
-        get { return Defaults[.username] }
-        set { Defaults[.username] = newValue }
-    }
-    var email: String? {
-        get { return Defaults[.email] }
-        set { Defaults[.email] = newValue }
-    }
-    var phone: String? {
-        get { return Defaults[.phone] }
-        set { Defaults[.phone] = newValue }
-    }
-    var fullname: String? {
-        get { return Defaults[.fullname] }
-        set { Defaults[.fullname] = newValue }
-    }
-}
-
-// MARK: - AppDelegate API
-
-extension TSAnalytics {
-    
     func appDidLaunch(launchOptions: [NSObject: AnyObject]?) {
-        let currentBuild = Environment().build
-        eachProvider { $0.launch(currentBuild, previousBuild: self.previousBuild) }
-        Defaults[.previousBuild] = env.build
+        eachProvider { $0.launch(self.session.env.build, previousBuild: self.session.previousBuild) }
         eachProvider { $0.appOpen?() }
     }
     
@@ -112,48 +45,55 @@ extension TSAnalytics {
     func appDidReceivePushNotification(userInfo: [NSObject: AnyObject]) {
         eachProvider { $0.trackPushNotification?(userInfo) }
     }
+
+    // MARK: Helper
+    
+    private func eachProvider(authOnly authOnly: Bool = false, block: (AnalyticsProvider) -> ()) {
+        if authOnly == false || session.loggedIn == true {
+            for provider in providers {
+                block(provider)
+            }
+        }
+    }
+}
+
+extension Session : AnalyticsContext {
+    var deviceId: String { return env.deviceId }
+    var deviceName: String { return env.deviceName }
 }
 
 // MARK: - JavaScript API
 
 extension TSAnalytics {
     
-    @objc func userDidLogin(userId: String, isNewUser: Bool) {
-        self.userId = userId
+    @objc func userDidLogin(isNewUser: Bool) {
         eachProvider { $0.login(isNewUser) }
+        DDLogInfo("userDidLogin isNewUser=\(isNewUser)")
     }
     
     @objc func userDidLogout() {
-        self.userId = nil
-        self.username = nil
-        self.phone = nil
-        self.email = nil
-        self.fullname = nil
         eachProvider { $0.logout() }
+        DDLogInfo("userDidLogout")
     }
     
-    @objc func setUserUsername(username: String?) {
-        self.username = username
+    @objc func updateUsername() {
         eachProvider { $0.updateUsername?() }
-        DDLogInfo("setUserUsername username=\(username)")
+        DDLogInfo("update username=\(session.username)")
     }
     
-    @objc func setUserPhone(phone: String?) {
-        self.phone = phone
+    @objc func updatePhone() {
         eachProvider { $0.updatePhone?() }
-        DDLogInfo("setUserPhone phone=\(phone)")
+        DDLogInfo("update phone=\(session.phone)")
     }
     
-    @objc func setUserEmail(email: String?) {
-        self.email = email
+    @objc func updateEmail() {
         eachProvider { $0.updateEmail?() }
-        DDLogInfo("setUserEmail email=\(email)")
+        DDLogInfo("update email=\(session.email)")
     }
     
-    @objc func setUserFullname(fullname: String) {
-        self.fullname = fullname
+    @objc func updateFullname() {
         eachProvider { $0.updateFullname?() }
-        DDLogInfo("setUserFullName fullname=\(fullname)")
+        DDLogInfo("update fullname=\(session.fullname)")
     }
     
     @objc func track(event: String, properties: [String: AnyObject]? = nil) {
@@ -173,6 +113,6 @@ extension TSAnalytics {
     
     @objc func flush() {
         eachProvider { $0.flush?() }
-        DDLogDebug("Flush analytics providers")
+        DDLogInfo("Flush analytics providers")
     }
 }

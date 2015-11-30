@@ -24,6 +24,7 @@ class AppDelegate : UIResponder {
     
     var env: Environment!
     var config: AppConfig!
+    var session: Session!
     var ouralabs: DDOuralabsLogger!
     var crashlytics: DDCrashlyticsLogger!
     var oneSignal: OneSingalProvider!
@@ -43,6 +44,7 @@ class AppDelegate : UIResponder {
         
         env = Environment()
         config = AppConfig(env: env)
+        session = Session(userDefaults: NSUserDefaults.standardUserDefaults(), env: env)
         
         // MARK: Setup Logging
         ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
@@ -81,12 +83,6 @@ class AppDelegate : UIResponder {
         appHubBuild.cellularDownloadsEnabled = true
         appHubBuild.debugBuildsEnabled = (config.audience != .AppStore)
         
-        // TODO: Refactor this lifecycle management stuff outside of Analytics
-        // Do not persist meteor user account across app installs, make it harder to test and is unexpected
-        if Analytics.previousBuild == nil && METAccount.defaultAccount() != nil {
-            METAccount.setDefaultAccount(nil)
-        }
-        
         // MARK: Start React Native
         bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
     }
@@ -115,6 +111,7 @@ extension AppDelegate : UIApplicationDelegate {
         }
     
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        session.appDidLaunch()
         Analytics.appDidLaunch(launchOptions)
 
         // Pre-heat the camera if we can
@@ -122,7 +119,7 @@ extension AppDelegate : UIApplicationDelegate {
         DDLogInfo("App Did Launch", tag: [
             "deviceId": env.deviceId,
             "deviceName": env.deviceName,
-            "previousBuild": Analytics.previousBuild ?? NSNull(),
+            "previousBuild": session.previousBuild ?? NSNull(),
             "currentBuild": env.build
         ])
         return true
@@ -241,6 +238,7 @@ extension AppDelegate : RCTBridgeDelegate {
             ConversationListViewManager(layer: layer),
             ConversationViewManager(layer: layer),
             BridgeManager(env: env, config: config),
+            session,
             Analytics,
             Logger,
             layer,

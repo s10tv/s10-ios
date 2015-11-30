@@ -61,7 +61,7 @@ class BridgeManager : NSObject {
 // MARK: - BridgeManager JS API
 
 extension BridgeManager {
-     @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         // For some reason if we use SignalProducer.promise here it breaks build...
         azure.put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
             reject(error)
@@ -70,14 +70,6 @@ extension BridgeManager {
             resolve(nil)
             DDLogDebug("Successfully uploaded to azure")
         }))
-     }
-    
-    @objc func getDefaultAccount(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        resolve(METAccount.defaultAccount()?.toJson())
-    }
-    
-    @objc func setDefaultAccount(account: METAccount?) {
-        METAccount.setDefaultAccount(account)
     }
     
     @objc func registerForPushNotifications() {
@@ -114,38 +106,5 @@ extension UIViewController {
     
     func rnNavigationPop() {
         rnSendAppEvent(.NavigationPop, body: nil)
-    }
-}
-
-extension METAccount {
-    func toJson() -> NSDictionary {
-        return [
-            "userId": userID,
-            "resumeToken": resumeToken,
-            "expiryDate": expiryDate?.timeIntervalSince1970 ?? NSNull()
-        ]
-    }
-    
-    class func fromJson(json: NSDictionary) -> METAccount? {
-        guard let userID = json["userId"] as? String,
-            let resumeToken = json["resumeToken"] as? String else {
-                return nil
-        }
-        let expiryDate = RCTConvert.NSDate(json["expiryDate"])
-        let account = Taylr.METAccount(userID: userID, resumeToken: resumeToken, expiryDate: expiryDate)
-        account.firstName = json["firstName"] as? String
-        account.lastName = json["lastName"] as? String
-        account.avatarUrl = json["avatarUrl"] as? String
-        account.coverUrl = json["coverUrl"] as? String
-        return account
-    }
-}
-
-extension RCTConvert {
-    @objc class func METAccount(json: AnyObject?) -> Taylr.METAccount? {
-        guard let json = json as? Foundation.NSDictionary else {
-            return nil
-        }
-        return Taylr.METAccount.fromJson(json)
     }
 }

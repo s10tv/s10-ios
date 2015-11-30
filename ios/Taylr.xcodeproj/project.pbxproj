@@ -95,6 +95,8 @@
 		EABE4C6B1C03C45A001557A1 /* SegmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C671C03C45A001557A1 /* SegmentProvider.swift */; };
 		EABE4C6C1C03C45A001557A1 /* UXCamProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C681C03C45A001557A1 /* UXCamProvider.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
+		EAD7A8E31C0BCBDF00E4A447 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD7A8E11C0BCBDF00E4A447 /* Session.m */; };
+		EAD7A8E41C0BCBDF00E4A447 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7A8E21C0BCBDF00E4A447 /* Session.swift */; };
 		F98F2FE61C057F1400793ECA /* RNCookieManagerIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F98F2FE51C057F1400793ECA /* RNCookieManagerIOS.m */; };
 		F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */; };
 		F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */; };
@@ -252,6 +254,8 @@
 		EABE4C671C03C45A001557A1 /* SegmentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentProvider.swift; sourceTree = "<group>"; };
 		EABE4C681C03C45A001557A1 /* UXCamProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXCamProvider.swift; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EAD7A8E11C0BCBDF00E4A447 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		EAD7A8E21C0BCBDF00E4A447 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F98F2FE41C057F1400793ECA /* RNCookieManagerIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCookieManagerIOS.h; sourceTree = "<group>"; };
 		F98F2FE51C057F1400793ECA /* RNCookieManagerIOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCookieManagerIOS.m; sourceTree = "<group>"; };
 		F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNFabricDigits.a; path = "../../node_modules/react-native-fabric-digits/ios/build/Debug-iphoneos/libRNFabricDigits.a"; sourceTree = "<group>"; };
@@ -550,6 +554,7 @@
 				EA197A121BFC4D2600DF7B58 /* Library */,
 				EA32258A1BFDAE8A00FF5074 /* Models */,
 				EA3225911BFDAE8A00FF5074 /* Modules */,
+				EAD7A8D21C0BC92200E4A447 /* NativeModules */,
 				EAA5E8DA1BFEABA8009DE994 /* Components */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
@@ -620,6 +625,23 @@
 				EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		EAD7A8D21C0BC92200E4A447 /* NativeModules */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7A8E01C0BCBDF00E4A447 /* Session */,
+			);
+			path = NativeModules;
+			sourceTree = "<group>";
+		};
+		EAD7A8E01C0BCBDF00E4A447 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7A8E21C0BCBDF00E4A447 /* Session.swift */,
+				EAD7A8E11C0BCBDF00E4A447 /* Session.m */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 		F98F2FE31C057F1400793ECA /* RNCookieManagerIOS */ = {
@@ -933,6 +955,7 @@
 				EABE4BF51C03279C001557A1 /* ReactExtensions.swift in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EABE4C6C1C03C45A001557A1 /* UXCamProvider.swift in Sources */,
+				EAD7A8E31C0BCBDF00E4A447 /* Session.m in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				F98F2FE61C057F1400793ECA /* RNCookieManagerIOS.m in Sources */,
 				EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */,
@@ -958,6 +981,7 @@
 				EA3225BE1BFDAE8A00FF5074 /* Image.swift in Sources */,
 				EA7DFB2E1BFFA3550045A5ED /* AzureClient.swift in Sources */,
 				EA197A511BFC4D2600DF7B58 /* SwiftExtension.swift in Sources */,
+				EAD7A8E41C0BCBDF00E4A447 /* Session.swift in Sources */,
 				EA3225DB1BFDAE8A00FF5074 /* LayerService.swift in Sources */,
 				EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */,
 				EABE4C591C03BBAD001557A1 /* AnalyticsProvider.swift in Sources */,

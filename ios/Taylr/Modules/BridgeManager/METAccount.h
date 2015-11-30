@@ -34,10 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic, readonly) NSString *userID;
 @property (copy, nonatomic, readonly) NSString *resumeToken;
 @property (nullable, copy, nonatomic, readonly) NSDate *expiryDate;
-@property (nullable, copy, nonatomic) NSString *firstName;
-@property (nullable, copy, nonatomic) NSString *lastName;
-@property (nullable, copy, nonatomic) NSString *avatarUrl;
-@property (nullable, copy, nonatomic) NSString *coverUrl;
 
 @end
 
