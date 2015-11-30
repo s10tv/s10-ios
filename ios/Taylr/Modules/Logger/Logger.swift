@@ -15,8 +15,10 @@ public class Logger : NSObject {
     override init() {
         defaultDebugLevel = .Verbose
         // Capture NSLog statements emitted by 3rd party
-        DDASLLogCapture.setCaptureLevel(.Info)
-        DDASLLogCapture.start()
+        // Unfortunately captured ASL Log contains many noisier statements that never make it to Xcode console
+        // including warning level logs that cause false positives on Ouralabs. Disable for now
+//        DDASLLogCapture.setCaptureLevel(.Info)
+//        DDASLLogCapture.start()
     }
     
     func addLogger(logger: DDLogger) {
