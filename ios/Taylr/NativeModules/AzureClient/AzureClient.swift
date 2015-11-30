@@ -7,14 +7,21 @@
 //
 
 import Foundation
+import CocoaLumberjack
 import Alamofire
 import ReactiveCocoa
+import React
 
-class AzureClient {
+@objc(TSAzureClient)
+class AzureClient : NSObject {
     
     let alamo: Manager
     
-    init(manager: Manager = Manager.sharedInstance) {
+    override convenience init() {
+        self.init(manager: Manager.sharedInstance)
+    }
+    
+    init(manager: Manager) {
         alamo = manager
     }
     
@@ -35,5 +42,18 @@ class AzureClient {
         request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
         request.addValue(contentType, forHTTPHeaderField: "Content-Type")
         return request
+    }
+}
+
+extension AzureClient {
+    @objc func put(remoteURL: NSURL, localURL: NSURL, contentType: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        // For some reason if we use SignalProducer.promise here it breaks build...
+        put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
+            reject(error)
+            DDLogError("Unable to upload to azure", tag: error)
+        }, completed: {
+            resolve(nil)
+            DDLogDebug("Successfully uploaded to azure")
+        }))
     }
 }

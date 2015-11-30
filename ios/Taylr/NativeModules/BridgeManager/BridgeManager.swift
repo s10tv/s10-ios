@@ -42,7 +42,6 @@ extension RCTBridge {
 class BridgeManager : NSObject {
     
     weak var bridge: RCTBridge?
-    let azure = AzureClient()
     let env: Environment
     let config: AppConfig
     
@@ -61,16 +60,6 @@ class BridgeManager : NSObject {
 // MARK: - BridgeManager JS API
 
 extension BridgeManager {
-    @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        // For some reason if we use SignalProducer.promise here it breaks build...
-        azure.put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
-            reject(error)
-            DDLogError("Unable to upload to azure", tag: error)
-        }, completed: {
-            resolve(nil)
-            DDLogDebug("Successfully uploaded to azure")
-        }))
-    }
     
     @objc func registerForPushNotifications() {
         // Explicit dependency please, maybe custom module for OneSignal as well

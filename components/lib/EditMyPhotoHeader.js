@@ -1,5 +1,5 @@
 let React = require('react-native');
-let TSBridgeManager = require('react-native').NativeModules.TSBridgeManager;
+let AzureClient = require('react-native').NativeModules.TSAzureClient;
 
 let {
   AppRegistry,
@@ -70,7 +70,7 @@ class EditMyPhotoHeader extends React.Component {
           height: response.height,
         }]})
         .then((res) => {
-          return TSBridgeManager.uploadToAzureAsync(res.url, source.uri, 'image/jpeg');
+          return AzureClient.putAsync(res.url, source.uri, 'image/jpeg');
         })
         .then(() => {
           return this.props.ddp.call({ methodName: 'finishTask', params: [taskId] });

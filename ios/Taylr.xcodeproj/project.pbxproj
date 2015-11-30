@@ -11,6 +11,8 @@
 		EA08BDF51C091BF300040D56 /* OneSingalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */; };
 		EA08BE011C092E8500040D56 /* Taylr-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08BE001C092E8500040D56 /* Taylr-Bridging.m */; };
 		EA0F4C2B1C0C55AA00B0BC69 /* METAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0F4C291C0C55AA00B0BC69 /* METAccount.m */; };
+		EA0F4C321C0C571000B0BC69 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0F4C311C0C571000B0BC69 /* AzureClient.swift */; };
+		EA0F4C341C0C572D00B0BC69 /* AzureClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0F4C331C0C572D00B0BC69 /* AzureClient.m */; };
 		EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */; };
 		EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E01BFC4CD800DF7B58 /* R.swift */; };
 		EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */; };
@@ -69,7 +71,6 @@
 		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
-		EA7DFB2E1BFFA3550045A5ED /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7DFB2C1BFFA3550045A5ED /* AzureClient.swift */; };
 		EA7DFB331BFFA40B0045A5ED /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */; };
 		EA7DFB3C1C0254410045A5ED /* AppHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7DFB3B1C0254410045A5ED /* AppHub.framework */; };
 		EA7DFB421C0256620045A5ED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7DFB411C0256620045A5ED /* SystemConfiguration.framework */; };
@@ -156,6 +157,8 @@
 		EA08BE001C092E8500040D56 /* Taylr-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Taylr-Bridging.m"; sourceTree = "<group>"; };
 		EA0F4C291C0C55AA00B0BC69 /* METAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METAccount.m; sourceTree = "<group>"; };
 		EA0F4C2A1C0C55AA00B0BC69 /* METAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METAccount.h; sourceTree = "<group>"; };
+		EA0F4C311C0C571000B0BC69 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
+		EA0F4C331C0C572D00B0BC69 /* AzureClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzureClient.m; sourceTree = "<group>"; };
 		EA1979E01BFC4CD800DF7B58 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
@@ -220,7 +223,6 @@
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
-		EA7DFB2C1BFFA3550045A5ED /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
 		EA7DFB3B1C0254410045A5ED /* AppHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppHub.framework; path = ../node_modules/apphub/AppHub.framework; sourceTree = "<group>"; };
 		EA7DFB411C0256620045A5ED /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -323,6 +325,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EA0F4C301C0C571000B0BC69 /* AzureClient */ = {
+			isa = PBXGroup;
+			children = (
+				EA0F4C311C0C571000B0BC69 /* AzureClient.swift */,
+				EA0F4C331C0C572D00B0BC69 /* AzureClient.m */,
+			);
+			path = AzureClient;
+			sourceTree = "<group>";
+		};
 		EA1979FE1BFC4D2600DF7B58 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +373,6 @@
 		EA197A121BFC4D2600DF7B58 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				EA7DFB2C1BFFA3550045A5ED /* AzureClient.swift */,
 				EA197A151BFC4D2600DF7B58 /* BaseViews.swift */,
 				EA197A181BFC4D2600DF7B58 /* Environment.swift */,
 				EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */,
@@ -613,6 +623,7 @@
 		EAD7A8D21C0BC92200E4A447 /* NativeModules */ = {
 			isa = PBXGroup;
 			children = (
+				EA0F4C301C0C571000B0BC69 /* AzureClient */,
 				F98F2FE31C057F1400793ECA /* RNCookieManagerIOS */,
 				F9DDF7131BFFA18300D7A2FC /* UIImagePickerManager */,
 				EAA5E8DB1BFEAEE4009DE994 /* BridgeManager */,
@@ -959,6 +970,7 @@
 				F9DDF7161BFFA18300D7A2FC /* UIImagePickerManager.m in Sources */,
 				EA3226021BFDAEEB00FF5074 /* AudioController.swift in Sources */,
 				EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */,
+				EA0F4C321C0C571000B0BC69 /* AzureClient.swift in Sources */,
 				EABE4BF51C03279C001557A1 /* ReactExtensions.swift in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EABE4C6C1C03C45A001557A1 /* UXCamProvider.swift in Sources */,
@@ -986,7 +998,6 @@
 				EABE4C6B1C03C45A001557A1 /* SegmentProvider.swift in Sources */,
 				EA32260C1BFDAEEB00FF5074 /* ConversationListViewController.swift in Sources */,
 				EA3225BE1BFDAE8A00FF5074 /* Image.swift in Sources */,
-				EA7DFB2E1BFFA3550045A5ED /* AzureClient.swift in Sources */,
 				EA197A511BFC4D2600DF7B58 /* SwiftExtension.swift in Sources */,
 				EAD7A8E41C0BCBDF00E4A447 /* Session.swift in Sources */,
 				EA3225DB1BFDAE8A00FF5074 /* LayerService.swift in Sources */,
@@ -1026,6 +1037,7 @@
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,
 				EA197A5A1BFC4D2600DF7B58 /* Environment.swift in Sources */,
 				EA3225BF1BFDAE8A00FF5074 /* UserViewModel.swift in Sources */,
+				EA0F4C341C0C572D00B0BC69 /* AzureClient.m in Sources */,
 				EA3225D81BFDAE8A00FF5074 /* LayerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

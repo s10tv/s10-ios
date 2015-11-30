@@ -1,5 +1,5 @@
 //
-//  TSNavigationManager.m
+//  BridgeManager.m
 //  Taylr
 //
 //  Created by Tony Xiao on 11/18/15.
@@ -11,8 +11,6 @@
 
 @interface RCT_EXTERN_MODULE(TSBridgeManager, NSObject)
 
-RCT_EXTERN_REMAP_METHOD(uploadToAzureAsync,
-                        uploadToAzure:(NSURL *)remoteURL localURL:(NSURL *)localURL contentType:(NSString *)contentType resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(registerForPushNotifications)
 
 @end
