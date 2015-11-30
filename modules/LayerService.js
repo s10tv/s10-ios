@@ -5,10 +5,7 @@
 
 
 let {
-  NativeAppEventEmitter,
-  NativeModules: {
-    TSLayerService,
-  },
+  NativeAppEventEmitter
 } = require('react-native');
 
 const logger = new (require('./Logger'))('LayerServiceJs');

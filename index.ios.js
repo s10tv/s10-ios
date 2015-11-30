@@ -33,8 +33,10 @@ let ddp = new TSDDPClient(BridgeManager.serverUrl());
 let layerService = new LayerService(store);
 
 NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
+  logger.debug(`[PUSH]: did receive RegisteredPushToken. ${JSON.stringify(tokenInfo)}`);
+
   if (!tokenInfo) {
-    TSLogger.log('Register push token called with no token', 'warning', 'index.io.js', '', 0);
+    logger.debug('[PUSH]: Register push token called with no token');
     return;
   }
 
@@ -44,12 +46,14 @@ NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
   tokenInfo.deviceId = BridgeManager.deviceId();
   tokenInfo.deviceName = BridgeManager.deviceName();
 
-  ddp.call({ methodName: 'device/update/push', params: tokenInfo })
+  logger.debug(`[PUSH]: will call device/update/push with ${JSON.stringify(tokenInfo)}`);
+
+  ddp.call({ methodName: 'device/update/push', params: [tokenInfo] })
   .then(() => {
-    logger.debug('Registered push token', 'debug', 'index.io.js', '', 0);
+    logger.debug('[PUSH]: Registered Push Token');
   })
   .catch(err => {
-    logger.debug(JSON.stringify(err), 'error', 'index.io.js', '', 0);
+    logger.error(err);
   })
 });
 
