@@ -46,6 +46,10 @@ class ServiceTile extends React.Component {
     })
   }
 
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   render() {
     let service = this.props.service;
     
@@ -60,7 +64,9 @@ class ServiceTile extends React.Component {
       <View style={styles.service}>
         <Image source={{ uri: service.icon.url }} style={[SHEET.icon]} />
         <View style={styles.serviceDesc}>
-          <Text style={[SHEET.subTitle, SHEET.baseText]}>{service.name}</Text>
+          <Text style={[SHEET.subTitle, SHEET.baseText]}>
+            {this.capitalizeFirstLetter(service.name)}
+          </Text>
           { display }
         </View>
         {icon}
