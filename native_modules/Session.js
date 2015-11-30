@@ -13,9 +13,16 @@ let {
 
 const logger = new (require('../modules/Logger'))('Session.js');
 
+logger.debug('Will initialize session');
+
 class Session {
   constructor(store) {
   }
+
 }
 
-export { TSSession }
+logger.debug(`Session initialValue=${JSON.stringify(TSSession.initialValue)}`);
+logger.debug('Did initialize session');
+
+
+export default TSSession

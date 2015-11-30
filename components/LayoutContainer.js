@@ -9,7 +9,7 @@ let {
 } = React;
 
 import { BridgeManger } from '../modules/BridgeManager';
-import { Session } from '../native_modules/Session';
+import Session from '../native_modules/Session';
 let Analytics = require('../modules/Analytics');
 let Intercom = require('../modules/Intercom');
 
