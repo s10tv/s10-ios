@@ -944,11 +944,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n\tINFOPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\techo \"Debug config, will embed dev machine IP to to $INFOPLIST\"\n\tPLISTCMD=\"Add :DevMachineIP string $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\n\tPLISTCMD=\"Set :DevMachineIP $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\nelse\n\techo \"Release config, skip embedding dev machine IP\"\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ] && [ -n \"$CI\" ]; then\n\tINFOPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\techo \"Debug config, will embed dev machine IP to to $INFOPLIST\"\n\tPLISTCMD=\"Add :DevMachineIP string $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\n\tPLISTCMD=\"Set :DevMachineIP $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\nelse\n\techo \"Release config, skip embedding dev machine IP\"\nfi\n";
 		};
 		EA42164B1B3E211E00613EFA /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -956,9 +956,9 @@
 			name = "Fabric Script";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -n \"$CI\" ]; then\n    echo \"Uploading DSYM to Fabric\"\n    \"${PODS_ROOT}/Fabric/Fabric.framework/run\" 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215\nelse\n    echo \"Not running on CI, skip uploading to Fabric\";\nfi";
+			shellScript = "echo \"Uploading DSYM to Fabric\"\n\"${PODS_ROOT}/Fabric/iOS/Fabric.framework/run\" 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215";
 		};
 /* End PBXShellScriptBuildPhase section */
 

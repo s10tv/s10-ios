@@ -35,6 +35,9 @@ extension DDCrashlyticsLogger : AnalyticsProvider {
         DDLogDebug("Will set deviceId=\(context.deviceId) deviceName=\(context.deviceName)")
         crashlytics.setObjectValue(context.deviceId, forKey: "Device Id")
         crashlytics.setObjectValue(context.deviceName, forKey: "Device Name")
+        crashlytics.setUserIdentifier(context.userId)
+        crashlytics.setUserEmail(context.email)
+        crashlytics.setUserName(context.fullname)
     }
     
     func login(isNewUser: Bool) {
@@ -49,6 +52,8 @@ extension DDCrashlyticsLogger : AnalyticsProvider {
     func logout() {
         DDLogInfo("Will clear user identifier")
         crashlytics.setUserIdentifier(nil)
+        crashlytics.setUserEmail(nil)
+        crashlytics.setUserName(nil)
     }
 
     func updateEmail() {
