@@ -37,7 +37,6 @@ struct Dependencies {
     let appHubBuild: AHBuildManager
     
     init(launchOptions: [NSObject: AnyObject]?) {
-        Fabric.with([Digits(), Crashlytics()])
         env = Environment()
         config = AppConfig(env: env)
         
@@ -87,13 +86,21 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var deps: Dependencies!
     var bridge: RCTBridge!
+    var crashReport: CLSReport?
     
     // MARK: Lifecycle
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        Crashlytics.sharedInstance().debugMode = true
         Crashlytics.sharedInstance().delegate = self
+        Fabric.with([Digits(), Crashlytics()]) // TODO: Separate Crashlytics initialization from Digits initialization
         deps = Dependencies(launchOptions: launchOptions)
+        
         DDLogInfo("SESSIONMARKER >>>>>>>> Application Will Launch <<<<<<<<")
+        if let crashReport = crashReport {
+            DDLogError("Crash detected during last execution identifier=\(crashReport.identifier)", tag: crashReport.customKeys)
+            deps.analytics.track("Crash Detected", properties: ["CrashIdentifier": crashReport.identifier])
+        }
         return true
     }
     
@@ -130,6 +137,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             "previousBuild": deps.session.previousBuild ?? NSNull(),
             "currentBuild": deps.env.build
         ])
+        
+//        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+//        dispatch_after(delayTime, dispatch_get_main_queue()) {
+//            Crashlytics.sharedInstance().crash()
+//        }
         return true
     }
     
@@ -268,8 +280,8 @@ extension AppDelegate : RCTBridgeDelegate {
 
 extension AppDelegate : CrashlyticsDelegate {
     func crashlyticsDidDetectReportForLastExecution(report: CLSReport, completionHandler: (Bool) -> Void) {
-        DDLogError("Crash detected during last execution identifier=\(report.identifier)", tag: report.customKeys)
-        deps.analytics.track("Crash Detected")
+        print("[ERROR] Crash detected. Will save report for DDLog later identifier=\(report.identifier)")
+        crashReport = report
         completionHandler(true)
     }
 }
