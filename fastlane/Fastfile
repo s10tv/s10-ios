@@ -150,9 +150,9 @@ platform :ios do
     end
 
     meta = { :target => options[:target] || 'none' }
-    meta[:name] = name # Does not work unfortunately :(
+    meta[:name] = name
     meta[:description] = options[:description] if options[:description]
-    meta[:description] ||= "#{name}\n#{release_notes}"
+    meta[:description] ||= release_notes
     meta[:app_versions] = [options[:app_version]] if options[:app_version]
 
     # Need to get to correct working dir, see https://github.com/fastlane/fastlane/issues/155
