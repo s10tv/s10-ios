@@ -31,7 +31,6 @@ extension NSObject {
 }
 
 extension RCTBridge {
-    
     func sendAppEvent(name: String, body: AnyObject?) {
         DDLogDebug("Will sendAppEvent name=\(name)", tag: body)
         eventDispatcher.sendAppEventWithName(name, body: body)
@@ -51,6 +50,7 @@ class BridgeManager : NSObject {
         super.init()
         listenForNotification(kRNSendAppEventNotificationName).startWithNext { [weak self] note in
             if let bridge = self?.bridge, let name = note.userInfo?["name"] as? String {
+                // Sometimes this causes a crash, workaround is to make BridgeManager singleton
                 bridge.sendAppEvent(name, body: note.userInfo?["body"])
             }
         }

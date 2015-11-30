@@ -35,6 +35,7 @@ struct Dependencies {
     let layer: LayerService
     let digits: Digits
     let appHubBuild: AHBuildManager
+    let bridgeManager: BridgeManager // TODO: Deprecate me, be modular
     
     init(launchOptions: [NSObject: AnyObject]?) {
         env = Environment()
@@ -79,6 +80,8 @@ struct Dependencies {
         appHubBuild = AppHub.buildManager()
         appHubBuild.cellularDownloadsEnabled = true
         appHubBuild.debugBuildsEnabled = (config.audience != .AppStore)
+        
+        bridgeManager = BridgeManager(env: env, config: config)
         DDLogInfo("Did Setup App Dependencies")
     }
 }
@@ -142,10 +145,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             "currentBuild": deps.env.build
         ])
         
-//        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
-//        dispatch_after(delayTime, dispatch_get_main_queue()) {
-//            Crashlytics.sharedInstance().crash()
-//        }
         return true
     }
     
@@ -285,7 +284,7 @@ extension AppDelegate : RCTBridgeDelegate {
         return [
             ConversationListViewManager(layer: deps.layer, session: deps.session),
             ConversationViewManager(layer: deps.layer, session: deps.session),
-            BridgeManager(env: deps.env, config: deps.config),
+            deps.bridgeManager,
             deps.session,
             deps.analytics,
             deps.logger,
