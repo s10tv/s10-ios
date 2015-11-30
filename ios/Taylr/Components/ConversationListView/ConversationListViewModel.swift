@@ -14,15 +14,15 @@ import React
 public class ConversationListViewModel: NSObject {
     
     let layerClient: LYRClient
-    let currentUser: UserViewModel
+    let currentUserId: String
     
-    init(layerClient: LYRClient, currentUser: UserViewModel) {
+    init(layerClient: LYRClient, currentUserId: String) {
         self.layerClient = layerClient
-        self.currentUser = currentUser
+        self.currentUserId = currentUserId
     }
     
     func firstOtherParticipant(conversation: LYRConversation) -> UserViewModel? {
-        return conversation.otherParticipants(currentUser.userId).first
+        return conversation.otherParticipants(currentUserId).first
     }
     
     func displayNameForConversation(conversation: LYRConversation) -> String {
@@ -45,12 +45,12 @@ public class ConversationListViewModel: NSObject {
     
     func lastMessageTextForConversation(conversation: LYRConversation) -> String {
         if let msg = conversation.lastMessage where msg.videoPart != nil {
-            let sentBySelf = msg.sender.userID == currentUser.userId
+            let sentBySelf = msg.sender.userID == currentUserId
             if sentBySelf {
                 if !msg.isSent {
                     return "> Sending..."
                 }
-                let status = Formatters.stringForDisplayOfRecipientStatus(msg.recipientStatusByUserID, currentUser: currentUser)
+                let status = Formatters.stringForDisplayOfRecipientStatus(msg.recipientStatusByUserID, currentUserId: currentUserId)
                 return "> Video \(status.lowercaseString)"
             } else {
                 return "> Received video"

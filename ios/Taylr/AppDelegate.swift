@@ -242,8 +242,8 @@ extension AppDelegate : RCTBridgeDelegate {
         // TODO: Move as many 'modules' from AppDependencies into here as possible
         // So that their lifecycle may be managed by bridge. Also implement RCTInvalidating
         return [
-            ConversationListViewManager(layer: deps.layer),
-            ConversationViewManager(layer: deps.layer),
+            ConversationListViewManager(layer: deps.layer, session: deps.session),
+            ConversationViewManager(layer: deps.layer, session: deps.session),
             BridgeManager(env: deps.env, config: deps.config),
             deps.session,
             Analytics,

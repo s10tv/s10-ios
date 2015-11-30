@@ -93,7 +93,7 @@ extension ConversationViewModel : ATLConversationViewControllerDataSource {
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfRecipientStatus recipientStatus: [NSObject : AnyObject]!) -> NSAttributedString! {
-        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, currentUser: currentUser)
+        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, currentUserId: currentUserId)
     }
     
 }

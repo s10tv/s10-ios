@@ -15,20 +15,21 @@ import React
 class ConversationListViewManager : RCTViewManager {
     let sb = UIStoryboard(name: "ConversationList", bundle: nil)
     let layer: LayerService
+    let session: Session
     
-    init(layer: LayerService) {
+    init(layer: LayerService, session: Session) {
         self.layer = layer
+        self.session = session
     }
     
     override func viewWithProps(props: [NSObject : AnyObject]!) -> UIView! {
-        guard let currentUser = RCTConvert.userViewModel(props["currentUser"]) else {
+        guard let currentUserId = session.userId else {
             return nil
         }
         let vc = sb.instantiateInitialViewController() as! ConversationListViewController
-        vc.vm = ConversationListViewModel(layerClient: layer.layerClient, currentUser: currentUser)
+        vc.vm = ConversationListViewModel(layerClient: layer.layerClient, currentUserId: currentUserId)
         let view = vc.view as! ConversationListView
         view.vc = vc
-        view.currentUser = currentUser
         return view
     }
 }

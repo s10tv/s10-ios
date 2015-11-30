@@ -15,11 +15,14 @@ import React
 class ConversationViewManager : RCTViewManager {
     let sb = UIStoryboard(name: "Conversation", bundle: nil)
     let layer: LayerService
+    let session: Session
     
-    init(layer: LayerService) {
+    init(layer: LayerService, session: Session) {
         self.layer = layer
+        self.session = session
     }
     
+    // TODO: Derive currentUser from session
     override func viewWithProps(props: [NSObject : AnyObject]!) -> UIView! {
         guard let currentUser = RCTConvert.userViewModel(props["currentUser"]) else {
             return nil
@@ -41,7 +44,7 @@ class ConversationViewManager : RCTViewManager {
         }
         
         let vc = sb.instantiateInitialViewController() as! ConversationViewController
-        vc.vm = ConversationViewModel(layer: layer, currentUser: currentUser, conversation: conversation)
+        vc.vm = ConversationViewModel(layer: layer, currentUserId: currentUser.userId, conversation: conversation)
         let view = vc.view as! ConversationView
         view.currentUser = currentUser
         view.conversationId = conversationId

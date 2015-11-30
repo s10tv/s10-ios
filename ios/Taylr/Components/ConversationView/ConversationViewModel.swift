@@ -14,7 +14,7 @@ import CocoaLumberjack
 public class ConversationViewModel: NSObject {
     
     let layer: LayerService
-    let currentUser: UserViewModel
+    let currentUserId: String
     let uploading: PropertyOf<UInt>
     let downloading: PropertyOf<UInt>
     let lastMessage: PropertyOf<LYRMessage?>
@@ -35,12 +35,12 @@ public class ConversationViewModel: NSObject {
         return layer.layerClient.countForQuery(query, error: nil) > 0
     }
     
-    init(layer: LayerService, currentUser: UserViewModel, conversation: LYRConversation) {
+    init(layer: LayerService, currentUserId: String, conversation: LYRConversation) {
         self.layer = layer
-        self.currentUser = currentUser
+        self.currentUserId = currentUserId
         self.conversation = conversation
         
-        let otherParticipant = conversation.otherParticipants(currentUser.userId).first
+        let otherParticipant = conversation.otherParticipants(currentUserId).first
         let avatarURL = conversation.avatarURL ?? otherParticipant?.avatarURL
         let coverURL = conversation.coverURL ?? otherParticipant?.coverURL
         let title = conversation.title ?? otherParticipant?.displayName
@@ -60,7 +60,7 @@ public class ConversationViewModel: NSObject {
             if uploading > 0 { return "Sending..." }
             if downloading > 0 { return "Receiving" }
             if let msg = lastMessage,
-                let status = Formatters.readableStatusWithDate(msg, currentUserId: currentUser.userId) {
+                let status = Formatters.readableStatusWithDate(msg, currentUserId: currentUserId) {
                     return status
             }
             return ""
@@ -168,7 +168,7 @@ public class ConversationViewModel: NSObject {
     
     func recipientUser() -> UserViewModel? {
         if conversation.participants.count == 2 {
-            return conversation.otherParticipants(currentUser.userId).first
+            return conversation.otherParticipants(currentUserId).first
         }
         return nil
     }

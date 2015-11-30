@@ -12,99 +12,14 @@ import LayerKit
 import DateTools
 import ReactiveCocoa
 
-internal let CurrentTime: PropertyOf<NSDate> = PropertyOf(NSDate()) {
-    timer(1, onScheduler: QueueScheduler.mainQueueScheduler)
-}
-
-internal func relativeTime(date: NSDate?) -> PropertyOf<String> {
-    return CurrentTime.map {
-        Formatters.formatRelativeDate(date, relativeTo: $0) ?? ""
-    }
-}
-
 let CabinRegular11 = UIFont(name: "Cabin-Regular", size: 11)!
 let CabinBold11 = UIFont(name: "Cabin-Bold", size: 11)!
 
+// TODO: Move as much of this into JSLand as possible, once we figure out how...
+
 public struct Formatters {
-    private static let height : NSLengthFormatter = {
-        let formatter = NSLengthFormatter()
-        formatter.forPersonHeightUse = true
-        formatter.unitStyle = .Short
-        formatter.numberFormatter.maximumFractionDigits = 0
-        return formatter
-    }()
-    private static let timeInterval: TTTTimeIntervalFormatter = {
-        let formatter = TTTTimeIntervalFormatter()
-        formatter.presentTimeIntervalMargin = 60
-        formatter.usesIdiomaticDeicticExpressions = true
-        formatter.usesAbbreviatedCalendarUnits = true
-        return formatter
-    }()
-    private static let distanceFormatter: NSLengthFormatter = {
-        let formatter = NSLengthFormatter()
-        formatter.unitStyle = .Medium
-        formatter.numberFormatter.maximumFractionDigits = 0
-        return formatter
-    }()
     
-    public static func cleanString(str: String?) -> String {
-        return str.map {
-            $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        } ?? ""
-    }
-    
-    public static func formatHeight(heightInCm: Int) -> String {
-        return height.stringFromMeters(Double(heightInCm) / 100)
-    }
-    
-    public static func formatInterval(date: NSDate?, relativeTo: NSDate = NSDate()) -> String? {
-        return date.map { timeInterval.stringForTimeIntervalFromDate(NSDate(), toDate: $0) }
-    }
-    
-    public static func formatFullname(firstName: String?, lastName: String?, gradYear: String?) -> String {
-        let name = String(format: "%@ %@", firstName ?? "", lastName ?? "").nonBlank() ?? ""
-        return gradYear.map { "\(name) \($0)" } ?? name
-    }
-    
-    public static func formatRelativeDate(date: NSDate?, relativeTo: NSDate = NSDate()) -> String? {
-        if let date = date {
-            let interval = relativeTo.timeIntervalSinceDate(date)
-            let secondsPerDay: Double = 24 * 60 * 60
-            
-            if interval > secondsPerDay * 365 {
-                return date.formattedDateWithFormat("MMM d, yyyy") // 13 Jun, 2015
-            } else if interval > secondsPerDay * 7 {
-                return date.formattedDateWithFormat("MMM d") // 13 Jun
-            } else if interval > secondsPerDay * 2 {
-                return date.formattedDateWithFormat("EEEE h:mma") // Saturday 1:05PM
-            } else if interval > secondsPerDay {
-                let timeText = date.formattedDateWithFormat("h:mma")
-                return "Yesterday \(timeText)"
-            }
-            return timeInterval.stringForTimeIntervalFromDate(NSDate(), toDate: date)
-        }
-        return nil
-    }
-    
-    public static func formateDaysAgo(date: NSDate) -> String {
-        let cal = NSCalendar.currentCalendar()
-        let days = cal.components(.Day, fromDate: date, toDate: NSDate(), options: []).day
-        switch days {
-        case 0: return "Today"
-        case 1: return "Yesterday"
-        default: return "\(days) days ago"
-        }
-    }
-    
-    public static func formatDistance(distance: Double) -> String {
-        // TODO: Security concern?
-        if distance < 1.0 {
-            return "< 1 mi"
-        }
-        return distanceFormatter.stringFromMeters(distance * 1609.34)
-    }
-    
-    // MARK: - Date Time Formatter
+    // MARK: - Formatting message sent date
     
     public enum DateProximity {
         case Today, Yesterday, Week, Year, Other
@@ -214,9 +129,9 @@ public struct Formatters {
         return attrString
     }
     
-    static func stringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], currentUser: UserViewModel) -> String {
+    static func stringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], currentUserId: String) -> String {
         let statuses = recipientStatus
-            .filter { key, _ in key != currentUser.userId }
+            .filter { key, _ in key != currentUserId }
             .map { ($0 as! String, LYRRecipientStatus(rawValue: $1 as! Int)!) }
         
         var statusString: String!
@@ -255,13 +170,42 @@ public struct Formatters {
         return statusString
     }
     
-    static func attributedStringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], currentUser: UserViewModel) -> NSAttributedString {
-        return NSAttributedString(string: stringForDisplayOfRecipientStatus(recipientStatus, currentUser: currentUser), attributes: [
+    static func attributedStringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], currentUserId: String) -> NSAttributedString {
+        return NSAttributedString(string: stringForDisplayOfRecipientStatus(recipientStatus, currentUserId: currentUserId), attributes: [
             NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSFontAttributeName: CabinBold11
         ])
     }
     
+    // MARK: - Formatting Conversation Status
+    
+    private static let timeInterval: TTTTimeIntervalFormatter = {
+        let formatter = TTTTimeIntervalFormatter()
+        formatter.presentTimeIntervalMargin = 60
+        formatter.usesIdiomaticDeicticExpressions = true
+        formatter.usesAbbreviatedCalendarUnits = true
+        return formatter
+    }()
+    
+    public static func formatRelativeDate(date: NSDate?, relativeTo: NSDate = NSDate()) -> String? {
+        if let date = date {
+            let interval = relativeTo.timeIntervalSinceDate(date)
+            let secondsPerDay: Double = 24 * 60 * 60
+            
+            if interval > secondsPerDay * 365 {
+                return date.formattedDateWithFormat("MMM d, yyyy") // 13 Jun, 2015
+            } else if interval > secondsPerDay * 7 {
+                return date.formattedDateWithFormat("MMM d") // 13 Jun
+            } else if interval > secondsPerDay * 2 {
+                return date.formattedDateWithFormat("EEEE h:mma") // Saturday 1:05PM
+            } else if interval > secondsPerDay {
+                let timeText = date.formattedDateWithFormat("h:mma")
+                return "Yesterday \(timeText)"
+            }
+            return timeInterval.stringForTimeIntervalFromDate(NSDate(), toDate: date)
+        }
+        return nil
+    }
     public static func readableStatusWithDate(msg: LYRMessage, currentUserId: String) -> String? {
         let sentLast = msg.sender.userID == currentUserId
         let date: NSDate? = sentLast ? msg.sentAt : msg.receivedAt
