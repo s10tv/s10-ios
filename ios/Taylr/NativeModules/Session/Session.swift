@@ -19,7 +19,10 @@ extension DefaultsKeys {
     static let username = DefaultsKey<String?>("ts_username")
     static let email = DefaultsKey<String?>("ts_email")
     static let phone = DefaultsKey<String?>("ts_phone")
+    static let firstName = DefaultsKey<String?>("ts_firstName")
+    static let lastName = DefaultsKey<String?>("ts_lastName")
     static let fullname = DefaultsKey<String?>("ts_fullname")
+    static let displayName = DefaultsKey<String?>("ts_displayName")
     static let avatarURL = DefaultsKey<NSURL?>("ts_avatarURL")
     static let coverURL = DefaultsKey<NSURL?>("ts_coverURL")
 }
@@ -51,9 +54,21 @@ class Session : NSObject {
         get { return ud[.phone] }
         set { ud[.phone] = newValue }
     }
+    private(set) var firstName: String? {
+        get { return ud[.firstName] }
+        set { ud[.firstName] = newValue }
+    }
+    private(set) var lastName: String? {
+        get { return ud[.lastName] }
+        set { ud[.lastName] = newValue }
+    }
     private(set) var fullname: String? {
         get { return ud[.fullname] }
         set { ud[.fullname] = newValue }
+    }
+    private(set) var displayName: String? {
+        get { return ud[.displayName] }
+        set { ud[.displayName] = newValue }
     }
     private(set) var avatarURL: NSURL? {
         get { return ud[.avatarURL] }
@@ -108,7 +123,10 @@ class Session : NSObject {
         self.username = nil
         self.phone = nil
         self.email = nil
+        self.firstName = nil
+        self.lastName = nil
         self.fullname = nil
+        self.displayName = nil
         self.avatarURL = nil
         self.coverURL = nil
         ud.synchronize()
@@ -152,12 +170,30 @@ extension Session {
         DDLogInfo("setUserEmail email=\(email)")
     }
     
+    @objc func setUserFirstName(firstName: String?) {
+        assert(loggedIn)
+        self.firstName = firstName
+        DDLogInfo("setUserFirstName firstName=\(firstName)")
+    }
+    
+    @objc func setUserLastName(lastName: String?) {
+        assert(loggedIn)
+        self.lastName = lastName
+        DDLogInfo("setUserLastName lastName=\(lastName)")
+    }
+
     @objc func setUserFullname(fullname: String?) {
         assert(loggedIn)
         self.fullname = fullname
         DDLogInfo("setUserFullName fullname=\(fullname)")
     }
-    
+
+    @objc func setUserDisplayName(displayName: String?) {
+        assert(loggedIn)
+        self.displayName = displayName
+        DDLogInfo("setUserDisplayName displayName=\(displayName)")
+    }
+
     @objc func setUserAvatarURL(avatarURL: NSURL?) {
         assert(loggedIn)
         self.avatarURL = avatarURL
@@ -178,7 +214,10 @@ extension Session {
         json["username"] = username
         json["email"] = email
         json["phone"] = phone
+        json["firstName"] = firstName
+        json["lastName"] = lastName
         json["fullname"] = fullname
+        json["displayName"] = displayName
         json["avatarURL"] = RCTConvert.jsonNSURL(avatarURL)
         json["coverURL"] = RCTConvert.jsonNSURL(coverURL)
         DDLogInfo("Will export constants initialValue=\(json)")
