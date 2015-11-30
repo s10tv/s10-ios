@@ -204,6 +204,21 @@ extension ConversationViewController : ATLConversationViewControllerDelegate {
                 message: "The video you requested is still downloading. Please try again later :(")
         }
     }
+    func conversationViewController(viewController: ATLConversationViewController!, didSendMessage message: LYRMessage!) {
+        TSATrack("Message: Send", properties: [
+            "ConversationId": vm.conversationId,
+            "MessageType": message.messageType.rawValue
+            ])
+        DDLogDebug("Did send message conversationId=\(vm.conversationId) messageType=\(message.messageType.rawValue)")
+    }
+    
+    func conversationViewController(viewController: ATLConversationViewController!, didFailSendingMessage message: LYRMessage!, error: NSError!) {
+        TSATrack("Message: Send Failed", properties: [
+            "ConversationId": vm.conversationId,
+            "MessageType": message.messageType.rawValue
+            ])
+        DDLogError("Did fail to text message conversationId=\(vm.conversationId) messageType=\(message.messageType.rawValue)")
+    }
 }
 
 extension ConversationViewController : ConversationHistoryDelegate {

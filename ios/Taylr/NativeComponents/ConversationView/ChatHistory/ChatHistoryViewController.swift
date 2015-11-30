@@ -111,26 +111,3 @@ extension ConversationViewModel : ATLConversationViewControllerDataSource {
     }
     
 }
-
-extension ConversationViewModel : ATLConversationViewControllerDelegate {
-    
-    public func conversationViewController(viewController: ATLConversationViewController!, didSendMessage message: LYRMessage!) {
-        TSATrack("Message: Send", properties: [
-            "ConversationId": conversationId,
-            "MessageType": message.messageType.rawValue
-        ])
-        DDLogDebug("Did send message conversationId=\(conversationId) messageType=\(message.messageType.rawValue)")
-    }
-    
-    public func conversationViewController(viewController: ATLConversationViewController!, didFailSendingMessage message: LYRMessage!, error: NSError!) {
-        TSATrack("Message: Send Failed", properties: [
-            "ConversationId": conversationId,
-            "MessageType": message.messageType.rawValue
-        ])
-        DDLogError("Did fail to text message conversationId=\(conversationId) messageType=\(message.messageType.rawValue)")
-    }
-    
-    public func conversationViewController(conversationViewController: ATLConversationViewController!, configureCell cell: UICollectionViewCell!, forMessage message: LYRMessage!) {
-        
-    }
-}
