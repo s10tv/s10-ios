@@ -42,6 +42,16 @@ platform :ios do
     end
   end
 
+  desc 'Helper to add device to developer portal and renew all provisioning Profiles. Takes :name and :uuid'
+  lane :register_device do |options|
+    raise ':name missing' unless options[:name]
+    raise ':uuid missing' unless options[:uuid]
+    devices = {}
+    devices[options[:name]] = options[:uuid]
+    register_devices(devices: devices)
+    download_profiles(dev: true, adhoc: true, force: true)
+  end
+
   desc 'Import certificates into taylr keychain'
   lane :import_certs do
     create_keychain(name: 'taylr', password: 'serendipity', unlock: true, timeout: false)
@@ -60,8 +70,9 @@ platform :ios do
   desc 'Download provisioning profile for desired variants :dev :adhoc :appstore'
   lane :download_profiles do |options|
     ENV['SIGH_OUTPUT_PATH'] = '/tmp'
-    sigh(app_identifier: 'tv.s10.taylr.dev', development: true) if options[:dev]
-    sigh(app_identifier: 'tv.s10.taylr', adhoc: true) if options[:adhoc]
+    force = options[:force] || false
+    sigh(app_identifier: 'tv.s10.taylr.dev', development: true, force: force) if options[:dev]
+    sigh(app_identifier: 'tv.s10.taylr', adhoc: true, force: force) if options[:adhoc]
     sigh(app_identifier: 'tv.s10.taylr') if options[:appstore]
   end
 
@@ -190,6 +201,6 @@ platform :ios do
     sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ../ios/Pods/'
     # TODO: Figure out path to xcarchive and backup the archive along with the Pods
     # backup_xcarchive(destination: ENV['CIRCLE_ARTIFACTS'])
-  end  
+  end
 
 end
