@@ -267,11 +267,14 @@ extension AppDelegate : RCTBridgeDelegate {
             DDLogInfo("Will return ReactNative sourceURL hostname=\(devMachineIP)")
             return NSURL("http://\(devMachineIP):8081/index.ios.bundle?platform=ios&dev=true")
         } else if deps.env.isRunningInSimulator {
+            DDLogInfo("Will return ReactNative sourceURL from localhost")
             return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
         } else if deps.env.build == "0" {
+            DDLogInfo("Will return ReactNative sourceURL from mainBundle main.jsbundle")
             return NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle")
         } else {
             let build = deps.appHubBuild.currentBuild
+            DDLogInfo("Will return ReactNative sourceURL from appHub identifer=\(build.identifier) name=\(build.name)")
             return build.bundle.URLForResource("main", withExtension: "jsbundle")
         }
     }
