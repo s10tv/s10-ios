@@ -121,6 +121,40 @@ platform :ios do
     }.gsub(/^\s+/, "").strip
   end
 
+  desc 'Upload to apphub to update ReactNative bundle of existing clients, use :ipa_path to specify ipa file'
+  lane :upload_apphub do |options|
+    app_id = options[:app_id] || ENV['APPHUB_APP_ID']
+    app_secret = options[:app_secret] || ENV['APPHUB_APP_SECRET']
+    ipa_path = options[:ipa_path] || ENV['IPA_PATH']
+
+    raise 'app_id missing' unless app_id
+    raise 'app_secret missing' unless app_secret
+    raise 'ipa_path missing' unless ipa_path
+
+    name = get_version_number(xcodeproj: './ios/Taylr.xcodeproj')
+    if ENV['BUILD_NUMBER']
+      name = "v#{name} (#{ENV['BUILD_NUMBER']})" 
+    else
+      name = "v#{name}"
+    end
+
+    meta = { :target => options[:target] || 'none' }
+    meta[:name] = name # Does not work unfortunately :(
+    meta[:description] = options[:description] if options[:description]
+    meta[:description] ||= "#{name}\n#{release_notes}"
+    meta[:app_versions] = [options[:app_version]] if options[:app_version]
+
+    # Need to get to correct working dir, see https://github.com/fastlane/fastlane/issues/155
+    command = ['cd ..; curl -X PUT']
+    command << "-H 'X-AppHub-Application-ID: #{app_id}'"
+    command << "-H 'X-AppHub-Application-Secret: #{app_secret}'"
+    command << "-H 'X-AppHub-Build-Metadata: #{meta.to_json}'"
+    command << '-L https://api.apphub.io/v1/upload'
+    command << "--upload-file #{ipa_path}"
+
+    sh command.join(" ")
+  end
+
   desc 'Upload an existing build to crashlytics. Pass in :ipa_path to specify exact file'
   lane :upload_crashlytics do |options|
     notes = release_notes

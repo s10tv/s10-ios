@@ -29,8 +29,15 @@ deployment:
     branch: master
     commands:
       - fastlane upload_crashlytics
+      - fastlane upload_apphub target:none
 
   prod:
     branch: prod
     commands:
+      # TODO: Also upload to crashlytics would be nice, also auto-release to beta would be nice too
       - fastlane upload_itunesconnect
+      # This will distribute to TestFlight users, in order to distribute to appstore
+      # Manully visit https://dashboard.apphub.io/projects/uCG85kfu67WewOZVEQBk/ and change target
+      - fastlane upload_apphub target:debug
+
+  # TODO: Create appstore branch, upload to Crashlytics + beta + apphub target:all + deliver & submit to store
