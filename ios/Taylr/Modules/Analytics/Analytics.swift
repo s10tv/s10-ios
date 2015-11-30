@@ -9,17 +9,38 @@
 import Foundation
 import CocoaLumberjack
 
-public let Analytics = TSAnalytics()
+public func TSATrack(event: String, properties: [String: AnyObject]? = nil) {
+    assert(Analytics.defaultInstance != nil)
+    Analytics.defaultInstance?.track(event, properties: properties)
+}
+
+public func TSAScreen(name: String, properties: [String: AnyObject]? = nil) {
+    assert(Analytics.defaultInstance != nil)
+    Analytics.defaultInstance?.screen(name, properties: properties)
+}
+
+public func TSASetUserProperties(properties: [String: AnyObject]) {
+    assert(Analytics.defaultInstance != nil)
+    Analytics.defaultInstance?.setUserProperties(properties)
+}
+
+extension Session : AnalyticsContext {
+    var deviceId: String { return env.deviceId }
+    var deviceName: String { return env.deviceName }
+}
 
 @objc(TSAnalytics)
-public class TSAnalytics : NSObject {
+public class Analytics : NSObject {
+    public static var defaultInstance: Analytics?
+    
+    let session: Session
     private var providers: [AnalyticsProvider] = []
-
-    // Session should be set before any call to analytics gets made
-    var session: Session!
+    
+    init(session: Session) {
+        self.session = session
+    }
     
     func addProviders(providers: [AnalyticsProvider]) {
-        assert(session != nil)
         for provider in providers {
             provider.context = session
             self.providers.append(provider)
@@ -58,14 +79,9 @@ public class TSAnalytics : NSObject {
     }
 }
 
-extension Session : AnalyticsContext {
-    var deviceId: String { return env.deviceId }
-    var deviceName: String { return env.deviceName }
-}
-
 // MARK: - JavaScript API
 
-extension TSAnalytics {
+extension Analytics {
     
     @objc func userDidLogin(isNewUser: Bool) {
         eachProvider { $0.login(isNewUser) }

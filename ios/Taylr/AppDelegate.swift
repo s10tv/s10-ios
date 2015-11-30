@@ -21,7 +21,9 @@ import Branch
 struct Dependencies {
     let env: Environment
     let config: AppConfig
+    let logger: Logger
     let session: Session
+    let analytics: Analytics
     let ouralabs: DDOuralabsLogger
     let crashlytics: DDCrashlyticsLogger
     let oneSignal: OneSingalProvider
@@ -40,26 +42,23 @@ struct Dependencies {
         config = AppConfig(env: env)
         
         // MARK: Setup Logging
+        logger = Logger()
         ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
         crashlytics = DDCrashlyticsLogger(crashlytics: Crashlytics.sharedInstance())
         crashlytics.logFormatter = TagLogFormatter()
         DDTTYLogger.sharedInstance().logFormatter = TagLogFormatter()
         DDASLLogger.sharedInstance().logFormatter = TagLogFormatter()
-//        Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
-        Logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
-        Logger.addLogger(ouralabs)
-        Logger.addLogger(crashlytics)
         #if Debug
-            Logger.addLogger(DDNSLogger(viewerHostName: env.devMachineIP))
+            logger.addLogger(DDNSLogger(viewerHostName: env.devMachineIP))
+//        logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         #endif
-        // Capture NSLog statements emitted by 3rd party
-        DDASLLogCapture.setCaptureLevel(.Info)
-        DDASLLogCapture.start()
-        
-        // MARK: Setup Session
+        logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
+        logger.addLogger(ouralabs)
+        logger.addLogger(crashlytics)
+
+        // MARK: Setup Session & Analytics
         session = Session(userDefaults: NSUserDefaults.standardUserDefaults(), env: env)
         
-        // MARK: Setup Analytics
         // NOTE: When OneSignal inits it automatically calls application.registerForRemoteNotifications()
         oneSignal = OneSingalProvider(appId: config.oneSignalAppId, launchOptions: launchOptions)
         branch = BranchProvider(branchKey: config.branchKey)
@@ -68,8 +67,9 @@ struct Dependencies {
         intercom = IntercomProvider(config: config)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
-        Analytics.session = session
-        Analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
+        analytics = Analytics(session: session)
+        analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
+        Analytics.defaultInstance = analytics
         
         // MARK: Setup Layer (used for receiving remote notifications and such)
         layer = LayerService(layerAppID: config.layerURL)
@@ -111,7 +111,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         }
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        Analytics.appDidLaunch(launchOptions)
+        deps.analytics.appDidLaunch(launchOptions)
 
         // Pre-heat the camera if we can
         VideoMakerViewController.preloadRecorder()
@@ -128,11 +128,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        Analytics.appWillEnterForeground()
+        deps.analytics.appWillEnterForeground()
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        Analytics.appDidEnterBackground()
+        deps.analytics.appDidEnterBackground()
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -157,14 +157,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         DDLogInfo("Registered for push \(deviceToken)")
-        Analytics.appDidRegisterForPushToken(deviceToken)
+        deps.analytics.appDidRegisterForPushToken(deviceToken)
         if let apsEnv = deps.env.apsEnvironment?.rawValue {
             let pushToken = deviceToken.hexString()
             rnSendAppEvent(.RegisteredPushToken, body: [
                 "apsEnv": apsEnv,
                 "deviceToken": pushToken
             ])
-            Analytics.setUserProperties(["Push Token": pushToken])
+            deps.analytics.setUserProperties(["Push Token": pushToken])
         } else if !deps.env.isRunningInSimulator {
             DDLogError("Non-simulator build should have valid APS environment")
             // fatalError("Non-simulator build should have valid APS environment")
@@ -182,12 +182,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         } else {
             DDLogWarn("Register for push is not supported in simulator")
         }
-        Analytics.setUserProperties(["Push Token": NSNull()])
+        deps.analytics.setUserProperties(["Push Token": NSNull()])
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         DDLogDebug("Did receive notification \(userInfo)")
-        Analytics.appDidReceivePushNotification(userInfo)
+        deps.analytics.appDidReceivePushNotification(userInfo)
         assert(deps != nil)
         let handled = deps.layer.layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
             if let error = error {
@@ -248,8 +248,8 @@ extension AppDelegate : RCTBridgeDelegate {
             ConversationViewManager(layer: deps.layer, session: deps.session),
             BridgeManager(env: deps.env, config: deps.config),
             deps.session,
-            Analytics,
-            Logger,
+            deps.analytics,
+            deps.logger,
             deps.layer,
             deps.intercom,
         ]
@@ -261,7 +261,7 @@ extension AppDelegate : RCTBridgeDelegate {
 extension AppDelegate : CrashlyticsDelegate {
     func crashlyticsDidDetectReportForLastExecution(report: CLSReport, completionHandler: (Bool) -> Void) {
         DDLogError("Crash detected during last execution identifier=\(report.identifier)", tag: report.customKeys)
-        Analytics.track("Crash Detected")
+        deps.analytics.track("Crash Detected")
         completionHandler(true)
     }
 }

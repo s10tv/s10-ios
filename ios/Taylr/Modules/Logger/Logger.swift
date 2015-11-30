@@ -1,5 +1,5 @@
 //
-//  Logging.swift
+//  Logger.swift
 //  Serendipity
 //
 //  Created by Tony Xiao on 2/4/15.
@@ -9,13 +9,14 @@
 import Foundation
 import CocoaLumberjack
 
-let Logger = TSLogger()
-
 @objc(TSLogger)
-public class TSLogger : NSObject {
+public class Logger : NSObject {
     
     override init() {
         defaultDebugLevel = .Verbose
+        // Capture NSLog statements emitted by 3rd party
+        DDASLLogCapture.setCaptureLevel(.Info)
+        DDASLLogCapture.start()
     }
     
     func addLogger(logger: DDLogger) {

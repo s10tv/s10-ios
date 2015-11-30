@@ -176,7 +176,7 @@ extension ConversationViewController : VideoMakerDelegate {
             self.scrollDownHint.hidden = false
             self.scrollView.scrollEnabled = true
             self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
-            Analytics.track("Message: Send", properties: ["ConversationName": self.vm.displayName.value])
+            TSATrack("Message: Send", properties: ["ConversationName": self.vm.displayName.value])
         }
     }
 }
@@ -190,7 +190,7 @@ extension ConversationViewController : ATLConversationViewControllerDelegate {
             videoPlayer.vm.playlist.array = [video]
             presentViewController(videoPlayer, animated: false, completion: nil)
         } else if message.videoPart != nil {
-            Analytics.track("Conversation: TappedUnavailableVideo")
+            TSATrack("Conversation: TappedUnavailableVideo")
             showAlert("Video Downloading",
                 message: "The video you requested is still downloading. Please try again later :(")
         }
@@ -214,7 +214,7 @@ extension ConversationViewController : ConversationHistoryDelegate {
 extension ConversationViewController : VideoPlayerViewControllerDelegate {
     func videoPlayer(videoPlayer: VideoPlayerViewController, didPlayVideo video: Video) {
         vm.markMessageAsRead(video.identifier)
-        Analytics.track("Message: Open", properties: [
+        TSATrack("Message: Open", properties: [
             "MessageId": video.identifier
         ])
     }
