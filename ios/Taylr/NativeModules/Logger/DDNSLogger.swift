@@ -35,6 +35,7 @@ class DDNSLogger : DDAbstractLogger {
             kLoggerOption_BrowseOnlyLocalDomain
         ))
         LoggerStart(logger)
+        print("Did start NSLogger with viewerHost=\(hostName) bonjourName=\(bonjourName)")
         super.init()
         logFormatter = TagLogFormatter(timestamp: false, level: false, domain: false)
     }
