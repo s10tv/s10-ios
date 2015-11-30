@@ -10,6 +10,7 @@
 		4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA6C7823A20B63EB451A15E /* Pods.framework */; };
 		EA08BDF51C091BF300040D56 /* OneSingalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */; };
 		EA08BE011C092E8500040D56 /* Taylr-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08BE001C092E8500040D56 /* Taylr-Bridging.m */; };
+		EA0F4C2B1C0C55AA00B0BC69 /* METAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0F4C291C0C55AA00B0BC69 /* METAccount.m */; };
 		EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */; };
 		EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E01BFC4CD800DF7B58 /* R.swift */; };
 		EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */; };
@@ -81,7 +82,6 @@
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
 		EA8A510A1C045229004660E1 /* IntercomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8A51091C045229004660E1 /* IntercomProvider.m */; };
 		EA8A510F1C0460B8004660E1 /* BranchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A510E1C0460B8004660E1 /* BranchProvider.swift */; };
-		EA8A51171C04D96D004660E1 /* METAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8A51161C04D96D004660E1 /* METAccount.m */; };
 		EA988BFA1C06EF84002A80D1 /* DDCrashlyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA988BF91C06EF84002A80D1 /* DDCrashlyticsLogger.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
@@ -154,6 +154,8 @@
 		7AA6C7823A20B63EB451A15E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneSingalProvider.swift; sourceTree = "<group>"; };
 		EA08BE001C092E8500040D56 /* Taylr-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Taylr-Bridging.m"; sourceTree = "<group>"; };
+		EA0F4C291C0C55AA00B0BC69 /* METAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METAccount.m; sourceTree = "<group>"; };
+		EA0F4C2A1C0C55AA00B0BC69 /* METAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METAccount.h; sourceTree = "<group>"; };
 		EA1979E01BFC4CD800DF7B58 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
@@ -215,7 +217,6 @@
 		EA3336721BFEC39000BF9A87 /* ConversationListView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationListView.js; path = ../../../../components/chat/ConversationListView.js; sourceTree = "<group>"; };
 		EA3336761BFEC39900BF9A87 /* ConversationView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationView.js; path = ../../../../components/chat/ConversationView.js; sourceTree = "<group>"; };
 		EA3336861BFF062800BF9A87 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
-		EA33368B1BFF0E6100BF9A87 /* LayerService.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = LayerService.js; path = ../../../../lib/LayerService.js; sourceTree = "<group>"; };
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
@@ -232,8 +233,6 @@
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA8A51091C045229004660E1 /* IntercomProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomProvider.m; sourceTree = "<group>"; };
 		EA8A510E1C0460B8004660E1 /* BranchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchProvider.swift; sourceTree = "<group>"; };
-		EA8A51161C04D96D004660E1 /* METAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METAccount.m; sourceTree = "<group>"; };
-		EA8A51191C04D97F004660E1 /* METAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METAccount.h; sourceTree = "<group>"; };
 		EA988BF91C06EF84002A80D1 /* DDCrashlyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCrashlyticsLogger.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -399,19 +398,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EA3225911BFDAE8A00FF5074 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				F98F2FE31C057F1400793ECA /* RNCookieManagerIOS */,
-				F9DDF7131BFFA18300D7A2FC /* UIImagePickerManager */,
-				EAA5E8DB1BFEAEE4009DE994 /* BridgeManager */,
-				EA3225B61BFDAE8A00FF5074 /* Logger */,
-				EA3225921BFDAE8A00FF5074 /* Analytics */,
-				EA3225B01BFDAE8A00FF5074 /* Layer */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
 		EA3225921BFDAE8A00FF5074 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,7 +417,6 @@
 				EA3225B31BFDAE8A00FF5074 /* LayerQueries.swift */,
 				EA3225B41BFDAE8A00FF5074 /* LayerService.swift */,
 				EA3225B51BFDAE8A00FF5074 /* LayerService.m */,
-				EA33368B1BFF0E6100BF9A87 /* LayerService.js */,
 			);
 			path = Layer;
 			sourceTree = "<group>";
@@ -554,9 +539,8 @@
 				EA1979FE1BFC4D2600DF7B58 /* Extensions */,
 				EA197A121BFC4D2600DF7B58 /* Library */,
 				EA32258A1BFDAE8A00FF5074 /* Models */,
-				EA3225911BFDAE8A00FF5074 /* Modules */,
 				EAD7A8D21C0BC92200E4A447 /* NativeModules */,
-				EAA5E8DA1BFEABA8009DE994 /* Components */,
+				EAA5E8DA1BFEABA8009DE994 /* NativeComponents */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA197A851BFCFC3800DF7B58 /* RootViewController.swift */,
@@ -583,13 +567,13 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		EAA5E8DA1BFEABA8009DE994 /* Components */ = {
+		EAA5E8DA1BFEABA8009DE994 /* NativeComponents */ = {
 			isa = PBXGroup;
 			children = (
 				EA3225F51BFDAEEB00FF5074 /* ConversationListView */,
 				EA3225E11BFDAEEB00FF5074 /* ConversationView */,
 			);
-			path = Components;
+			path = NativeComponents;
 			sourceTree = "<group>";
 		};
 		EAA5E8DB1BFEAEE4009DE994 /* BridgeManager */ = {
@@ -597,8 +581,6 @@
 			children = (
 				EAA5E8DD1BFEAEE4009DE994 /* BridgeManager.swift */,
 				EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */,
-				EA8A51191C04D97F004660E1 /* METAccount.h */,
-				EA8A51161C04D96D004660E1 /* METAccount.m */,
 			);
 			path = BridgeManager;
 			sourceTree = "<group>";
@@ -631,6 +613,12 @@
 		EAD7A8D21C0BC92200E4A447 /* NativeModules */ = {
 			isa = PBXGroup;
 			children = (
+				F98F2FE31C057F1400793ECA /* RNCookieManagerIOS */,
+				F9DDF7131BFFA18300D7A2FC /* UIImagePickerManager */,
+				EAA5E8DB1BFEAEE4009DE994 /* BridgeManager */,
+				EA3225B61BFDAE8A00FF5074 /* Logger */,
+				EA3225921BFDAE8A00FF5074 /* Analytics */,
+				EA3225B01BFDAE8A00FF5074 /* Layer */,
 				EAD7A8E01C0BCBDF00E4A447 /* Session */,
 			);
 			path = NativeModules;
@@ -639,6 +627,8 @@
 		EAD7A8E01C0BCBDF00E4A447 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				EA0F4C291C0C55AA00B0BC69 /* METAccount.m */,
+				EA0F4C2A1C0C55AA00B0BC69 /* METAccount.h */,
 				EAD7A8E21C0BCBDF00E4A447 /* Session.swift */,
 				EAD7A8E11C0BCBDF00E4A447 /* Session.m */,
 				EA32DA2B1C0C0EC2001D5978 /* Session.js */,
@@ -1003,11 +993,11 @@
 				EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */,
 				EABE4C591C03BBAD001557A1 /* AnalyticsProvider.swift in Sources */,
 				EA3225C01BFDAE8A00FF5074 /* Video.swift in Sources */,
-				EA8A51171C04D96D004660E1 /* METAccount.m in Sources */,
 				EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */,
 				EA3225DE1BFDAE8A00FF5074 /* DDOuralabsLogger.swift in Sources */,
 				EA3225D91BFDAE8A00FF5074 /* LayerHelpers.swift in Sources */,
 				EA3225FC1BFDAEEB00FF5074 /* ChatHistoryViewController.swift in Sources */,
+				EA0F4C2B1C0C55AA00B0BC69 /* METAccount.m in Sources */,
 				EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */,
 				EA3226371BFDB9C000FF5074 /* RACBindings.swift in Sources */,
 				EA32260B1BFDAEEB00FF5074 /* ConversationListView.swift in Sources */,
