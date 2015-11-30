@@ -33,6 +33,9 @@ public class Environment {
     public var deviceName: String {
         return UIDevice.currentDevice().name
     }
+    public var devMachineIP: String? {
+        return NSBundle.mainBundle().objectForInfoDictionaryKey("DevMachineIP") as? String
+    }
     
     public var apsEnvironment: ApsEnvironment? {
         // Simulator

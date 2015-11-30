@@ -50,7 +50,7 @@ struct Dependencies {
         Logger.addLogger(ouralabs)
         Logger.addLogger(crashlytics)
         #if Debug
-            Logger.addLogger(DDNSLogger())
+            Logger.addLogger(DDNSLogger(viewerHostName: env.devMachineIP))
         #endif
         // Capture NSLog statements emitted by 3rd party
         DDASLLogCapture.setCaptureLevel(.Info)
@@ -118,6 +118,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         deps.session.appDidLaunch()
         DDLogInfo("App Did Launch", tag: [
+            "devMachineIP": deps.env.devMachineIP ?? NSNull(),
             "deviceId": deps.env.deviceId,
             "deviceName": deps.env.deviceName,
             "previousBuild": deps.session.previousBuild ?? NSNull(),
@@ -226,9 +227,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 extension AppDelegate : RCTBridgeDelegate {
     
     func sourceURLForBridge(bridge: RCTBridge!) -> NSURL! {
-        // Tony's Computer, uncomment for live, on-device development
-        //        return NSURL("http://192.168.0.252:8081/index.ios.bundle?platform=ios&dev=true")
-        if deps.env.isRunningInSimulator {
+        if let devMachineIP = deps.env.devMachineIP {
+            DDLogInfo("Will reeturn reactNative sourceURL hostname=\(devMachineIP)")
+            return NSURL("http://\(devMachineIP):8081/index.ios.bundle?platform=ios&dev=true")
+        } else if deps.env.isRunningInSimulator {
             return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
         } else if deps.env.build == "0" {
             return NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle")

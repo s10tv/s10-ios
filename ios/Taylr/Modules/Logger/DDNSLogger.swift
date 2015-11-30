@@ -23,8 +23,8 @@ class DDNSLogger : DDAbstractLogger {
     #if Debug
     let logger = LoggerInit()
     
-    override init() {
-        let hostName = NSProcessInfo().environment["NSLoggerViewerHost"] ?? "localhost"
+    init(viewerHostName: String?) {
+        let hostName = NSProcessInfo().environment["NSLoggerViewerHost"] ?? viewerHostName ?? "localhost"
         let bonjourName = NSProcessInfo().environment["NSLoggerBonjourName"] ?? "taylr-nslogger"
         LoggerSetViewerHost(logger, hostName, 50000)
         LoggerSetupBonjour(logger, nil, bonjourName)

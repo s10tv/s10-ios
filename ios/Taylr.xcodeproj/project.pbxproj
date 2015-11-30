@@ -701,6 +701,7 @@
 				22B85F6A287D7401CC82E5E2 /* Embed Pods Frameworks */,
 				EA2666CC1BFA57B70054C777 /* Bundle React Native code and images */,
 				EA42164B1B3E211E00613EFA /* Fabric Script */,
+				EA32DA291C0BFCD7001D5978 /* Embed Dev Machine IP */,
 			);
 			buildRules = (
 			);
@@ -927,6 +928,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ \"${ARCHS}\" = \"x86_64\" ]; then\n    echo 'Buidling for simulator only. Assume loading code bundle from react-native localhost server. Will skip react native xcode packing'\n    exit 0\nfi\n\nexport NVM_DIR=$HOME/.nvm\n[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh\n[[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh\n../node_modules/react-native/packager/react-native-xcode.sh\n\n";
+		};
+		EA32DA291C0BFCD7001D5978 /* Embed Dev Machine IP */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Dev Machine IP";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n\tINFOPLIST=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n\techo \"Debug config, will embed dev machine IP to to $INFOPLIST\"\n\tPLISTCMD=\"Add :DevMachineIP string $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\n\tPLISTCMD=\"Set :DevMachineIP $(ifconfig | grep inet\\ | tail -1 | cut -d \" \" -f 2)\"\n\techo -n \"$INFOPLIST\" | xargs -0 /usr/libexec/PlistBuddy -c \"$PLISTCMD\" || true\nelse\n\techo \"Release config, skip embedding dev machine IP\"\nfi\n";
 		};
 		EA42164B1B3E211E00613EFA /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
