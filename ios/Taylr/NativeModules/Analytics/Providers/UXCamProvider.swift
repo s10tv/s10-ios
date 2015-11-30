@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Intercom
+import CocoaLumberjack
 //#if Release
 import UXCam
 //#endif
@@ -25,24 +25,32 @@ public class UXCamProvider : NSObject, AnalyticsProvider {
         }
         if previousBuild == nil || currentBuild != previousBuild {
             UXCam.markSessionAsFavorite()
+            UXCam.addTag("App: Upgrade")
+            DDLogInfo("Will tag App: Upgrade")
         }
+        DDLogInfo("UXCam launch, usersName=\(context.userId)")
     }
     
     func login(isNewUser: Bool) {
+        DDLogInfo("Will mark session as favorite and tag Login usersName=\(context.userId)")
         UXCam.tagUsersName(context.userId)
         UXCam.markSessionAsFavorite()
+        UXCam.addTag("Login")
     }
     
     func logout() {
+        DDLogInfo("Will mark session as favorite and tag Logout usersName=\(context.deviceName)")
         UXCam.markSessionAsFavorite()
-        UXCam.tagUsersName(context.deviceName) // Going back to deviceId
+        UXCam.addTag("Logout")
     }
     
     func track(event: String, properties: [NSObject : AnyObject]?) {
+        DDLogDebug("Will tag tag=\(event)")
         UXCam.addTag(event)
     }
     
     func screen(name: String, properties: [NSObject : AnyObject]?) {
+        DDLogDebug("Will tag screenName=\(name)")
         UXCam.tagScreenName(name)
     }
 }
