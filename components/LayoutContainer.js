@@ -47,7 +47,7 @@ class LayoutContainer extends React.Component {
 
   componentWillMount() {
     this.props.store.subscribe(this.updateLayerState.bind(this));
-    
+
     this._ddpLogin()
 
     this.setState({
@@ -71,7 +71,7 @@ class LayoutContainer extends React.Component {
     this.setState({
       allConversationCount: state.allConversationCount,
       unreadConversationCount: state.unreadConversationCount,
-    }) 
+    })
   }
 
   formatUser(user) {
@@ -127,8 +127,8 @@ class LayoutContainer extends React.Component {
     } catch (err) {
       logger.warning(`Cannot logout of Meteor ${err}`);
     }
-    
-    this.setState({ 
+
+    this.setState({
       loggedIn: false,
       isActive: false,
       me: null,
@@ -169,9 +169,9 @@ class LayoutContainer extends React.Component {
           })
         }
 
-        if (indexedSettings.CWLRequired !== undefined && 
+        if (indexedSettings.CWLRequired !== undefined &&
             indexedSettings.tfCWLRequired !== undefined) {
-          let isCWLRequired = BridgeManager.isRunningTestFlightBeta() ? 
+          let isCWLRequired = BridgeManager.isRunningTestFlightBeta() ?
               indexedSettings.tfCWLRequired.value :
               indexedSettings.CWLRequired.value;
           this.setState({ isCWLRequired: isCWLRequired });
@@ -181,7 +181,7 @@ class LayoutContainer extends React.Component {
     .catch(err => { logger.error(err) })
   }
 
-  /** 
+  /**
    * account: { userId, resumeToken, expiryDate, isNewUser, hash }
    */
   async onUserLogin(account) {
@@ -243,17 +243,19 @@ class LayoutContainer extends React.Component {
         logger.debug(`Resume token exists. Logging in`);
 
         this.setState({ loggedIn: true, isActive: true });
-
         if (!this.state.me) {
           let defaultUser = {
-            userId: userId, 
-            firstName: 'FirstName',
-            lastName: 'lastName',
-            displayName: 'FirstName LastName',
-            avatarUrl: 'https://s3.amazonaws.com/profile_photos/25339545481234.vWxFtxXy7Xw3ntEkiPMu_27x27.png',
-            coverUrl: 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg',
+            userId: userId,
+            firstName: defaultAccount.firstName,
+            lastName: defaultAccount.lastName,
+            displayName: defaultAccount.fullname,
+            shortDisplayName: defaultAccount.fullname,
+            longDisplayName: defaultAccount.fullname,
+            avatarUrl: defaultAccount.avatarURL,
+            coverUrl: defaultAccount.coverURL,
             connectedProfiles: []
           }
+
           this.setState({ me: defaultUser });
         }
 
@@ -264,7 +266,7 @@ class LayoutContainer extends React.Component {
         } catch (err) {
           // there is no network
           logger.warning(JSON.stringify(err));
-          return; 
+          return;
         }
 
         try {
@@ -280,7 +282,7 @@ class LayoutContainer extends React.Component {
         return;
       }
     }
-    
+
     await ddp.initialize()
     this._subscribeSettings(false);
     this.setState({ loggedIn: false });
@@ -292,7 +294,7 @@ class LayoutContainer extends React.Component {
     this.setState({ loggedIn: true });
     this._layerLogin()
 
-    ////// ME 
+    ////// ME
     this.ddp.subscribe({ pubName: 'me' })
     .then(() => {
       ddp.collections.observe(() => {
@@ -301,12 +303,18 @@ class LayoutContainer extends React.Component {
         }
       }).subscribe(currentUser => {
         if (currentUser) {
+          let formattedUser = this.formatUser(currentUser);
+
           if (currentUser.firstName && currentUser.lastName) {
             Session.setFullname(`${currentUser.firstName} ${currentUser.lastName}`);
+            Session.setFirstName(currentUser.firstName);
+            Session.setLastName(currentUser.lastName);
+            Session.setAvatarURL(currentUser.avatarUrl);
+            Session.setCoverURL(currentUser.coverUrl);
             Analytics.updateFullname();
           }
 
-          this.setState({ me: this.formatUser(currentUser) });
+          this.setState({ me: formattedUser });
         }
     });
 
@@ -337,7 +345,7 @@ class LayoutContainer extends React.Component {
     .catch(err => { logger.error(err) });
 
 
-    ////// users 
+    ////// users
     ddp.collections.observe(() => {
         if (ddp.collections.users) {
           return ddp.collections.users.find({});
@@ -352,7 +360,7 @@ class LayoutContainer extends React.Component {
       });
     })
     .catch(err => { logger.error(err) });
-    
+
     ///// SETTINGS
     this._subscribeSettings()
 
@@ -424,7 +432,7 @@ class LayoutContainer extends React.Component {
             return this.ddp.call({ methodName: 'user/report', params: [user._id, 'Reported'] })
             .then(() => {
               Analytics.track("User: Confirmed Block")
-              AlertIOS.alert(`Reported ${user.firstName}`, 
+              AlertIOS.alert(`Reported ${user.firstName}`,
                 'Thanks for your input. We will look into this shortly.');
             })
           }},
@@ -452,7 +460,7 @@ class LayoutContainer extends React.Component {
         loggedIn={this.state.loggedIn}
         isActive={this.state.isActive}
         integrations={this.state.integrations}
-        me={this.state.me} 
+        me={this.state.me}
         categories={this.state.categories}
         myTags={this.state.myTags}
         onLogin={this.onUserLogin.bind(this)}
@@ -460,7 +468,7 @@ class LayoutContainer extends React.Component {
         settings={this.state.settings}
         isCWLRequired={this.state.isCWLRequired}
         updateProfile={this.updateProfile.bind(this)}
-        ddp={this.ddp} /> 
+        ddp={this.ddp} />
     }
 
     return <RootNavigator
