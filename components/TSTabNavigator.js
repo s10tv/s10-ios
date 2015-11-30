@@ -59,11 +59,11 @@ class TSTabNavigator extends React.Component {
     this.setState({
       editProfileCurrentlyFocused: true,
       editProfileKey: key,
-    }) 
+    })
   }
 
   onEditProfileBlur() {
-    this.setState({ editProfileCurrentlyFocused: false }) 
+    this.setState({ editProfileCurrentlyFocused: false })
   }
 
   _title(route, navigator, index, navState) {
@@ -113,7 +113,7 @@ class TSTabNavigator extends React.Component {
         buttonText = 'Done';
         break;
     }
-    
+
     return (
       <TouchableOpacity
         onPress={action}
@@ -159,7 +159,7 @@ class TSTabNavigator extends React.Component {
                   {text: 'Report', onPress: () => {
                     return this.props.ddp.call({ methodName: 'user/report', params: [route.me._id, 'Reported'] })
                     .then(() => {
-                      AlertIOS.alert(`Reported ${route.me.firstName}`, 
+                      AlertIOS.alert(`Reported ${route.me.firstName}`,
                         'Thanks for your input. We will look into this shortly.');
                     })
                   }},
@@ -167,9 +167,9 @@ class TSTabNavigator extends React.Component {
               )
             }}>
               <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: '#7E57C2' }]}>
-                Report 
+                Report
               </Text>
-        </TouchableOpacity> 
+        </TouchableOpacity>
       )
     }
     return null;
@@ -182,23 +182,23 @@ class TSTabNavigator extends React.Component {
       case 'edit':
         Analytics.screen("EditProfile");
         return <MeEditScreen navigator={nav}
-          ddp={this.props.ddp} 
+          ddp={this.props.ddp}
           updateProfile={this.props.updateProfile}
           onEditProfileChange={this.onEditProfileChange.bind(this)}
           onEditProfileFocus={this.onEditProfileFocus.bind(this)}
           onEditProfileBlur={this.onEditProfileBlur.bind(this)}
           me={this.props.me}
           integrations={this.props.integrations} />
-      
+
       case 'addhashtag':
         Analytics.screen("EditHashtags");
         return <HashtagListView
-          style={{ flex: 1 }} 
+          style={{ flex: 1 }}
           navigator={nav}
           ddp={this.props.ddp}
           myTags={this.props.myTags}
           category={route.category} />;
-      
+
       case 'linkservice':
         Analytics.screen("Link Integration", {
           "Name" : route.integration.name
@@ -221,16 +221,9 @@ class TSTabNavigator extends React.Component {
           ddp={this.props.ddp}/>
 
       case 'root':
-        if (this.state.currentTab) {
-          if (this.state.currentTab == 'Today') {
-            // This is incredibly inaccurate, generates 50+ events per session. Disabling
-            // Analytics.track('Today: View')
-          }
-        }
-
         return (
           <TabNavigator>
-            <TabNavigator.Item 
+            <TabNavigator.Item
               renderIcon={() => <Image source={require('./img/ic-me.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
               selectedTitleStyle={styles.selectedText}
@@ -238,7 +231,7 @@ class TSTabNavigator extends React.Component {
                 this.setState({currentTab: 'Me'});
               }}
               selected={this.state.currentTab == 'Me'}>
-              
+
               <MeScreen me={this.props.me}
                 parentNavigator={this.props.navigator}
                 onLogout={this.props.onLogout}
@@ -248,7 +241,7 @@ class TSTabNavigator extends React.Component {
                 ddp={this.props.ddp} />
 
             </TabNavigator.Item>
-            <TabNavigator.Item 
+            <TabNavigator.Item
               renderIcon={() => <Image source={require('./img/ic-compass.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
               selectedTitleStyle={styles.selectedText}
@@ -260,14 +253,14 @@ class TSTabNavigator extends React.Component {
               <DiscoverScreen
                 parentNavigator={this.props.navigator}
                 navigator={nav}
-                ddp={this.ddp} 
+                ddp={this.ddp}
                 candidate={this.props.candidate}
                 users={this.props.users}
                 me={this.props.me}
                 settings={this.props.settings} />
 
             </TabNavigator.Item>
-            <TabNavigator.Item 
+            <TabNavigator.Item
               badgeText={this.props.numUnreadConversations}
               renderIcon={() => <Image source={require('./img/ic-chats.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
@@ -276,13 +269,13 @@ class TSTabNavigator extends React.Component {
                 this.setState({currentTab: 'Conversations'});
               }}
               selected={this.state.currentTab == 'Conversations'}>
-              
+
               <ConversationListView
                 navigator={nav}
                 numTotalConversations={this.props.numTotalConversations}
                 style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
                 currentUser={me} />
-                
+
             </TabNavigator.Item>
           </TabNavigator>
         );
