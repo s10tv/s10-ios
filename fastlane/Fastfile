@@ -10,7 +10,7 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    # Handle Circle specific logic
+    # TODO: Move Circle specific logic into circle.yml
     circle_build_number = ENV['CIRCLE_BUILD_NUM']
     if circle_build_number
       circle_artifacts = ENV['CIRCLE_ARTIFACTS']
@@ -186,21 +186,6 @@ platform :ios do
     notes = release_notes
     options[:ipa] ||= ENV['IPA_PATH']
     pilot(skip_submission: true, changelog: notes, **options)
-  end
-
-  desc 'Archive build according to current $CIRCLE_BRANCH'
-  lane :circle_archive do
-    case ENV['CIRCLE_BRANCH']
-      when 'prod'
-        download_profiles(appstore: true)
-        archive(variant: 'appstore')
-      else
-        download_profiles(dev: true)
-        archive(variant: 'dev')
-    end
-    sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ../ios/Pods/'
-    # TODO: Figure out path to xcarchive and backup the archive along with the Pods
-    # backup_xcarchive(destination: ENV['CIRCLE_ARTIFACTS'])
   end
 
 end

@@ -16,25 +16,30 @@ dependencies:
     - fastlane pod_install
   post:
     - fastlane import_certs
+    - fastlane download_profiles dev:true adhoc:true appstore:true
   cache_directories:
     - "node_modules"
     - "ios/Pods"
 
 test:
   override:
-    - fastlane circle_archive
+    - fastlane archive variant:$([ "$CIRCLE_BRANCH" = 'prod' ] && echo 'dev' || echo 'appstore')
+    - zip -FSr $CIRCLE_ARTIFACTS/node_modules.zip node_modules/
+    - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/
+    # TODO: Figure out path to xcarchive and backup the archive along with the Pods
+    # fastlane backup_xcarchive(destination: ENV['CIRCLE_ARTIFACTS'])
+    # Also consider combining test and deployment into a single lane called circle_run to simplify
 
 deployment:
   master:
     branch: master
     commands:
       - fastlane upload_crashlytics
-      - fastlane upload_apphub target:none
 
   prod:
     branch: prod
     commands:
-      # TODO: Also upload to crashlytics would be nice, also auto-release to beta would be nice too
+      # TODO: Also upload to crashlytics
       - fastlane upload_itunesconnect
       # This will distribute to TestFlight users, in order to distribute to appstore
       # Manully visit https://dashboard.apphub.io/projects/uCG85kfu67WewOZVEQBk/ and change target
