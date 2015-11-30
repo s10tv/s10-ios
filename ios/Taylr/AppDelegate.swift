@@ -139,8 +139,10 @@ extension AppDelegate : UIApplicationDelegate {
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        branch.branch.handleDeepLink(url)
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
+        return branch.branch.handleDeepLink(url)
     }
 
     // MARK: Push Handling
