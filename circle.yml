@@ -23,7 +23,7 @@ dependencies:
 
 test:
   override:
-    - fastlane archive variant:$([ "$CIRCLE_BRANCH" = 'prod' ] && echo 'dev' || echo 'appstore')
+    - fastlane archive variant:$([ "$CIRCLE_BRANCH" = 'prod' ] && echo 'appstore' || echo 'dev')
     - zip -FSr $CIRCLE_ARTIFACTS/node_modules.zip node_modules/
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/
     # TODO: Figure out path to xcarchive and backup the archive along with the Pods
