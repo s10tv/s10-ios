@@ -175,14 +175,34 @@ extension Session {
         var json: [String: AnyObject] = [:]
         json["userId"] = userId
         json["resumeToken"] = resumeToken
-        json["tokenExpiry"] = tokenExpiry
+        json["tokenExpiry"] = RCTConvert.jsonNSDate(tokenExpiry)
         json["username"] = username
         json["email"] = email
         json["phone"] = phone
         json["fullname"] = fullname
-        json["avatarURL"] = avatarURL
-        json["coverURL"] = coverURL
+        json["avatarURL"] = RCTConvert.jsonNSURL(avatarURL)
+        json["coverURL"] = RCTConvert.jsonNSURL(coverURL)
         DDLogInfo("Will export constants initialValue=\(json)")
         return ["initialValue": json]
+    }
+}
+
+extension RCTConvert {
+
+    class func jsonNSDate(date: Foundation.NSDate?) -> String? {
+        struct Static {
+            static let formatter: NSDateFormatter = {
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                formatter.timeZone = Foundation.NSTimeZone(name: "UTC")
+                return formatter
+            }()
+        }
+        return date.map { Static.formatter.stringFromDate($0) }
+    }
+    
+    class func jsonNSURL(url: Foundation.NSURL?) -> String? {
+        return url?.absoluteString
     }
 }
