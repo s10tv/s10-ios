@@ -7,16 +7,15 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 import CocoaLumberjack
-import React
 import Branch
 import FBSDKCoreKit
-import NKRecorder
-import Fabric
 import DigitsKit
-import Crashlytics
 import LayerKit
-import Branch
+import React
+import NKRecorder
 
 struct Dependencies {
     let env: Environment
@@ -34,6 +33,7 @@ struct Dependencies {
     let segment: SegmentProvider
     let uxcam: UXCamProvider
     let layer: LayerService
+    let digits: Digits
     let appHubBuild: AHBuildManager
     
     init(launchOptions: [NSObject: AnyObject]?) {
@@ -48,7 +48,7 @@ struct Dependencies {
         DDTTYLogger.sharedInstance().logFormatter = TagLogFormatter()
         DDASLLogger.sharedInstance().logFormatter = TagLogFormatter()
         #if Debug
-            logger.addLogger(DDNSLogger(viewerHostName: env.devMachineIP))
+        logger.addLogger(DDNSLogger(viewerHostName: env.devMachineIP))
 //        logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         #endif
         logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
@@ -70,14 +70,16 @@ struct Dependencies {
         analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         Analytics.defaultInstance = analytics
         
-        // MARK: Setup Layer (used for receiving remote notifications and such)
+        // MARK: Setup 3rd party SDKs (used for receiving remote notifications and such)
         layer = LayerService(layerAppID: config.layerURL)
+        digits = Digits.sharedInstance()
         
         // MARK: Setup AppHub (over the air app update)
         AppHub.setApplicationID(config.appHubApplicationId)
         appHubBuild = AppHub.buildManager()
         appHubBuild.cellularDownloadsEnabled = true
         appHubBuild.debugBuildsEnabled = (config.audience != .AppStore)
+        DDLogInfo("Did Setup App Dependencies")
     }
 }
 
@@ -91,20 +93,22 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // MARK: Lifecycle
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        Crashlytics.sharedInstance().debugMode = true
+//        Crashlytics.sharedInstance().debugMode = true
         Crashlytics.sharedInstance().delegate = self
-        Fabric.with([Digits(), Crashlytics()]) // TODO: Separate Crashlytics initialization from Digits initialization
+        Fabric.with([Digits(), Crashlytics()])
         deps = Dependencies(launchOptions: launchOptions)
-        
-        DDLogInfo("SESSIONMARKER >>>>>>>> Application Will Launch <<<<<<<<")
+        // Wait till after deps initialize (aka logger & analytics) before logging crash error
         if let crashReport = crashReport {
             DDLogError("Crash detected during last execution identifier=\(crashReport.identifier)", tag: crashReport.customKeys)
             deps.analytics.track("Crash Detected", properties: ["CrashIdentifier": crashReport.identifier])
         }
+        deps.digits.sessionUpdateDelegate = self
+        DDLogDebug("[End] Application Will Launch")
         return true
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        DDLogInfo("[Start] Application Did Launch")
         // Start React Native app
         bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
         
@@ -130,7 +134,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         VideoMakerViewController.preloadRecorder()
         
         deps.session.appDidLaunch()
-        DDLogInfo("SESSIONMARKER >>>>>>>> Application Did Launch <<<<<<<<", tag: [
+        DDLogInfo("SESSIONMARKER >>>>>>>> [End] Application Did Launch <<<<<<<<", tag: [
             "devMachineIP": deps.env.devMachineIP ?? NSNull(),
             "deviceId": deps.env.deviceId,
             "deviceName": deps.env.deviceName,
@@ -239,6 +243,18 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             }
             completionHandler()
         }
+    }
+}
+
+// MARK: - DGTSessionUpdateDelegate
+
+extension AppDelegate : DGTSessionUpdateDelegate {
+    func digitsSessionHasChanged(newSession: DGTSession!) {
+        DDLogInfo("Digits session changed phone=\(newSession.phoneNumber) digitsUserId=\(newSession.userID)")
+    }
+    
+    func digitsSessionExpiredForUserID(userID: String!) {
+        DDLogWarn("Digits session expired digitsUserId=\(userID)")
     }
 }
 
