@@ -18,30 +18,24 @@ import Crashlytics
 import LayerKit
 import Branch
 
-@UIApplicationMain
-class AppDelegate : UIResponder {
-    var window: UIWindow?
+struct Dependencies {
+    let env: Environment
+    let config: AppConfig
+    let session: Session
+    let ouralabs: DDOuralabsLogger
+    let crashlytics: DDCrashlyticsLogger
+    let oneSignal: OneSingalProvider
+    let branch: BranchProvider
+    let amplitude: AmplitudeProvider
+    let mixpanel: MixpanelProvider
+    let intercom: IntercomProvider
+    let segment: SegmentProvider
+    let uxcam: UXCamProvider
+    let layer: LayerService
+    let appHubBuild: AHBuildManager
     
-    var env: Environment!
-    var config: AppConfig!
-    var session: Session!
-    var ouralabs: DDOuralabsLogger!
-    var crashlytics: DDCrashlyticsLogger!
-    var oneSignal: OneSingalProvider!
-    var branch: BranchProvider!
-    var amplitude: AmplitudeProvider!
-    var mixpanel: MixpanelProvider!
-    var intercom: IntercomProvider!
-    var segment: SegmentProvider!
-    var uxcam: UXCamProvider!
-    var layer: LayerService!
-    var bridge: RCTBridge!
-    var appHubBuild: AHBuildManager!
-    
-    func setupDependencies(launchOptions: [NSObject: AnyObject]?) {
-        Crashlytics.sharedInstance().delegate = self
+    init(launchOptions: [NSObject: AnyObject]?) {
         Fabric.with([Digits(), Crashlytics()])
-        
         env = Environment()
         config = AppConfig(env: env)
         
@@ -56,12 +50,12 @@ class AppDelegate : UIResponder {
         Logger.addLogger(ouralabs)
         Logger.addLogger(crashlytics)
         #if Debug
-        Logger.addLogger(DDNSLogger())
+            Logger.addLogger(DDNSLogger())
         #endif
-         // Capture NSLog statements emitted by 3rd party
+        // Capture NSLog statements emitted by 3rd party
         DDASLLogCapture.setCaptureLevel(.Info)
         DDASLLogCapture.start()
-
+        
         // MARK: Setup Session
         session = Session(userDefaults: NSUserDefaults.standardUserDefaults(), env: env)
         
@@ -85,45 +79,49 @@ class AppDelegate : UIResponder {
         appHubBuild = AppHub.buildManager()
         appHubBuild.cellularDownloadsEnabled = true
         appHubBuild.debugBuildsEnabled = (config.audience != .AppStore)
-        
-        // MARK: Start React Native
-        bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
     }
 }
 
-// MARK: - Application Delegate
-
-extension AppDelegate : UIApplicationDelegate {
-
+@UIApplicationMain
+class AppDelegate : UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    var deps: Dependencies!
+    var bridge: RCTBridge!
+    
+    // MARK: Lifecycle
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        setupDependencies(launchOptions)
+        Crashlytics.sharedInstance().delegate = self
+        deps = Dependencies(launchOptions: launchOptions)
+        bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = RootViewController(bridge: bridge)
         window?.makeKeyAndVisible()
         
-        branch.branch.initSessionWithLaunchOptions(launchOptions) { params, error in
+        deps.branch.branch.initSessionWithLaunchOptions(launchOptions) { params, error in
             DDLogInfo("Initialized branch session params=\(params) error=\(error)")
             self.rnSendAppEvent(.BranchInitialized, body: params)
         }
-        appHubBuild.fetchBuildWithCompletionHandler { build, error in
+        deps.appHubBuild.fetchBuildWithCompletionHandler { build, error in
 //            DDLogInfo("Fetched new build from app hub id=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate)")
 //            for version in build.compatibleIOSVersions { // Crashes right now...
 //                DDLogDebug("\(build.name): Compat Version - \(version)")
 //            }
         }
-    
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        session.appDidLaunch()
         Analytics.appDidLaunch(launchOptions)
 
         // Pre-heat the camera if we can
         VideoMakerViewController.preloadRecorder()
+        
+        deps.session.appDidLaunch()
         DDLogInfo("App Did Launch", tag: [
-            "deviceId": env.deviceId,
-            "deviceName": env.deviceName,
-            "previousBuild": session.previousBuild ?? NSNull(),
-            "currentBuild": env.build
+            "deviceId": deps.env.deviceId,
+            "deviceName": deps.env.deviceName,
+            "previousBuild": deps.session.previousBuild ?? NSNull(),
+            "currentBuild": deps.env.build
         ])
         return true
     }
@@ -140,12 +138,14 @@ extension AppDelegate : UIApplicationDelegate {
         application.applicationIconBadgeNumber = 0 // Clear notification first
         FBSDKAppEvents.activateApp()
     }
+    
+    // MARK: URL Handling
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
             return true
         }
-        return branch.branch.handleDeepLink(url)
+        return deps.branch.branch.handleDeepLink(url)
     }
 
     // MARK: Push Handling
@@ -157,19 +157,19 @@ extension AppDelegate : UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         DDLogInfo("Registered for push \(deviceToken)")
         Analytics.appDidRegisterForPushToken(deviceToken)
-        if let apsEnv = env.apsEnvironment?.rawValue {
+        if let apsEnv = deps.env.apsEnvironment?.rawValue {
             let pushToken = deviceToken.hexString()
             rnSendAppEvent(.RegisteredPushToken, body: [
                 "apsEnv": apsEnv,
                 "deviceToken": pushToken
             ])
             Analytics.setUserProperties(["Push Token": pushToken])
-        } else if !env.isRunningInSimulator {
+        } else if !deps.env.isRunningInSimulator {
             DDLogError("Non-simulator build should have valid APS environment")
             // fatalError("Non-simulator build should have valid APS environment")
         }
         do {
-            try layer.layerClient.updateRemoteNotificationDeviceToken(deviceToken)
+            try deps.layer.layerClient.updateRemoteNotificationDeviceToken(deviceToken)
         } catch let error as NSError {
             DDLogError("Unable to update Layer with push token", tag: error)
         }
@@ -185,10 +185,10 @@ extension AppDelegate : UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        Analytics.appDidReceivePushNotification(userInfo)
         DDLogDebug("Did receive notification \(userInfo)")
-        assert(layer != nil)
-        let handled = layer.layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
+        Analytics.appDidReceivePushNotification(userInfo)
+        assert(deps != nil)
+        let handled = deps.layer.layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
             if let error = error {
                 DDLogError("Failed to synchronize remote notification with layer", tag: error)
                 completionHandler(.Failed)
@@ -207,10 +207,10 @@ extension AppDelegate : UIApplicationDelegate {
         }
     }
 
-    // MARK: - Background Transfer
+    // MARK: Background Transfer
     
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
-        layer.layerClient.handleBackgroundContentTransfersForSession(identifier) { changes, error in
+        deps.layer.layerClient.handleBackgroundContentTransfersForSession(identifier) { changes, error in
             if let error = error {
                 DDLogError("Failed to handle layer background transfer", tag: error)
             } else {
@@ -228,35 +228,38 @@ extension AppDelegate : RCTBridgeDelegate {
     func sourceURLForBridge(bridge: RCTBridge!) -> NSURL! {
         // Tony's Computer, uncomment for live, on-device development
         //        return NSURL("http://192.168.0.252:8081/index.ios.bundle?platform=ios&dev=true")
-        if env.isRunningInSimulator {
+        if deps.env.isRunningInSimulator {
             return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
-        } else if env.build == "0" {
+        } else if deps.env.build == "0" {
             return NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle")
         } else {
-            let build = appHubBuild.currentBuild
+            let build = deps.appHubBuild.currentBuild
             return build.bundle.URLForResource("main", withExtension: "jsbundle")
         }
     }
     
     func extraModulesForBridge(bridge: RCTBridge!) -> [AnyObject]! {
+        // TODO: Move as many 'modules' from AppDependencies into here as possible
+        // So that their lifecycle may be managed by bridge. Also implement RCTInvalidating
         return [
-            ConversationListViewManager(layer: layer),
-            ConversationViewManager(layer: layer),
-            BridgeManager(env: env, config: config),
-            session,
+            ConversationListViewManager(layer: deps.layer),
+            ConversationViewManager(layer: deps.layer),
+            BridgeManager(env: deps.env, config: deps.config),
+            deps.session,
             Analytics,
             Logger,
-            layer,
-            intercom,
+            deps.layer,
+            deps.intercom,
         ]
     }
 }
 
-// MARK: - Crashlytics Delegate
+// MARK: - CrashlyticsDelegate
 
 extension AppDelegate : CrashlyticsDelegate {
     func crashlyticsDidDetectReportForLastExecution(report: CLSReport, completionHandler: (Bool) -> Void) {
-        // Log crash to analytics & logging
+        DDLogError("Crash detected during last execution identifier=\(report.identifier)", tag: report.customKeys)
+        Analytics.track("Crash Detected")
         completionHandler(true)
     }
 }
