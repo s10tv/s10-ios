@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 import ReactiveCocoa
 import Atlas
 
@@ -43,12 +44,12 @@ class ChatHistoryViewController : ATLConversationViewController {
         ]
         
         dataSource = vm
+        DDLogDebug("[End] viewDidLoad")
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        // #temp hack till we figure out better way
-        collectionView.contentInset.top = 64
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        DDLogDebug("[End] viewWillAppear animated=\(animated)")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -57,11 +58,24 @@ class ChatHistoryViewController : ATLConversationViewController {
         // and videoMaker too fast
         view.resignFirstResponder() // HACKIER FIX for when message does not show up
         view.becomeFirstResponder()
+        DDLogDebug("[End] viewDidAppear animated=\(animated)")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        DDLogDebug("[End] viewWillDisappear animated=\(animated)")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         vm.markAllNonVideoMessagesAsRead()
+        DDLogDebug("[End] viewDidDisappear animated=\(animated)")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // #temp hack till we figure out better way
+        collectionView.contentInset.top = 64
     }
     
     override func sendLocationMessage() {
