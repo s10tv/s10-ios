@@ -43,7 +43,7 @@ struct Dependencies {
         
         // MARK: Setup Logging
         logger = Logger()
-        ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
+        ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey, livetail: config.audience == .Dev)
         crashlytics = DDCrashlyticsLogger(crashlytics: Crashlytics.sharedInstance())
         crashlytics.logFormatter = TagLogFormatter()
         DDTTYLogger.sharedInstance().logFormatter = TagLogFormatter()
@@ -90,9 +90,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     // MARK: Lifecycle
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         Crashlytics.sharedInstance().delegate = self
         deps = Dependencies(launchOptions: launchOptions)
+        DDLogInfo("SESSIONMARKER >>>>>>>> Application Will Launch <<<<<<<<")
+        return true
+    }
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Start React Native app
         bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -117,7 +123,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         VideoMakerViewController.preloadRecorder()
         
         deps.session.appDidLaunch()
-        DDLogInfo("App Did Launch", tag: [
+        DDLogInfo("SESSIONMARKER >>>>>>>> Application Did Launch <<<<<<<<", tag: [
             "devMachineIP": deps.env.devMachineIP ?? NSNull(),
             "deviceId": deps.env.deviceId,
             "deviceName": deps.env.deviceName,
@@ -129,10 +135,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(application: UIApplication) {
         deps.analytics.appWillEnterForeground()
+        DDLogInfo("SESSIONMARKER >>>>>>>> Application Will Enter Foreground <<<<<<<<")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         deps.analytics.appDidEnterBackground()
+        DDLogInfo("SESSIONMARKER >>>>>>>> Application Did Background <<<<<<<<")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -228,7 +236,7 @@ extension AppDelegate : RCTBridgeDelegate {
     
     func sourceURLForBridge(bridge: RCTBridge!) -> NSURL! {
         if let devMachineIP = deps.env.devMachineIP {
-            DDLogInfo("Will reeturn reactNative sourceURL hostname=\(devMachineIP)")
+            DDLogInfo("Will return ReactNative sourceURL hostname=\(devMachineIP)")
             return NSURL("http://\(devMachineIP):8081/index.ios.bundle?platform=ios&dev=true")
         } else if deps.env.isRunningInSimulator {
             return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")

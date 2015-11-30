@@ -93,12 +93,11 @@ class Session : NSObject {
             DDLogError("userId and resumeToken not in sync userId=\(userId) resumeToken=\(resumeToken)")
             reset()
         }
-        DDLogInfo("Session initialized userId=\(userId) previousBuild=\(previousBuild)")
     }
     
     func appDidLaunch() {
         ud[.previousBuild] = env.build
-        DDLogDebug("appDidLaunch")
+        DDLogInfo("appDidLaunch userId=\(userId) previousBuild=\(previousBuild) currentBuildId=\(env.build)")
     }
     
     func reset() {

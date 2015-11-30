@@ -10,11 +10,33 @@ import Foundation
 import CocoaLumberjack
 import Ouralabs
 
+extension OULogLevel {
+    var description: String {
+        switch self {
+        case .Trace: return "Trace"
+        case .Debug: return "Debug"
+        case .Info: return "Info"
+        case .Warn: return "Warn"
+        case .Error: return "Error"
+        case .Fatal: return "Fatal"
+        }
+    }
+}
+
 class DDOuralabsLogger : DDAbstractLogger {
     var context: AnalyticsContext!
     
-    init(apiKey: String) {
+    init(apiKey: String, livetail: Bool) {
         Ouralabs.initWithKey(apiKey)
+        Ouralabs.setLiveTail(livetail)
+        Ouralabs.setLogLifecycle(true)
+        Ouralabs.setDiskOnly(true)
+        Ouralabs.setLogUncaughtExceptions(true) // Should be safe vs. crashlytics
+        Ouralabs.setLoggerLogsAllowed(true) // Allow OuralabsLogInner
+        Ouralabs.setSettingsChangedBlock { livetail, logLevel in
+            DDLogDebug("Settings did change livetail=\(livetail) logLevel=\(logLevel.description)")
+        }
+        
         super.init()
     }
     
@@ -53,21 +75,22 @@ extension DDOuralabsLogger : AnalyticsProvider {
     }
     
     func launch(currentBuild: String, previousBuild: String?) {
-        setAttribute(OUAttr1, value: context.deviceName)
-        setAttribute(OUAttr2, value: context.userId)
-        setAttribute(OUAttr3, value: context.fullname)
+        setAttribute(OUAttr1, value: context.userId)
+        setAttribute(OUAttr2, value: context.fullname)
+        setAttribute(OUAttr3, value: context.deviceName)
+        DDLogInfo("Ouralabs did launch deviceId=\(context.deviceId) userId=\(context.userId)")
     }
     
     func login(isNewUser: Bool) {
-        setAttribute(OUAttr2, value: context.userId)
+        setAttribute(OUAttr1, value: context.userId)
     }
     
     func logout() {
+        setAttribute(OUAttr1, value: nil)
         setAttribute(OUAttr2, value: nil)
-        setAttribute(OUAttr3, value: nil)
     }
     
     func updateFullname() {
-        setAttribute(OUAttr3, value: context.fullname)
+        setAttribute(OUAttr2, value: context.fullname)
     }
 }
