@@ -20,6 +20,7 @@ public class AmplitudeProvider : BaseAnalyticsProvider {
     }
     
     func updateIdentity() {
+        DDLogInfo("Will update identity userId=\(context.userId) deviceId=\(context.deviceId)")
         amplitude.setUserId(context.userId)
         amplitude.setDeviceId(context.deviceId)
         setUserProperties(["Device Name": context.deviceName])
@@ -28,26 +29,31 @@ public class AmplitudeProvider : BaseAnalyticsProvider {
     override func launch(currentBuild: String, previousBuild: String?) {
         updateIdentity()
         super.launch(currentBuild, previousBuild: previousBuild)
-        DDLogInfo("Did Login")
+        amplitude.uploadEvents()
+        DDLogInfo("Did Launch and upload events")
     }
     
     override func login(isNewUser: Bool) {
         updateIdentity()
         super.login(isNewUser)
-        DDLogInfo("Did Login")
+        amplitude.uploadEvents()
+        DDLogInfo("Did Login and upload events")
     }
     
     override func logout() {
         super.logout()
         updateIdentity()
-        DDLogInfo("Did Logout")
+        amplitude.uploadEvents()
+        DDLogInfo("Did Logout and upload events")
     }
     
     override func setUserProperties(properties: [NSObject : AnyObject]) {
+        DDLogDebug("Will set user properties", tag: properties)
         amplitude.setUserProperties(properties)
     }
     
     override func track(event: String, properties: [NSObject : AnyObject]? = nil) {
+        DDLogDebug("Will log event event=\(event)", tag: properties)
         amplitude.logEvent(event, withEventProperties: properties)
     }
 }
