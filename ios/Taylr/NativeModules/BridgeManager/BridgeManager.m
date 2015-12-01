@@ -13,7 +13,6 @@
 
 RCT_EXTERN_METHOD(registerForPushNotifications)
 RCT_EXTERN_METHOD(reloadBridge)
-RCT_EXTERN_METHOD(pollNewBuildAsync:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(setDebugBuildsEnabled:(BOOL)debugBuildsEnabled)
 
 @end

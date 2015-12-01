@@ -98,13 +98,6 @@ extension BridgeManager {
         bridge?.reload()
     }
     
-    @objc func pollNewBuildAsync(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        // For some reason if we use SignalProducer.promise here it breaks build...
-        pollNewBuild().map { build in
-            build.valueForKey("dictionaryValue") // HACK ALERT: Relying on internal API...
-        }.promise(resolve, reject).start()
-    }
-    
     @objc func setDebugBuildsEnabled(debugBuildsEnabled: Bool) {
         appHub.debugBuildsEnabled = debugBuildsEnabled
     }
