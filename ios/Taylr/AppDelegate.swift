@@ -35,7 +35,6 @@ struct Dependencies {
     let uxcam: UXCamProvider
     let layer: LayerService
     let digits: Digits
-    let appHubBuild: AHBuildManager
     let bridgeManager: BridgeManager // TODO: Deprecate me, be modular
     
     init(launchOptions: [NSObject: AnyObject]?) {
@@ -78,15 +77,7 @@ struct Dependencies {
         
         // MARK: Setup AppHub (over the air app update)
         AppHub.setApplicationID(config.appHubApplicationId)
-        appHubBuild = AppHub.buildManager()
-        appHubBuild.cellularDownloadsEnabled = true
-        switch config.audience {
-        case .Dev, .Beta:
-            appHubBuild.debugBuildsEnabled = true
-        default:
-            appHubBuild.debugBuildsEnabled = false
-        }
-        
+        AppHub.setLogLevel(.Warning)
         bridgeManager = BridgeManager(env: env, config: config)
         DDLogInfo("Did Setup App Dependencies")
     }
@@ -130,9 +121,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             self.rnSendAppEvent(.BranchInitialized, body: params)
         }
         // This will trigger a AppHub.newBuild app event to JavaScript and allow UI to show
-        deps.appHubBuild.fetchBuildWithCompletionHandler { build, error in
-            DDLogInfo("[AppHub] Fetched new build from AppHub identifier=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate) compatibleIOSVersions=\(build.compatibleIOSVersions)")
-        }
+        deps.bridgeManager.pollNewBuild().start()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         deps.analytics.appDidLaunch(launchOptions)
@@ -276,7 +265,7 @@ extension AppDelegate : RCTBridgeDelegate {
             DDLogInfo("Will return ReactNative sourceURL from mainBundle main.jsbundle")
             return NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle")
         } else {
-            let build = deps.appHubBuild.currentBuild
+            let build = AppHub.buildManager().currentBuild
             DDLogInfo("Will return ReactNative sourceURL from appHub identifer=\(build.identifier) name=\(build.name)")
             return build.bundle.URLForResource("main", withExtension: "jsbundle")
         }

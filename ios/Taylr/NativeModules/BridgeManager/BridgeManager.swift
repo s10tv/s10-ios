@@ -8,6 +8,7 @@
 
 import Foundation
 import CocoaLumberjack
+import AppHub
 import ReactiveCocoa
 import React
 
@@ -43,15 +44,40 @@ class BridgeManager : NSObject {
     weak var bridge: RCTBridge?
     let env: Environment
     let config: AppConfig
+    let appHub: AHBuildManager
     
     init(env: Environment, config: AppConfig) {
         self.env = env
         self.config = config
+        self.appHub = AppHub.buildManager()
         super.init()
+        appHub.cellularDownloadsEnabled = true
+        switch config.audience {
+        case .Dev, .Beta:
+            appHub.debugBuildsEnabled = true
+        default:
+            appHub.debugBuildsEnabled = false
+        }
         listenForNotification(kRNSendAppEventNotificationName).startWithNext { [weak self] note in
             if let bridge = self?.bridge, let name = note.userInfo?["name"] as? String {
                 // Sometimes this causes a crash, workaround is to make BridgeManager singleton
                 bridge.sendAppEvent(name, body: note.userInfo?["body"])
+            }
+        }
+    }
+    
+    func pollNewBuild() -> SignalProducer<AHBuild, NSError> {
+        return SignalProducer { sink, _ in
+            DDLogDebug("Will fetch build from AppHub")
+            self.appHub.fetchBuildWithCompletionHandler { build, error in
+                if let build = build {
+                    DDLogInfo("Did fetch build from AppHub identifier=\(build.identifier) name=\(build.name) " +
+                        "desc=\(build.buildDescription) date=\(build.creationDate) compatibleIOSVersions=\(build.compatibleIOSVersions)")
+                    sendNextAndCompleted(sink, build)
+                } else {
+                    DDLogError("Error fetching build from AppHub", tag: error)
+                    sendError(sink, error)
+                }
             }
         }
     }
@@ -63,11 +89,24 @@ extension BridgeManager {
     
     @objc func registerForPushNotifications() {
         // Explicit dependency please, maybe custom module for OneSignal as well
+        DDLogInfo("Will register for push notification bridge \(bridge)")
         OneSignal.defaultClient().registerForPushNotifications()
     }
     
     @objc func reloadBridge() {
+        DDLogInfo("Will reload bridge \(bridge)")
         bridge?.reload()
+    }
+    
+    @objc func pollNewBuildAsync(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        // For some reason if we use SignalProducer.promise here it breaks build...
+        pollNewBuild().map { build in
+            build.valueForKey("dictionaryValue") // HACK ALERT: Relying on internal API...
+        }.promise(resolve, reject).start()
+    }
+    
+    @objc func setDebugBuildsEnabled(debugBuildsEnabled: Bool) {
+        appHub.debugBuildsEnabled = debugBuildsEnabled
     }
     
     @objc func constantsToExport() -> NSDictionary {
