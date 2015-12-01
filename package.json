@@ -6,7 +6,6 @@
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "apphub": "^0.2.2",
     "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
     "lodash": "^3.6.0",
     "react-native": "^0.15.0",

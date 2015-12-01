@@ -41,6 +41,8 @@ pod 'TwitterCore', '~> 1.13'
 pod 'Digits', '~> 1.13'
 pod 'Crashlytics', '~> 3.4'
 pod 'OneSignal', '~> 1.10'
+#pod 'AppHub', :path => '../../apphub-ios'
+pod 'AppHub', :git => 'https://github.com/s10tv/apphub-ios.git'
 
 # Logging
 pod 'CocoaLumberjack/Swift', '~> 2.2'

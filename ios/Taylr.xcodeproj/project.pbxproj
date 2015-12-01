@@ -72,9 +72,6 @@
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA7DFB331BFFA40B0045A5ED /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */; };
-		EA7DFB3C1C0254410045A5ED /* AppHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7DFB3B1C0254410045A5ED /* AppHub.framework */; };
-		EA7DFB421C0256620045A5ED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7DFB411C0256620045A5ED /* SystemConfiguration.framework */; };
-		EA7DFB441C02566A0045A5ED /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7DFB431C02566A0045A5ED /* libz.tbd */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
 		EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */; };
 		EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */; };
@@ -224,9 +221,6 @@
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
 		EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
-		EA7DFB3B1C0254410045A5ED /* AppHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppHub.framework; path = ../node_modules/apphub/AppHub.framework; sourceTree = "<group>"; };
-		EA7DFB411C0256620045A5ED /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		EA7DFB431C02566A0045A5ED /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
@@ -276,14 +270,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA7DFB441C02566A0045A5ED /* libz.tbd in Frameworks */,
-				EA7DFB421C0256620045A5ED /* SystemConfiguration.framework in Frameworks */,
 				F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */,
 				F9DDF73C1BFFACC400D7A2FC /* libRNOverlay.a in Frameworks */,
 				EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */,
 				EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */,
 				EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */,
-				EA7DFB3C1C0254410045A5ED /* AppHub.framework in Frameworks */,
 				F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */,
 				4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */,
 			);
@@ -295,9 +286,6 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EA7DFB431C02566A0045A5ED /* libz.tbd */,
-				EA7DFB411C0256620045A5ED /* SystemConfiguration.framework */,
-				EA7DFB3B1C0254410045A5ED /* AppHub.framework */,
 				F9DDF7291BFFAC8900D7A2FC /* RNOverlay.xcodeproj */,
 				F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */,
 				F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */,

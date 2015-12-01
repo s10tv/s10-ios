@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppHub
 import Fabric
 import Crashlytics
 import CocoaLumberjack
@@ -124,10 +125,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             self.rnSendAppEvent(.BranchInitialized, body: params)
         }
         deps.appHubBuild.fetchBuildWithCompletionHandler { build, error in
-//            DDLogInfo("Fetched new build from app hub id=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate)")
-//            for version in build.compatibleIOSVersions { // Crashes right now...
-//                DDLogDebug("\(build.name): Compat Version - \(version)")
-//            }
+            DDLogInfo("Fetched new build from app hub id=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate)")
+            for version in build.compatibleIOSVersions { // Crashes right now...
+                DDLogDebug("\(build.name): Compat Version - \(version)")
+            }
         }
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
