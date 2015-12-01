@@ -223,7 +223,8 @@ class TSTabNavigator extends React.Component {
       case 'root':
         if (this.state.currentTab) {
           if (this.state.currentTab == 'Today') {
-            Analytics.track('Today: View')
+            // This is incredibly inaccurate, generates 50+ events per session. Disabling
+            // Analytics.track('Today: View')
           }
         }
 
