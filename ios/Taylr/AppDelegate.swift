@@ -80,7 +80,12 @@ struct Dependencies {
         AppHub.setApplicationID(config.appHubApplicationId)
         appHubBuild = AppHub.buildManager()
         appHubBuild.cellularDownloadsEnabled = true
-        appHubBuild.debugBuildsEnabled = (config.audience != .AppStore)
+        switch config.audience {
+        case .Dev, .Beta:
+            appHubBuild.debugBuildsEnabled = true
+        default:
+            appHubBuild.debugBuildsEnabled = false
+        }
         
         bridgeManager = BridgeManager(env: env, config: config)
         DDLogInfo("Did Setup App Dependencies")

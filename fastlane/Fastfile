@@ -17,8 +17,12 @@ platform :ios do
       case ENV['CIRCLE_BRANCH']
       when 'master'
         build_number = "#{circle_build_number}d"
+        ENV['APPHUB_APP_ID'] = ENV['APPHUB_APP_ID_DEV']
+        ENV['APPHUB_APP_SECRET'] = ENV['APPHUB_APP_SECRET_DEV']
       when 'prod'
         build_number = "#{circle_build_number}"
+        ENV['APPHUB_APP_ID'] = ENV['APPHUB_APP_ID_PROD']
+        ENV['APPHUB_APP_SECRET'] = ENV['APPHUB_APP_SECRET_PROD']
       else
         build_number = "#{circle_build_number}*"
       end

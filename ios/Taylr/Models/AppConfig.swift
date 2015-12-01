@@ -29,8 +29,8 @@ class AppConfig {
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
     }
+    let appHubApplicationId: String
     let uxcamKey = "2c0f24d77c8cdc6"
-    let appHubApplicationId = "uCG85kfu67WewOZVEQBk"
     let layerURL: NSURL
     let oneSignalAppId: String
     let ouralabsKey: String
@@ -46,6 +46,7 @@ class AppConfig {
         case .Dev:
 //            serverHostName = "localhost:3000"
             serverHostName = "s10-dev.herokuapp.com"
+            appHubApplicationId = "uCG85kfu67WewOZVEQBk"
             layerURL = NSURL("layer:///apps/staging/49574578-72bb-11e5-9a72-a4a211002a87")
             oneSignalAppId = "1fe37e84-77a0-11e5-ace7-2baf094fe5d2"
             ouralabsKey = "2207bb0177c84bd22085cb4e9018246f"
@@ -61,6 +62,7 @@ class AppConfig {
             )
         case .Beta, .AppStore:
             serverHostName = "taylr-prod.herokuapp.com"
+            appHubApplicationId = "4w9yHX3qrqPA9Xxoko3S"
             layerURL = NSURL("layer:///apps/production/49574ba4-72bb-11e5-89fc-a4a211002a87")
             oneSignalAppId = "82ee7482-77a2-11e5-8563-5bcba87018a1"
             ouralabsKey = "96128c67ffeb9632f665febb71914dc5"

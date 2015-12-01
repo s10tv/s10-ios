@@ -35,6 +35,7 @@ deployment:
     branch: master
     commands:
       - fastlane upload_crashlytics
+      - fastlane upload_apphub target:all # Will upload to Taylr Dev app
 
   prod:
     branch: prod
@@ -43,6 +44,6 @@ deployment:
       - fastlane upload_itunesconnect
       # This will distribute to TestFlight users, in order to distribute to appstore
       # Manully visit https://dashboard.apphub.io/projects/uCG85kfu67WewOZVEQBk/ and change target
-      - fastlane upload_apphub target:debug
+      - fastlane upload_apphub target:debug # Will upload to Taylr Prod app
 
   # TODO: Create appstore branch, upload to Crashlytics + beta + apphub target:all + deliver & submit to store
