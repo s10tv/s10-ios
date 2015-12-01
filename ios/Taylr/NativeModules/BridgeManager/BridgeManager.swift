@@ -66,6 +66,10 @@ extension BridgeManager {
         OneSignal.defaultClient().registerForPushNotifications()
     }
     
+    @objc func reloadBridge() {
+        bridge?.reload()
+    }
+    
     @objc func constantsToExport() -> NSDictionary {
         return [
             "isRunningInSimulator": env.isRunningInSimulator,

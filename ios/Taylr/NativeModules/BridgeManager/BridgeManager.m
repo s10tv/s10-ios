@@ -12,5 +12,6 @@
 @interface RCT_EXTERN_MODULE(TSBridgeManager, NSObject)
 
 RCT_EXTERN_METHOD(registerForPushNotifications)
+RCT_EXTERN_METHOD(reloadBridge)
 
 @end

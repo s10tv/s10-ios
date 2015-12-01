@@ -157,7 +157,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AppHub:
-    :commit: a1096a48610dec7f15a454c5e35396173fcdfd9d
+    :commit: f66e83c3d5bf2e3c7a85e1dcb24c2d9fe65f4c87
     :git: https://github.com/s10tv/apphub-ios.git
   NKRecorder:
     :commit: 3da09a3ea3c66c84f1e4003f54cdddb48c2f45c4
@@ -168,7 +168,7 @@ SPEC CHECKSUMS:
   Amplitude-iOS: d4217c0912e3ef7bddb8f5abeb4acffa57d8dfc5
   AMPopTip: 17c0fc2bffc9d81314228073f63ea0320f204b11
   AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
-  AppHub: 63973b0db5eaf8a1bea4267a203f5288f8536669
+  AppHub: fa3a2d255ebb18d93957e032bc408859a8a40b58
   Atlas: bd66c5b17719857a6b9e22299f76527245e06e88
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   Branch: 71b1180c49d75e0d849e2611ecf3016de7572eac

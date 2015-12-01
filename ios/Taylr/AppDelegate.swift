@@ -124,6 +124,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             DDLogInfo("Initialized branch session params=\(params) error=\(error)")
             self.rnSendAppEvent(.BranchInitialized, body: params)
         }
+        // This will trigger a AppHub.newBuild app event to JavaScript and allow UI to show
+        deps.appHubBuild.fetchBuildWithCompletionHandler { build, error in
+            DDLogInfo("[AppHub] Fetched new build from AppHub identifier=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate) compatibleIOSVersions=\(build.compatibleIOSVersions)")
+        }
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         deps.analytics.appDidLaunch(launchOptions)
