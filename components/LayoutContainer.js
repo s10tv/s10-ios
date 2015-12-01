@@ -37,11 +37,7 @@ class LayoutContainer extends React.Component {
   constructor(props: {}) {
     super(props);
     this.ddp = props.ddp;
-
     const state = props.store.getState();
-
-    logger.debug(`state=${JSON.stringify(state.unreadConversationCount)}`);
-
     this.state = {
       allConversationCount: state.allConversationCount,
       unreadConversationCount: state.unreadConversationCount,
@@ -158,7 +154,6 @@ class LayoutContainer extends React.Component {
           return ddp.collections.settings.find({});
         }
       }).subscribe(settings => {
-        logger.debug('got settings', settings);
         indexedSettings =  {};
         settings.forEach((setting) => {
           indexedSettings[setting._id] = setting;
@@ -177,11 +172,6 @@ class LayoutContainer extends React.Component {
           const isRunningTestFlightBeta = BridgeManager.isRunningTestFlightBeta();
           const { version, showCWLForTestFlight } = indexedSettings.CWLWhitelist.value;
 
-          logger.debug(`checking CWL: currentVersion=${currentVersion}`);
-          logger.debug(`checking CWL: version=${version}`);
-          logger.debug(`checking CWL: isRunningTestFlightBeta=${isRunningTestFlightBeta}`);
-          logger.debug(`checking CWL: showCWLForTestFlight=${showCWLForTestFlight}`);
-
           const isCWLRequired = new CWLChecker().checkCWL({
             version,
             currentVersion,
@@ -190,7 +180,6 @@ class LayoutContainer extends React.Component {
           })
 
           logger.debug(`checking CWL: isCWLRequired=${isCWLRequired}`);
-
           this.setState({ isCWLRequired: isCWLRequired });
         }
       });
@@ -213,10 +202,11 @@ class LayoutContainer extends React.Component {
       return
     }
 
-    logger.debug(`onLogin intercom=${JSON.stringify(intercom)}
+    logger.debug(`Will login with userId=${userId} \
+      resumeToken=${resumeToken} tokenExpiry=${expiryDate} \
+      intercom=${JSON.stringify(intercom)} \
       newUser=${isNewUser} userTriggered=${userTriggered}`);
 
-    logger.debug(`Will login with userId=${userId} resumeToken=${resumeToken} tokenExpiry=${expiryDate}`);
     Session.login(userId, resumeToken, expiryDate);
     if (intercom != null) {
       Intercom.setHMAC(intercom.hmac, intercom.data);
@@ -352,7 +342,6 @@ class LayoutContainer extends React.Component {
         })
 
         if (activeCandidates.length > 0) {
-          logger.debug('got candidate');
           this.setState({ candidate: activeCandidates[0] })
         }
 
@@ -469,7 +458,7 @@ class LayoutContainer extends React.Component {
   }
 
   render() {
-    logger.debug(`Rendering layout container. loggedIn=${this.state.loggedIn}
+    logger.debug(`Rendering layout container. loggedIn=${this.state.loggedIn} \
       isActive=${this.state.isActive}`);
 
     if (!this.state.loggedIn || !this.state.isActive) {

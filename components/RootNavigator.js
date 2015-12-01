@@ -73,7 +73,7 @@ class RootNavigator extends React.Component {
     switch (route.id) {
       case 'viewprofile':
         return null;
-        
+
       case 'base':
         return <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
           { this.state.currentTab }
@@ -135,26 +135,22 @@ class RootNavigator extends React.Component {
               this.props.reportUser(route.me)
             }}>
               <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: 'white' }]}>
-                Report 
+                Report
               </Text>
-        </TouchableOpacity> 
+        </TouchableOpacity>
       )
     }
     return null;
   }
 
   renderScene(route, nav) {
-    logger.debug(`Root Navigator rendering ${route}`);
     let me = this.props.me;
-
-    logger.debug(`me=${me}`);
-
     switch (route.id) {
       case 'viewprofile':
         let properties = route.me ? { id: route.me._id } : undefined;
         Analytics.screen("Profile", properties)
         return <Activities
-          navigator={nav} 
+          navigator={nav}
           me={route.me}
           isCurrentCandidate={route.isCurrentCandidate}
           candidateUser={route.candidateUser}
@@ -162,7 +158,7 @@ class RootNavigator extends React.Component {
           settings={this.props.settings}
           loadActivities={true}
           ddp={this.props.ddp} />
-      
+
       case 'viewintegration':
         Analytics.screen("Integration Details", {
           "Name" : route.integration.name
@@ -174,9 +170,9 @@ class RootNavigator extends React.Component {
 
       case 'sendMessage':
         Analytics.screen("New Conversation", {
-          recipientId: route.recipientUser._id 
+          recipientId: route.recipientUser._id
         });
-        return <ConversationView 
+        return <ConversationView
           navigator={nav}
           style={{flex: 1}}
           recipientUser={route.recipientUser}
@@ -185,7 +181,7 @@ class RootNavigator extends React.Component {
       case 'conversation':
         Analytics.screen("Conversation", {
           conversationId: route.conversationId
-        }); 
+        });
         return <ConversationView
           navigator={nav}
           style={{flex: 1}}
