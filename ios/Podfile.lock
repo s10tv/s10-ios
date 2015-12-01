@@ -157,7 +157,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AppHub:
-    :commit: 071ab75f6ee8fb0566464d34b25ed7ee22dbbd5a
+    :commit: a1096a48610dec7f15a454c5e35396173fcdfd9d
     :git: https://github.com/s10tv/apphub-ios.git
   NKRecorder:
     :commit: 3da09a3ea3c66c84f1e4003f54cdddb48c2f45c4
