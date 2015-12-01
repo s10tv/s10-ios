@@ -13,7 +13,7 @@ dependencies:
   override:
     - npm install
     - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
-    - fastlane pod_install
+    - cd ios && pod install
   post:
     - fastlane import_certs
     - fastlane download_profiles dev:true adhoc:true appstore:true
@@ -47,4 +47,3 @@ deployment:
       - fastlane upload_apphub target:debug # Will upload to Taylr Prod app
 
   # TODO: Create appstore branch, upload to Crashlytics + beta + apphub target:all + deliver & submit to store
-
