@@ -101,7 +101,6 @@
 		F9DDF6B11BFDB3C700D7A2FC /* background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F9DDF6B01BFDB3C700D7A2FC /* background.mp4 */; };
 		F9DDF7161BFFA18300D7A2FC /* UIImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DDF7151BFFA18300D7A2FC /* UIImagePickerManager.m */; };
 		F9DDF73C1BFFACC400D7A2FC /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF73B1BFFACC400D7A2FC /* libRNOverlay.a */; };
-		F9EDD7FC1C0D50BF0050B015 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EDD7FA1C0D50B00050B015 /* libRCTLinking.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,13 +138,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNOverlay;
-		};
-		F9EDD7F91C0D50B00050B015 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F9EDD7E41C0D506A0050B015 /* RCTLinking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RCTLinking;
 		};
 		F9F337C71BFD431800ACA98C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -270,7 +262,6 @@
 		F9DDF7151BFFA18300D7A2FC /* UIImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImagePickerManager.m; sourceTree = "<group>"; };
 		F9DDF7291BFFAC8900D7A2FC /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "../node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = "<group>"; };
 		F9DDF73B1BFFACC400D7A2FC /* libRNOverlay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNOverlay.a; path = "../../node_modules/react-native-overlay/build/Debug-iphoneos/libRNOverlay.a"; sourceTree = "<group>"; };
-		F9EDD7E41C0D506A0050B015 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFabricDigits.xcodeproj; path = "../node_modules/react-native-fabric-digits/ios/RNFabricDigits.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,7 +272,6 @@
 			files = (
 				F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */,
 				F9DDF73C1BFFACC400D7A2FC /* libRNOverlay.a in Frameworks */,
-				F9EDD7FC1C0D50BF0050B015 /* libRCTLinking.a in Frameworks */,
 				EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */,
 				EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */,
 				EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */,
@@ -296,7 +286,6 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F9EDD7E41C0D506A0050B015 /* RCTLinking.xcodeproj */,
 				F9DDF7291BFFAC8900D7A2FC /* RNOverlay.xcodeproj */,
 				F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */,
 				F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */,
@@ -680,14 +669,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F9EDD7F61C0D50B00050B015 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F9EDD7FA1C0D50B00050B015 /* libRCTLinking.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F9F337C41BFD431800ACA98C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,10 +767,6 @@
 					ProjectRef = EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */;
 				},
 				{
-					ProductGroup = F9EDD7F61C0D50B00050B015 /* Products */;
-					ProjectRef = F9EDD7E41C0D506A0050B015 /* RCTLinking.xcodeproj */;
-				},
-				{
 					ProductGroup = F9DDF69E1BFDB29100D7A2FC /* Products */;
 					ProjectRef = F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */;
 				},
@@ -847,13 +824,6 @@
 			fileType = archive.ar;
 			path = libRNOverlay.a;
 			remoteRef = F9DDF7321BFFAC9F00D7A2FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F9EDD7FA1C0D50B00050B015 /* libRCTLinking.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTLinking.a;
-			remoteRef = F9EDD7F91C0D50B00050B015 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		F9F337C81BFD431800ACA98C /* libRNFabricDigits.a */ = {
