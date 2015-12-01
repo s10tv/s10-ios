@@ -9,6 +9,8 @@ let {
 } = React;
 
 import Session from '../native_modules/Session';
+import { CWLChecker } from './util/CWLChecker';
+
 let BridgeManager = require('../modules/BridgeManager');
 let Analytics = require('../modules/Analytics');
 let Intercom = require('../modules/Intercom');
@@ -28,6 +30,7 @@ let FBSDKLogin = require('react-native-fbsdklogin');
 let { FBSDKLoginManager } = FBSDKLogin;
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
+
 
 class LayoutContainer extends React.Component {
 
@@ -169,11 +172,25 @@ class LayoutContainer extends React.Component {
           })
         }
 
-        if (indexedSettings.CWLRequired !== undefined &&
-            indexedSettings.tfCWLRequired !== undefined) {
-          let isCWLRequired = BridgeManager.isRunningTestFlightBeta() ?
-              indexedSettings.tfCWLRequired.value :
-              indexedSettings.CWLRequired.value;
+        if (indexedSettings.CWLWhitelist) {
+          const currentVersion = BridgeManager.version();
+          const isRunningTestFlightBeta = BridgeManager.isRunningTestFlightBeta();
+          const { version, showCWLForTestFlight } = indexedSettings.CWLWhitelist.value;
+
+          logger.debug(`checking CWL: currentVersion=${currentVersion}`);
+          logger.debug(`checking CWL: version=${version}`);
+          logger.debug(`checking CWL: isRunningTestFlightBeta=${isRunningTestFlightBeta}`);
+          logger.debug(`checking CWL: showCWLForTestFlight=${showCWLForTestFlight}`);
+
+          const isCWLRequired = new CWLChecker().checkCWL({
+            version,
+            currentVersion,
+            showCWLForTestFlight,
+            isRunningTestFlightBeta,
+          })
+
+          logger.debug(`checking CWL: isCWLRequired=${isCWLRequired}`);
+
           this.setState({ isCWLRequired: isCWLRequired });
         }
       });

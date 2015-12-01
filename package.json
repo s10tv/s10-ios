@@ -24,5 +24,26 @@
     "regenerator": "^0.8.42",
     "s10-common": "git+https://github.com/s10tv/s10-common.git",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.8.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "node_modules/react-native/jestSupport/preprocessor.js",
+    "setupEnvScriptFile": "node_modules/react-native/jestSupport/env.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "packager/react-packager/src/Activity/"
+    ],
+    "testFileExtensions": [
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "promise",
+      "source-map"
+    ]
   }
 }
