@@ -24,6 +24,8 @@ let HashtagCategory = require('../lib/HashtagCategory');
 let Loader = require("../lib/Loader");
 let Button = require('react-native-button');
 
+const logger = new (require('../../modules/Logger'))('MeScreen');
+
 class MeButton extends React.Component {
   render() {
     return(
@@ -36,9 +38,9 @@ class MeButton extends React.Component {
                 { this.props.text }
               </Text>
             </View>
-        </Button> 
+        </Button>
       </View>
-    ) 
+    )
   }
 }
 var buttonStyles = StyleSheet.create({
@@ -87,7 +89,7 @@ class MeHeader extends React.Component {
         <View style={styles.headerContent}>
           <Text style={[styles.headerText, SHEET.baseText]}>
             {me.shortDisplayName}
-          </Text> 
+          </Text>
           <View style={styles.headerContentLineItem}>
             { serviceIcons }
           </View>
@@ -121,12 +123,19 @@ class Me extends React.Component {
       return <Loader />
     }
 
+    let versionString = `v${BridgeManager.version()} | ${BridgeManager.build()}`;
+    let apphub = this.props.store.getState().apphub;
+    if (apphub) {
+      logger.debug(`Apphub: ${JSON.stringify(apphub)}`);
+      versionString += ` | AH: ${apphub.buildName}`
+    }
+
     return (
       <View style={SHEET.container}>
-        <ScrollView 
+        <ScrollView
           showsVerticalScrollIndicator={false}
           style={[{ top: 64 }]}>
-          
+
           <TouchableOpacity onPress={() => {
               this.props.parentNavigator.push({
                 id: 'viewprofile',
@@ -153,7 +162,7 @@ class Me extends React.Component {
               ddp={this.ddp} />
 
             <SectionTitle title={'MORE'} />
-            <MoreComponent 
+            <MoreComponent
               navigator={this.props.navigator}
               onLogout={this.props.onLogout}
               ddp={this.props.ddp} />
@@ -161,7 +170,7 @@ class Me extends React.Component {
 
           <View style={styles.versionTextContainer}>
           <Text style={[styles.versionText, SHEET.innerContainer, SHEET.baseText]}>
-             Version { BridgeManager.version() }
+            { versionString }
           </Text>
           </View>
           <View style={SHEET.bottomTile} />
@@ -207,7 +216,7 @@ var styles = StyleSheet.create({
   },
   versionTextContainer: {
     flex: 1,
-    height: 64, 
+    height: 64,
     alignItems: 'center',
     justifyContent: 'center',
   },

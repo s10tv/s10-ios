@@ -9,6 +9,7 @@ let {
 } = React;
 
 import Session from '../native_modules/Session';
+import UpgradePrompt from './upgrade/UpgradePrompt';
 import { CWLChecker } from './util/CWLChecker';
 
 let BridgeManager = require('../modules/BridgeManager');
@@ -31,7 +32,6 @@ let { FBSDKLoginManager } = FBSDKLogin;
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
 
-
 class LayoutContainer extends React.Component {
 
   constructor(props: {}) {
@@ -41,6 +41,7 @@ class LayoutContainer extends React.Component {
     this.state = {
       allConversationCount: state.allConversationCount,
       unreadConversationCount: state.unreadConversationCount,
+      apphub: state.apphub,
     }
   }
 
@@ -67,10 +68,7 @@ class LayoutContainer extends React.Component {
 
   updateLayerState() {
     const state = this.props.store.getState();
-    this.setState({
-      allConversationCount: state.allConversationCount,
-      unreadConversationCount: state.unreadConversationCount,
-    })
+    this.setState(state);
   }
 
   formatUser(user) {
@@ -165,6 +163,16 @@ class LayoutContainer extends React.Component {
           this.setState ({
             isActive: indexedSettings.accountStatus.value == 'active'
           })
+        }
+
+        if (indexedSettings.upgradeUrl && indexedSettings.hardMinBuild) {
+          const currentBuild = BridgeManager.build();
+          if (currentBuild < indexedSettings.hardMinBuild.value) {
+            this.props.store.dispatch({
+              type: 'SHOW_HARD_UPGRADE_POPUP',
+              url: indexedSettings.upgradeUrl.value,
+            })
+          }
         }
 
         if (indexedSettings.CWLWhitelist) {
@@ -278,12 +286,16 @@ class LayoutContainer extends React.Component {
 
         try {
           this._subscribeSettings(false);
-          await ddp.loginWithToken(resumeToken)
-          this.onLogin()
+          result = await ddp.loginWithToken(resumeToken)
+          if (result.resumeToken) {
+            this.onLogin()
+          } else {
+            this.onLogout()
+          }
         } catch (err) {
           // This token is stale. Need the user to re-login
           logger.warning(JSON.stringify(err));
-          this.setState({ loggedIn: false });
+          this.onLogout()
         }
 
         return;
@@ -457,43 +469,71 @@ class LayoutContainer extends React.Component {
     })
   }
 
+  hideModal() {
+    this.props.store.dispatch({
+      type: 'HIDE_UPGRADE_POPUP'
+    })
+  }
+
+  upgrade() {
+    logger.debug('[upgrade] reloaded bridge');
+    return BridgeManager.reloadBridge();
+  }
+
   render() {
     logger.debug(`Rendering layout container. loggedIn=${this.state.loggedIn} \
       isActive=${this.state.isActive}`);
 
     if (!this.state.loggedIn || !this.state.isActive) {
-      return <OnboardingNavigator
-        loggedIn={this.state.loggedIn}
-        isActive={this.state.isActive}
-        integrations={this.state.integrations}
-        me={this.state.me}
-        categories={this.state.categories}
-        myTags={this.state.myTags}
-        onLogin={this.onUserLogin.bind(this)}
-        onLogout={this.onLogout.bind(this)}
-        settings={this.state.settings}
-        isCWLRequired={this.state.isCWLRequired}
-        updateProfile={this.updateProfile.bind(this)}
-        ddp={this.ddp} />
+      return <View style={{flex: 1}}>
+        <UpgradePrompt
+          hardUpgradeURL={this.state.hardUpgradeURL}
+          modalVisible={this.state.modalVisible}
+          upgrade={this.upgrade.bind(this)}
+          hideModal={this.hideModal.bind(this)} />
+
+        <OnboardingNavigator
+          loggedIn={this.state.loggedIn}
+          isActive={this.state.isActive}
+          integrations={this.state.integrations}
+          me={this.state.me}
+          categories={this.state.categories}
+          myTags={this.state.myTags}
+          onLogin={this.onUserLogin.bind(this)}
+          onLogout={this.onLogout.bind(this)}
+          settings={this.state.settings}
+          isCWLRequired={this.state.isCWLRequired}
+          updateProfile={this.updateProfile.bind(this)}
+          ddp={this.ddp} />
+        </View>
     }
 
-    return <RootNavigator
-      me={this.state.me}
-      integrations={this.state.integrations}
-      categories={this.state.categories}
-      myTags={this.state.myTags}
-      loggedIn={this.state.loggedIn}
-      reportUser={this.reportUser.bind(this)}
-      onLogout={this.onLogout.bind(this)}
-      onLogin={this.onUserLogin.bind(this)}
-      candidate={this.state.candidate}
-      history={this.state.history}
-      users={this.state.users}
-      settings={this.state.settings}
-      numTotalConversations={this.state.allConversationCount}
-      numUnreadConversations={this.state.unreadConversationCount}
-      updateProfile={this.updateProfile.bind(this)}
-      ddp={this.ddp} />
+    return <View style={{flex: 1}}>
+      <UpgradePrompt
+        hardUpgradeURL={this.state.hardUpgradeURL}
+        modalVisible={this.state.modalVisible}
+        upgrade={this.upgrade.bind(this)}
+        hideModal={this.hideModal.bind(this)} />
+
+      <RootNavigator
+        me={this.state.me}
+        integrations={this.state.integrations}
+        categories={this.state.categories}
+        myTags={this.state.myTags}
+        loggedIn={this.state.loggedIn}
+        reportUser={this.reportUser.bind(this)}
+        onLogout={this.onLogout.bind(this)}
+        onLogin={this.onUserLogin.bind(this)}
+        candidate={this.state.candidate}
+        history={this.state.history}
+        users={this.state.users}
+        settings={this.state.settings}
+        numTotalConversations={this.state.allConversationCount}
+        numUnreadConversations={this.state.unreadConversationCount}
+        updateProfile={this.updateProfile.bind(this)}
+        store={this.props.store}
+        ddp={this.ddp} />
+    </View>
   }
 }
 

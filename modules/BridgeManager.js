@@ -13,6 +13,10 @@ const {
 
 class BridgeManager {
 
+  static reloadBridge() {
+    return TSBridgeManager.reloadBridge();
+  }
+
   static isRunningInSimulator() {
     return TSBridgeManager.isRunningInSimulator;
   }
@@ -57,7 +61,7 @@ class BridgeManager {
     return TSBridgeManager.getDefaultAccountAsync();
   }
   // expects
-  // {userId: string, resumeToken: string, expiryDate: number? } 
+  // {userId: string, resumeToken: string, expiryDate: number? }
   // TODO: Convert JS Date to nsnumber inside the wrapper, also make this strongly typed via flow?
   static setDefaultAccount(account) {
     TSBridgeManager.setDefaultAccount(account);

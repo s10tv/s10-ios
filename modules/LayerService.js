@@ -3,7 +3,6 @@
  */
 'use strict';
 
-
 let {
   NativeAppEventEmitter
 } = require('react-native');

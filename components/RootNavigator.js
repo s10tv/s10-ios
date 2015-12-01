@@ -203,6 +203,7 @@ class RootNavigator extends React.Component {
           numUnreadConversations={this.props.numUnreadConversations}
           settings={this.props.settings}
           updateProfile={this.props.updateProfile}
+          store={this.props.store}
           ddp={this.props.ddp} />
     }
   }

@@ -7,11 +7,15 @@ let React = require('react-native');
 let {
   AppRegistry,
   NativeAppEventEmitter,
+  NativeModules: {
+    AppHub,
+  },
 } = React;
 
 let TSDDPClient = require('./lib/ddpclient');
 let BridgeManager = require('./modules/BridgeManager');
 
+import ApphubService from './components/upgrade/ApphubService';
 import { LayerService } from './modules/LayerService';
 import { LayoutContainer } from './components/LayoutContainer';
 import { createStore, combineReducers } from 'redux';
@@ -27,10 +31,14 @@ logger.debug(`bundle url ${BridgeManager.bundleUrlScheme()}`);
 let store = createStore(combineReducers({
   allConversationCount: LayerService.allConversationCount,
   unreadConversationCount: LayerService.unreadConversationCount,
+  apphub: ApphubService.apphub,
+  modalVisible: ApphubService.modalVisible,
+  hardUpgradeURL: ApphubService.hardUpgradeURL,
 }))
 
 let ddp = new TSDDPClient(BridgeManager.serverUrl());
 let layerService = new LayerService(store);
+let apphubService = new ApphubService(store);
 
 NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
   logger.debug(`[PUSH]: did receive RegisteredPushToken. ${JSON.stringify(tokenInfo)}`);

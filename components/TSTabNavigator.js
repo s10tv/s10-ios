@@ -238,6 +238,7 @@ class TSTabNavigator extends React.Component {
                 categories={this.props.categories}
                 myTags={this.props.myTags}
                 navigator={nav}
+                store={this.props.store}
                 ddp={this.props.ddp} />
 
             </TabNavigator.Item>

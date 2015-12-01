@@ -39,7 +39,7 @@ class Logger {
     if (this.logToConsole) {
      console.warn(message);
     }
-    TSLogger.log(message, 'warning', this.domain, '', '', 0);
+    TSLogger.log(message, 'warn', this.domain, '', '', 0);
   }
 
   error(messageOrError) {

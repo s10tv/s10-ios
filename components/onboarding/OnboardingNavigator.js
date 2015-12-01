@@ -43,11 +43,11 @@ class OnboardingNavigator extends React.Component {
     this.setState({
       editProfileCurrentlyFocused: true,
       editProfileKey: key,
-    }) 
+    })
   }
 
   onEditProfileBlur() {
-    this.setState({ editProfileCurrentlyFocused: false }) 
+    this.setState({ editProfileCurrentlyFocused: false })
   }
 
   displayError(message) {
@@ -186,7 +186,7 @@ class OnboardingNavigator extends React.Component {
         onPress={action}
         style={styles.navBarRightButton}>
         <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
-          {buttonText} 
+          {buttonText}
         </Text>
       </TouchableOpacity>
     );
@@ -238,7 +238,7 @@ class OnboardingNavigator extends React.Component {
 
       case 'editprofile':
         Analytics.screen('CreateProfile');
-        return <EditProfileScreen 
+        return <EditProfileScreen
           onEditProfileChange={this.onEditProfileChange.bind(this)}
           onEditProfileFocus={this.onEditProfileFocus.bind(this)}
           onEditProfileBlur={this.onEditProfileBlur.bind(this)}
@@ -310,7 +310,7 @@ class OnboardingNavigator extends React.Component {
           category: route.category
         });
         return <HashtagListView
-          style={{ flex: 1 }} 
+          style={{ flex: 1 }}
           navigator={nav}
           removeBottomPadding={true}x
           ddp={this.props.ddp}
@@ -335,7 +335,7 @@ class OnboardingNavigator extends React.Component {
           startInLoadingState={true}
           url={route.url} />;
 
-    } 
+    }
   }
 
   render() {

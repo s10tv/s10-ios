@@ -2,9 +2,6 @@
   "name": "Taylr",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
-  },
   "dependencies": {
     "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
     "lodash": "^3.6.0",
@@ -28,7 +25,8 @@
     "jest-cli": "^0.8.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node_modules/react-native/packager/packager.sh"
   },
   "jest": {
     "scriptPreprocessor": "node_modules/react-native/jestSupport/preprocessor.js",
