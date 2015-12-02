@@ -137,6 +137,7 @@ platform :ios do
       configuration: configuration,
       xcargs: "BUILD_NUMBER=#{build_number}",
       export_method: export_method,
+      include_bitcode: true,
       buildlog_path: ENV['OUTPUT_DIR'],
       output_directory: ENV['OUTPUT_DIR'],
       output_name: "#{build_number}.ipa"
