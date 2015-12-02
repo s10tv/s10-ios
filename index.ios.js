@@ -17,8 +17,11 @@ let BridgeManager = require('./modules/BridgeManager');
 
 import ApphubService from './components/upgrade/ApphubService';
 import { LayerService } from './modules/LayerService';
-import { LayoutContainer } from './components/LayoutContainer';
+import LayoutContainer from './app/LayoutContainer';
 import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux/native';
+
+import * as reducers from './app/reducers'
 
 const logger = new (require('./modules/Logger'))('index.ios');
 
@@ -28,13 +31,7 @@ global.process = require("./lib/process.polyfill");
 logger.info('JS App Launched');
 logger.debug(`bundle url ${BridgeManager.bundleUrlScheme()}`);
 
-let store = createStore(combineReducers({
-  allConversationCount: LayerService.allConversationCount,
-  unreadConversationCount: LayerService.unreadConversationCount,
-  apphub: ApphubService.apphub,
-  modalVisible: ApphubService.modalVisible,
-  hardUpgradeURL: ApphubService.hardUpgradeURL,
-}))
+let store = createStore(combineReducers(reducers))
 
 let ddp = new TSDDPClient(BridgeManager.serverUrl());
 let layerService = new LayerService(store);
@@ -67,7 +64,11 @@ NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
 
 class Main extends React.Component {
   render() {
-    return <LayoutContainer ddp={ddp} store={store} />;
+    return (
+      <Provider store={store}>
+        {() => <LayoutContainer ddp={ddp} store={store} />}
+      </Provider>
+    )
   }
 }
 

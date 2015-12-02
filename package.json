@@ -5,6 +5,7 @@
   "dependencies": {
     "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
     "lodash": "^3.6.0",
+    "react": "^0.14.3",
     "react-native": "^0.15.0",
     "react-native-button": "^1.2.1",
     "react-native-cookies": "0.0.3",
@@ -16,6 +17,7 @@
     "react-native-search-bar": "git+https://github.com/s10tv/react-native-search-bar.git",
     "react-native-tab-navigator": "^0.2.11",
     "react-native-video": "^0.6.1",
+    "react-redux": "^3.1.0",
     "redux": "^3.0.4",
     "regenerator": "^0.8.42",
     "s10-common": "git+https://github.com/s10tv/s10-common.git",
