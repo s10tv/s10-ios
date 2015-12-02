@@ -15,20 +15,20 @@ let Analytics = require('../../modules/Analytics');
 
 class CountdownTimer extends React.Component {
   constructor(props) {
-    super(props); 
+    super(props);
     this.state = {
       countdown: '...'
     }
   }
 
   formatUser(candidateUser) {
-    let coverUrl = candidateUser.cover ? candidateUser.cover.url : 
+    let coverUrl = candidateUser.cover ? candidateUser.cover.url :
       candidateUser.avatar.url;
 
     return {
       userId: candidateUser._id,
       avatarUrl: candidateUser.avatar.url,
-      coverUrl: coverUrl, 
+      coverUrl: coverUrl,
       firstName: candidateUser.firstName,
       displayName: candidateUser.firstName,
     }
@@ -60,8 +60,12 @@ class CountdownTimer extends React.Component {
       this.setState({ countdown: `${format(hours)}:${format(minutes)}:${format(seconds)}`});
     }
 
-    timerFunction.bind(this)();
-    this.setState({ timer: setInterval(timerFunction.bind(this), 1000) })
+    if (!this.props.text) {
+      timerFunction.bind(this)();
+      this.setState({ timer: setInterval(timerFunction.bind(this), 1000) })
+    } else {
+      this.setState({ countdown: this.props.text });
+    }
   }
 
   render() {
@@ -92,7 +96,7 @@ class CountdownTimer extends React.Component {
 
 var styles = StyleSheet.create({
   messageButton: {
-    height: 50, 
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',

@@ -144,11 +144,11 @@ class Activity extends React.Component {
           {header}
           {image}
           {caption}
-          {text} 
+          {text}
           {source}
       </Card>
     )
-  } 
+  }
 }
 
 class ActivityServiceIcon extends React.Component {
@@ -156,7 +156,7 @@ class ActivityServiceIcon extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      color: false 
+      color: false
     }
   }
 
@@ -165,13 +165,13 @@ class ActivityServiceIcon extends React.Component {
 
     // TODO: Can use tint color here.
     if (this.props.profile) {
-      let sourceMap = this.props.profile.integrationName == this.props.activeProfile.integrationName ? 
+      let sourceMap = this.props.profile.integrationName == this.props.activeProfile.integrationName ?
         this.props.iconMapping :
         this.props.grayToIconMapping;
 
       source = { uri: sourceMap[this.props.profile.integrationName] };
     } else {
-      source = this.props.activeProfile.integrationName === 'taylr' ? 
+      source = this.props.activeProfile.integrationName === 'taylr' ?
         require('../img/ic-taylr-colored.png') :
         require('../img/ic-taylr-gray.png');
     }
@@ -225,9 +225,9 @@ class Activities extends React.Component {
           }
         }).subscribe(activities => {
           this.setState({ activities: activities });
-        }); 
+        });
       })
-    } 
+    }
   }
 
   render() {
@@ -292,7 +292,7 @@ class Activities extends React.Component {
         me={me}
         connectedProfiles={connectedProfiles}
         activeProfile={this.state.activeProfile}
-        activity={activity} /> 
+        activity={activity} />
     })
 
     let infoCard = null;
@@ -315,8 +315,8 @@ class Activities extends React.Component {
             <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About {me.firstName}</Text>
             <Text stlye={[SHEET.baseText]}>{me.about}</Text>
           </View>
-        </Card> 
-      ) 
+        </Card>
+      )
     } else {
       profile = connectedProfiles[this.state.activeProfile.id]
       attributes = null
@@ -353,21 +353,21 @@ class Activities extends React.Component {
             </TouchableOpacity>
           </View>
           { separator }
-          <ScrollView horizontal={true} 
+          <ScrollView horizontal={true}
             showsHorizontalScrollIndicator={false}
             style={{ marginHorizontal: 10 }}>
             { attributes }
           </ScrollView>
         </Card>
-      ) 
+      )
     }
 
     let messageButton = null;
-    if (this.props.isCurrentCandidate && this.props.currentUser && 
-        this.props.candidateUser) {
+    if (this.props.currentUser._id != me._id) {
       messageButton = (
         <CountdownTimer
           style={styles.messageButton}
+          text={this.props.text}
           navigator={this.props.navigator}
           candidateUser={this.props.candidateUser}
           me={this.props.me}
@@ -387,7 +387,7 @@ class Activities extends React.Component {
             <ScrollView
               showsHorizontalScrollIndicator={false}
               horizontal={true}>
-                <ActivityServiceIcon 
+                <ActivityServiceIcon
                   onPress={this._switchToTaylr.bind(this)}
                   activeProfile={this.state.activeProfile}
                   source={require('../img/ic-taylr-gray.png')} />
@@ -416,7 +416,7 @@ var styles = StyleSheet.create({
   },
   activityUser: {
     flex: 1,
-    position: 'absolute',    
+    position: 'absolute',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
     left: 0,
@@ -432,7 +432,7 @@ var styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   card: {
-    flex: 1, 
+    flex: 1,
     marginTop: 8,
   },
   horizontal: {
@@ -443,7 +443,7 @@ var styles = StyleSheet.create({
   infoAvatar: {
     width: 60,
     height: 60,
-    borderRadius: 30, 
+    borderRadius: 30,
   },
   openButton: {
     marginTop: 10,
