@@ -288,6 +288,11 @@ class LayoutContainer extends React.Component {
           this._subscribeSettings(false);
           result = await ddp.loginWithToken(resumeToken)
           if (result.resumeToken) {
+            // async
+            ddp.call({ methodName: 'intercom/auth' })
+            .then(({ hash, identifier }) => {
+              Intercom.setHMAC(hash, identifier);
+            });
             this.onLogin()
           } else {
             this.onLogout()

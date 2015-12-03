@@ -43,10 +43,15 @@ public class MixpanelProvider : BaseAnalyticsProvider {
     }
     
     override func login(isNewUser: Bool) {
+        guard let userId = context.userId else {
+            // Fix for https://fabric.io/s10-inc2/ios/apps/tv.s10.taylr/issues/565e4568f5d3a7f76b0457cd
+            DDLogError("login called but context.userId is still nil")
+            return
+        }
         if isNewUser {
-            assert(mixpanel.distinctId != context.userId, "Expecting userId != distinctId at signup time")
-            DDLogInfo("Will createAlias userId=\(mixpanel.distinctId) deviceId=\(context.deviceId)")
-            mixpanel.createAlias(context.userId!, forDistinctID: mixpanel.distinctId)
+            assert(mixpanel.distinctId != userId, "Expecting userId != distinctId at signup time")
+            DDLogInfo("Will createAlias userId=\(userId) distinctId=\(mixpanel.distinctId) deviceId=\(context.deviceId)")
+            mixpanel.createAlias(userId, forDistinctID: mixpanel.distinctId)
             mixpanel.flush()
         }
         updateIdentity()

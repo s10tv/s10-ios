@@ -46,6 +46,21 @@ platform :ios do
     end
   end
 
+  desc 'Generate automatic release notes from current git status and environment'
+  private_lane :release_notes do |options|
+    commit_message = sh 'git log -n 1 --pretty=format:%s head'
+    date = sh 'date'
+    branch = git_branch
+    commit_hash = sh 'git rev-parse HEAD'
+    build_number = options[:build_number] || ENV['BUILD_NUMBER'] || '0'
+    %{
+      #{commit_message}
+      Branch: #{branch} [#{build_number}]
+      Commit: https://github.com/s10tv/s10-ios/commit/#{commit_hash}
+      Date: #{date}
+    }.gsub(/^\s+/, "").strip
+  end
+
   desc 'Helper to add device to developer portal and renew all provisioning Profiles. Takes :name and :uuid'
   lane :register_device do |options|
     raise ':name missing' unless options[:name]
@@ -54,6 +69,24 @@ platform :ios do
     devices[options[:name]] = options[:uuid]
     register_devices(devices: devices)
     download_profiles(dev: true, adhoc: true, force: true)
+  end
+
+  desc 'Helper to add tester to TestFlight'
+  lane :add_tester do |options|
+    raise ':email missing' unless options[:email]
+    raise ':first_name missing' unless options[:first_name]
+    raise ':last_name missing' unless options[:last_name]
+    command = ['cd ..; pilot add --username tony@s10.tv --app_identifier tv.s10.taylr']
+    command << "--email \"#{options[:email]}\""
+    command << "--first_name \"#{options[:first_name]}\""
+    command << "--last_name \"#{options[:last_name]}\""
+    sh command.join(" ")
+  end
+
+  desc 'Helper to remove tester from TestFlight'
+  lane :remove_tester do |options|
+    raise ':email missing' unless options[:email]
+    sh "cd ..; pilot remove -u tony@s10.tv -a tv.s10.taylr -e \"#{options[:email]}\""
   end
 
   desc 'Import certificates into taylr keychain'
@@ -80,16 +113,6 @@ platform :ios do
     sigh(app_identifier: 'tv.s10.taylr') if options[:appstore]
   end
 
-  desc 'Install cocoapods'
-  lane :pod_install do
-    cocoapods(podfile: 'ios/', verbose: true)
-  end
-
-  desc 'Runs all available iOS tests (none so far)'
-  lane :test do |options|
-    puts 'TODO: Add some tests please'
-  end
-
   desc 'Build a new ipa file :variant defaults to nil, :build_number optional'
   lane :archive do |options|
     # Configure Build number if needed
@@ -114,26 +137,12 @@ platform :ios do
       configuration: configuration,
       xcargs: "BUILD_NUMBER=#{build_number}",
       export_method: export_method,
+      include_bitcode: true,
       buildlog_path: ENV['OUTPUT_DIR'],
       output_directory: ENV['OUTPUT_DIR'],
       output_name: "#{build_number}.ipa"
     )
     desktop_notification(message: "Successfully archived #{options}")
-  end
-
-  desc 'Generate automatic release notes from current git status and environment'
-  lane :release_notes do |options|
-    commit_message = sh 'git log -n 1 --pretty=format:%s head'
-    date = sh 'date'
-    branch = git_branch
-    commit_hash = sh 'git rev-parse HEAD'
-    build_number = options[:build_number] || ENV['BUILD_NUMBER'] || '0'
-    %{
-      #{commit_message}
-      Branch: #{branch} [#{build_number}]
-      Commit: https://github.com/s10tv/s10-ios/commit/#{commit_hash}
-      Date: #{date}
-    }.gsub(/^\s+/, "").strip
   end
 
   desc 'Upload to apphub to update ReactNative bundle of existing clients, use :ipa_path to specify ipa file'
@@ -148,7 +157,7 @@ platform :ios do
 
     name = get_version_number(xcodeproj: './ios/Taylr.xcodeproj')
     if ENV['BUILD_NUMBER']
-      name = "v#{name} (#{ENV['BUILD_NUMBER']})" 
+      name = "v#{name} (#{ENV['BUILD_NUMBER']})"
     else
       name = "v#{name}"
     end

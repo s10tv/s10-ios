@@ -13,7 +13,7 @@ dependencies:
   override:
     - npm install
     - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
-    # - fastlane pod_install
+    # - cd ios && pod install
   post:
     # - fastlane import_certs
     # - fastlane download_profiles dev:true adhoc:true appstore:true
