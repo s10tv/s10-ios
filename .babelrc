@@ -1,8 +1,4 @@
 {
-    "whitelist": [
-        "es7.classProperties",
-        "es7.decorators",
-        "es7.asyncFunctions",
-        "regenerator"
-    ]
+    "presets": ["es2015", "react"],
+    "plugins": ["syntax-async-functions","transform-regenerator"]
 }

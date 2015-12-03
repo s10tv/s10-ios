@@ -1,8 +1,4 @@
-/**
- * @flow
- */
 'use strict';
-
 
 let {
   NativeAppEventEmitter,

@@ -18,8 +18,10 @@ let BridgeManager = require('./modules/BridgeManager');
 import ApphubService from './components/upgrade/ApphubService';
 import { LayerService } from './modules/LayerService';
 import LayoutContainer from './app/LayoutContainer';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux/native';
+import thunk from 'redux-thunk';
+import DDPService from './app/lib/ddp';
 
 import * as reducers from './app/reducers'
 
@@ -31,9 +33,14 @@ global.process = require("./lib/process.polyfill");
 logger.info('JS App Launched');
 logger.debug(`bundle url ${BridgeManager.bundleUrlScheme()}`);
 
-let store = createStore(combineReducers(reducers))
+let createStoreWithMiddleware = applyMiddleware(
+  thunk
+)(createStore);
 
+let store = createStoreWithMiddleware(combineReducers(reducers))
 let ddp = new TSDDPClient(BridgeManager.serverUrl());
+let ddpService = new DDPService(ddp, store);
+
 let layerService = new LayerService(store);
 let apphubService = new ApphubService(store);
 
@@ -66,7 +73,7 @@ class Main extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        {() => <LayoutContainer ddp={ddp} store={store} />}
+        {() => <LayoutContainer ddp={ddpService} />}
       </Provider>
     )
   }

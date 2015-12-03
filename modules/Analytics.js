@@ -1,6 +1,3 @@
-/**
- * @flow
- */
 'use strict';
 
 const React = require('react-native');
@@ -11,7 +8,7 @@ const {
 } = React;
 
 class Analytics {
-  
+
   /**
    * isNewUser: Bool
    */
@@ -20,7 +17,7 @@ class Analytics {
   }
 
   static async userDidLogout() {
-    return TSAnalytics.userDidLogout(); 
+    return TSAnalytics.userDidLogout();
   }
 
   static async updateUsername() {
@@ -60,10 +57,10 @@ class Analytics {
    * properties: {}}
    */
   static async screen(name, properties) {
-    // TODO: Screen as it is currently implemented gets called every 
+    // TODO: Screen as it is currently implemented gets called every
     // time a page renders. This could happen once per state change.
     // Too noisy.
-    // 
+    //
     // return TSAnalytics.screen(name, properties);
     return Promise.resolve(true);
   }

@@ -1,8 +1,4 @@
-/**
- * @flow
- */
 'use strict';
-
 
 let {
   NativeAppEventEmitter,
@@ -16,13 +12,17 @@ const logger = new (require('../modules/Logger'))('Session.js');
 logger.debug('Will initialize session');
 
 class Session {
-  constructor(store) {
+
+  constructor() {
+    console.log('real session');
   }
 
+  initialValue() {
+    return true;
+  }
 }
 
 logger.debug(`Session initialValue=${JSON.stringify(TSSession.initialValue)}`);
 logger.debug('Did initialize session');
 
-
-export default TSSession
+module.exports = Session;
