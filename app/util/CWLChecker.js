@@ -30,4 +30,4 @@ class CWLChecker {
   }
 }
 
-export { CWLChecker };
+module.exports = CWLChecker;

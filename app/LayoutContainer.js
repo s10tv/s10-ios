@@ -19,50 +19,21 @@ class LayoutContainer extends React.Component {
 
   async _setUpDDP() {
     logger.debug('setting up ddp ... ');
-
-    try {
-      await this.props.ddp.initialize()
-
-      if (!this.props.ddp.connected) {
-        logger.warning('Cannot connect to DDP server.');
-        return;
-      }
-
-      if (Session.initialValue) {
-        const { userId, resumeToken } = Session.initialValue;
-
-        this.props.dispatch({
-          type: 'LOGIN_FROM_RESUME',
-          userId,
-          resumeToken,
-        });
-
-        const loginResult = await this.props.ddp.loginWithToken(resumeToken);
-
-        if (loginResult.resumeToken == resumeToken) {
-          // The user has logged in successfully
-          return this.props.ddp.subscribe();
-        } else {
-          // TODO(qimingfang): the user did not log in successfully.
-        }
-      }
-    } catch (err) {
-      logger.error(err);
-    }
+    new ResumeTokenHandler(this.props.ddp, Session).handle(this.props.dispatch);
   }
 
   render() {
+    if (this.props.loggedIn) {
+      return (
+        <View style={{ paddingTop: 50 }}>
+          <Text>Logged in!</Text>
+        </View>
+      )
+    }
+
     return (
       <View style={{ paddingTop: 50 }}>
-        <TouchableOpacity onPress={() => {
-          this.props.dispatch({
-            type: 'INCREMENT_COUNTER'
-          })
-        }}>
-          <View><Text>Increase</Text></View>
-
-        </TouchableOpacity>
-        <Text>{ this.props.counter }</Text>
+        <Text>Not Logged In</Text>
       </View>
     )
   }
@@ -71,7 +42,7 @@ class LayoutContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     counter: state.counter,
-    currentAccount: state.currentAccount,
+    loggedIn: state.loggedIn,
   }
 }
 
