@@ -1,3 +1,5 @@
+const logger = new (require('../../modules/Logger'))('ResumeTokenHandler');
+
 const ERRORS = {
   NO_NETWORK: 'no-network',
   NOT_LOGGED_IN: 'not-logged-in',
@@ -21,7 +23,7 @@ class ResumeTokenHandler {
       return Promise.resolve(true);
     })
     .then(() => {
-      if (!this.session.initialValue) {
+      if (!this.session || !this.session.initialValue) {
         return Promise.reject(ERRORS.NOT_LOGGED_IN);
       }
 
@@ -57,6 +59,7 @@ class ResumeTokenHandler {
           logger.debug('Resume token expired.')
           break;
         default:
+          console.trace(err);
           logger.error(err);
       }
       return false;
