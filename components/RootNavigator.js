@@ -154,7 +154,6 @@ class RootNavigator extends React.Component {
           me={route.me}
           isCurrentCandidate={route.isCurrentCandidate}
           candidateUser={route.candidateUser}
-          text={route.text}
           currentUser={this.props.me}
           settings={this.props.settings}
           loadActivities={true}

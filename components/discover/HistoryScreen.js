@@ -41,8 +41,7 @@ class HistoryProfile extends React.Component {
         cardOverride={{ padding: 0 }}
         onPress={() => { this.props.parentNavigator.push({
           id: 'viewprofile',
-          me: user,
-          text: `Message ${user.firstName}`
+          me: user
         }) }}>
           <View style={[styles.imgContainer, {height: height} ]}>
             <Image style={{ flex: 1, resizeMode: 'cover' }} source={{ uri: user.avatar.url }}>
@@ -168,7 +167,7 @@ class HistoryScreen extends React.Component {
     return (
       <View style={SHEET.container}>
         <View style={{flex: 1, paddingTop: 64,}}>
-          { historyView }
+          { historyView } 
         </View>
       </View>
     )
@@ -180,7 +179,7 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginRight: 8,
-    marginLeft: 8,
+    marginLeft: 8, 
   },
   scroll: {
     flex: 1,
