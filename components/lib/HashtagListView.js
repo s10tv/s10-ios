@@ -122,7 +122,7 @@ class HashtagListView extends React.Component {
       myTagsRendered = myTags.filter(tag => {
         return tag.type == this.props.category.type
       }).map(hashtag => {
-        return <Hashtag 
+        return <Hashtag
           key={hashtag.text}
           ddp={this.props.ddp}
           enableTouch={true}
@@ -141,6 +141,17 @@ class HashtagListView extends React.Component {
       return myTagIds.indexOf(hashtag._id) < 0;
     })
     .map((hashtag) => {
+
+      // Suggested Hashtags don't come shipped with param `type`
+      // Instead they have `types` which is a list of types that they belong to.
+      let type = "default";
+      if (hashtag.types && hashtag.types.length > 0) {
+        type = hashtag.types[0];
+      } else if (hashtag.type) {
+        type = hashtag.type;
+      }
+      hashtag.type = type;
+
       return <Hashtag key={hashtag.text} ddp={this.ddp} enableTouch={true} hashtag={ hashtag } />
     });
 
