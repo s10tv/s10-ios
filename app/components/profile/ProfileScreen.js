@@ -5,8 +5,11 @@ import React, {
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
+import { SCREEN_PROFILE } from '../../constants'
 
 class ProfileScreen extends React.Component {
+
+  static id = SCREEN_PROFILE;
 
   render() {
     return (

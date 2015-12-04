@@ -7,6 +7,8 @@ import React, {
 
 import { connect } from 'react-redux/native';
 
+import { SCREEN_ME } from '../../constants';
+
 // constants
 const logger = new (require('../../../modules/Logger'))('MeScreen');
 
@@ -17,6 +19,8 @@ function mapStateToProps(state) {
 }
 
 class MeScreen {
+
+  static id = SCREEN_ME;
 
   showProfile() {
     this.props.dispatch({

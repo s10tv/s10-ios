@@ -10,8 +10,6 @@ class FacebookLoginHandler {
   onLogin(accessTokenString, dispatch) {
     return this.ddp.loginWithFacebook(accessTokenString)
     .then((result) => {
-      logger.debug(`Login result from Facebook: ${JSON.stringify(result)}`)
-
       dispatch({
         type: 'LOGIN_FROM_FB',
       })

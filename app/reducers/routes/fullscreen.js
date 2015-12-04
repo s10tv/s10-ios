@@ -1,4 +1,13 @@
 import { combineReducers } from 'redux';
+import undoable, { includeAction } from 'redux-undo';
+
+import {
+  SWITCH_BASE_TAB,
+  SCREEN_CONVERSATION,
+  SCREEN_PROFILE,
+  SCREEN_TODAY,
+  SCREEN_ME,
+  SCREEN_CONVERSATION_LIST } from '../../constants'
 
 import ProfileScreen from '../../components/profile/ProfileScreen';
 import RootNavigator from '../../RootNavigator';
@@ -6,47 +15,23 @@ import ConversationScreen from '../../components/chat/ConversationScreen';
 
 const logger = new (require('../../../modules/Logger'))('fullscreen')
 
-function currentScreen(state = RootNavigator, action) {
-  switch (action.type) {
-    case 'PROFILE_SCREEN':
-      return ProfileScreen;
-
-    case 'CONVERSATION_SCREEN':
-      return ConversationScreen;
-
-    case 'DISCOVER_SCREEN':
-    case 'HISTORY_SCREEN':
-    case 'ME_SCREEN':
-    case 'ME_EDIT_SCREEN':
-    case 'CONVERSATION_LIST':
-      return RootNavigator;
+function showLeftNav(state = false, action) {
+  switch(action.type) {
+    case SCREEN_PROFILE:
+      return true;
 
     default:
       return state;
   }
-}
-
-function showLeftNav(state = false, action) {
-  return state;
 }
 
 function showRightNav(state = false, action) {
   return state;
 }
 
-function currentProps(state = {}, action) {
+function navbarHidden(state = true, action) {
   switch (action.type) {
-    case 'CONVERSATION_SCREEN':
-      logger.debug(`got CONVERSATION_SCREEN. props:${JSON.stringify(action.props)}`);
-      return Object.assign({}, state, action.props);
-    default:
-      return state;
-  }
-}
-
-function didPressBack(state = false, action) {
-  switch (action.type) {
-    case 'PRESSED_BACK_FROM_CONVERSATION':
+    case SCREEN_CONVERSATION:
       return true;
 
     default:
@@ -54,49 +39,17 @@ function didPressBack(state = false, action) {
   }
 }
 
-function didPressNext(state = false, action) {
-  /*
-  case 'PROFILE_SCREEN':
-    return ProfileScreen;
-
-  case 'CONVERSATION_SCREEN':
-    return ConversationScreen;
-
-  case 'DISCOVER_SCREEN':
-  case 'HISTORY_SCREEN':
-  case 'ME_SCREEN':
-  case 'ME_EDIT_SCREEN':
-  case 'CONVERSATION_LIST':
-  */
-  return state;
-}
-
-function navbarHidden(state = false, action) {
-  switch (action.type) {
-    case 'CONVERSATION_SCREEN':
-      return true;
+function displayTitle(state = null, action) {
+  switch(action.type) {
+    case SCREEN_PROFILE:
+      return 'Profile'
 
     default:
-      return state;
-  }
-}
-
-const defaultTransition = { didPressNext: false, nextRouteId: '' };
-function transition(state = defaultTransition, action) {
-  switch (action.type) {
-    case 'CONVERSATION_LIST_TO_CONVERSATION_SCREEN':
-      return Object.assign({}, state, { didPressNext: true, nextRouteId: 'conversation' })
-
-    default:
-      return defaultTransition;
+      return null;
   }
 }
 
 module.exports = combineReducers({
-  didPressBack,
-  currentScreen,
-  currentProps,
-  transition,
   nav: combineReducers({
     left: combineReducers({
       show: showLeftNav
@@ -106,6 +59,9 @@ module.exports = combineReducers({
       show: showRightNav
     }),
 
-    hidden: navbarHidden,
+    displayTitle,
+    hidden: undoable(navbarHidden, { filter: [
+      SCREEN_CONVERSATION
+    ]}),
   })
 })

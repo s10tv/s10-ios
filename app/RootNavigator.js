@@ -2,21 +2,26 @@ import React, {
   Navigator,
   TouchableOpacity,
   Text,
+  StyleSheet,
 } from 'react-native';
 
 // external dependencies
-import { connect } from 'react-redux/native'
+import { connect } from 'react-redux/native';
+import TabNavigatorScreen from './components/TabNavigatorScreen';
+import Router from './Router';
+
+import { SWITCH_BASE_TAB } from './constants'
 
 function mapStateToProps(state) {
   return {
-    routes: state.routes
+    routes: state.routes.root
   }
 }
 
 class RootNavigator extends React.Component {
 
   leftButton(route, navigator, index, navState) {
-    if (this.props.routes.root.nav.left.show) {
+    if (this.props.nav.left.show) {
       return (
         <TouchableOpacity
           onPress={() => navigator.pop() }
@@ -32,8 +37,18 @@ class RootNavigator extends React.Component {
   }
 
   rightButton(route, navigator, index, navState) {
-    // TODO(qimingfang)
-    return null;
+    let rightNav = this.props.nav.right;
+    if (rightNav.show) {
+      return (
+        <TouchableOpacity
+          onPress={rightNav.onClick}
+        >
+          <Text>
+            {rightNav.text}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
   }
 
   title() {
@@ -42,17 +57,25 @@ class RootNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
-    const currentScreen = this.props.routes.root.currentScreen;
+    this.router = this.router || new Router(nav, this.props.dispatch);
+
+    if (route.component) {
+      return React.createElement(route.component, route.props)
+    }
+
     const props = Object.assign({}, route.props, this.props, {
       navigator: nav,
     });
-    return React.createElement(currentScreen, props)
+
+    return <TabNavigatorScreen {...props} />
   }
 
   render() {
     return (
       <Navigator
         ref='nav'
+        itemWrapperStyle={styles.nav}
+        style={styles.nav}
         renderScene={this.renderScene.bind(this)}
         configureScene={(route) => ({
           ...Navigator.SceneConfigs.HorizontalSwipeJump,
@@ -68,11 +91,22 @@ class RootNavigator extends React.Component {
               RightButton: this.rightButton.bind(this),
               Title: this.title.bind(this)
             }}
+            style={styles.navBar}
           />
         }>
       </Navigator>
     )
   }
 }
+
+
+let styles = StyleSheet.create({
+  nav: {
+    flex: 1,
+  },
+  navBar: {
+    backgroundColor: '#64369C',
+  },
+});
 
 export default connect(mapStateToProps)(RootNavigator)

@@ -20,31 +20,7 @@ class LayerService {
         store.dispatch({ type: 'CHANGE_ALL_COUNT', count: count })
       });
 
-    this.navigateToConversationViewListener = NativeAppEventEmitter
-      .addListener('Navigation.push', (properties) => {
-        logger.debug('did receive Navigation.push')
-        switch (properties.routeId) {
-          case 'conversation':
-            store.dispatch({
-              type: 'CONVERSATION_SCREEN',
-              props: { conversationId: properties.args.conversationId },
-            })
-            break;
-          case 'profile':
-            store.dispatch({
-              type: 'PROFILE_SCREEN',
-            })
-            break;
-        }
-    });
 
-    this.popListener = NativeAppEventEmitter
-      .addListener('Navigation.pop', (properties) => {
-        logger.debug('did receive Navigation.pop')
-        store.dispatch({
-          type: 'PRESSED_BACK_FROM_CONVERSATION',
-        })
-      });
   }
 }
 

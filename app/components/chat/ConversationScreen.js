@@ -1,13 +1,13 @@
 import React, { View } from 'react-native';
 import { connect } from 'react-redux/native';
+import { SCREEN_CONVERSATION } from '../../constants'
 
 // constants
-const logger = new (require('../../../modules/Logger'))('FacebookLoginHandler');
+const logger = new (require('../../../modules/Logger'))('ConversationScreen');
 
 var TSConversationView = React.requireNativeComponent('TSConversationView', ConversationScreen);
 
 function mapStateToProps(state) {
-  logger.debug(`state.routes: ${JSON.stringify(state.routes)}`);
   return {
     me: state.me,
     currentProps: state.routes.fullscreen.currentProps,
@@ -15,6 +15,9 @@ function mapStateToProps(state) {
 }
 
 class ConversationScreen extends React.Component {
+
+  static id = SCREEN_CONVERSATION;
+
   render() {
     return (
       <TSConversationView

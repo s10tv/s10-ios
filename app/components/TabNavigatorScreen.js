@@ -11,6 +11,8 @@ import MeScreen from './me/MeScreen';
 import DiscoverScreen from './discover/DiscoverScreen';
 import ConversationListView from './chat/ConversationListView';
 
+import { SWITCH_BASE_TAB } from '../constants'
+
 function mapStateToProps(state) {
   return {
     routes: {
@@ -32,9 +34,10 @@ class TabNavigatorScreen extends React.Component {
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
-              type: 'SWITCH_BASE_TAB',
+              type: SWITCH_BASE_TAB,
               currentTab: 'Me'
             })
+            this.props.dispatch({ type: MeScreen.id })
           }}
           selected={this.props.routes.root.currentTab == 'Me'}>
 
@@ -47,9 +50,10 @@ class TabNavigatorScreen extends React.Component {
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
-              type: 'SWITCH_BASE_TAB',
+              type: SWITCH_BASE_TAB,
               currentTab: 'Today'
             })
+            this.props.dispatch({ type: DiscoverScreen.id })
           }}
           selected={this.props.routes.root.currentTab == 'Today'}>
 
@@ -63,9 +67,10 @@ class TabNavigatorScreen extends React.Component {
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
-              type: 'SWITCH_BASE_TAB',
+              type: SWITCH_BASE_TAB,
               currentTab: 'Conversations'
             })
+            this.props.dispatch({ type: ConversationListView.id })
           }}
           selected={this.props.routes.root.currentTab == 'Conversations'}>
 

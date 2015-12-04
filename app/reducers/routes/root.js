@@ -3,19 +3,11 @@ import TabNavigatorScreen from '../../components/TabNavigatorScreen';
 
 import { combineReducers } from 'redux';
 
-function currentScreen(state = TabNavigatorScreen, action) {
-  switch (action.type) {
-    case 'SHOW_DISCOVER_SCREEN':
-      return DiscoverScreen;
-
-    default:
-      return state;
-  }
-}
+import { SWITCH_BASE_TAB, SCREEN_HISTORY } from '../../constants'
 
 function currentTab(state = 'Today', action) {
   switch(action.type) {
-    case 'SWITCH_BASE_TAB':
+    case SWITCH_BASE_TAB:
       const tab = action.currentTab;
       switch(tab) {
         case 'Today': // fallthrough intentional
@@ -28,9 +20,6 @@ function currentTab(state = 'Today', action) {
   }
 }
 
-/**
- * Nav left button reducer
- */
 function showLeftNav(state = false, action) {
   switch (action.type) {
     case 'SHOW_DISCOVER_SCREEN':
@@ -41,20 +30,34 @@ function showLeftNav(state = false, action) {
   }
 }
 
-function showRightNav(state = false, action) {
-  return state;
+function rightNav(state = { show: true, action: null, text: 'History' }, action) {
+  switch (action.type) {
+    /* WIP
+    case SWITCH_BASE_TAB:
+      const tab = action.currentTab;
+      switch(tab) {
+        case 'Today': // fallthrough intentional
+          return Object.assign({}, state, {
+            show: true,
+            text: 'History',
+            onClick: action.router.toHistory,
+          })
+      }
+
+    default:
+      return state;
+    */
+
+  }
 }
 
 module.exports = combineReducers({
   currentTab,
-  currentScreen,
   nav: combineReducers({
     left: combineReducers({
       show: showLeftNav
     }),
 
-    right: combineReducers({
-      show: showRightNav
-    })
+    right: rightNav,
   })
 })
