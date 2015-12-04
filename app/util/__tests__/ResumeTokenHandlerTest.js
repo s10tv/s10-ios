@@ -9,10 +9,12 @@ describe('ResumeTokenHandler', () => {
   let session;
   let handler;
 
-  function assertNoDispatch() {
+  function assertNoDispatch(expectedErr = handler.errors.COULD_NOT_LOG_IN) {
     return handler.handle(DISPATCH_FN).then((val) => {
+      fail('should not have succeeded');
+    }).catch(err => {
       expect(DISPATCH_FN.mock.calls.length).toEqual(0);
-      expect(val).toEqual(false)
+      expect(err).toBe(expectedErr);
     })
   }
 
@@ -34,14 +36,13 @@ describe('ResumeTokenHandler', () => {
     beforeEach(() => {
       ddp = {
         connected: false,
-        initialize: () => Promise.resolve(),
       };
 
       handler = new ResumeTokenHandler(ddp, {});
     })
 
     pit('should not have dispatched', () => {
-      return assertNoDispatch()
+      return assertNoDispatch(handler.errors.NO_NETWORK)
     })
   });
 
@@ -49,7 +50,6 @@ describe('ResumeTokenHandler', () => {
     beforeEach(() => {
       ddp = {
         connected: true,
-        initialize: () => Promise.resolve(),
         loginWithToken: (resumeToken) => Promise.resolve({ resumeToken }),
         subscribe: () => Promise.resolve(),
       };
@@ -87,8 +87,9 @@ describe('ResumeTokenHandler', () => {
 
           return handler.handle(DISPATCH_FN).then((val) => {
             // we optimistically dispatched
+          }).catch(err => {
             assertDispatch()
-            expect(val).toBe(false);
+            expect(err).toBe(handler.errors.COULD_NOT_LOG_IN);
           })
         })
       })

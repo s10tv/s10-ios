@@ -23,11 +23,11 @@ class FacebookLoginHandler {
         userTriggered: true,
       })
 
-      this.ddp.resubscribe();
-
       if (result.isNewUser) {
         // TODO(qimingfang): navigate through onboarding navigator
       }
+
+      return Promise.resolve(result);
     })
     .catch(err => {
       logger.error(err);

@@ -77,7 +77,7 @@ NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
 class Main extends React.Component {
   render() {
     return (
-      <Provider store={store} ddp={ddp}>
+      <Provider store={store}>
         {() => <LayoutContainer ddp={ddp} />}
       </Provider>
     )

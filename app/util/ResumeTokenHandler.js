@@ -1,6 +1,7 @@
 const logger = new (require('../../modules/Logger'))('ResumeTokenHandler');
 
 const ERRORS = {
+  COULD_NOT_LOG_IN: 'could-not-log-in',
   NO_NETWORK: 'no-network',
   NOT_LOGGED_IN: 'not-logged-in',
   EXPIRED_TOKEN: 'expired-token',
@@ -11,17 +12,15 @@ class ResumeTokenHandler {
   constructor(ddp, session) {
     this.ddp = ddp;
     this.session = session;
+    this.errors = ERRORS;
   }
 
   handle(dispatch) {
-    return this.ddp.initialize()
-    .then(() => {
-      if (!this.ddp.connected) {
-        logger.warning('Cannot connect to DDP server.');
-        return Promise.reject(ERRORS.NO_NETWORK);
-      }
-      return Promise.resolve(true);
-    })
+    if (!this.ddp.connected) {
+      logger.warning('Cannot connect to DDP server.');
+      return Promise.reject(ERRORS.NO_NETWORK);
+    }
+    return Promise.resolve(true)
     .then(() => {
       if (!this.session || !this.session.initialValue) {
         return Promise.reject(ERRORS.NOT_LOGGED_IN);
@@ -43,7 +42,7 @@ class ResumeTokenHandler {
     })
     .then((loginResult) => {
       if (loginResult && loginResult.resumeToken) {
-        return this.ddp.subscribe();
+        return Promise.resolve(loginResult);
       }
       return Promise.reject(ERRORS.EXPIRED_TOKEN)
     })
@@ -59,10 +58,9 @@ class ResumeTokenHandler {
           logger.debug('Resume token expired.')
           break;
         default:
-          console.trace(err);
           logger.error(err);
       }
-      return false;
+      return Promise.reject(ERRORS.COULD_NOT_LOG_IN);
     })
   }
 }

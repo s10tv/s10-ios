@@ -12,17 +12,21 @@ const logger = new (require('../modules/Logger'))('Session.js');
 logger.debug('Will initialize session');
 
 class Session {
-
-  constructor() {
-    console.log('real session');
+  initialValue() {
+    logger.debug(`session initial value: ${JSON.stringify(TSSession.initialValue)}`)
+    return TSSession.initialValue;
   }
 
-  initialValue() {
-    return true;
+  login(userId, resumeToken, expiryDate) {
+    return TSSession.login(userId, resumeToken, expiryDate);
+  }
+
+  logout() {
+    return TSSession.logout()
   }
 }
 
 logger.debug(`Session initialValue=${JSON.stringify(TSSession.initialValue)}`);
 logger.debug('Did initialize session');
 
-module.exports = Session;
+module.exports = new Session();

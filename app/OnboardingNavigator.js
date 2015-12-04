@@ -1,8 +1,55 @@
-import {
+import React, {
   Navigator,
-} from require('react-native');
+  TouchableOpacity,
+  Text
+} from 'react-native';
 
-class OnboardinNavigator extends React.Component {
+// external dependencies
+import { connect } from 'react-redux/native';
+
+function mapStateToProps(state) {
+  return {
+    routes: {
+      onboarding: state.routes.onboarding
+    }
+  }
+}
+
+class OnboardingNavigator extends React.Component {
+
+  leftButton(route, navigator, index, navState) {
+    if (this.props.routes.onboarding.nav.left.show) {
+      return (
+        <TouchableOpacity
+          onPress={() => navigator.pop() }
+        >
+          <Text>
+            Back
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+
+    return null;
+  }
+
+  rightButton(route, navigator, index, navState) {
+    // TODO(qimingfang)
+    return null;
+  }
+
+  title() {
+    // TODO(qimingfang)
+    return null;
+  }
+
+  renderScene(route, nav) {
+    const currentScreen = this.props.routes.onboarding.currentScreen;
+    const props = Object.assign({}, route.props, this.props, {
+      navigator: nav,
+    });
+    return React.createElement(currentScreen, props)
+  }
 
   render() {
     return (
@@ -14,14 +61,14 @@ class OnboardinNavigator extends React.Component {
           gestures: {}, // or null
         })}
         initialRoute={{
-          id: this.props.routes.root,
+          id: 'not-used'
         }}
         navigationBar={
-          <NavigationBar
+          <Navigator.NavigationBar
             routeMapper={{
-              LeftButton: this._leftButton.bind(this),
-              RightButton: this._rightButton.bind(this),
-              Title: this._title.bind(this)
+              LeftButton: this.leftButton.bind(this),
+              RightButton: this.rightButton.bind(this),
+              Title: this.title.bind(this)
             }}
           />
         }>
@@ -30,4 +77,4 @@ class OnboardinNavigator extends React.Component {
   }
 }
 
-module.exports = OnboardinNavigator;
+export default connect(mapStateToProps)(OnboardingNavigator);

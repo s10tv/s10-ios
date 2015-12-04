@@ -43,9 +43,10 @@ class RootNavigator extends React.Component {
 
   renderScene(route, nav) {
     const currentScreen = this.props.routes.root.currentScreen;
-    return React.createElement(currentScreen, Object.assign({}, route.props, {
-        navigator: nav,
-    }))
+    const props = Object.assign({}, route.props, this.props, {
+      navigator: nav,
+    });
+    return React.createElement(currentScreen, props)
   }
 
   render() {
@@ -58,7 +59,7 @@ class RootNavigator extends React.Component {
           gestures: {}, // or null
         })}
         initialRoute={{
-          id: this.props.routes.root,
+          id: 'not-used'
         }}
         navigationBar={
           <Navigator.NavigationBar

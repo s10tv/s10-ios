@@ -23,6 +23,11 @@ const logger = new (require('../../../modules/Logger'))('LoginScreen');
 
 class LoginScreen extends React.Component {
 
+  constructor(props = {}) {
+    super(props);
+    this.facebookLoginHandler = new FacebookLoginHandler(props.ddp);
+  }
+
   onFacebookLogin(err, res) {
     if (err) {
       logger.error(err);
@@ -43,22 +48,29 @@ class LoginScreen extends React.Component {
 
     FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
       if (accessToken && accessToken.tokenString) {
-        return new FacebookLoginHandler(this.props.ddp)
-          .onLogin(accessToken.tokenString, this.props.dispatch);
+        return this.facebookLoginHandler.onLogin(accessToken.tokenString, this.props.dispatch)
+          .then((result) => {
+            this.props.onPressLogin(result)
+          })
+          .catch(err => {
+            logger.error(err)
+          })
       }
     });
   }
 
   render() {
     return (
+      <View style={{ paddingTop: 100}}>
       <FBSDKLoginButton
         onLoginFinished={this.onFacebookLogin.bind(this)}
-        onLogoutFinished={() => console.log('on logout') }
+        onLogoutFinished={this.props.onPressLogout}
         readPermissions={['email', 'public_profile', 'user_about_me',
           'user_birthday', 'user_education_history',
           'user_friends', 'user_location', 'user_photos', 'user_posts']}
         publishPermissions={[]}
       />
+      </View>
     )
   }
 }

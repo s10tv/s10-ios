@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import root from './root/index'
+import root from './root'
+import onboarding from './onboarding'
 
 module.exports = combineReducers({
-  root
+  root,
+  onboarding,
 })
