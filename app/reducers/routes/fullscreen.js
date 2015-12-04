@@ -55,6 +55,7 @@ function didPressBack(state = false, action) {
 }
 
 function didPressNext(state = false, action) {
+  /*
   case 'PROFILE_SCREEN':
     return ProfileScreen;
 
@@ -66,6 +67,8 @@ function didPressNext(state = false, action) {
   case 'ME_SCREEN':
   case 'ME_EDIT_SCREEN':
   case 'CONVERSATION_LIST':
+  */
+  return state;
 }
 
 function navbarHidden(state = false, action) {

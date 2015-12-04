@@ -59,7 +59,7 @@ class FullScreenNavigator extends React.Component {
 
     if (this.props.routes.fullscreen.didPressNext) {
       nav.push({
-        id: this.props.routes.fullscreen.nextRouteId
+        id: this.props.routes.fullscreen.nextRouteId,
         component: this.props.routes.fullscreen.currentScreen,
         props: props,
       })
