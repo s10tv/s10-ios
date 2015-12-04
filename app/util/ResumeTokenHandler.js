@@ -4,6 +4,7 @@ const ERRORS = {
   COULD_NOT_LOG_IN: 'could-not-log-in',
   NO_NETWORK: 'no-network',
   NOT_LOGGED_IN: 'not-logged-in',
+  TOKEN_NOT_FOUND: 'token-not-found',
   EXPIRED_TOKEN: 'expired-token',
 };
 
@@ -26,10 +27,12 @@ class ResumeTokenHandler {
         return Promise.reject(ERRORS.NOT_LOGGED_IN);
       }
 
-      const { userId, resumeToken } = this.session.initialValue;
+      const { userId, resumeToken } = this.session.initialValue();
+
+      logger.debug(`userId:${userId} resumeToken:${resumeToken}`)
 
       if (!userId || !resumeToken) {
-        return Promise.reject(ERRORS.NOT_LOGGED_IN);
+        return Promise.reject(ERRORS.TOKEN_NOT_FOUND);
       }
 
       dispatch({
@@ -53,9 +56,21 @@ class ResumeTokenHandler {
           break;
         case ERRORS.NOT_LOGGED_IN:
           logger.debug('No resume token found.');
+          dispatch({
+            type: 'LOGOUT',
+          });
+          break;
+        case ERRORS.TOKEN_NOT_FOUND:
+          logger.debug('Account exists, but no token was found. Bug?');
+          dispatch({
+            type: 'LOGOUT',
+          });
           break;
         case ERRORS.EXPIRED_TOKEN:
           logger.debug('Resume token expired.')
+          dispatch({
+            type: 'LOGOUT',
+          });
           break;
         default:
           logger.error(err);

@@ -1,9 +1,11 @@
-import counter from './counter';
 import loggedIn from './loggedIn';
-import routes from './routes/index'
+import routes from './routes/index';
+import me from './ddp/me';
+import layer from './layer/index';
 
 export {
-  counter,
   loggedIn,
   routes,
+  me,
+  layer,
 };

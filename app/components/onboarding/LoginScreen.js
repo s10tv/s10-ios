@@ -30,14 +30,13 @@ class LoginScreen extends React.Component {
 
   onFacebookLogin(err, res) {
     if (err) {
-      logger.error(err);
-
       this.props.dispatch({
         type: 'DISPLAY_ERROR',
         title: 'Facebook Login',
         message: 'There was a problem logging you into Taylr :C Please try again later.',
       })
 
+      logger.error(err);
       return;
     }
 
@@ -46,17 +45,22 @@ class LoginScreen extends React.Component {
       return;
     }
 
-    FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
+    return new Promise((resolve) => {
+      FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
+        return resolve(accessToken);
+      })
+    }).then((accessToken) => {
       if (accessToken && accessToken.tokenString) {
         return this.facebookLoginHandler.onLogin(accessToken.tokenString, this.props.dispatch)
-          .then((result) => {
-            this.props.onPressLogin(result)
-          })
-          .catch(err => {
-            logger.error(err)
-          })
       }
-    });
+      return Promise.reject('No Token');
+    })
+    .then((result) => {
+      return this.props.onPressLogin(result)
+    })
+    .catch(err => {
+      logger.error(err)
+    })
   }
 
   render() {

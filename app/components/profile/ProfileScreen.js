@@ -6,12 +6,12 @@ import React, {
 
 import { connect } from 'react-redux/native';
 
-class DiscoverScreen extends React.Component {
+class ProfileScreen extends React.Component {
 
   render() {
     return (
       <View style={{ paddingTop: 100 }}>
-        <Text>Discover Screen!</Text>
+        <Text>Profile Screen!</Text>
       </View>
     )
   }
@@ -21,4 +21,4 @@ function mapStateToProps(state) {
   return {}
 }
 
-export default connect(mapStateToProps)(DiscoverScreen)
+export default connect(mapStateToProps)(ProfileScreen)

@@ -4,23 +4,25 @@ const logger = new (require('../../modules/Logger'))('DDPService');
 
 class DDPService extends TSDDPClient {
 
-  resubscribe() {
-    logger.debug('called subscribe')
+  resubscribe(dispatch) {
+    logger.debug('DDP service resubscribe');
+    this._subscribeMe(dispatch)
   }
 
-  async _subscribeMe() {
-    await this.ddp.subscribe({ pubName: 'me' })
-
-    this.ddp.collections.observe(() => {
-      return this.ddp.collections.users.findOne({ _id: this.ddp.currentUserId });
-    }).subscribe(currentUser => {
-      if (currentUser) {
-        this.store.dispatch({
-          type: 'SET_ME',
-          me: currentUser
-        })
-      }
-    });
+  _subscribeMe(dispatch) {
+    this.subscribe({ pubName: 'me' })
+    .then((subId) => {
+      this.collections.observe(() => {
+        return this.collections.users.findOne({ _id: this.currentUserId });
+      }).subscribe(currentUser => {
+        if (currentUser) {
+          dispatch({
+            type: 'SET_ME',
+            me: currentUser
+          })
+        }
+      });
+    })
   }
 }
 

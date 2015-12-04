@@ -7,7 +7,7 @@ let {
 const logger = new (require('./Logger'))('LayerServiceJs');
 
 class LayerService {
-  constructor(store) {
+  listen(store) {
     this.unreadListener = NativeAppEventEmitter
       .addListener('Layer.unreadConversationsCountUpdate', (count) => {
         logger.debug(`set unreadConversationsCountUpdate=${count}`)
@@ -19,24 +19,32 @@ class LayerService {
         logger.debug(`set allConversationsCountUpdate=${count}`)
         store.dispatch({ type: 'CHANGE_ALL_COUNT', count: count })
       });
-  }
 
-  static allConversationCount(state = 0 , action) {
-    switch (action.type) {
-      case 'CHANGE_ALL_COUNT':
-        return action.count
-      default:
-        return state;
-    }
-  }
+    this.navigateToConversationViewListener = NativeAppEventEmitter
+      .addListener('Navigation.push', (properties) => {
+        logger.debug('did receive Navigation.push')
+        switch (properties.routeId) {
+          case 'conversation':
+            store.dispatch({
+              type: 'CONVERSATION_SCREEN',
+              props: { conversationId: properties.args.conversationId },
+            })
+            break;
+          case 'profile':
+            store.dispatch({
+              type: 'PROFILE_SCREEN',
+            })
+            break;
+        }
+    });
 
-  static unreadConversationCount(state = 0 , action) {
-    switch (action.type) {
-      case 'CHANGE_UNREAD_COUNT':
-        return action.count
-      default:
-        return state;
-    }
+    this.popListener = NativeAppEventEmitter
+      .addListener('Navigation.pop', (properties) => {
+        logger.debug('did receive Navigation.pop')
+        store.dispatch({
+          type: 'PRESSED_BACK_FROM_CONVERSATION',
+        })
+      });
   }
 }
 

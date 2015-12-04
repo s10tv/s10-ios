@@ -46,7 +46,7 @@ let store = createStoreWithMiddleware(combineReducers({
 }))
 
 
-let layerService = new LayerService(store);
+let layerService = new LayerService().listen(store);
 let apphubService = new ApphubService(store);
 
 NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {

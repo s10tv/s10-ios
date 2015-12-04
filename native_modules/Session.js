@@ -18,6 +18,7 @@ class Session {
   }
 
   login(userId, resumeToken, expiryDate) {
+    logger.debug(`Calling login with userId:${userId} resumeToken=${resumeToken}`)
     return TSSession.login(userId, resumeToken, expiryDate);
   }
 
