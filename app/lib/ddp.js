@@ -1,28 +1,11 @@
+import TSDDPClient from '../../lib/ddpclient';
 
 const logger = new (require('../../modules/Logger'))('DDPService');
 
-class DDPService {
+class DDPService extends TSDDPClient {
 
-  constructor(ddp, store) {
-    this.ddp = ddp;
-    this.store = store;
-
-    this.store.subscribe(() => {
-      const state = store.getState();
-
-    })
-  }
-
-  initialize() {
-    return this.ddp.initialize();
-  }
-
-  loginWithToken(resumeToken) {
-    return this.ddp.loginWithToken(resumeToken)
-  }
-
-  async subscribe() {
-    this._subscribeMe();
+  resubscribe() {
+    logger.debug('called subscribe')
   }
 
   async _subscribeMe() {

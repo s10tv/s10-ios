@@ -1,9 +1,9 @@
 import counter from './counter';
 import loggedIn from './loggedIn';
-import currentAccount from './currentAccount';
+import routes from './routes/index'
 
 export {
   counter,
   loggedIn,
-  currentAccount,
+  routes,
 };

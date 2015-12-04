@@ -33,13 +33,18 @@ global.process = require("./lib/process.polyfill");
 logger.info('JS App Launched');
 logger.debug(`bundle url ${BridgeManager.bundleUrlScheme()}`);
 
+let ddpClient = new DDPService(BridgeManager.serverUrl());
+function ddp(state = ddpClient, action) { return state }
+
 let createStoreWithMiddleware = applyMiddleware(
   thunk
 )(createStore);
 
-let store = createStoreWithMiddleware(combineReducers(reducers))
-let ddp = new TSDDPClient(BridgeManager.serverUrl());
-let ddpService = new DDPService(ddp, store);
+let store = createStoreWithMiddleware(combineReducers({
+  ...reducers,
+  ddp
+}))
+
 
 let layerService = new LayerService(store);
 let apphubService = new ApphubService(store);
@@ -72,8 +77,8 @@ NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
 class Main extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        {() => <LayoutContainer ddp={ddpService} />}
+      <Provider store={store} ddp={ddp}>
+        {() => <LayoutContainer ddp={ddp} />}
       </Provider>
     )
   }

@@ -3,12 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "babel": "^5.8.23",
-    "babel-core": "^5.8.23",
     "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
-    "instapromise": "^2.0.2",
     "lodash": "^3.6.0",
-    "react": "^0.14.3",
     "react-native": "^0.15.0",
     "react-native-button": "^1.2.1",
     "react-native-cookies": "0.0.3",
@@ -20,7 +16,7 @@
     "react-native-search-bar": "git+https://github.com/s10tv/react-native-search-bar.git",
     "react-native-tab-navigator": "^0.2.11",
     "react-native-video": "^0.6.1",
-    "react-redux": "^3.1.0",
+    "react-redux": "^3.0.4",
     "redux": "^3.0.4",
     "redux-thunk": "^1.0.0",
     "regenerator": "^0.8.42",
@@ -28,24 +24,25 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "jasmine-pit": "^2.0.2",
-    "babel-jest": "^5.3.0",
-    "jest-cli": "^0.7.1"
+    "jest-cli": "^0.8.0"
   },
   "scripts": {
     "test": "jest",
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils",
-      "<rootDir>/node_modules/fbjs"
+    "scriptPreprocessor": "node_modules/react-native/jestSupport/preprocessor.js",
+    "setupEnvScriptFile": "node_modules/react-native/jestSupport/env.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "packager/react-packager/src/Activity/"
     ],
-    "modulePathIgnorePatterns": [
-      "<rootDir>/node_modules/"
+    "testFileExtensions": [
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "promise",
+      "source-map"
     ]
   }
 }

@@ -6,8 +6,14 @@ import React, {
   TouchableOpacity
 } from 'react-native';
 
+// external dependencies
 import { connect } from 'react-redux/native';
+
+// internal dependencies
+import LoginScreen from './components/onboarding/LoginScreen'
+import RootNavigator from './RootNavigator';
 import Session from '../native_modules/Session';
+import ResumeTokenHandler from './util/ResumeTokenHandler'
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
 
@@ -17,31 +23,31 @@ class LayoutContainer extends React.Component {
     this._setUpDDP()
   }
 
-  async _setUpDDP() {
+  _setUpDDP() {
     logger.debug('setting up ddp ... ');
     new ResumeTokenHandler(this.props.ddp, Session).handle(this.props.dispatch);
   }
 
   render() {
-    if (this.props.loggedIn) {
+    logger.debug(`Rendering layout. loggedIn=${this.props.loggedIn}`)
+
+    if (!this.props.loggedIn) {
       return (
-        <View style={{ paddingTop: 50 }}>
-          <Text>Logged in!</Text>
-        </View>
+        <LoginScreen />
       )
     }
 
     return (
-      <View style={{ paddingTop: 50 }}>
-        <Text>Not Logged In</Text>
-      </View>
+      <RootNavigator
+        style={{ flex: 1 }}
+        sceneStyle={{ paddingTop: 64 }} />
     )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter,
+    ddp: state.ddp,
     loggedIn: state.loggedIn,
   }
 }
