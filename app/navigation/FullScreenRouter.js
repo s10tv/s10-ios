@@ -16,7 +16,7 @@ const ROUTE_MAP = {
 class FullScreenRouter extends BaseRouter {
 
   constructor(nav, dispatch) {
-    super(nav, dispatch);
+    super(nav, dispatch, 'FULL_SCREEN_ROUTER');
 
     // Binds this router to routes that it can handle.
     this._routeMap = ROUTE_MAP;

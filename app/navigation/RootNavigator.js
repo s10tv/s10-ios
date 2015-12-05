@@ -44,12 +44,14 @@ class RootNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
+    logger.debug(`currentScreen=${JSON.stringify(this.props.currentScreen.present)}`)
     this.router = this.router || new RootRouter(nav, this.props.dispatch);
 
-    if (this.router.canHandleRoute(route)) {
-      return this.router.handle(route);
+    if (this.router.canHandleRoute(this.props.currentScreen.present)) {
+      return this.router.handle(this.props.currentScreen.present);
     }
 
+    logger.debug(`cannot handle currentScreen=${JSON.stringify(this.props.currentScreen.present)}`)
     return <TabNavigatorScreen {...route.props} />
   }
 

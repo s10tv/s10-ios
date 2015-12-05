@@ -9,9 +9,10 @@ class BaseRouter {
    * @param nav a React Native {@code Navigator}
    * @param dispatch a Redux dispatch function
    */
-  constructor(nav, dispatch) {
+  constructor(nav, dispatch, id) {
     this.nav = nav;
     this.dispatch = dispatch;
+    this.id = id;
   }
 
   /**

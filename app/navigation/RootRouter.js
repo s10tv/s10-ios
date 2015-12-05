@@ -28,7 +28,7 @@ const ROUTE_MAP = {
 class RootRouter extends BaseRouter {
 
   constructor(nav, dispatch) {
-    super(nav, dispatch);
+    super(nav, dispatch, 'ROOT_ROUTER');
 
     // Binds this router to routes that it can handle.
     this._routeMap = ROUTE_MAP;
