@@ -3,6 +3,7 @@ import React, {
   Component,
   View,
   Text,
+  NativeModules,
   TouchableOpacity
 } from 'react-native';
 
@@ -21,6 +22,8 @@ import Intercom from '../modules/Intercom';
 import ResumeTokenHandler from './util/ResumeTokenHandler'
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
+const UIImagePickerManager = NativeModules.UIImagePickerManager;
+const TSAzureClient = NativeModules.TSAzureClient;
 
 class LayoutContainer extends React.Component {
 
@@ -138,6 +141,97 @@ class LayoutContainer extends React.Component {
     this._onUserHasLoggedIn()
   }
 
+  onUploadImage({
+      type,
+      dimensions = { width: 640, height: 480},
+      contentType = 'image/jpeg' })  {
+
+    logger.info('onUploadImage pressed');
+
+    const UPLOAD_ERRORS = {
+      ERROR_UPLOAD_CANCELLED: 'ERROR_UPLOAD_CANCELLED'
+    };
+
+    switch (type) {
+      case 'PROFILE_PIC': // fallthrough intentional
+      case 'COVER_PIC':
+        let taskId =  'task_' + Math.floor(Math.random() * (10000000000 - 10000)) + 10000;
+        return new Promise((resolve, reject) => {
+          var options = {
+            title: 'Select', // specify null or empty string to remove the title
+            cancelButtonTitle: 'Cancel',
+            takePhotoButtonTitle: 'Take Photo...',
+            chooseFromLibraryButtonTitle: 'Choose from Library...',
+            quality: 1,
+            maxWidth: dimensions.width || 640,
+            maxHeight: dimensions.height || 480,
+            allowsEditing: false, // Built in iOS functionality to resize/reposition the image
+            noData: false, // Disables the base64 `data` field from being generated (greatly improves performance on large photos)
+          }
+
+          UIImagePickerManager.showImagePicker(options, (didCancel, response) => {
+            if (didCancel) {
+              return reject(UPLOAD_ERRORS.ERROR_UPLOAD_CANCELLED);
+            }
+            return resolve(response);
+          })
+        })
+        .then((response) => {
+          const localFileURI = response.uri.replace('file://', '');
+
+          this.props.dispatch({
+            type: 'UPLOAD_START',
+            taskId: taskId,
+            type: type,
+          });
+
+          return this.props.ddp.call({
+            methodName: 'startTask',
+            params:[taskId, type, {
+              width: width,
+              height: height,
+            }]
+          })
+        })
+        .then(({ azureUrl }) => {
+          return AzureClient.putAsync(azureUrl, localFileURI, contentType);
+        })
+        .then(() => {
+          return this.props.ddp.call({ methodName: 'finishTask', params: [taskId] });
+        })
+        .then(() => {
+          this.props.dispatch({
+            type: 'UPLOAD_FINISH'
+          });
+        })
+        .catch(err => {
+          switch (err) {
+            case UPLOAD_ERRORS.ERROR_UPLOAD_CANCELLED:
+              logger.info(`Cancelled image uploading type=${type}`);
+              return;
+
+            default:
+              logger.warning(err);
+              this.props.dispatch({
+                type: 'UPLOAD_FINISH'
+              });
+              this.props.dispatch({
+                type: 'DISPLAY_ERROR',
+                title: 'Upload Error',
+                message: 'There was a problem uploading your image',
+              });
+              return;
+          }
+        })
+
+
+      default:
+        const errMsg = `Called onUploadImage with invalid type=${type}`;
+        logger.warning(errMsg);
+        return Promise.reject(errMsg);
+    }
+  }
+
   render() {
     logger.debug(`Rendering layout. loggedIn=${this.props.loggedIn}`)
 
@@ -148,6 +242,7 @@ class LayoutContainer extends React.Component {
           sceneStyle={{ paddingTop: 64 }}
           onPressLogout={this.onPressLogout.bind(this)}
           onPressLogin={this.onPressLogin.bind(this)}
+          onUploadImage={this.onUploadImage.bind(this)}
         />
       )
     }
@@ -157,6 +252,7 @@ class LayoutContainer extends React.Component {
         style={{ flex: 1 }}
         sceneStyle={{ paddingTop: 64 }}
         onPressLogout={this.onPressLogout.bind(this)}
+        onUploadImage={this.onUploadImage.bind(this)}
       />
     )
   }

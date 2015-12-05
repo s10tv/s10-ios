@@ -1,14 +1,28 @@
 import React, {
+  Dimensions,
+  ScrollView,
   StyleSheet,
-  View,
   Text,
+  View,
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
-import { SCREEN_EDIT_PROFILE } from '../../constants';
+
 import Screen from '../Screen';
 
+import sectionTitle from '../lib/sectionTitle';
+import editPhotoHeader from '../lib/editPhotoHeader';
+import { SCREEN_EDIT_PROFILE } from '../../constants';
+import { SHEET } from '../../CommonStyles';
+
+const { width, height } = Dimensions.get('window');
 const logger = new (require('../../../modules/Logger'))('EditProfileScreen');
+
+function mapStateToProps(state) {
+  return {
+    me: state.me,
+  }
+}
 
 class EditProfileScreen extends Screen {
 
@@ -19,15 +33,28 @@ class EditProfileScreen extends Screen {
 
   render() {
     return (
-      <View style={{ paddingTop: 100 }}>
-        <Text>Edit Profile Screen!</Text>
+      <View style={SHEET.container}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={[SHEET.navTop]}>
+
+          { editPhotoHeader(
+            this.props.onUploadImage,
+            this.props.me.avatarUrl,
+            this.props.me.coverUrl)}
+
+          <View style={SHEET.innerContainer}>
+            {sectionTitle('SERVICES')}
+
+            {sectionTitle('MY INFO')}
+            <View style={SHEET.separator} />
+
+          </View>
+          <View style={ SHEET.bottomTile } />
+        </ScrollView>
       </View>
     )
   }
-}
-
-function mapStateToProps(state) {
-  return {}
 }
 
 export default connect(mapStateToProps)(EditProfileScreen)

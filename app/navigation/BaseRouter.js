@@ -64,7 +64,7 @@ class BaseRouter {
   /**
    * @return a component to be rendered given the @param route
    */
-  handle(route) {
+  handle(route, extraProps = {}) {
     const Component = this._routeMap[route.id];
 
     if (!Component) {
@@ -72,7 +72,9 @@ class BaseRouter {
       return;
     }
 
-    return <Component {...route.props} />
+    const props = Object.assign({}, route.props, extraProps);
+
+    return <Component {...props} />
   }
 
   /**
