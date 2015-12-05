@@ -38,7 +38,9 @@ class MeScreen extends React.Component {
       <View style={{ paddingTop: 60 }}>
         <Text>Me Screen</Text>
         <Text>{ this.props.me.firstName } { this.props.me.lastName }</Text>
-        <Text onPress={this.showProfile.bind(this)}>My Profile</Text>
+        <Text onPress={() => {
+          return this.props.onViewProfile(this.props.me.userId);
+        }}>My Profile</Text>
         <Text onPress={this.props.onPressLogout}>Log Out</Text>
       </View>
     )

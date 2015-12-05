@@ -26,6 +26,10 @@ function mapStateToProps(state) {
 
 class FullScreenNavigator extends React.Component {
 
+  onViewProfile(userId) {
+    this.router.toProfile({ userId });
+  }
+
   leftButton(route, navigator, index, navState) {
     this.router = this.router || new Router(nav, this.props.dispatch)
     return Router.leftButton(this.props.currentScreen.present, this.router);
@@ -88,7 +92,9 @@ class FullScreenNavigator extends React.Component {
         })}
         initialRoute={{
           id: this.props.currentScreen.present.id,
-          props: this.props,
+          props: Object.assign({}, this.props, {
+            onViewProfile: this.onViewProfile.bind(this)
+          })
         }}
         navigationBar={
           <TSNavigationBar

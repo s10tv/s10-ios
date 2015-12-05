@@ -13,6 +13,8 @@ import Router from './RootRouter';
 
 import { TAB_SCREEN_CONTAINER } from './constants'
 
+const logger = new (require('../modules/Logger'))('RootNavigator');
+
 function mapStateToProps(state) {
   return {
     currentScreen: state.currentScreen,
