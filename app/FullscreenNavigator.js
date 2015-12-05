@@ -17,8 +17,8 @@ import { COLORS, SHEET } from './CommonStyles'
 const logger = new (require('../modules/Logger'))('FullScreenNavigator');
 
 function mapStateToProps(state) {
-  logger.debug(`state.routes: ${JSON.stringify(state.routes)}`);
   return {
+    currentScreen: state.currentScreen,
     nav: state.routes.fullscreen.nav,
     displayTitle: state.routes.fullscreen.nav.displayTitle
   }
@@ -27,42 +27,21 @@ function mapStateToProps(state) {
 class FullScreenNavigator extends React.Component {
 
   leftButton(route, navigator, index, navState) {
-    if (this.props.nav.left.show) {
-      return (
-        <TouchableOpacity
-          onPress={() => this.router.pop() }
-          style={SHEET.navBarLeftButton}>
-          <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
-            Back
-          </Text>
-        </TouchableOpacity>
-      );
-    }
-
     return null;
   }
 
   rightButton(route, navigator, index, navState) {
-    // TODO(qimingfang)
     return null;
   }
 
   title(route) {
-    logger.debug(`route: ${route.id}`)
-    logger.debug(`rendering title title=${this.props.displayTitle}`)
-    if (this.props.displayTitle) {
-      return (
-        <Text style={[styles.navBarTitleText, SHEET.baseText]}>
-          { this.props.displayTitle }
-        </Text>
-      );
-    }
+    return null;
   }
 
   componentDidMount() {
     this.navigateToConversationViewListener = NativeAppEventEmitter
       .addListener('Navigation.push', (properties) => {
-        logger.debug('did receive Navigation.push')
+        logger.debug(`did receive Navigation.push. Properties=${JSON.stringify(properties)}`)
         switch (properties.routeId) {
           case 'conversation':
             return this.router.toConversation({
@@ -84,17 +63,14 @@ class FullScreenNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
+    logger.debug(`renderscene with currentScreen=${JSON.stringify(this.props.currentScreen)}`)
     this.router = this.router || new Router(nav, this.props.dispatch)
 
-    if (route.component) {
-      return React.createElement(route.component, route.props)
+    if (this.router.canHandleRoute(this.props.currentScreen.present)) {
+      return this.router.handle(this.props.currentScreen.present);
     }
 
-    const props = Object.assign({}, route.props, this.props, {
-      navigator: nav,
-    });
-
-    return <RootNavigator {...props} />
+    return <RootNavigator {...route.props} />
   }
 
   render() {
@@ -111,11 +87,12 @@ class FullScreenNavigator extends React.Component {
           gestures: {}, // or null
         })}
         initialRoute={{
-          id: 'not-used'
+          id: this.props.currentScreen.present.id,
+          props: this.props,
         }}
         navigationBar={
           <TSNavigationBar
-            hidden={this.props.nav.hidden.present}
+            hidden={this.props.nav.hidden}
             routeMapper={{
               LeftButton: this.leftButton.bind(this),
               RightButton: this.rightButton.bind(this),

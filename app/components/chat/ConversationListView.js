@@ -5,6 +5,7 @@ import React, {
 
 import { connect } from 'react-redux/native';
 import { SCREEN_CONVERSATION_LIST } from '../../constants';
+import Screen from '../Screen';
 
 const TSConversationListView = React.requireNativeComponent(
   'TSConversationListView', ConversationListView);
@@ -18,6 +19,9 @@ function mapStateToProps(state) {
 class ConversationListView extends React.Component {
 
   static id = SCREEN_CONVERSATION_LIST;
+  static leftButton = () => Screen.generateButton(null, null);
+  static rightButton = () => Screen.generateButton(null, null);
+  static title = () => Screen.generateTitleBar('Connections');
 
   render() {
     // verbose but more readable IMO

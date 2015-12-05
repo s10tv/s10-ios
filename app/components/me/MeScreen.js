@@ -8,6 +8,7 @@ import React, {
 import { connect } from 'react-redux/native';
 
 import { SCREEN_ME } from '../../constants';
+import Screen from '../Screen';
 
 // constants
 const logger = new (require('../../../modules/Logger'))('MeScreen');
@@ -18,9 +19,12 @@ function mapStateToProps(state) {
   }
 }
 
-class MeScreen {
+class MeScreen extends React.Component {
 
   static id = SCREEN_ME;
+  static leftButton = () => Screen.generateButton(null, null);
+  static rightButton = () => Screen.generateButton(null, null);
+  static title = () => Screen.generateTitleBar('Me');
 
   showProfile() {
     this.props.dispatch({

@@ -11,19 +11,44 @@ import MeScreen from './me/MeScreen';
 import DiscoverScreen from './discover/DiscoverScreen';
 import ConversationListView from './chat/ConversationListView';
 
-import { SWITCH_BASE_TAB } from '../constants'
+import { SWITCH_BASE_TAB, TAB_SCREEN_CONTAINER } from '../constants'
 
 function mapStateToProps(state) {
   return {
-    routes: {
-      root: {
-        currentTab: state.routes.root.currentTab
-      }
-    }
+    currentScreen: state.currentScreen,
   }
 }
 
 class TabNavigatorScreen extends React.Component {
+
+  static id = TAB_SCREEN_CONTAINER;
+
+  static leftButton(route) {
+    switch(route.id) {
+      case MeScreen.id: return MeScreen.leftButton()
+      case DiscoverScreen.id: return DiscoverScreen.leftButton()
+      case ConversationListView.id: return ConversationListView.leftButton()
+    }
+    return null
+  }
+
+  static rightButton(route) {
+    switch(route.id) {
+      case MeScreen.id: return MeScreen.rightButton()
+      case DiscoverScreen.id: return DiscoverScreen.rightButton()
+      case ConversationListView.id: return ConversationListView.rightButton()
+    }
+    return null
+  }
+
+  static title(route) {
+    switch(route.id) {
+      case MeScreen.id: return MeScreen.title()
+      case DiscoverScreen.id: return DiscoverScreen.title()
+      case ConversationListView.id: return ConversationListView.title()
+    }
+    return null
+  }
 
   render() {
     return (
@@ -34,12 +59,11 @@ class TabNavigatorScreen extends React.Component {
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
-              type: SWITCH_BASE_TAB,
-              currentTab: 'Me'
+              type: 'CURRENT_SCREEN',
+              id: MeScreen.id,
             })
-            this.props.dispatch({ type: MeScreen.id })
           }}
-          selected={this.props.routes.root.currentTab == 'Me'}>
+          selected={this.props.currentScreen.present.id == MeScreen.id}>
 
           <MeScreen {...this.props} />
 
@@ -50,12 +74,11 @@ class TabNavigatorScreen extends React.Component {
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
-              type: SWITCH_BASE_TAB,
-              currentTab: 'Today'
+              type: "CURRENT_SCREEN",
+              id: DiscoverScreen.id,
             })
-            this.props.dispatch({ type: DiscoverScreen.id })
           }}
-          selected={this.props.routes.root.currentTab == 'Today'}>
+          selected={this.props.currentScreen.present.id == DiscoverScreen.id}>
 
           <DiscoverScreen {...this.props} />
 
@@ -67,12 +90,11 @@ class TabNavigatorScreen extends React.Component {
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
-              type: SWITCH_BASE_TAB,
-              currentTab: 'Conversations'
+              type: 'CURRENT_SCREEN',
+              id: ConversationListView.id,
             })
-            this.props.dispatch({ type: ConversationListView.id })
           }}
-          selected={this.props.routes.root.currentTab == 'Conversations'}>
+          selected={this.props.currentScreen.present.id == ConversationListView.id}>
 
           <ConversationListView {...this.props} />
         </TabNavigator.Item>

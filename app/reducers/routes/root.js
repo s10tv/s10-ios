@@ -32,22 +32,22 @@ function showLeftNav(state = false, action) {
 
 function rightNav(state = { show: true, action: null, text: 'History' }, action) {
   switch (action.type) {
-    /* WIP
     case SWITCH_BASE_TAB:
       const tab = action.currentTab;
       switch(tab) {
         case 'Today': // fallthrough intentional
+          return state;
+          /*
           return Object.assign({}, state, {
             show: true,
             text: 'History',
             onClick: action.router.toHistory,
           })
+          */
       }
 
     default:
       return state;
-    */
-
   }
 }
 

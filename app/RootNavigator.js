@@ -8,66 +8,40 @@ import React, {
 // external dependencies
 import { connect } from 'react-redux/native';
 import TabNavigatorScreen from './components/TabNavigatorScreen';
-import Router from './Router';
+import DiscoverScreen from './components/discover/DiscoverScreen';
+import Router from './RootRouter';
 
-import { SWITCH_BASE_TAB } from './constants'
+import { TAB_SCREEN_CONTAINER } from './constants'
 
 function mapStateToProps(state) {
   return {
-    routes: state.routes.root
+    currentScreen: state.currentScreen,
+    routes: state.routes.root,
   }
 }
 
 class RootNavigator extends React.Component {
 
-  leftButton(route, navigator, index, navState) {
-    if (this.props.nav.left.show) {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop() }
-        >
-          <Text>
-            Back
-          </Text>
-        </TouchableOpacity>
-      );
-    }
-
-    return null;
+  leftButton(route, nav, index, navState) {
+    return Router.leftButton(route);
   }
 
-  rightButton(route, navigator, index, navState) {
-    let rightNav = this.props.nav.right;
-    if (rightNav.show) {
-      return (
-        <TouchableOpacity
-          onPress={rightNav.onClick}
-        >
-          <Text>
-            {rightNav.text}
-          </Text>
-        </TouchableOpacity>
-      );
-    }
+  rightButton(route, nav, index, navState) {
+    return Router.rightButton(route);
   }
 
-  title() {
-    // TODO(qimingfang)
-    return null;
+  title(route, nav) {
+    return Router.title(this.props.currentScreen.present);
   }
 
   renderScene(route, nav) {
     this.router = this.router || new Router(nav, this.props.dispatch);
 
-    if (route.component) {
-      return React.createElement(route.component, route.props)
+    if (this.router.canHandleRoute(route)) {
+      return this.router.handle(route);
     }
 
-    const props = Object.assign({}, route.props, this.props, {
-      navigator: nav,
-    });
-
-    return <TabNavigatorScreen {...props} />
+    return <TabNavigatorScreen {...route.props} />
   }
 
   render() {
@@ -82,7 +56,8 @@ class RootNavigator extends React.Component {
           gestures: {}, // or null
         })}
         initialRoute={{
-          id: 'not-used'
+          id: this.props.currentScreen.id,
+          props: this.props,
         }}
         navigationBar={
           <Navigator.NavigationBar

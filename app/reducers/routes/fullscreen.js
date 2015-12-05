@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import undoable, { includeAction } from 'redux-undo';
 
 import {
+  CURRENT_SCREEN,
   SWITCH_BASE_TAB,
   SCREEN_CONVERSATION,
   SCREEN_PROFILE,
@@ -31,8 +31,11 @@ function showRightNav(state = false, action) {
 
 function navbarHidden(state = true, action) {
   switch (action.type) {
-    case SCREEN_CONVERSATION:
-      return true;
+    case CURRENT_SCREEN:
+      switch (action.id) {
+        case SCREEN_CONVERSATION:
+          return true;
+      }
 
     default:
       return false;
@@ -60,8 +63,6 @@ module.exports = combineReducers({
     }),
 
     displayTitle,
-    hidden: undoable(navbarHidden, { filter: [
-      SCREEN_CONVERSATION
-    ]}),
+    hidden: navbarHidden,
   })
 })

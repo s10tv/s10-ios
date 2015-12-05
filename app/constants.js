@@ -7,5 +7,8 @@ export const SCREEN_TODAY = 'SCREEN_TODAY';
 export const SCREEN_PROFILE = 'SCREEN_PROFILE';
 export const SCREEN_HISTORY = 'SCREEN_HISTORY';
 
+export const TAB_SCREEN_CONTAINER= 'TAB_SCREEN_CONTAINER';
+export const CURRENT_SCREEN = 'CURRENT_SCREEN';
+
 /* Actions */
 export const SWITCH_BASE_TAB = 'SWITCH_BASE_TAB';

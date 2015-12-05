@@ -6,10 +6,14 @@ import React, {
 
 import { connect } from 'react-redux/native';
 import { SCREEN_TODAY } from '../../constants';
+import Screen from '../Screen';
 
-class DiscoverScreen extends React.Component {
+class DiscoverScreen extends Screen {
 
   static id = SCREEN_TODAY;
+  static leftButton = () => Screen.generateButton(null, null);
+  static rightButton = () => Screen.generateButton(null, null);
+  static title = () => Screen.generateTitleBar('Today');
 
   render() {
     return (

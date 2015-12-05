@@ -15,7 +15,6 @@ const defaultMe = Object.assign({}, {
 export default function me(state = defaultMe, action) {
   switch (action.type) {
     case 'SET_ME':
-      logger.debug(`in me reducer. got ${action.me}`)
       return Object.assign({}, state, action.me);
 
     default:
