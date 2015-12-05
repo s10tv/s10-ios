@@ -50,7 +50,7 @@ class FullScreenNavigator extends React.Component {
   }
 
   onViewProfile(userId) {
-    this.router.toProfile({ userId });
+    return this.router.toProfile({ userId });
   }
 
   leftButton(route, navigator, index, navState) {

@@ -15,7 +15,7 @@ class DiscoverScreen extends Screen {
   static id = SCREEN_TODAY;
   static leftButton = () => Screen.generateButton(null, null);
   static rightButton = (route, router) => {
-    return Screen.generateButton('History', router.toHistory.bind(router));
+    return Screen.generateButton('History', router.toHistory.bind(router), { isLeft: false });
   }
   static title = () => Screen.generateTitleBar('Today');
 

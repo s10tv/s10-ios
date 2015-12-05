@@ -88,10 +88,6 @@ exports.SHEET = StyleSheet.create({
     paddingLeft: 10,
   },
   navBarRightButton: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 64,
-    alignItems: 'center',
     paddingRight: 10,
   },
   navBarTitleText: {

@@ -37,8 +37,6 @@ class BaseRouter {
       return null;
     }
 
-    logger.debug(`Rendering right button ${Component.id}. ${router.toHistory==undefined}`)
-
     return Component.rightButton(route, router);
   }
 

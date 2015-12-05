@@ -71,4 +71,3 @@ var styles = StyleSheet.create({
 });
 
 module.exports = ConversationListView
-

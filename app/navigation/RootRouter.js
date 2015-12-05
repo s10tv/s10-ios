@@ -2,6 +2,7 @@ import BaseRouter from './BaseRouter';
 
 import DiscoverScreen from '../components/discover/DiscoverScreen';
 import MeScreen from '../components/me/MeScreen';
+import EditProfileScreen from '../components/editprofile/EditProfileScreen';
 import ChatListView from '../components/chat/ConversationListView';
 import HistoryScreen from '../components/history/HistoryScreen';
 import TabNavigatorScreen from './TabNavigatorScreen';
@@ -18,6 +19,7 @@ const ROUTE_MAP = {
   SCREEN_ME: TabNavigatorScreen,
   SCREEN_TODAY: TabNavigatorScreen,
   SCREEN_HISTORY: HistoryScreen,
+  SCREEN_EDIT_PROFILE: EditProfileScreen,
 }
 
 /**
@@ -42,6 +44,13 @@ class RootRouter extends BaseRouter {
 
   toHistory() {
     const id = HistoryScreen.id;
+    const props = {};
+
+    this.push({ id, props });
+  }
+
+  toEditProfile() {
+    const id = EditProfileScreen.id;
     const props = {};
 
     this.push({ id, props });
