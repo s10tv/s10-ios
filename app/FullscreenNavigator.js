@@ -27,15 +27,17 @@ function mapStateToProps(state) {
 class FullScreenNavigator extends React.Component {
 
   leftButton(route, navigator, index, navState) {
-    return null;
+    this.router = this.router || new Router(nav, this.props.dispatch)
+    return Router.leftButton(this.props.currentScreen.present, this.router);
   }
 
   rightButton(route, navigator, index, navState) {
-    return null;
+    this.router = this.router || new Router(nav, this.props.dispatch)
+    return Router.rightButton(this.props.currentScreen.present, this.router);
   }
 
   title(route) {
-    return null;
+    return Router.title(this.props.currentScreen.present);
   }
 
   componentDidMount() {
@@ -63,7 +65,7 @@ class FullScreenNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
-    logger.debug(`renderscene with currentScreen=${JSON.stringify(this.props.currentScreen)}`)
+    logger.debug(`currentScreen=${JSON.stringify(this.props.currentScreen.present)}`)
     this.router = this.router || new Router(nav, this.props.dispatch)
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
@@ -74,8 +76,6 @@ class FullScreenNavigator extends React.Component {
   }
 
   render() {
-    logger.debug(`rendering full screen nav. hidden=${JSON.stringify(this.props.nav.hidden)}`);
-
     return (
       <Navigator
         ref='nav'

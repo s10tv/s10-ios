@@ -9,9 +9,7 @@ import { SCREEN_CONVERSATION, SCREEN_PROFILE } from './constants'
 
 const logger = new (require('../modules/Logger'))('Router');
 
-
 class Router {
-
   static _routeMap = {
     SCREEN_CONVERSATION: ConversationScreen,
     SCREEN_PROFILE: ProfileScreen,
@@ -35,12 +33,41 @@ class Router {
     })
   }
 
+  static leftButton(route, router) {
+    const Component = Router._routeMap[route.id];
+
+    if (!Component) {
+      return null;
+    }
+
+    return Component.leftButton(route, router);
+  }
+
+  static rightButton(route, router) {
+    const Component = Router._routeMap[route.id];
+
+    if (!Component) {
+      return null;
+    }
+
+    return Component.rightButton(route, router);
+  }
+
+  static title(route) {
+    const Component = Router._routeMap[route.id];
+
+    if (!Component) {
+      return null;
+    }
+
+    return Component.title(route);
+  }
+
   canHandleRoute(route) {
     return !! route && !!route.id && !!Router._routeMap[route.id];
   }
 
   handle(route) {
-    logger.debug(`handling route.id=${route.id} props=${JSON.stringify(route.props)}`);
     const Component = Router._routeMap[route.id];
 
     if (!Component) {
@@ -52,6 +79,7 @@ class Router {
   }
 
   pop() {
+    logger.debug(`will pop route`);
     this.nav.pop();
     this.dispatch(ActionCreators.undo());
   }

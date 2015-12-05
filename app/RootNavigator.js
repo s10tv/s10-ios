@@ -23,11 +23,13 @@ function mapStateToProps(state) {
 class RootNavigator extends React.Component {
 
   leftButton(route, nav, index, navState) {
-    return Router.leftButton(route);
+    this.router = this.router || new Router(nav, this.props.dispatch);
+    return Router.leftButton(route, this.router);
   }
 
   rightButton(route, nav, index, navState) {
-    return Router.rightButton(route);
+    this.router = this.router || new Router(nav, this.props.dispatch);
+    return Router.rightButton(route, this.router);
   }
 
   title(route, nav) {

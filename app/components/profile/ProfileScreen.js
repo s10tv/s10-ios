@@ -5,15 +5,23 @@ import React, {
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
-import { SCREEN_PROFILE } from '../../constants'
+import { SCREEN_PROFILE } from '../../constants';
+import Screen from '../Screen';
 
-class ProfileScreen extends React.Component {
+const logger = new (require('../../../modules/Logger'))('ProfileScreen');
+
+class ProfileScreen extends Screen {
 
   static id = SCREEN_PROFILE;
+  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
+  static rightButton = () => null;
+  static title = () => {
+    return Screen.generateTitleBar('Profile');
+  }
 
   render() {
     return (
-      <View style={{ paddingTop: 100 }}>
+      <View style={{ flex: 1, backgroundColor: 'purple' }}>
         <Text>Profile Screen!</Text>
       </View>
     )

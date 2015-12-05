@@ -35,10 +35,13 @@ function navbarHidden(state = true, action) {
       switch (action.id) {
         case SCREEN_CONVERSATION:
           return true;
+
+        case SCREEN_PROFILE:
+          return false;
       }
 
     default:
-      return false;
+      return true;
   }
 }
 
