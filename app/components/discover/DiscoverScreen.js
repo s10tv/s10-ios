@@ -8,11 +8,15 @@ import { connect } from 'react-redux/native';
 import { SCREEN_TODAY } from '../../constants';
 import Screen from '../Screen';
 
+const logger = new (require('../../../modules/Logger'))('DiscoverScreen');
+
 class DiscoverScreen extends Screen {
 
   static id = SCREEN_TODAY;
   static leftButton = () => Screen.generateButton(null, null);
-  static rightButton = () => Screen.generateButton(null, null);
+  static rightButton = (route, router) => {
+    return Screen.generateButton('History', router.toHistory.bind(router));
+  }
   static title = () => Screen.generateTitleBar('Today');
 
   render() {

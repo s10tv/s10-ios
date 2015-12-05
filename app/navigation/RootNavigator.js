@@ -25,17 +25,17 @@ function mapStateToProps(state) {
 
 class RootNavigator extends React.Component {
 
-  leftButton(route, nav, index, navState) {
+  leftButton(route, nav) {
     this.router = this.router || new RootRouter(nav, this.props.dispatch);
-    return this.router.leftButton(route);
+    return this.router.leftButton(this.props.currentScreen.present);
   }
 
-  rightButton(route, nav, index, navState) {
+  rightButton(route, nav) {
     this.router = this.router || new RootRouter(nav, this.props.dispatch);
-    return this.router.rightButton(route);
+    return this.router.rightButton(this.props.currentScreen.present);
   }
 
-  title(route, nav) {
+  title() {
     return this.router.title(this.props.currentScreen.present);
   }
 

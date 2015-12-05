@@ -6,10 +6,14 @@ import React, {
 
 import { connect } from 'react-redux/native';
 import { SCREEN_HISTORY } from '../../constants';
+import Screen from '../Screen';
 
-class HistoryScreen extends React.Component {
+class HistoryScreen extends Screen {
 
   static id = SCREEN_HISTORY;
+  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
+  static rightButton = () => null
+  static title = () => null
 
   render() {
     return (

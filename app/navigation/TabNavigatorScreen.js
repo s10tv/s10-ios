@@ -7,11 +7,14 @@ import React, {
 import { connect } from 'react-redux/native';
 import TabNavigator from 'react-native-tab-navigator';
 
+import TabRouter from './TabRouter';
 import MeScreen from '../components/me/MeScreen';
 import DiscoverScreen from '../components/discover/DiscoverScreen';
 import ConversationListView from '../components/chat/ConversationListView';
 
 import { SWITCH_BASE_TAB, TAB_SCREEN_CONTAINER } from '../constants'
+
+const logger = new (require('../../modules/Logger'))('TabNavigatorScreen');
 
 function mapStateToProps(state) {
   return {
@@ -22,32 +25,18 @@ function mapStateToProps(state) {
 class TabNavigatorScreen extends React.Component {
 
   static id = TAB_SCREEN_CONTAINER;
+  static router = new TabRouter();
 
-  static leftButton(route) {
-    switch(route.id) {
-      case MeScreen.id: return MeScreen.leftButton()
-      case DiscoverScreen.id: return DiscoverScreen.leftButton()
-      case ConversationListView.id: return ConversationListView.leftButton()
-    }
-    return null
+  static leftButton(route, router) {
+    return TabNavigatorScreen.router.leftButton(route, router)
   }
 
-  static rightButton(route) {
-    switch(route.id) {
-      case MeScreen.id: return MeScreen.rightButton()
-      case DiscoverScreen.id: return DiscoverScreen.rightButton()
-      case ConversationListView.id: return ConversationListView.rightButton()
-    }
-    return null
+  static rightButton(route, router) {
+    return TabNavigatorScreen.router.rightButton(route, router)
   }
 
-  static title(route) {
-    switch(route.id) {
-      case MeScreen.id: return MeScreen.title()
-      case DiscoverScreen.id: return DiscoverScreen.title()
-      case ConversationListView.id: return ConversationListView.title()
-    }
-    return null
+  static title(route, router) {
+    return TabNavigatorScreen.router.title(route, router)
   }
 
   render() {

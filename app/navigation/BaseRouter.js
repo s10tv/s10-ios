@@ -17,27 +17,29 @@ class BaseRouter {
   /**
    * @return a component for the left button of the route
    */
-  leftButton(route) {
+  _leftButton(route, router) {
     const Component = this._routeMap[route.id];
 
     if (!Component) {
       return null;
     }
 
-    return Component.leftButton(route, this);
+    return Component.leftButton(route, router);
   }
 
   /**
    * @return a component for the right button of the route
    */
-  rightButton(route) {
+  _rightButton(route, router) {
     const Component = this._routeMap[route.id];
 
     if (!Component) {
       return null;
     }
 
-    return Component.rightButton(route, this);
+    logger.debug(`Rendering right button ${Component.id}. ${router.toHistory==undefined}`)
+
+    return Component.rightButton(route, router);
   }
 
   /**

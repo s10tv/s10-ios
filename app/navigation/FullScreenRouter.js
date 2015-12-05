@@ -22,6 +22,14 @@ class FullScreenRouter extends BaseRouter {
     this._routeMap = ROUTE_MAP;
   }
 
+  rightButton(route) {
+    return this._rightButton(route, this)
+  }
+
+  leftButton(route) {
+    return this._leftButton(route, this)
+  }
+
   /**
    * Navigates to the profile speecified by @param userId
    */
