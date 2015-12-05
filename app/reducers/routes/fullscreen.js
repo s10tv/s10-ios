@@ -10,7 +10,7 @@ import {
   SCREEN_CONVERSATION_LIST } from '../../constants'
 
 import ProfileScreen from '../../components/profile/ProfileScreen';
-import RootNavigator from '../../RootNavigator';
+import RootNavigator from '../../navigation/RootNavigator';
 import ConversationScreen from '../../components/chat/ConversationScreen';
 
 const logger = new (require('../../../modules/Logger'))('fullscreen')

@@ -7,9 +7,9 @@ import React, {
 import { connect } from 'react-redux/native';
 import TabNavigator from 'react-native-tab-navigator';
 
-import MeScreen from './me/MeScreen';
-import DiscoverScreen from './discover/DiscoverScreen';
-import ConversationListView from './chat/ConversationListView';
+import MeScreen from '../components/me/MeScreen';
+import DiscoverScreen from '../components/discover/DiscoverScreen';
+import ConversationListView from '../components/chat/ConversationListView';
 
 import { SWITCH_BASE_TAB, TAB_SCREEN_CONTAINER } from '../constants'
 
@@ -54,8 +54,8 @@ class TabNavigatorScreen extends React.Component {
     return (
       <TabNavigator>
         <TabNavigator.Item
-          renderIcon={() => <Image source={require('./img/ic-me.png')}/>}
-          renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
+          renderIcon={() => <Image source={require('../components/img/ic-me.png')}/>}
+          renderSelectedIcon={() => <Image style={styles.selected} source={require('../components/img/ic-me.png')}/>}
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
@@ -69,8 +69,8 @@ class TabNavigatorScreen extends React.Component {
 
         </TabNavigator.Item>
         <TabNavigator.Item
-          renderIcon={() => <Image source={require('./img/ic-compass.png')}/>}
-          renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
+          renderIcon={() => <Image source={require('../components/img/ic-compass.png')}/>}
+          renderSelectedIcon={() => <Image style={styles.selected} source={require('../components/img/ic-compass.png')}/>}
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
@@ -85,8 +85,8 @@ class TabNavigatorScreen extends React.Component {
         </TabNavigator.Item>
         <TabNavigator.Item
           badgeText={0} // TODO(qimingfang):
-          renderIcon={() => <Image source={require('./img/ic-chats.png')}/>}
-          renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
+          renderIcon={() => <Image source={require('../components/img/ic-chats.png')}/>}
+          renderSelectedIcon={() => <Image style={styles.selected} source={require('../components/img/ic-chats.png')}/>}
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({

@@ -1,19 +1,20 @@
 import React, {
   Navigator,
   TouchableOpacity,
-  Text,
   StyleSheet,
 } from 'react-native';
 
 // external dependencies
 import { connect } from 'react-redux/native';
-import TabNavigatorScreen from './components/TabNavigatorScreen';
-import DiscoverScreen from './components/discover/DiscoverScreen';
-import Router from './RootRouter';
 
-import { TAB_SCREEN_CONTAINER } from './constants'
+// internal depdencies
+import DiscoverScreen from '../components/discover/DiscoverScreen';
+import TabNavigatorScreen from './TabNavigatorScreen';
+import RootRouter from './RootRouter';
 
-const logger = new (require('../modules/Logger'))('RootNavigator');
+import { TAB_SCREEN_CONTAINER } from '../constants'
+
+const logger = new (require('../../modules/Logger'))('RootNavigator');
 
 function mapStateToProps(state) {
   return {
@@ -25,21 +26,21 @@ function mapStateToProps(state) {
 class RootNavigator extends React.Component {
 
   leftButton(route, nav, index, navState) {
-    this.router = this.router || new Router(nav, this.props.dispatch);
-    return Router.leftButton(route, this.router);
+    this.router = this.router || new RootRouter(nav, this.props.dispatch);
+    return this.router.leftButton(route);
   }
 
   rightButton(route, nav, index, navState) {
-    this.router = this.router || new Router(nav, this.props.dispatch);
-    return Router.rightButton(route, this.router);
+    this.router = this.router || new RootRouter(nav, this.props.dispatch);
+    return this.router.rightButton(route);
   }
 
   title(route, nav) {
-    return Router.title(this.props.currentScreen.present);
+    return this.router.title(this.props.currentScreen.present);
   }
 
   renderScene(route, nav) {
-    this.router = this.router || new Router(nav, this.props.dispatch);
+    this.router = this.router || new RootRouter(nav, this.props.dispatch);
 
     if (this.router.canHandleRoute(route)) {
       return this.router.handle(route);

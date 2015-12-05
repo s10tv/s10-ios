@@ -14,8 +14,8 @@ import { connect } from 'react-redux/native';
 import { FBSDKLoginManager } from 'react-native-fbsdklogin';
 
 // internal dependencies
-import FullScreenNavigator from './FullScreenNavigator';
-import OnboardingNavigator from './OnboardingNavigator';
+import FullScreenNavigator from './navigation/FullScreenNavigator';
+import OnboardingNavigator from './navigation/OnboardingNavigator';
 import Session from '../native_modules/Session';
 import Intercom from '../modules/Intercom';
 import ResumeTokenHandler from './util/ResumeTokenHandler'

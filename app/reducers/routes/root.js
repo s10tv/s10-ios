@@ -1,5 +1,5 @@
 import DiscoverScreen from '../../components/discover/DiscoverScreen';
-import TabNavigatorScreen from '../../components/TabNavigatorScreen';
+import TabNavigatorScreen from '../../navigation/TabNavigatorScreen';
 
 import { combineReducers } from 'redux';
 

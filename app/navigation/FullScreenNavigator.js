@@ -1,7 +1,5 @@
 import React, {
   Navigator,
-  TouchableOpacity,
-  Text,
   NativeAppEventEmitter,
   StyleSheet,
 } from 'react-native';
@@ -9,12 +7,13 @@ import React, {
 // external dependencies
 import { connect } from 'react-redux/native'
 
-import TSNavigationBar from './components/lib/TSNavigationBar';
-import Router from './Router';
+// internal depdencies
+import { COLORS, SHEET } from '../CommonStyles'
+import TSNavigationBar from '../components/lib/TSNavigationBar';
+import FullScreenRouter from './FullScreenRouter';
 import RootNavigator from './RootNavigator';
-import { COLORS, SHEET } from './CommonStyles'
 
-const logger = new (require('../modules/Logger'))('FullScreenNavigator');
+const logger = new (require('../../modules/Logger'))('FullScreenNavigator');
 
 function mapStateToProps(state) {
   return {
@@ -25,24 +24,6 @@ function mapStateToProps(state) {
 }
 
 class FullScreenNavigator extends React.Component {
-
-  onViewProfile(userId) {
-    this.router.toProfile({ userId });
-  }
-
-  leftButton(route, navigator, index, navState) {
-    this.router = this.router || new Router(nav, this.props.dispatch)
-    return Router.leftButton(this.props.currentScreen.present, this.router);
-  }
-
-  rightButton(route, navigator, index, navState) {
-    this.router = this.router || new Router(nav, this.props.dispatch)
-    return Router.rightButton(this.props.currentScreen.present, this.router);
-  }
-
-  title(route) {
-    return Router.title(this.props.currentScreen.present);
-  }
 
   componentDidMount() {
     this.navigateToConversationViewListener = NativeAppEventEmitter
@@ -68,9 +49,27 @@ class FullScreenNavigator extends React.Component {
       });
   }
 
+  onViewProfile(userId) {
+    this.router.toProfile({ userId });
+  }
+
+  leftButton(route, navigator, index, navState) {
+    this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
+    return this.router.leftButton(this.props.currentScreen.present);
+  }
+
+  rightButton(route, navigator, index, navState) {
+    this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
+    return this.router.rightButton(this.props.currentScreen.present);
+  }
+
+  title(route) {
+    return this.router.title(this.props.currentScreen.present);
+  }
+
   renderScene(route, nav) {
     logger.debug(`currentScreen=${JSON.stringify(this.props.currentScreen.present)}`)
-    this.router = this.router || new Router(nav, this.props.dispatch)
+    this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
       return this.router.handle(this.props.currentScreen.present);
