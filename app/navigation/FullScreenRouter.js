@@ -6,6 +6,9 @@ import LinkServiceScreen from '../components/linkservice/LinkServiceScreen';
 
 import { SCREEN_CONVERSATION, SCREEN_PROFILE, SCREEN_LINK_SERVICE } from '../constants'
 
+const logger = new (require('../../modules/Logger'))('FullScreenRouter');
+
+
 const ROUTE_MAP = {
   SCREEN_CONVERSATION: ConversationScreen,
   SCREEN_PROFILE: ProfileScreen,
@@ -35,9 +38,9 @@ class FullScreenRouter extends BaseRouter {
   /**
    * Navigates to the profile speecified by @param userId
    */
-  toProfile({ userId }) {
+  toProfile({ user }) {
     const id = ProfileScreen.id;
-    const props = { userId };
+    const props = { user };
 
     this.push({ id, props });
   }

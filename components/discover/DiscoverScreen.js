@@ -118,7 +118,7 @@ class Discover extends React.Component {
                 </View>
 
                 <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
-                
+
                 <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
                   <Text style={[SHEET.baseText]}>
                     { candidate.reason }
@@ -134,7 +134,7 @@ class Discover extends React.Component {
             </View>
             </TouchableHighlight>
           </View>
-        
+
       </View>
     )
   }

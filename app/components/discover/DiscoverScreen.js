@@ -11,8 +11,8 @@ import React, {
 
 import { connect } from 'react-redux/native';
 
-import iconTextRow from './iconTextRow';
 import Screen from '../Screen';
+import iconTextRow from '../lib/iconTextRow';
 import HeaderBanner from '../lib/HeaderBanner';
 import { Card } from '../lib/Card';
 import Loader from '../lib/Loader';
@@ -67,11 +67,11 @@ class DiscoverScreen extends Screen {
           </Text>
         </View>
         <View style={{flex: 1, paddingTop: 74}}>
-          <TouchableHighlight onPress={() => {
-            // Analytics.track("Today: TapProfile")
-            // TODO(qimingfang): push route
+          <TouchableHighlight
+              onPress={() => this.props.onViewProfile({ user: candidate.user })}
+              style={{ flex: 1}}
+              underlayColor={'transparent'}>
 
-          }} style={{ flex: 1}} underlayColor={'transparent'}>
             <View style={{flex: 1}}>
               <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
                 cardOverride={[{ flex: 1, padding: 0 }]}>
