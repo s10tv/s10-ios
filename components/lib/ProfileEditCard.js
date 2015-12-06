@@ -64,7 +64,7 @@ class ProfileEditCard extends React.Component {
         <Card
           key={info.key}
           cardOverride={{padding: 5}}>
-          <FloatLabelTextField
+          <FloatLabelTextInput
             ref={info.key}
             value={this.props.me[info.key]}
             placeHolder={info.display}

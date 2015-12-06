@@ -7,6 +7,8 @@ import currentScreen from './currentScreen';
 // ddp
 import me from './ddp/me';
 import integrations from './ddp/integrations';
+import categories from './ddp/categories';
+import myTags from './ddp/myTags';
 
 export {
   loggedIn,
@@ -16,4 +18,6 @@ export {
   layer,
   apphub,
   currentScreen,
+  myTags,
+  categories,
 }

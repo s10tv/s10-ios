@@ -24,6 +24,7 @@ import renderMeHeader from './renderMeHeader';
 import MoreCard from './MoreCard';
 import HeaderBanner from '../lib/HeaderBanner';
 import sectionTitle from '../lib/sectionTitle';
+import HashtagCategory from '../lib/HashtagCategory';
 import { SHEET, COLORS } from '../../CommonStyles';
 
 function mapStateToProps(state) {
@@ -56,6 +57,7 @@ class MeScreen extends React.Component {
             { networkCard() }
 
             { sectionTitle('MY HASHTAGS') }
+            <HashtagCategory />
 
             { sectionTitle('MORE') }
             <MoreCard onPressLogout={this.props.onPressLogout} />

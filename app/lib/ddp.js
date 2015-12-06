@@ -8,6 +8,8 @@ class DDPService extends TSDDPClient {
     this._subscribeMe(dispatch);
     this._subscribeIntegrations(dispatch);
     this._subscribeUsers(dispatch);
+    this._subscribeMyTags(dispatch);
+    this._subscribeTagCategories(dispatch)
   }
 
   _generateShortDisplayName = (user, length) => {
@@ -75,6 +77,40 @@ class DDPService extends TSDDPClient {
         dispatch({
           type: 'SET_INTEGRATIONS',
           integrations: integrations,
+        })
+      });
+    })
+  }
+
+  _subscribeMyTags(dispatch) {
+    this.subscribe({ pubName: 'my-tags' })
+    .then((subId) => {
+      this.collections.observe(() => {
+        return this.collections.mytags.findOne({});
+      }).subscribe(user => {
+        if (user && user.tags) {
+          user.tags.forEach((tag) => {
+            tag.isMine = true;
+          })
+
+          dispatch({
+            type: 'SET_MY_TAGS',
+            mytags: user.tags,
+          })
+        }
+      });
+    })
+  }
+
+  _subscribeTagCategories(dispatch) {
+    this.subscribe({ pubName: 'hashtag-categories' })
+    .then((subId) => {
+      this.collections.observe(() => {
+        return this.collections.categories.find({});
+      }).subscribe(categories => {
+        dispatch({
+          type: 'SET_TAG_CATEGORIES',
+          categories: categories,
         })
       });
     })
