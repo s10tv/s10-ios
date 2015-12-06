@@ -91,7 +91,8 @@ class FullScreenNavigator extends React.Component {
     this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
-      return this.router.handle(this.props.currentScreen.present, this.props);
+      return this.router.handle(this.props.currentScreen.present,
+        Object.assign({}, this.props, route.props));
     }
 
     return <RootNavigator {...route.props} />

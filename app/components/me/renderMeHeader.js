@@ -28,7 +28,7 @@ export default function renderMeHeader(user, onViewProfile, onEditProfile) {
         <View style={styles.headerContentLineItem}>
           { renderMeHeaderButton('View', () => { onViewProfile(user.userId) })}
           { renderMeHeaderButton('Edit',
-            () => { onEditProfile(user.userId) },
+            () => { onEditProfile() },
             { left: width / 32 })}
         </View>
       </View>
