@@ -127,7 +127,7 @@ class Activity extends React.Component {
 
       header = (
         <View style={[ styles.activityHeader, SHEET.row]}>
-          <Image source={{ uri: profile.avatarUrl }}
+          <Image source={{ uri: profile.avatar.url }}
             style={[{ marginRight: 5}, SHEET.iconCircle]} />
           <View style={{ flex: 1 }}>
             <Text style={SHEET.baseText}>{profile.displayId}</Text>
@@ -229,18 +229,16 @@ class ProfileScreen extends Screen {
 
   componentWillMount() {
     let ddp = this.props.ddp;
-    if (this.props.loadActivities) {
-      ddp.subscribe({ pubName: 'activities', params: [this.props.me._id] })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.activities) {
-            return ddp.collections.activities.find({ userId: this.props.me._id });
-          }
-        }).subscribe(activities => {
-          this.setState({ activities: activities });
-        });
-      })
-    }
+    ddp.subscribe({ pubName: 'activities', params: [this.props.userId] })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.activities) {
+          return ddp.collections.activities.find({ userId: this.props.userId });
+        }
+      }).subscribe(activities => {
+        this.setState({ activities: activities });
+      });
+    })
   }
 
   render() {
@@ -261,19 +259,21 @@ class ProfileScreen extends Screen {
       soundcloud: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-soundcloud.png'
     };
 
-    let me = this.props.user;
+    let profileUserId = this.props.userId;
 
-    logger.info(`rendering ${JSON.stringify(me)}`)
+    // TODO(qimingfang): should not be using private methods like this.
+    let user = this.props.ddp._formatUser(
+      this.props.ddp.collections.users.findOne({ _id: profileUserId }));
 
-    if (!me) {
+    if (!user) {
       return <Loader />
     }
 
     let connectedProfiles = {};
 
     let profiles = null;
-    if (me.connectedProfiles) {
-      profiles = me.connectedProfiles.map(profile => {
+    if (user.connectedProfiles) {
+      profiles = user.connectedProfiles.map(profile => {
         connectedProfiles[profile.id] = profile;
 
         let source = this.state[profile._id] ?
@@ -306,7 +306,7 @@ class ProfileScreen extends Screen {
     let activities = activityData.map((activity) => {
       return <Activity
         key={activity._id}
-        me={me}
+        me={user}
         connectedProfiles={connectedProfiles}
         activeProfile={this.state.activeProfile}
         activity={activity} />
@@ -317,14 +317,14 @@ class ProfileScreen extends Screen {
       infoCard = (
         <Card style={styles.card}>
           <View style={{ marginBottom: 10 }}>
-            {iconTextRow(require('../img/ic-mortar.png'), me.major)}
-            {iconTextRow(require('../img/ic-house.png'), me.hometown)}
+            {iconTextRow(require('../img/ic-mortar.png'), user.major)}
+            {iconTextRow(require('../img/ic-house.png'), user.hometown)}
           </View>
           <View style={SHEET.separator} />
 
           <View style={{ marginTop: 10 }}>
-            <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About {me.firstName}</Text>
-            <Text stlye={[SHEET.baseText]}>{me.about}</Text>
+            <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About {user.firstName}</Text>
+            <Text stlye={[SHEET.baseText]}>{user.about}</Text>
           </View>
         </Card>
       )
@@ -349,9 +349,9 @@ class ProfileScreen extends Screen {
       infoCard = (
         <Card style={styles.card}>
           <View style={styles.horizontal}>
-            <Image style={styles.infoAvatar} source={{ uri: profile.avatarUrl }} />
+            <Image style={styles.infoAvatar} source={{ uri: profile.avatar.url }} />
             <View style={{flex: 1, left: 10, top: 5}}>
-              <Text style={[SHEET.baseText, SHEET.smallHeading]}>{ `${me.firstName} ${ me.lastName}`}</Text>
+              <Text style={[SHEET.baseText, SHEET.smallHeading]}>{ `${user.firstName} ${ user.lastName}`}</Text>
               <Text style={[SHEET.baseText, SHEET.subTitle]}>{ profile.displayName }</Text>
             </View>
             <TouchableOpacity style={[styles.openButton]}
@@ -387,7 +387,7 @@ class ProfileScreen extends Screen {
     return (
       <View style={SHEET.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <ActivityHeader me={me} />
+          <ActivityHeader me={user} />
 
           <Card
             style={{ flex: 1, flexDirection: 'column', alignItems: 'center' }}

@@ -26,7 +26,7 @@ export default function renderMeHeader(user, onViewProfile, onEditProfile) {
           { renderServiceIcons(user.connectedProfiles) }
         </View>
         <View style={styles.headerContentLineItem}>
-          { renderMeHeaderButton('View', () => { onViewProfile(user.userId) })}
+          { renderMeHeaderButton('View', () => { onViewProfile({ userId: user.userId }) })}
           { renderMeHeaderButton('Edit',
             () => { onEditProfile() },
             { left: width / 32 })}

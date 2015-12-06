@@ -38,9 +38,9 @@ class FullScreenRouter extends BaseRouter {
   /**
    * Navigates to the profile speecified by @param userId
    */
-  toProfile({ user }) {
+  toProfile({ userId }) {
     const id = ProfileScreen.id;
-    const props = { user };
+    const props = { userId };
 
     this.push({ id, props });
   }

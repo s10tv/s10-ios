@@ -68,7 +68,7 @@ class DiscoverScreen extends Screen {
         </View>
         <View style={{flex: 1, paddingTop: 74}}>
           <TouchableHighlight
-              onPress={() => this.props.onViewProfile({ user: candidate.user })}
+              onPress={() => this.props.onViewProfile({ userId: candidate.userId })}
               style={{ flex: 1}}
               underlayColor={'transparent'}>
 

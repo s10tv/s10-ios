@@ -50,8 +50,8 @@ class FullScreenNavigator extends React.Component {
       });
   }
 
-  onViewProfile({ user }) {
-    return this.router.toProfile({ user});
+  onViewProfile({ userId }) {
+    return this.router.toProfile({ userId });
   }
 
   /**
