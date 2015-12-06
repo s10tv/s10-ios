@@ -138,6 +138,10 @@ platform :ios do
       xcargs: "BUILD_NUMBER=#{build_number}",
       export_method: export_method,
       include_bitcode: true,
+      # Seems mutually incompatible with include_bitcode
+      # See https://forums.developer.apple.com/thread/14729
+      # and https://github.com/CocoaPods/CocoaPods/issues/4624
+      include_symbols: false,
       buildlog_path: ENV['OUTPUT_DIR'],
       output_directory: ENV['OUTPUT_DIR'],
       output_name: "#{build_number}.ipa"
