@@ -65,6 +65,7 @@ class BaseRouter {
    * @return a component to be rendered given the @param route
    */
   handle(route, extraProps = {}) {
+    logger.info(`handling route=${JSON.stringify(route)}`)
     const Component = this._routeMap[route.id];
 
     if (!Component) {

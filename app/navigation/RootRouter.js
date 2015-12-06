@@ -5,6 +5,7 @@ import MeScreen from '../components/me/MeScreen';
 import EditProfileScreen from '../components/editprofile/EditProfileScreen';
 import ChatListView from '../components/chat/ConversationListView';
 import HistoryScreen from '../components/history/HistoryScreen';
+import CategoryListScreen from '../components/categorylist/CategoryListScreen';
 import TabNavigatorScreen from './TabNavigatorScreen';
 
 import {
@@ -20,6 +21,7 @@ const ROUTE_MAP = {
   SCREEN_TODAY: TabNavigatorScreen,
   SCREEN_HISTORY: HistoryScreen,
   SCREEN_EDIT_PROFILE: EditProfileScreen,
+  SCREEN_CATEGORY_LIST: CategoryListScreen,
 }
 
 /**
@@ -52,6 +54,13 @@ class RootRouter extends BaseRouter {
   toEditProfile() {
     const id = EditProfileScreen.id;
     const props = {};
+
+    this.push({ id, props });
+  }
+
+  toCategoryList({ category }) {
+    const id = CategoryListScreen.id;
+    const props = { category };
 
     this.push({ id, props });
   }

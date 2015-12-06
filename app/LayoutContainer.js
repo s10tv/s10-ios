@@ -306,19 +306,23 @@ class LayoutContainer extends React.Component {
   }
 
   onEditProfileChange() {
-
+    // TODO(qimingfang)
+    logger.debug('onEditProfileChange')
   }
 
   onEditProfileFocus() {
-
+    // TODO(qimingfang)
+    logger.debug('onEditProfileFocus')
   }
 
   onEditProfileBlur() {
-
+    // TODO(qimingfang)
+    logger.debug('onEditProfileBlur')
   }
 
   updateProfile() {
-
+    // TODO(qimingfang)
+    logger.debug('updateProfile')
   }
 
   render() {

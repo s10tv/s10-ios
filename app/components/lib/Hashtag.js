@@ -20,6 +20,8 @@ class Hashtag extends React.Component {
   }
 
   _onHashtagTouch(hashtag) {
+    logger.info('changed hashtag');
+
     if (!hashtag.isMine) {
       return this.ddp.call({
         methodName: 'me/hashtag/add',

@@ -57,7 +57,7 @@ class MeScreen extends React.Component {
             { networkCard() }
 
             { sectionTitle('MY HASHTAGS') }
-            <HashtagCategory />
+            <HashtagCategory {...this.props} />
 
             { sectionTitle('MORE') }
             <MoreCard onPressLogout={this.props.onPressLogout} />

@@ -25,9 +25,6 @@ function mapStateToProps(state) {
 
 class HashtagCategory extends React.Component {
 
-  _handleCategoryTouch(category) {
-  }
-
   _renderItem(category) {
     var myTagsRendered = [];
     if (this.props.myTags) {
@@ -48,7 +45,7 @@ class HashtagCategory extends React.Component {
 
     return (
       <TappableCard key={category.displayName} onPress={(event) => {
-          return this._handleCategoryTouch.bind(this)(category)}}>
+          return this.props.handleCategoryTouch(category)}}>
         <View>
           <View style={[styles.categoryHeader]}>
             {icon}

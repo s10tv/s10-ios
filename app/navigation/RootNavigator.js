@@ -43,6 +43,10 @@ class RootNavigator extends React.Component {
     return this.router.toEditProfile();
   }
 
+  handleCategoryTouch(category) {
+    this.router.toCategoryList({ category })
+  }
+
   renderScene(route, nav) {
     this.router = this.router || new RootRouter(nav, this.props.dispatch);
 
@@ -68,7 +72,8 @@ class RootNavigator extends React.Component {
         initialRoute={{
           id: this.props.currentScreen.id,
           props: Object.assign({}, this.props, {
-            onEditProfile: this.onEditProfile.bind(this)
+            onEditProfile: this.onEditProfile.bind(this),
+            handleCategoryTouch: this.handleCategoryTouch.bind(this),
           })
         }}
         navigationBar={
