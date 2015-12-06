@@ -8,10 +8,11 @@ import React, {
 import { connect } from 'react-redux/native'
 
 // internal depdencies
-import { COLORS, SHEET } from '../CommonStyles'
-import TSNavigationBar from '../components/lib/TSNavigationBar';
 import FullScreenRouter from './FullScreenRouter';
 import RootNavigator from './RootNavigator';
+import { COLORS, SHEET } from '../CommonStyles'
+import TSNavigationBar from '../components/lib/TSNavigationBar';
+import BridgeManager from '../../modules/BridgeManager';
 
 const logger = new (require('../../modules/Logger'))('FullScreenNavigator');
 
@@ -19,7 +20,7 @@ function mapStateToProps(state) {
   return {
     currentScreen: state.currentScreen,
     nav: state.routes.fullscreen.nav,
-    displayTitle: state.routes.fullscreen.nav.displayTitle
+    displayTitle: state.routes.fullscreen.nav.displayTitle,
   }
 }
 
@@ -53,6 +54,25 @@ class FullScreenNavigator extends React.Component {
     return this.router.toProfile({ userId });
   }
 
+  /**
+   * Determines when to close the service link card.
+   */
+  _onServiceLinkNavStateChange(navState) {
+    if (navState.url.indexOf(BridgeManager.bundleUrlScheme()) != -1) {
+      this.router.pop()
+    }
+  }
+
+  /**
+   * When a user clicks on a card to link a service .
+   */
+  onLinkViaWebView(url) {
+    return this.router.toLinkWebView({
+      onServiceLinkNavStateChange: this._onServiceLinkNavStateChange.bind(this),
+      url
+    });
+  }
+
   leftButton(route, navigator, index, navState) {
     this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
     return this.router.leftButton(this.props.currentScreen.present);
@@ -68,7 +88,6 @@ class FullScreenNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
-    logger.debug(`currentScreen=${JSON.stringify(this.props.currentScreen.present)}`)
     this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
@@ -92,7 +111,8 @@ class FullScreenNavigator extends React.Component {
         initialRoute={{
           id: this.props.currentScreen.present.id,
           props: Object.assign({}, this.props, {
-            onViewProfile: this.onViewProfile.bind(this)
+            onViewProfile: this.onViewProfile.bind(this),
+            onLinkViaWebView: this.onLinkViaWebView.bind(this),
           })
         }}
         navigationBar={

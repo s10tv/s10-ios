@@ -12,6 +12,7 @@ import Screen from '../Screen';
 
 import sectionTitle from '../lib/sectionTitle';
 import editPhotoHeader from '../lib/editPhotoHeader';
+import linkServiceCard from '../lib/linkServiceCard';
 import { SCREEN_EDIT_PROFILE } from '../../constants';
 import { SHEET } from '../../CommonStyles';
 
@@ -21,6 +22,7 @@ const logger = new (require('../../../modules/Logger'))('EditProfileScreen');
 function mapStateToProps(state) {
   return {
     me: state.me,
+    integrations: state.integrations,
   }
 }
 
@@ -32,6 +34,8 @@ class EditProfileScreen extends Screen {
   static title = () => Screen.generateTitleBar('Edit');
 
   render() {
+    logger.debug(`[integrations]: render edit profile got ${this.props.integrations.length} integrations`);
+
     return (
       <View style={SHEET.container}>
         <ScrollView
@@ -45,6 +49,10 @@ class EditProfileScreen extends Screen {
 
           <View style={SHEET.innerContainer}>
             {sectionTitle('SERVICES')}
+            { linkServiceCard(
+                this.props.integrations,
+                this.props.onLinkFacebook,
+                this.props.onLinkViaWebView) }
 
             {sectionTitle('MY INFO')}
             <View style={SHEET.separator} />

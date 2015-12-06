@@ -13,6 +13,7 @@ let TSLayerService = React.NativeModules.TSLayerService;
 // external dependencies
 import { connect } from 'react-redux/native';
 import { FBSDKLoginManager } from 'react-native-fbsdklogin';
+import { FBSDKAccessToken } from 'react-native-fbsdkcore';
 
 // internal dependencies
 import FullScreenNavigator from './navigation/FullScreenNavigator';
@@ -141,10 +142,13 @@ class LayoutContainer extends React.Component {
     this._onUserHasLoggedIn()
   }
 
+  /**
+   * Triggered whenever the user wants to upload a cover or avatar photo.
+   */
   onUploadImage({
       type,
       dimensions = { width: 640, height: 480},
-      contentType = 'image/jpeg' })  {
+      contentType = 'image/jpeg' }) {
 
     logger.info('onUploadImage pressed');
 
@@ -218,18 +222,87 @@ class LayoutContainer extends React.Component {
               this.props.dispatch({
                 type: 'DISPLAY_ERROR',
                 title: 'Upload Error',
-                message: 'There was a problem uploading your image',
+                message: 'There was a problem uploading your image.',
               });
               return;
           }
         })
-
 
       default:
         const errMsg = `Called onUploadImage with invalid type=${type}`;
         logger.warning(errMsg);
         return Promise.reject(errMsg);
     }
+  }
+
+  /**
+   * When a user clicks on a Facebook tile to link Facbeook, we want to leverage the FB SDK.
+   */
+  onLinkFacebook() {
+    const RESPONSES = {
+      CANCELLED_FB_LINK: 'CANCELLED_FB_LINK',
+      ACCESS_TOKEN_INVALID: 'ACCESS_TOKEN_INVALID',
+    };
+
+    const displayFacebookError = () => {
+      this.props.dispatch({
+        type: 'DISPLAY_ERROR',
+        title: 'Error linking Facebook',
+        message: 'Hmm seems like we cannot link your Facebook at the moment.',
+      });
+    }
+
+    // TODO: clean up duplicated code. This is ridiculous.
+    // https://app.asana.com/0/34520227311296/69377281916556
+    let permissions = ['email', 'public_profile', 'user_about_me',
+    'user_birthday', 'user_education_history',
+    'user_friends', 'user_location', 'user_photos', 'user_posts']
+
+    return new Promsie((resolve, reject) => {
+      FBSDKLoginManager.logInWithReadPermissions(permissions, (error, result) => {
+        if (error) {
+          logger.error(error);
+          displayFacebookError();
+          return reject(error);
+        }
+
+        if (result.isCancelled) {
+          return reject(RESPONSES.CANCELLED_FB_LINK);
+        }
+
+        return resolve(result);
+      })
+    })
+    .then(() => {
+      return new Promise((resolve, reject) => {
+        FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
+          if (!accessToken || !accessToken.tokenString) {
+            return reject(RESPONSES.ACCESS_TOKEN_INVALID)
+          }
+          return resolve(accessToken.tokenString);
+        })
+      })
+    })
+    .then((accessTokenString) => {
+      return this.props.ddp.call({
+        methodName: 'me/service/add',
+        params: ['facebook', accessTokenString]
+      })
+    })
+    .catch(err => {
+      switch(err) {
+        case RESPONSES.CANCELLED_FB_LINK:
+          logger.debug('Cancelled Facebook Link')
+          return;
+        case RESPONSES.ACCESS_TOKEN_INVALID:
+          logger.warning('onLinkFacebook generated invalid access token.');
+          displayFacebookError();
+          return;
+        default:
+          logger.error(err);
+          displayFacebookError();
+      }
+    })
   }
 
   render() {
@@ -243,6 +316,7 @@ class LayoutContainer extends React.Component {
           onPressLogout={this.onPressLogout.bind(this)}
           onPressLogin={this.onPressLogin.bind(this)}
           onUploadImage={this.onUploadImage.bind(this)}
+          onLinkFacebook={this.onLinkFacebook.bind(this)}
         />
       )
     }
@@ -253,6 +327,7 @@ class LayoutContainer extends React.Component {
         sceneStyle={{ paddingTop: 64 }}
         onPressLogout={this.onPressLogout.bind(this)}
         onUploadImage={this.onUploadImage.bind(this)}
+        onLinkFacebook={this.onLinkFacebook.bind(this)}
       />
     )
   }

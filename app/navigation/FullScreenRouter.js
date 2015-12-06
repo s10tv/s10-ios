@@ -2,12 +2,14 @@ import BaseRouter from './BaseRouter';
 
 import ConversationScreen from '../components/chat/ConversationScreen';
 import ProfileScreen from '../components/profile/ProfileScreen';
+import LinkServiceScreen from '../components/linkservice/LinkServiceScreen';
 
-import { SCREEN_CONVERSATION, SCREEN_PROFILE } from '../constants'
+import { SCREEN_CONVERSATION, SCREEN_PROFILE, SCREEN_LINK_SERVICE } from '../constants'
 
 const ROUTE_MAP = {
   SCREEN_CONVERSATION: ConversationScreen,
   SCREEN_PROFILE: ProfileScreen,
+  SCREEN_LINK_SERVICE: LinkServiceScreen,
 }
 
 /**
@@ -49,6 +51,16 @@ class FullScreenRouter extends BaseRouter {
 
     this.push({ id, props });
   }
+
+  /**
+   * Navigates to a screen to a screen with a special webview (that closes on taylr-dev://)
+   * for linking services.
+   */
+   toLinkWebView({ url, onServiceLinkNavStateChange }) {
+    const props = { url, onServiceLinkNavStateChange };
+
+    this.push({ id: LinkServiceScreen.id , props });
+   }
 }
 
 module.exports = FullScreenRouter;

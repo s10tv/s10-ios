@@ -2,12 +2,9 @@ import { combineReducers } from 'redux';
 
 import {
   CURRENT_SCREEN,
-  SWITCH_BASE_TAB,
   SCREEN_CONVERSATION,
   SCREEN_PROFILE,
-  SCREEN_TODAY,
-  SCREEN_ME,
-  SCREEN_CONVERSATION_LIST } from '../../constants'
+  SCREEN_LINK_SERVICE } from '../../constants'
 
 import ProfileScreen from '../../components/profile/ProfileScreen';
 import RootNavigator from '../../navigation/RootNavigator';
@@ -36,6 +33,7 @@ function navbarHidden(state = true, action) {
         case SCREEN_CONVERSATION:
           return true;
 
+        case SCREEN_LINK_SERVICE:
         case SCREEN_PROFILE:
           return false;
       }

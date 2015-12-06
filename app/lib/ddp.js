@@ -45,7 +45,6 @@ class DDPService extends TSDDPClient {
     logger.info(`subscribing me`);
     this.subscribe({ pubName: 'me' })
     .then((subId) => {
-      logger.info(`got me subscription back`);
       this.collections.observe(() => {
         return this.collections.users.findOne({ _id: this.currentUserId });
       }).subscribe(currentUser => {
@@ -64,6 +63,7 @@ class DDPService extends TSDDPClient {
   _subscribeIntegrations(dispatch) {
     this.subscribe({ pubName: 'integrations' })
     .then((subId) => {
+      logger.info(`got integrations subscription back`);
       this.collections.observe(() => {
         return this.collections.integrations.find({});
       }).subscribe(integrations => {
@@ -71,12 +71,11 @@ class DDPService extends TSDDPClient {
           return one.status == 'linked' ? -1 : 1;
         })
 
-        if (currentUser) {
-          dispatch({
-            type: 'SET_INTEGRATIONS',
-            integrations: integrations,
-          })
-        }
+        logger.debug(`[integrations]: ddp sent ${integrations.length} integrations`)
+        dispatch({
+          type: 'SET_INTEGRATIONS',
+          integrations: integrations,
+        })
       });
     })
   }
