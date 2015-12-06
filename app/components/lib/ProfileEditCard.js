@@ -1,36 +1,37 @@
-let React = require('react-native');
-
-let {
-  AppRegistry,
-  AlertIOS,
+import React, {
+  Dimensions,
   PickerIOS,
   View,
   DeviceEventEmitter,
   Text,
   TouchableOpacity,
-  TextInput,
   Image,
-  StyleSheet,
-} = React;
+  StyleSheet
+} from 'react-native';
 
-let Dimensions = require('Dimensions');
-let { width, height } = Dimensions.get('window');
+import { connect } from 'react-redux/native';
+import Overlay from 'react-native-overlay'; // TODO(qimingfang): refactor into common component.
 
-var Overlay = require('react-native-overlay');
+import Loader from './Loader';
+import { Card, TappableCard } from './Card';
+import FloatLabelTextField from './FloatLabelTextField';
+import { SHEET }  from '../../CommonStyles';
 
-let FloatLabelTextInput = require('./FloatLabelTextField');
-
-let SHEET = require('../CommonStyles').SHEET;
-let Card = require('./Card').Card;
-let TappableCard = require('./Card').TappableCard;
-
-const logger = new (require('../../modules/Logger'))('index.ios');
+const logger = new (require('../../../modules/Logger'))('ProfileEditCard');
 const PickerItemIOS = PickerIOS.Item;
+const { width, height } = Dimensions.get('window');
+
+function mapStateToProps(state) {
+  return {
+    me: state.me,
+    ddp: state.ddp,
+  }
+}
 
 class ProfileEditCard extends React.Component {
 
-  constructor (props) {
-    super(props)
+  constructor(props = {}) {
+    super(props);
     this.state = {
       paddingBottom: 0,
       modalVisible: false,
@@ -49,8 +50,11 @@ class ProfileEditCard extends React.Component {
 
   componentWillMount () {
     this.setState({
-      keyboardShowListener: DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this)),
-      keyboardHideListener: DeviceEventEmitter.addListener('keyboardWillHide', this.keyboardWillHide.bind(this)),
+      keyboardShowListener: DeviceEventEmitter.addListener('keyboardWillShow',
+        this.keyboardWillShow.bind(this)),
+
+      keyboardHideListener: DeviceEventEmitter.addListener('keyboardWillHide',
+        this.keyboardWillHide.bind(this)),
     })
   }
 
@@ -60,39 +64,46 @@ class ProfileEditCard extends React.Component {
   }
 
   renderTextField(info) {
+    logger.debug(`rendering ${this.props.me[info.key]}`)
+
     return (
-        <Card
-          key={info.key}
-          cardOverride={{padding: 5}}>
-          <FloatLabelTextField
-            ref={info.key}
-            value={this.props.me[info.key]}
-            placeHolder={info.display}
-            tapElement={info.tapElement}
-            isVisible={info.isVisible}
-            ddp={this.props.ddp}
-            multiline={info.multiline}
-            onChangeText={(text) => {
-              if (this.props.onEditProfileChange) {
-                this.props.onEditProfileChange(text);
-              }
-            }}
-            onFocus={() => {
-              if (this.props.onEditProfileFocus) {
-                this.props.onEditProfileFocus(info.key);
-              }
-            }}
-            onBlur={(text) => {
-              if (this.props.onEditProfileBlur) {
-                this.props.onEditProfileBlur();
-              }
-              this.props.updateProfile(info.key, text);
-            }} />
-        </Card>
-      )
+      <Card
+        key={info.key}
+        cardOverride={{padding: 5}}>
+        <FloatLabelTextField
+          ref={info.key}
+          value={this.props.me[info.key]}
+          placeHolder={info.display}
+          tapElement={info.tapElement}
+          isVisible={info.isVisible}
+          ddp={this.props.ddp}
+          multiline={info.multiline}
+          onChangeText={(text) => {
+            this.props.onEditProfileChange(text);
+          }}
+          onFocus={() => {
+            this.props.onEditProfileFocus(info.key);
+          }}
+          onBlur={(text) => {
+            this.props.onEditProfileBlur();
+            this.props.updateProfile(info.key, text);
+          }} />
+      </Card>
+    )
   }
 
   render() {
+    // TODO(qimingfang): We shouldnt need to wait for all data to be around. The logic for
+    // handling what to do when there is no data should be pushed to the Floating text label.
+    // We have to wait for all data to be here first otherwise our FloatingTextFields wont
+    // be re-rendered with the correct data (they have to maintain text state themselves to
+    // show when users type into the text input). For now add in this hack to add spinner.
+    const { firstName } = this.props.me
+    if (firstName.length == 0) {
+      return <Loader />
+    }
+    // </hack>
+
     let editInfo = [
       { key: 'firstName', display: 'First Name *', multiline: false } ,
       { key: 'lastName', display: 'Last Name *', multiline: false },
@@ -104,16 +115,10 @@ class ProfileEditCard extends React.Component {
       return this.renderTextField.bind(this)(info)
     });
 
-    let aboutField = this.renderTextField.bind(this)({
-      key: 'about',
-      display: 'About Me',
-      multiline: true
-    })
-
     let eligibeYears = ['2009', '2010', '2011', '2012', '2013', '2014', '2015',
     '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
 
-    let gradYearText = this.props.me.gradYear ?
+    let gradYearText = this.props.me.gradYear.length > 0 ?
       <Text>{ this.props.me.gradYear } </Text> :
       <Text style={{ color: '#B1B1B1' }}>Graduation Year *</Text>;
 
@@ -134,6 +139,12 @@ class ProfileEditCard extends React.Component {
       display: 'Graduation Year',
       tapElement: tapElement,
       isVisible: true,
+    })
+
+    let aboutField = this.renderTextField.bind(this)({
+      key: 'about',
+      display: 'About Me',
+      multiline: true
     })
 
     return(
@@ -239,4 +250,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = ProfileEditCard;
+export default connect(mapStateToProps)(ProfileEditCard);

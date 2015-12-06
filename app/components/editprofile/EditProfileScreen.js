@@ -13,6 +13,7 @@ import Screen from '../Screen';
 import sectionTitle from '../lib/sectionTitle';
 import editPhotoHeader from '../lib/editPhotoHeader';
 import linkServiceCard from '../lib/linkServiceCard';
+import ProfileEditCard from '../lib/ProfileEditCard';
 import { SCREEN_EDIT_PROFILE } from '../../constants';
 import { SHEET } from '../../CommonStyles';
 
@@ -56,6 +57,13 @@ class EditProfileScreen extends Screen {
 
             {sectionTitle('MY INFO')}
             <View style={SHEET.separator} />
+
+            <ProfileEditCard
+              onEditProfileChange={this.props.onEditProfileChange}
+              onEditProfileFocus={this.props.onEditProfileFocus}
+              onEditProfileBlur={this.props.onEditProfileBlur}
+              updateProfile={this.props.updateProfile}
+            />
 
           </View>
           <View style={ SHEET.bottomTile } />

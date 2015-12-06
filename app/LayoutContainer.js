@@ -305,6 +305,22 @@ class LayoutContainer extends React.Component {
     })
   }
 
+  onEditProfileChange() {
+
+  }
+
+  onEditProfileFocus() {
+
+  }
+
+  onEditProfileBlur() {
+
+  }
+
+  updateProfile() {
+
+  }
+
   render() {
     logger.debug(`Rendering layout. loggedIn=${this.props.loggedIn}`)
 
@@ -317,10 +333,15 @@ class LayoutContainer extends React.Component {
           onPressLogin={this.onPressLogin.bind(this)}
           onUploadImage={this.onUploadImage.bind(this)}
           onLinkFacebook={this.onLinkFacebook.bind(this)}
+          onEditProfileChange={this.onEditProfileChange.bind(this)}
+          onEditProfileFocus={this.onEditProfileFocus.bind(this)}
+          onEditProfileBlur={this.onEditProfileBlur.bind(this)}
+          updateProfile={this.updateProfile.bind(this)}
         />
       )
     }
 
+    // TODO(qimingfang): feels very repetitive. Shoudl consolidate with OnboardingNavigator.
     return (
       <FullScreenNavigator
         style={{ flex: 1 }}
@@ -328,6 +349,10 @@ class LayoutContainer extends React.Component {
         onPressLogout={this.onPressLogout.bind(this)}
         onUploadImage={this.onUploadImage.bind(this)}
         onLinkFacebook={this.onLinkFacebook.bind(this)}
+        onEditProfileChange={this.onEditProfileChange.bind(this)}
+        onEditProfileFocus={this.onEditProfileFocus.bind(this)}
+        onEditProfileBlur={this.onEditProfileBlur.bind(this)}
+        updateProfile={this.updateProfile.bind(this)}
       />
     )
   }

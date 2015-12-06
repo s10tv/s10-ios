@@ -12,6 +12,7 @@ const defaultMe = Object.assign({}, {
   lastName: '',
   avatarUrl: 'https://s10tv.blob.core.windows.net/s10tv-prod/notfound.jpeg',
   coverUrl: 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg',
+  gradYear: '',
   shortDisplayName: '',
   displayName: '',
   connectedProfiles: [],
