@@ -7,9 +7,9 @@ class DDPService extends TSDDPClient {
   resubscribe(dispatch) {
     this._subscribeMe(dispatch);
     this._subscribeIntegrations(dispatch);
-    this._subscribeUsers(dispatch);
     this._subscribeMyTags(dispatch);
     this._subscribeTagCategories(dispatch)
+    this._subscribeCandidates(dispatch)
   }
 
   _generateShortDisplayName = (user, length) => {
@@ -116,15 +116,36 @@ class DDPService extends TSDDPClient {
     })
   }
 
-  _subscribeUsers(dispatch) {
-    this.collections.observe(() => {
-      return this.collections.users.find({});
-    }).subscribe(users => {
-      dispatch({
-        type: 'SET_USERS',
-        users: users,
+  _subscribeCandidates(dispatch) {
+    this.subscribe({ pubName: 'candidate-discover' })
+    .then(() => {
+      this.collections.observe(() => {
+        return this.collections.candidates.find({});
+      }).subscribe(candidates => {
+        let activeCandidates = candidates.filter((candidate) => {
+          return candidate.type == 'active'
+        })
+
+        let historyCandidates = candidates.filter((candidate) => {
+          return candidate.type == 'expired'
+        })
+
+        if (activeCandidates.length > 0) {
+          const [ activeCandidate ] = activeCandidates;
+          activeCandidate.user = this._formatUser(activeCandidate.user);
+          dispatch({
+            type: 'SET_ACTIVE_CANDIDATE',
+            candidate: activeCandidate,
+          })
+        }
+
+        dispatch({
+          type: 'SET_HISTORY_CANDIDATE',
+          candidates: historyCandidates,
+        })
       });
-    });
+    })
+    .catch(err => { logger.error(err) });
   }
 }
 
