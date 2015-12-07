@@ -60,9 +60,9 @@ class FullScreenRouter extends BaseRouter {
    * for linking services.
    */
    toLinkWebView({ url, onServiceLinkNavStateChange }) {
-    const props = { url, onServiceLinkNavStateChange };
+     const props = { url, onServiceLinkNavStateChange };
 
-    this.push({ id: LinkServiceScreen.id , props });
+     this.push({ id: LinkServiceScreen.id , props });
    }
 }
 

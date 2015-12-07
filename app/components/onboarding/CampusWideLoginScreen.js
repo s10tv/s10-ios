@@ -3,33 +3,35 @@ import React, {
   WebView
 } from 'react-native';
 
-import { SCREEN_LINK_SERVICE } from '../../constants';
+import { SCREEN_OB_CWL_LOGIN } from '../../constants';
 import Screen from '../Screen';
 
 const logger = new (require('../../../modules/Logger'))('LinkServiceScreen');
 
-class LinkServiceScreen extends Screen {
+class CampusWideLoginScreen extends Screen {
 
-  static id = SCREEN_LINK_SERVICE;
+  static id = SCREEN_OB_CWL_LOGIN;
   static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
   static rightButton = () => null
   static title = () => null
 
   render() {
+    const url = 'https://cas.id.ubc.ca/ubc-cas/login';
+
     return (
       <WebView
         style={styles.webView}
-        onNavigationStateChange={this.props.onServiceLinkNavStateChange}
+        onNavigationStateChange={this.props.onCWLLoginNavStateChange}
         startInLoadingState={true}
-        url={this.props.url} />
+        url={url} />
     )
   }
 }
 
 let styles = StyleSheet.create({
   webView: {
-    marginTop: 64,
+    paddingTop: 64,
   },
 })
 
-export default LinkServiceScreen;
+export default CampusWideLoginScreen;

@@ -43,10 +43,8 @@ class JoinNetworkScreen extends Screen {
           </Text>
 
           <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-
-          }}>
+              style={styles.button}
+              onPress={() => { this.props.toCWLLoginScreen() }}>
             <Image source={require('../img/ic-lock.png')} style={{ height: 15, resizeMode: 'contain' }} />
             <Text style={[styles.buttonText, SHEET.baseText]}>Campus Wide Login</Text>
           </TouchableOpacity>

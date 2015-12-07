@@ -28,6 +28,14 @@ function mapStateToProps(state) {
 
 class FullScreenNavigator extends React.Component {
 
+  constructor(props = {}){
+    super(props);
+    this.bindings = {
+      onViewProfile: this.onViewProfile.bind(this),
+      onLinkViaWebView: this.onLinkViaWebView.bind(this),
+    }
+  }
+
   componentDidMount() {
     this.navigateToConversationViewListener = NativeAppEventEmitter
       .addListener('Navigation.push', (properties) => {
@@ -90,13 +98,12 @@ class FullScreenNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
-    const props = Object.assign({}, this.props, route.props);
+    const props = Object.assign({}, this.props, route.props, this.bindings);
+    this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
 
     if (!this.props.loggedIn || !this.props.iActive) {
       return <OnboardingNavigator {...props} />
     }
-
-    this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
       return this.router.handle(this.props.currentScreen.present, props);
@@ -118,10 +125,7 @@ class FullScreenNavigator extends React.Component {
         })}
         initialRoute={{
           id: this.props.currentScreen.present.id,
-          props: Object.assign({}, this.props, {
-            onViewProfile: this.onViewProfile.bind(this),
-            onLinkViaWebView: this.onLinkViaWebView.bind(this),
-          })
+          props: Object.assign({}, this.props, this.bindings)
         }}
         navigationBar={
           <TSNavigationBar

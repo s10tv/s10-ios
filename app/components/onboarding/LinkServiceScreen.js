@@ -10,10 +10,12 @@ import React, {
 import { connect } from 'react-redux/native';
 
 import { SCREEN_OB_LINK_SERVICE } from '../../constants';
+import linkServiceCard from '../lib/linkServiceCard';
 
 let SHEET = require('../../CommonStyles').SHEET;
 let COLORS = require('../../CommonStyles').COLORS;
 let Loader = require('../lib/Loader');
+let Screen = require('../Screen');
 
 function mapStateToProps(state) {
   return {
@@ -23,7 +25,7 @@ function mapStateToProps(state) {
 
 class LinkServiceView extends React.Component {
   static id = SCREEN_OB_LINK_SERVICE;
-  static leftButton = () => null
+  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
   static rightButton = (route, router) => null
   static title = () => null
 
@@ -49,7 +51,10 @@ class LinkServiceView extends React.Component {
             </Text>
           </View>
 
-
+          { linkServiceCard(
+            this.props.integrations,
+            this.props.onLinkFacebook,
+            this.props.onLinkViaWebView) }
         </ScrollView>
       </View>
     )

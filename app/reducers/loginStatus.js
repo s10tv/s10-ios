@@ -1,6 +1,6 @@
 import Session from '../../native_modules/Session';
 
-const logger = new (require('../../modules/Logger'))('Session.js');
+const logger = new (require('../../modules/Logger'))('LoginStatus');
 
 const defaultSession = Session.initialValue();
 const defaultLoggedIn = (!!defaultSession && !!defaultSession.resumeToken);
@@ -38,8 +38,19 @@ function isCWLRequired(state = true, action) {
   }
 }
 
+function hasLoggedInThroughCWL(state = false, action) {
+  switch (action.type) {
+    case 'LOGGED_IN_THROUGH_CWL':
+      logger.debug(`setting loggedInThroughCWL to be ${action.loggedInThroughCWL}`);
+      return action.loggedInThroughCWL;
+    default:
+      return false
+  }
+}
+
 export {
   loggedIn,
   isCWLRequired,
   isActive,
+  hasLoggedInThroughCWL,
 }

@@ -25,6 +25,14 @@ function mapStateToProps(state) {
 
 class RootNavigator extends React.Component {
 
+  constructor(props = {}) {
+    super(props);
+    this.bindings = {
+      onEditProfile: this.onEditProfile.bind(this),
+      handleCategoryTouch: this.handleCategoryTouch.bind(this),
+    }
+  }
+
   leftButton(route, nav) {
     this.router = this.router || new RootRouter(nav, this.props.dispatch);
     return this.router.leftButton(this.props.currentScreen.present);
@@ -49,7 +57,7 @@ class RootNavigator extends React.Component {
 
   renderScene(route, nav) {
     this.router = this.router || new RootRouter(nav, this.props.dispatch);
-    const props = Object.assign({}, this.props, route.props);
+    const props = Object.assign({}, this.props, route.props, this.bindings);
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
       return this.router.handle(this.props.currentScreen.present, props);
@@ -71,10 +79,7 @@ class RootNavigator extends React.Component {
         })}
         initialRoute={{
           id: this.props.currentScreen.id,
-          props: Object.assign({}, this.props, {
-            onEditProfile: this.onEditProfile.bind(this),
-            handleCategoryTouch: this.handleCategoryTouch.bind(this),
-          })
+          props: Object.assign({}, this.props, this.bindings)
         }}
         navigationBar={
           <Navigator.NavigationBar

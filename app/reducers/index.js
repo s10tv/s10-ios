@@ -1,4 +1,4 @@
-import { loggedIn, isActive, isCWLRequired } from './loginStatus';
+import { loggedIn, isActive, isCWLRequired, hasLoggedInThroughCWL } from './loginStatus';
 import routes from './routes/index';
 import layer from './layer/index';
 import apphub from './apphub';
@@ -15,6 +15,7 @@ export {
   loggedIn,
   isActive,
   isCWLRequired,
+  hasLoggedInThroughCWL,
   routes,
   candidate,
   pastCandidates,

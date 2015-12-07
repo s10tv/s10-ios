@@ -65,7 +65,7 @@ class BaseRouter {
    * @return a component to be rendered given the @param route
    */
   handle(route, extraProps = {}) {
-    logger.info(`handling route=${JSON.stringify(route)}`)
+    logger.info(`handling route=${JSON.stringify(route)} id=${this.id}`)
     const Component = this._routeMap[route.id];
 
     if (!Component) {
@@ -92,14 +92,13 @@ class BaseRouter {
       id: id,
       props: props
     })
-
   }
 
   /**
    * removes a route from this router's navigation stack.
    */
   pop() {
-    logger.debug(`will pop route`);
+    logger.debug(`will pop route id=${this.id}`);
     this.nav.pop();
     this.dispatch(ActionCreators.undo());
   }

@@ -121,7 +121,7 @@ class LoginScreen extends Screen {
 
       logoutComponent = (
         <Text style={[styles.link, SHEET.baseText]} onPress={() => {
-          this.props.onLogout()
+          this.props.onPressLogout()
         }}>Logout</Text>
       )
     } else {
@@ -130,7 +130,7 @@ class LoginScreen extends Screen {
           <FBSDKLoginButton
             style={styles.fbButton}
             onLoginFinished={this.onFacebookLogin.bind(this)}
-            onLogoutFinished={() => this.props.onLogout }
+            onLogoutFinished={() => this.props.onPressLogout }
             readPermissions={['email', 'public_profile', 'user_about_me',
               'user_birthday', 'user_education_history',
               'user_friends', 'user_location', 'user_photos', 'user_posts']}
