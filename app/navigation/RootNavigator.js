@@ -49,19 +49,19 @@ class RootNavigator extends React.Component {
 
   renderScene(route, nav) {
     this.router = this.router || new RootRouter(nav, this.props.dispatch);
+    const props = Object.assign({}, this.props, route.props);
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
-      return this.router.handle(this.props.currentScreen.present,
-        Object.assign({}, this.props, route.props));
+      return this.router.handle(this.props.currentScreen.present, props);
     }
 
-    return <TabNavigatorScreen {...route.props} />
+    return <TabNavigatorScreen {...props} />
   }
 
   render() {
     return (
       <Navigator
-        ref='nav'
+        ref='root-nav'
         itemWrapperStyle={styles.nav}
         style={styles.nav}
         renderScene={this.renderScene.bind(this)}

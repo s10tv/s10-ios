@@ -1,4 +1,4 @@
-import loggedIn from './loggedIn';
+import { loggedIn, isActive, isCWLRequired } from './loginStatus';
 import routes from './routes/index';
 import layer from './layer/index';
 import apphub from './apphub';
@@ -13,6 +13,8 @@ import { candidate, pastCandidates } from './ddp/candidates.js';
 
 export {
   loggedIn,
+  isActive,
+  isCWLRequired,
   routes,
   candidate,
   pastCandidates,

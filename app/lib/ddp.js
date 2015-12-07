@@ -1,10 +1,13 @@
 import TSDDPClient from '../../lib/ddpclient';
+import BridgeManager from '../../modules/BridgeManager';
+import CWLChecker from '../util/CWLChecker';
 
 const logger = new (require('../../modules/Logger'))('DDPService');
 
 class DDPService extends TSDDPClient {
 
   resubscribe(dispatch) {
+    this.subscribeSettings(dispatch);
     this._subscribeMe(dispatch);
     this._subscribeIntegrations(dispatch);
     this._subscribeMyTags(dispatch);
@@ -146,6 +149,56 @@ class DDPService extends TSDDPClient {
       });
     })
     .catch(err => { logger.error(err) });
+  }
+
+  subscribeSettings(dispatch, userRequired = true) {
+    this.subscribe({ pubName: 'settings', userRequired: userRequired })
+    .then((subId) => {
+      this.collections.observe(() => {
+        return this.collections.settings.find({});
+      }).subscribe(settings => {
+        const indexedSettings =  {};
+        settings.forEach((setting) => {
+          indexedSettings[setting._id] = setting;
+        });
+
+        if (indexedSettings.upgradeUrl && indexedSettings.hardMinBuild) {
+          const currentBuild = BridgeManager.build();
+          if (currentBuild < indexedSettings.hardMinBuild.value) {
+            this.props.store.dispatch({
+              type: 'SHOW_HARD_UPGRADE_POPUP',
+              url: indexedSettings.upgradeUrl.value,
+            })
+          }
+        }
+
+        if (indexedSettings.CWLWhitelist) {
+          const currentVersion = BridgeManager.version();
+          const isRunningTestFlightBeta = BridgeManager.isRunningTestFlightBeta();
+          const { version, showCWLForTestFlight } = indexedSettings.CWLWhitelist.value;
+
+          const isCWLRequired = new CWLChecker().checkCWL({
+            version,
+            currentVersion,
+            showCWLForTestFlight,
+            isRunningTestFlightBeta,
+          })
+
+          logger.debug(`checking CWL: isCWLRequired=${isCWLRequired}`);
+          dispatch({
+            type: 'SET_IS_CWL_REQUIRED',
+            isCWLRequired,
+          })
+        }
+
+        if (indexedSettings.accountStatus) {
+          dispatch({
+            type: 'SET_IS_ACTIVE',
+            isActive: indexedSettings.accountStatus.value == 'active',
+          });
+        }
+      });
+    })
   }
 }
 

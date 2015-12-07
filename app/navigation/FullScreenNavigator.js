@@ -10,6 +10,7 @@ import { connect } from 'react-redux/native'
 // internal depdencies
 import FullScreenRouter from './FullScreenRouter';
 import RootNavigator from './RootNavigator';
+import OnboardingNavigator from './OnboardingNavigator';
 import { COLORS, SHEET } from '../CommonStyles'
 import TSNavigationBar from '../components/lib/TSNavigationBar';
 import BridgeManager from '../../modules/BridgeManager';
@@ -18,9 +19,10 @@ const logger = new (require('../../modules/Logger'))('FullScreenNavigator');
 
 function mapStateToProps(state) {
   return {
+    loggedIn: state.loggedIn,
+    iActive: state.iActive,
     currentScreen: state.currentScreen,
     nav: state.routes.fullscreen.nav,
-    displayTitle: state.routes.fullscreen.nav.displayTitle,
   }
 }
 
@@ -88,20 +90,25 @@ class FullScreenNavigator extends React.Component {
   }
 
   renderScene(route, nav) {
+    const props = Object.assign({}, this.props, route.props);
+
+    if (!this.props.loggedIn || !this.props.iActive) {
+      return <OnboardingNavigator {...props} />
+    }
+
     this.router = this.router || new FullScreenRouter(nav, this.props.dispatch)
 
     if (this.router.canHandleRoute(this.props.currentScreen.present)) {
-      return this.router.handle(this.props.currentScreen.present,
-        Object.assign({}, this.props, route.props));
+      return this.router.handle(this.props.currentScreen.present, props);
     }
 
-    return <RootNavigator {...route.props} />
+    return <RootNavigator {...props} />
   }
 
   render() {
     return (
       <Navigator
-        ref='nav'
+        ref='fullscreen-nav'
         style={styles.nav}
         itemWrapperStyle={styles.nav}
         renderScene={this.renderScene.bind(this)}

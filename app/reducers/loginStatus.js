@@ -5,7 +5,7 @@ const logger = new (require('../../modules/Logger'))('Session.js');
 const defaultSession = Session.initialValue();
 const defaultLoggedIn = (!!defaultSession && !!defaultSession.resumeToken);
 
-export default function loggedIn(state = defaultLoggedIn, action) {
+function loggedIn(state = defaultLoggedIn, action) {
   switch(action.type) {
     case 'LOGIN_FROM_FB':
     case 'LOGIN_FROM_DIGITS':
@@ -18,4 +18,28 @@ export default function loggedIn(state = defaultLoggedIn, action) {
     default:
       return state;
   }
+}
+
+function isActive(state = true, action) {
+  switch (action.type) {
+    case 'SET_IS_ACTIVE':
+      return action.isActive;
+    default:
+      return state;
+  }
+}
+
+function isCWLRequired(state = true, action) {
+  switch (action.type) {
+    case 'SET_IS_CWL_REQUIRED':
+      return action.isCWLRequired;
+    default:
+      return state;
+  }
+}
+
+export {
+  loggedIn,
+  isCWLRequired,
+  isActive,
 }

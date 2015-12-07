@@ -36,6 +36,10 @@ class LayoutContainer extends React.Component {
   componentWillMount() {
     this.props.ddp.initialize()
     .then(() => {
+      // subscribe to settings before we log in
+      return this.props.ddp.subscribeSettings(this.props.dispatch, false);
+    })
+    .then(() => {
       return this.resumeTokenHandler.handle(this.props.dispatch)
     })
     .then((loginResult) => {
@@ -326,30 +330,11 @@ class LayoutContainer extends React.Component {
   }
 
   render() {
-    logger.debug(`Rendering layout. loggedIn=${this.props.loggedIn}`)
-
-    if (!this.props.loggedIn) {
-      return (
-        <OnboardingNavigator
-          style={{ flex: 1 }}
-          sceneStyle={{ paddingTop: 64 }}
-          onPressLogout={this.onPressLogout.bind(this)}
-          onPressLogin={this.onPressLogin.bind(this)}
-          onUploadImage={this.onUploadImage.bind(this)}
-          onLinkFacebook={this.onLinkFacebook.bind(this)}
-          onEditProfileChange={this.onEditProfileChange.bind(this)}
-          onEditProfileFocus={this.onEditProfileFocus.bind(this)}
-          onEditProfileBlur={this.onEditProfileBlur.bind(this)}
-          updateProfile={this.updateProfile.bind(this)}
-        />
-      )
-    }
-
-    // TODO(qimingfang): feels very repetitive. Shoudl consolidate with OnboardingNavigator.
     return (
       <FullScreenNavigator
         style={{ flex: 1 }}
         sceneStyle={{ paddingTop: 64 }}
+        onPressLogin={this.onPressLogin.bind(this)}
         onPressLogout={this.onPressLogout.bind(this)}
         onUploadImage={this.onUploadImage.bind(this)}
         onLinkFacebook={this.onLinkFacebook.bind(this)}
@@ -365,7 +350,6 @@ class LayoutContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     ddp: state.ddp,
-    loggedIn: state.loggedIn,
   }
 }
 

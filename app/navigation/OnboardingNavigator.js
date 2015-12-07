@@ -1,80 +1,107 @@
 import React, {
   Navigator,
   TouchableOpacity,
-  Text
+  Text,
+  StyleSheet,
 } from 'react-native';
 
 // external dependencies
 import { connect } from 'react-redux/native';
 
+import OnboardingRouter from './OnboardingRouter';
+import LoginScreen from '../components/onboarding/LoginScreen';
+import TSNavigationBar from '../components/lib/TSNavigationBar';
+
+const logger = new (require('../../modules/Logger'))('OnboardingNavigator');
+
 function mapStateToProps(state) {
   return {
-    routes: {
-      onboarding: state.routes.onboarding
-    }
+    loggedIn: state.loggedIn,
+    isCWLRequired: state.isCWLRequired,
+    currentScreen: state.currentScreen,
+    nav: state.routes.onboarding.nav,
   }
 }
 
 class OnboardingNavigator extends React.Component {
 
   leftButton(route, navigator, index, navState) {
-    if (this.props.routes.onboarding.nav.left.show) {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop() }
-        >
-          <Text>
-            Back
-          </Text>
-        </TouchableOpacity>
-      );
-    }
-
-    return null;
+    this.router = this.router || new OnboardingRouter(nav, this.props.dispatch);
+    return this.router.leftButton(this.props.currentScreen.present);
   }
 
   rightButton(route, navigator, index, navState) {
-    // TODO(qimingfang)
-    return null;
+    this.router = this.router || new OnboardingRouter(nav, this.props.dispatch);
+    return this.router.rightButton(this.props.currentScreen.present);
   }
 
   title() {
-    // TODO(qimingfang)
-    return null;
+    return this.router.title(this.props.currentScreen.present);
+  }
+
+  toSceneAfterLogin() {
+    if (this.props.isCWLRequired) {
+      return this.router.toJoinNetworkScreen();
+    } else {
+      return this.router.toLinkServiceScreen();
+    }
   }
 
   renderScene(route, nav) {
-    const currentScreen = this.props.routes.onboarding.currentScreen;
-    const props = Object.assign({}, route.props, this.props, {
-      navigator: nav,
-    });
-    return React.createElement(currentScreen, props)
+    this.router = this.router || new OnboardingRouter(nav, this.props.dispatch);
+    const props = Object.assign({}, this.props, route.props);
+
+    if (!this.props.loggedIn) {
+      return <LoginScreen {...props} />
+    }
+
+    if (this.router.canHandleRoute(this.props.currentScreen.present)) {
+      return this.router.handle(this.props.currentScreen.present, props);
+    }
+
+    return <LoginScreen {...props} />
   }
 
   render() {
     return (
       <Navigator
-        ref='nav'
+        ref='onboarding-nav'
+        itemWrapperStyle={styles.nav}
+        style={styles.nav}
         renderScene={this.renderScene.bind(this)}
         configureScene={(route) => ({
           ...Navigator.SceneConfigs.HorizontalSwipeJump,
           gestures: {}, // or null
         })}
         initialRoute={{
-          id: 'not-used'
+          id: 'not-used',
+          props: Object.assign({}, this.props, {
+            toSceneAfterLogin: this.toSceneAfterLogin.bind(this)
+          }),
         }}
         navigationBar={
-          <Navigator.NavigationBar
+          <TSNavigationBar
+            hidden={this.props.nav.hidden}
             routeMapper={{
               LeftButton: this.leftButton.bind(this),
               RightButton: this.rightButton.bind(this),
               Title: this.title.bind(this)
             }}
+            style={styles.navBar}
           />
         }>
       </Navigator>
     )
   }
 }
+
+let styles = StyleSheet.create({
+  nav: {
+    flex: 1,
+  },
+  navBar: {
+    backgroundColor: '#64369C',
+  },
+});
 
 export default connect(mapStateToProps)(OnboardingNavigator);
