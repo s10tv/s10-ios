@@ -5,6 +5,7 @@ import React, {
   ScrollView,
   TouchableOpacity,
   View,
+  LinkingIOS,
   PropTypes,
   StyleSheet,
 } from 'react-native';
@@ -356,12 +357,16 @@ class ProfileScreen extends Screen {
               <Text style={[SHEET.baseText, SHEET.smallHeading]}>{ `${user.firstName} ${ user.lastName}`}</Text>
               <Text style={[SHEET.baseText, SHEET.subTitle]}>{ profile.displayName }</Text>
             </View>
-            <TouchableOpacity style={[styles.openButton]}
-              onPress={() => this.props.navigator.push({
-                id: 'viewintegration',
-                url: profile.url,
-                integration: profile,
-              })}>
+            <TouchableOpacity style={[styles.openButton]} onPress={() =>
+              LinkingIOS.canOpenURL(profile.url, (supported) => {
+                if (!supported) {
+                  logger.warning(`Profile URL ${profile.url} unsupported.`)
+                  return;
+                } else {
+                  LinkingIOS.openURL(profile.url);
+                }
+              })
+            }>
                 <Text style={[{fontSize: 18, color: COLORS.white }, SHEET.baseText]}>Open</Text>
             </TouchableOpacity>
           </View>
