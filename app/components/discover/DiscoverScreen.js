@@ -77,7 +77,10 @@ class DiscoverScreen extends Screen {
         <View style={{flex: 1, paddingTop: 10}}>
           <TouchableHighlight
               onPress={() => {
-                const route = Router.instance.getProfileRoute(candidate.userId);
+                const route = Router.instance.getProfileRoute({
+                  userId: candidate.userId,
+                  isFromDiscoveryScreen: true,
+                });
                 this.props.navigator.parentNavigator.push(route)
               }}
               style={{ flex: 1}}

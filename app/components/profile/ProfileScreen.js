@@ -5,6 +5,7 @@ import React, {
   ScrollView,
   TouchableOpacity,
   View,
+  PropTypes,
   StyleSheet,
 } from 'react-native';
 
@@ -17,6 +18,7 @@ import HeaderBanner from '../lib/HeaderBanner';
 import { COLORS, SHEET } from '../../CommonStyles';
 import Loader from '../lib/Loader';
 import iconTextRow from '../lib/iconTextRow';
+import CountdownTimer from '../lib/CountdownTimer';
 
 const logger = new (require('../../../modules/Logger'))('ProfileScreen');
 const { height, width } = Dimensions.get('window');
@@ -199,10 +201,10 @@ class ActivityServiceIcon extends React.Component {
 class ProfileScreen extends Screen {
 
   static id = SCREEN_PROFILE;
-  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
-  static rightButton = () => null;
-  static title = () => {
-    return Screen.generateTitleBar('Profile');
+
+  static propTypes = {
+    isFromDiscoveryScreen: PropTypes.bool,
+    isFromHistoryScreen: PropTypes.bool,
   }
 
   constructor(props) {
@@ -374,15 +376,14 @@ class ProfileScreen extends Screen {
     }
 
     let messageButton = null;
-    // TODO(qimingfang):
-    // messageButton = (
-    //   <CountdownTimer
-    //     style={styles.messageButton}
-    //     navigator={this.props.navigator}
-    //     candidateUser={this.props.candidateUser}
-    //     me={this.props.me}
-    //     settings={this.props.settings} />
-    // )
+    if (this.props.isFromDiscoverViewOrHistory || this.props.isFromHistoryScreen) {
+      messageButton = (
+        <CountdownTimer
+          style={styles.messageButton}
+          navigator={this.props.navigator}
+          candidateUser={user} />
+      )
+    }
 
     return (
       <View style={SHEET.container}>

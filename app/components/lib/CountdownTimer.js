@@ -26,8 +26,8 @@ class CountdownTimer extends React.Component {
 
   static propTypes = {
     nextMatchDate: PropTypes.object.isRequired,
-    candidateUser: PropTypes.object.string,
-    navigator: PropTypes.object.string,
+    candidateUser: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired,
   }
 
   constructor(props) {

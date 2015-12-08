@@ -28,7 +28,7 @@ export default function renderMeHeader(user, navigator) {
         </View>
         <View style={styles.headerContentLineItem}>
           { renderMeHeaderButton('View', () => {
-              const route = Routes.instance.getProfileRoute(user.userId);
+              const route = Routes.instance.getProfileRoute({ userId: user.userId });
               navigator.parentNavigator.push(route);
           })}
           { renderMeHeaderButton('Edit',

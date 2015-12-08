@@ -118,14 +118,15 @@ class Router {
     }
   }
 
-  getProfileRoute(userId) {
+  getProfileRoute({ userId, isFromDiscoveryScreen = false, isFromHistoryScreen = false }) {
     const self = this;
     return {
       renderScene(navigator) {
         return (
           <ExNavigator
             navigator={navigator}
-            initialRoute={self.__getProfileScreen(userId)}
+            initialRoute={self.__getProfileScreen(
+              userId, isFromDiscoveryScreen, isFromHistoryScreen)}
             navigationBarStyle={{ flex: 1, backgroundColor: 'transparent' }}
           />
         )
@@ -133,13 +134,15 @@ class Router {
     }
   }
 
-  __getProfileScreen(userId) {
+  __getProfileScreen(userId, isFromDiscoveryScreen = false, isFromHistoryScreen = false) {
     const self = this;
     return {
       renderScene(navigator) {
         let ProfileScreen = require('../components/profile/ProfileScreen');
         return <ProfileScreen
           navigator={navigator}
+          isFromDiscoveryScreen={isFromDiscoveryScreen}
+          isFromHistoryScreen={isFromHistoryScreen}
           userId={userId}
         />
       },
@@ -198,7 +201,6 @@ class Router {
   }
 
   getSendMessageToUserRoute(recipientUser) {
-    logger.debug(`getSendMessageToUserRoute to ${JSON.stringify(recipientUser)}`)
     const self = this;
     return {
       renderScene(navigator) {

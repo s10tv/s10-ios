@@ -28,8 +28,8 @@ function mapStateToProps(state) {
 class HashtagCategory extends React.Component {
 
   static propTypes = {
-    myTags: PropTypes.object.isRequired,
-    categories: PropTypes.object.isRequired,
+    myTags: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
     navigator: PropTypes.object.isRequired,
   };
 

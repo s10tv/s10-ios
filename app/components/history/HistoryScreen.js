@@ -45,7 +45,10 @@ class HistoryProfile extends React.Component {
         style={[styles.imgContainer, {height: height} ]}
         cardOverride={{ padding: 0 }}
         onPress={() => {
-          const route = Routes.instance.getProfileRoute(user.userId);
+          const route = Routes.instance.getProfileRoute({
+            userId: user.userId,
+            isFromHistoryScreen: true,
+          });
           this.props.navigator.parentNavigator.push(route);
       }}>
           <View style={[styles.imgContainer, {height: height} ]}>

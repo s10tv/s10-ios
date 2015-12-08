@@ -41,7 +41,7 @@ class FullScreenNavigator extends React.Component {
 
           case 'profile':
             this.refs['fullScreenNav'].push(
-              Router.instance.getProfileRoute(properties.args.userId));
+              Router.instance.getProfileRoute({ userId: properties.args.userId }));
             break;
         }
     });
@@ -74,7 +74,7 @@ class FullScreenNavigator extends React.Component {
 
     let route;
     if (this.props.loggedIn && this.props.isActive) {
-      route = Router.instance.getMainNavigatorRoute(this.props.currentScreen)
+      route = Router.instance.getMainNavigatorRoute()
 
       const navigator = this.refs['fullScreenNav'];
       if (navigator) {
@@ -82,6 +82,7 @@ class FullScreenNavigator extends React.Component {
       }
     } else {
       route = Router.instance.getLoginRoute();
+
       const navigator = this.refs['fullScreenNav'];
       if (navigator) {
         navigator.immediatelyResetRouteStack([route])
