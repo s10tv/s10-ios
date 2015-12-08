@@ -9,9 +9,9 @@ function currentScreen(state = defaultTabScreen, action) {
     case 'CURRENT_SCREEN':
       return Object.assign({}, state, { id: action.id });
 
-    case 'LOGOUT':
+    case 'RESET_CURRENT_SCREEN':
       return defaultTabScreen;
-      
+
     default:
       return state;
   }

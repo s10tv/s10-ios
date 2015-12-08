@@ -11,6 +11,7 @@ import { connect } from 'react-redux/native'
 
 import Router from './Routes';
 import { SHEET } from '../CommonStyles'
+import Analytics from '../../modules/Analytics';
 
 const logger = new (require('../../modules/Logger'))('FullScreenNavigator');
 
@@ -34,6 +35,7 @@ class FullScreenNavigator extends React.Component {
       onEditProfileFocus: this.onEditProfileFocus.bind(this),
       onEditProfileBlur: this.onEditProfileBlur.bind(this),
       updateProfile: this.updateProfile.bind(this),
+      reportUser: this.reportUser.bind(this),
     });
 
     Router.instance = new Router(amendedProps);
@@ -51,7 +53,10 @@ class FullScreenNavigator extends React.Component {
 
           case 'profile':
             this.refs['fullScreenNav'].push(
-              Router.instance.getProfileRoute({ userId: properties.args.userId }));
+              Router.instance.getProfileRoute({
+                userId: properties.args.userId,
+                isFromConversationScreen: true,
+              }));
             break;
         }
     });
@@ -60,6 +65,12 @@ class FullScreenNavigator extends React.Component {
       .addListener('Navigation.pop', (properties) => {
         logger.debug('did receive Navigation.pop')
         this.refs['fullScreenNav'].pop();
+      });
+
+    this.reportUserListener = NativeAppEventEmitter
+      .addListener('Profile.showMoreOptions', (userId) => {
+        logger.debug('did receive Profile.showMoreOption');
+        this.reportUser(userId);
       });
   }
 
@@ -100,6 +111,38 @@ class FullScreenNavigator extends React.Component {
       logger.error(err);
       AlertIOS.alert('Missing Some Info!', err.reason);
     })
+  }
+
+  reportUser(userId) {
+    if (!userId) {
+      logger.warning(`tring to report user with invalid userid`);
+      return;
+    }
+
+    const user = this.props.ddp.collections.users.findOne({ _id: userId });
+    if (!user) {
+      logger.warning(`tring to report user with invalid userid=${userId}`);
+      return;
+    }
+
+    AlertIOS.alert(
+      `Report ${user.firstName}?`,
+      "",
+      [
+        {text: 'Cancel', onPress: () => null },
+        {text: 'Report', onPress: () => {
+          return this.props.ddp.call({ methodName: 'user/report', params: [userId, 'Reported'] })
+          .then(() => {
+            Analytics.track("User: Confirmed Block")
+            AlertIOS.alert(`Reported ${user.firstName}`,
+              'Thanks for your input. We will look into this shortly.');
+          })
+          .catch(err => {
+            logger.error(err);
+          })
+        }},
+      ]
+    )
   }
 
   render() {

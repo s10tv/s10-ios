@@ -19,6 +19,7 @@ import { FBSDKAccessToken } from 'react-native-fbsdkcore';
 import FullScreenNavigator from './nav/FullScreenNavigator';
 import Session from '../native_modules/Session';
 import Intercom from '../modules/Intercom';
+import Analytics from '../modules/Analytics';
 import ResumeTokenHandler from './util/ResumeTokenHandler'
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
@@ -135,10 +136,17 @@ class LayoutContainer extends React.Component {
     this.props.dispatch({
       type: 'LOGOUT'
     })
+
+    Analytics.userDidLogout();
   }
 
   onPressLogin({ userId, resumeToken, expiryDate}) {
-    logger.debug('Will call onPressLogin');
+    Analytics.userDidLogin(isNewUser);
+
+    // Reset the tab bar to 'Today'
+    this.props.dispatch({
+      type: 'RESET_CURRENT_SCREEN'
+    })
 
     // persist user sesison to disk
     Session.login(userId, resumeToken, expiryDate);

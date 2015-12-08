@@ -19,9 +19,7 @@ class LayerService {
         logger.debug(`set allConversationsCountUpdate=${count}`)
         store.dispatch({ type: 'CHANGE_ALL_COUNT', count: count })
       });
-
-
   }
 }
 
-export { LayerService }
+export default LayerService

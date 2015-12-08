@@ -1,6 +1,8 @@
 import TSDDPClient from '../../lib/ddpclient';
 import BridgeManager from '../../modules/BridgeManager';
 import CWLChecker from '../util/CWLChecker';
+import Session from '../../native_modules/Session';
+import Analytics from '../../modules/Analytics';
 
 const logger = new (require('../../modules/Logger'))('DDPService');
 
@@ -161,6 +163,13 @@ class DDPService extends TSDDPClient {
             type: 'SET_ME',
             me: this._formatUser(currentUser)
           })
+
+          Session.setFullname(`${currentUser.firstName} ${currentUser.lastName}`);
+          Session.setFirstName(currentUser.firstName);
+          Session.setLastName(currentUser.lastName);
+          Session.setAvatarURL(currentUser.avatar.url);
+          Session.setCoverURL(currentUser.cover.url);
+          Analytics.updateFullname();
         }
       });
     })

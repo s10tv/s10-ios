@@ -116,7 +116,13 @@ class Router {
     }
   }
 
-  getProfileRoute({ userId, isFromDiscoveryScreen = false, isFromHistoryScreen = false }) {
+  getProfileRoute({
+      userId,
+      isFromDiscoveryScreen = false,
+      isFromHistoryScreen = false,
+      isFromMeScreen = false,
+      isFromConversationScreen = false,
+  }) {
     const self = this;
     return {
       renderScene(navigator) {
@@ -124,7 +130,12 @@ class Router {
           <ExNavigator
             navigator={navigator}
             initialRoute={self.__getProfileScreen(
-              userId, isFromDiscoveryScreen, isFromHistoryScreen)}
+              userId,
+              isFromDiscoveryScreen,
+              isFromHistoryScreen,
+              isFromMeScreen,
+              isFromConversationScreen)
+            }
             navigationBarStyle={{ flex: 1, backgroundColor: 'transparent' }}
           />
         )
@@ -132,7 +143,12 @@ class Router {
     }
   }
 
-  __getProfileScreen(userId, isFromDiscoveryScreen = false, isFromHistoryScreen = false) {
+  __getProfileScreen(
+      userId,
+      isFromDiscoveryScreen = false,
+      isFromHistoryScreen = false,
+      isFromMeScreen = false,
+      isFromConversationScreen = false) {
     const self = this;
     return {
       renderScene(navigator) {
@@ -148,6 +164,14 @@ class Router {
       renderLeftButton(navigator) {
         return self.getButton('Back', () => { navigator.parentNavigator.pop() })
       },
+
+      renderRightButton() {
+        if (isFromHistoryScreen || isFromDiscoveryScreen || isFromConversationScreen) {
+          return self.getButton('Report', () => {
+            return self.props.reportUser(userId)
+          }, { isLeft: false })
+        }
+      }
     }
   }
 
