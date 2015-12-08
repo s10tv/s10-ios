@@ -329,7 +329,17 @@ class Router {
       renderRightButton(navigator) {
         // TODO(qimingfang): double check.
         return self.getButton('Next', () => {
-          navigator.push(self.getAddTagScreen());
+          self.props.ddp.call({ methodName: 'completeProfile' })
+          .then(() => {
+            navigator.push(self.getAddTagScreen());
+          })
+          .catch(err => {
+            self.props.dispatch({
+              type: 'DISPLAY_ERROR',
+              title: 'Missing Some Info',
+              message: err.reason,
+            })
+          })
         }, { isLeft: false })
       }
     }
@@ -348,7 +358,17 @@ class Router {
       renderRightButton(navigator) {
         // TODO(qimingfang): DDP call, set isActive.
         return self.getButton('Done', () => {
-          navigator.parentNavigator.push(self.getMainNavigatorRoute());
+          self.props.ddp.call({ methodName: 'confirmRegistration' })
+          .then(() => {
+            navigator.parentNavigator.push(self.getMainNavigatorRoute());
+          })
+          .catch(err => {
+            self.props.dispatch({
+              type: 'DISPLAY_ERROR',
+              title: 'One small issue ...',
+              message: err.reason,
+            })
+          })
         }, { isLeft: false })
       }
     }
