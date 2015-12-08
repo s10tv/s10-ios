@@ -9,6 +9,7 @@ import Loader from './Loader';
 import { Card, TappableCard } from './Card';
 import { SHEET }  from '../../CommonStyles';
 import Routes from '../../nav/Routes';
+import Analytics from '../../../modules/Analytics';
 
 const logger = new (require('../../../modules/Logger'))('linkServiceCard');
 
@@ -54,7 +55,18 @@ function linkSingleIntegrationCard(integration, onPressToLink) {
   }
 
   return (
-    <TappableCard key={id} onPress={() => onPressToLink(integration.name, integration.url)}>
+    <TappableCard key={id} onPress={() => {
+      if (integration.status === 'linked') {
+        Analytics.track('Remove Integration', {
+          name: integration.name
+        })
+      } else {
+        Analytics.track('Add Integration', {
+          name: integration.name
+        })
+      }
+      return onPressToLink(integration.name, integration.url)
+    }}>
       { renderCardInfo(icon.url, status, name, serviceUsername) }
     </TappableCard>
   )

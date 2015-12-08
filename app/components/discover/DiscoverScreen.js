@@ -20,7 +20,8 @@ import Loader from '../lib/Loader';
 import CountdownTimer from '../lib/CountdownTimer';
 import { SCREEN_TODAY } from '../../constants';
 import { SHEET, COLORS } from '../../CommonStyles';
-import Router from '../../nav/Routes'
+import Router from '../../nav/Routes';
+import Analytics from '../../../modules/Analytics';
 
 const logger = new (require('../../../modules/Logger'))('DiscoverScreen');
 const { width, height } = Dimensions.get('window');
@@ -77,6 +78,8 @@ class DiscoverScreen extends Screen {
         <View style={{flex: 1, paddingTop: 10}}>
           <TouchableHighlight
               onPress={() => {
+                Analytics.track('Today: TapProfile');
+
                 const route = Router.instance.getProfileRoute({
                   userId: candidate.userId,
                   isFromDiscoveryScreen: true,

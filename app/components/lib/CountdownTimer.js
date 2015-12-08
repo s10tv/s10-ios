@@ -12,7 +12,7 @@ import { connect } from 'react-redux/native';
 
 import { SHEET, COLORS } from '../../CommonStyles';
 import Routes from '../../nav/Routes';
-// let Analytics = require('../../modules/Analytics');
+import Analytics from '../../../modules/Analytics';
 
 const logger = new (require('../../../modules/Logger'))('CountdownTimer');
 
@@ -92,7 +92,7 @@ class CountdownTimer extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          // Analytics.track('Today: Tap Message');
+          Analytics.track('Tap Send Message');
 
           let recipientUser = this.props.candidateUser;
           logger.debug(`getSendMessageToUserRoute to ${JSON.stringify(recipientUser)}`)

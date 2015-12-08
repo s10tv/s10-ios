@@ -174,6 +174,10 @@ class LayoutContainer extends React.Component {
     switch (type) {
       case 'PROFILE_PIC': // fallthrough intentional
       case 'COVER_PIC':
+        Analytics.track('Me: Update Image', {
+          type: type
+        });
+
         let taskId =  'task_' + Math.floor(Math.random() * (10000000000 - 10000)) + 10000;
         return new Promise((resolve, reject) => {
           var options = {
@@ -185,7 +189,7 @@ class LayoutContainer extends React.Component {
             maxWidth: dimensions.width || 640,
             maxHeight: dimensions.height || 480,
             allowsEditing: false, // Built in iOS functionality to resize/reposition the image
-            noData: false, // Disables the base64 `data` field from being generated (greatly improves performance on large photos)
+            noData: true, // Disables the base64 `data` field from being generated (greatly improves performance on large photos)
           }
 
           UIImagePickerManager.showImagePicker(options, (didCancel, response) => {

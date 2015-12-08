@@ -3,9 +3,10 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
-import ExNavigator from '@exponent/react-native-navigator'
+import ExNavigator from '@exponent/react-native-navigator';
 
-import { SHEET } from '../CommonStyles'
+import { SHEET } from '../CommonStyles';
+import Analytics from '../../modules/Analytics';
 
 const logger = new (require('../../modules/Logger'))('Routes');
 
@@ -192,6 +193,8 @@ class Router {
 
       renderLeftButton(navigator) {
         return self.getButton('Back', () => {
+          Analytics.track("Me: Edit Profile")
+
           self.__saveProfileIfCurrentlyInEditMode()
           navigator.pop()
         })
