@@ -84,6 +84,7 @@ class DiscoverScreen extends Screen {
                   userId: candidate.userId,
                   isFromDiscoveryScreen: true,
                 });
+
                 this.props.navigator.parentNavigator.push(route)
               }}
               style={{ flex: 1}}

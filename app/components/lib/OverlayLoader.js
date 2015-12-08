@@ -14,7 +14,7 @@ let { height } = Dimensions.get('window');
 class OverlayLoader extends React.Component {
   render() {
     return (
-      <Overlay isVisible={true}>
+      <Overlay isVisible={this.props.isVisible}>
         <View style={styles.container}>
           <ActivityIndicatorIOS
             animating={true}

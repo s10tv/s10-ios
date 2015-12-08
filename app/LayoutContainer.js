@@ -3,6 +3,7 @@ import React, {
   Component,
   View,
   Text,
+  LinkingIOS,
   NativeModules,
   TouchableOpacity
 } from 'react-native';
@@ -17,14 +18,25 @@ import { FBSDKAccessToken } from 'react-native-fbsdkcore';
 
 // internal dependencies
 import FullScreenNavigator from './nav/FullScreenNavigator';
+import OverlayLoader from './components/lib/OverlayLoader';
+import PopupDialog from './components/lib/PopupDialog';
 import Session from '../native_modules/Session';
 import Intercom from '../modules/Intercom';
 import Analytics from '../modules/Analytics';
+import BridgeManager from '../modules/BridgeManager';
 import ResumeTokenHandler from './util/ResumeTokenHandler'
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
 const UIImagePickerManager = NativeModules.UIImagePickerManager;
 const AzureClient = NativeModules.TSAzureClient;
+
+function mapStateToProps(state) {
+  return {
+    ddp: state.ddp,
+    showOverlayLoader: state.showOverlayLoader,
+    dialog: state.dialog,
+  }
+}
 
 class LayoutContainer extends React.Component {
 
@@ -205,7 +217,6 @@ class LayoutContainer extends React.Component {
           this.props.dispatch({
             type: 'UPLOAD_START',
             taskId: taskId,
-            type: type,
           });
 
           return this.props.ddp.call({
@@ -324,23 +335,55 @@ class LayoutContainer extends React.Component {
     })
   }
 
+  hidePopup() {
+    this.props.dispatch({
+      type: 'CLOSE_DIALOG'
+    })
+  }
+
+  upgrade() {
+    logger.debug('Upgraded from Apphub');
+    return BridgeManager.reloadBridge();
+  }
+
+  hardUpgrade() {
+    if (this.props.dialog.hardUpgradeURL) {
+      LinkingIOS.canOpenURL(this.props.dialog.hardUpgradeURL, (supported) => {
+        if (!supported) {
+          logger.warning(`Hard Upgrade: ${this.props.dialog.hardUpgradeURL} unsupported.`)
+          return;
+        } else {
+          LinkingIOS.openURL(this.props.dialog.hardUpgradeURL);
+        }
+      })
+    }
+  }
+
   render() {
     return (
-      <FullScreenNavigator
-        style={{ flex: 1 }}
-        sceneStyle={{ paddingTop: 64 }}
-        onPressLogin={this.onPressLogin.bind(this)}
-        onPressLogout={this.onPressLogout.bind(this)}
-        onUploadImage={this.onUploadImage.bind(this)}
-        onLinkFacebook={this.onLinkFacebook.bind(this)}
-      />
-    )
-  }
-}
+      <View style={{ flex: 1 }}>
+        <OverlayLoader isVisible={this.props.showOverlayLoader} />
 
-function mapStateToProps(state) {
-  return {
-    ddp: state.ddp,
+        <PopupDialog
+          isVisible={this.props.dialog.visible}
+          actionKey={this.props.dialog.actionKey}
+          title={this.props.dialog.title}
+          message={this.props.dialog.message}
+          buttons={this.props.dialog.buttons}
+          upgrade={this.upgrade.bind(this)}
+          hardUpgrade={this.hardUpgrade.bind(this)}
+          hidePopup={this.hidePopup.bind(this)} />
+
+        <FullScreenNavigator
+          style={{ flex: 1 }}
+          sceneStyle={{ paddingTop: 64 }}
+          onPressLogin={this.onPressLogin.bind(this)}
+          onPressLogout={this.onPressLogout.bind(this)}
+          onUploadImage={this.onUploadImage.bind(this)}
+          onLinkFacebook={this.onLinkFacebook.bind(this)}
+        />
+      </View>
+    )
   }
 }
 

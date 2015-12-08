@@ -281,8 +281,14 @@ class DDPService extends TSDDPClient {
           const currentBuild = BridgeManager.build();
           if (currentBuild < indexedSettings.hardMinBuild.value) {
             dispatch({
-              type: 'SHOW_HARD_UPGRADE_POPUP',
-              url: indexedSettings.upgradeUrl.value,
+              type: 'DISPLAY_POPUP_MESSAGE',
+              dialog: {
+                visible: true,
+                title: 'Upgrade Needed',
+                message: 'Your version of Taylr is no longer supported. Please upgrade =)',
+                actionKey: 'HARD_UPGRADE',
+                hardUpgradeURL:  indexedSettings.upgradeUrl.value
+              }
             })
           }
         }

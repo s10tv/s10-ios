@@ -6,6 +6,8 @@ import {
   nextMatchDate,
 } from './settings';
 
+import { showOverlayLoader, dialog } from './overlay';
+
 import { showNavBar } from './nav';
 import layer from './layer/index';
 import apphub from './apphub';
@@ -25,6 +27,10 @@ export {
   isActive,
   isCWLRequired,
   hasLoggedInThroughCWL,
+
+  showOverlayLoader,
+  dialog,
+
   candidate,
   pastCandidates,
   me,
