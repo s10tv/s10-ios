@@ -374,6 +374,46 @@ class Router {
     }
   }
 
+  getWebviewLinkRoute(title, url) {
+    const self = this;
+
+    const route = {
+      renderScene(navigator) {
+        let LinkServiceScreen = require('../components/linkservice/LinkServiceScreen');
+        return <LinkServiceScreen
+          navigator={navigator}
+          url={url}
+        />
+      },
+
+      getTitle() {
+        return title;
+      },
+
+      renderLeftButton(navigator) {
+        return self.getButton('Back', () => {
+          return navigator.parentNavigator.pop()
+        })
+      }
+    };
+
+    return {
+      renderScene(navigator) {
+        return (
+          <ExNavigator
+            titleStyle={[SHEET.navBarTitleText, SHEET.baseText]}
+            barButtonTextStyle={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}
+            barButtonIconStyle={{ tintColor: 'white' }}
+            navigator={navigator}
+            initialRoute={route}
+            navigationBarStyle={{ flex: 1, backgroundColor: '#64369C' }}
+            sceneStyle={{ paddingTop: 64 }}
+          />
+        )
+      },
+    }
+  }
+
   __saveProfileIfCurrentlyInEditMode() {
     if (this.editProfileFocused) {
       this.editProfileFocused = false;

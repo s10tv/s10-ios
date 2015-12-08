@@ -237,16 +237,14 @@ class LoginScreen extends Screen {
         <View style={styles.bottomSheet}>
           <View style={{ flexDirection: 'row' }}>
           <Text style={[styles.link, SHEET.baseText]} onPress={() => {
-            this.props.navigator.push({
-              id: 'openwebview',
-              url: 'https://taylrapp.com/privacy'
-            })
+            const route = Routes.instance.getWebviewLinkRoute(
+              'Privacy', 'https://taylrapp.com/privacy');
+            this.props.navigator.push(route);
           }}>Privacy</Text>
           <Text style={[styles.link, SHEET.baseText]} onPress={() => {
-            this.props.navigator.push({
-              id: 'openwebview',
-              url: 'https://taylrapp.com/terms'
-            })
+            const route = Routes.instance.getWebviewLinkRoute(
+              'Terms', 'https://taylrapp.com/terms');
+            this.props.navigator.push(route);
           }}>Terms</Text>
           {logoutComponent}
           </View>
