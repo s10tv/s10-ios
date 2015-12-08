@@ -30,8 +30,6 @@ class DDPService extends TSDDPClient {
       logger.info(`Logged in with Facebook`);
       this._onLogin(id)
 
-      logger.info(`id: ${id}, token: ${token}: isNewUser: ${isNewUser}`)
-
       return Promise.resolve({
         userId: id,
         resumeToken: token,
@@ -39,6 +37,35 @@ class DDPService extends TSDDPClient {
         isNewUser: isNewUser || false,
         intercomHash: intercomHash,
         isActive: isActive,
+      });
+    })
+    .catch(err => {
+      logger.error(err);
+    })
+  }
+
+  loginWithDigits(digitsResponse) {
+    return new Promise((resolve, reject) => {
+      this.ddpClient.call(
+        "login",
+        [{ digits: digitsResponse}],
+        (err, res) => {
+          if (err) { return reject(err) }
+          return resolve(res);
+        }
+      )
+    })
+    .then(({ id, token, tokenExpires, isNewUser, intercomHash, isActive }) => {
+      logger.info(`Logged in with Digits`);
+      this._onLogin(id)
+
+      return Promise.resolve({
+        userId: id,
+        resumeToken: token,
+        expiryDate: tokenExpires.getTime(),
+        isNewUser: isNewUser || false,
+        intercomHash,
+        isActive,
       });
     })
     .catch(err => {

@@ -21,10 +21,13 @@ import FBSDKCore, {
   FBSDKAccessToken,
 } from 'react-native-fbsdkcore';
 
+import { DigitsAuthenticateManager } from 'react-native-fabric-digits'
+
 import { connect } from 'react-redux/native';
 
 // internal dependencies
 import FacebookLoginHandler from './FacebookLoginHandler';
+import DigitsLoginHandler from './DigitsLoginHandler';
 
 import Screen from '../Screen';
 import { Card } from '../lib/Card';
@@ -60,6 +63,7 @@ class LoginScreen extends Screen {
   constructor(props = {}) {
     super(props);
     this.facebookLoginHandler = new FacebookLoginHandler(props.ddp);
+    this.digitsLoginHandler = new DigitsLoginHandler(props.ddp);
   }
 
   componentWillMount() {
@@ -74,6 +78,28 @@ class LoginScreen extends Screen {
     } else {
       return Routes.instance.getOnboardingRoute();
     }
+  }
+
+  onDigitsLogin(error, response) {
+    if (error) {
+      // warning here because when you click 'cancel' that also results in an error.
+      logger.warning(JSON.stringify(error))
+      return;
+    }
+
+    // we convert userId to id on the server, so the userId better be set.
+    response.userId = response.userID;
+
+    this.digitsLoginHandler.onLogin(response, this.props.dispatch)
+    .then((result) => {
+      this.props.onPressLogin(result)
+
+      const route = this._getRouteAfterLogin(result.isActive);
+      this.props.navigator.push(route)
+    })
+    .catch(err => {
+      logger.error(err)
+    })
   }
 
   onFacebookLogin(err, res) {
@@ -191,10 +217,8 @@ class LoginScreen extends Screen {
                   }
                 }
 
-                this.props.navigator.push(Routes.getOnboardingNavigatorRoute())
-
-                // DigitsAuthenticateManager
-                //  .authenticateDigitsWithOptions(options, this.digitsLogin.bind(this));
+                DigitsAuthenticateManager
+                  .authenticateDigitsWithOptions(options, this.onDigitsLogin.bind(this));
             }}>Login with Phone</Text>
           </View>
         </View>
