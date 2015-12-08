@@ -15,6 +15,80 @@ class DDPService extends TSDDPClient {
     this._subscribeCandidates(dispatch)
   }
 
+  loginWithFacebook(accessToken) {
+    return new Promise((resolve, reject) => {
+      this.ddpClient.call(
+        "login",
+        [{ facebook: { accessToken: accessToken }}],
+        (err, res) => {
+          if (err) { return reject(err) }
+          return resolve(res);
+        }
+      )
+    })
+    .then(({ id, token, tokenExpires, isNewUser, intercomHash, isActive }) => {
+      logger.info(`Logged in with Facebook`);
+      this._onLogin(id)
+
+      logger.info(`id: ${id}, token: ${token}: isNewUser: ${isNewUser}`)
+
+      return Promise.resolve({
+        userId: id,
+        resumeToken: token,
+        expiryDate: tokenExpires.getTime(),
+        isNewUser: isNewUser || false,
+        intercomHash: intercomHash,
+        isActive: isActive,
+      });
+    })
+    .catch(err => {
+      logger.error(err);
+    })
+  }
+
+  loginWithToken(token) {
+    if (token) {
+      return new Promise((resolve, reject) => {
+        this.ddpClient.call("login", [{ tsresume: token }], (err, res) => {
+          if (err) {
+            switch (err.error) {
+              case 403: // You have been logged out by server (expired token)
+                logger.warning(err.reason)
+                break;
+              default:
+                logger.error(err);
+            }
+            return resolve({});
+          }
+
+          logger.info(`logged in with resume token`);
+          this._onLogin(res.id)
+
+          logger.debug(`token=${token}`)
+
+          return resolve({
+            userId: res.id,
+            resumeToken: token,
+            expiryDate: res.tokenExpires.getTime(),
+            isActive: res.isActive,
+            intercomHash: res.intercomHash,
+            isNewUser: res.isNewUser,
+          });
+        });
+      });
+    } else {
+      return Promise.resolve({})
+    }
+  }
+
+  logout() {
+    return
+      this.call({ methodName: "logout"})
+      .catch(err => {
+        logger.error(err);
+      })
+  }
+
   _generateShortDisplayName = (user, length) => {
     let displayName = user.firstName;
     if (user.lastName && displayName.length + user.lastName.length < length) {

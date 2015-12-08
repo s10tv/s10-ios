@@ -1,12 +1,14 @@
 import React, {
+  WebView,
+  PropTypes,
   StyleSheet,
-  WebView
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
 import CookieManager from 'react-native-cookies';
 
 import { SCREEN_OB_CWL_LOGIN } from '../../constants';
+import Loader from '../lib/Loader';
 import Screen from '../Screen';
 import Router from '../../nav/Routes'
 
@@ -21,9 +23,10 @@ function mapStateToProps(state) {
 class CampusWideLoginScreen extends Screen {
 
   static id = SCREEN_OB_CWL_LOGIN;
-  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
-  static rightButton = () => null
-  static title = () => null
+
+  static propTypes = {
+    navigator: PropTypes.object.required,
+  }
 
   onCWLLoginNavStateChange(navState) {
     const cookieName = 'CASTGC';
@@ -38,9 +41,8 @@ class CampusWideLoginScreen extends Screen {
             params: [cookies[cookieName].value]
           });
 
-          const route = Router.instance.getMainNavigatorRoute();
-          const navigator = this.props.navigator;
-          this.props.navigator.parentNavigator.push(route);
+          const route = Router.instance.getLinkServiceRoute();
+          this.props.navigator.push(route);
         }
       })
     }
@@ -48,6 +50,10 @@ class CampusWideLoginScreen extends Screen {
 
   render() {
     const url = 'https://cas.id.ubc.ca/ubc-cas/login';
+
+    if (!this.props.navigator) {
+      return <Loader />
+    }
 
     return (
       <WebView

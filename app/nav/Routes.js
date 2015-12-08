@@ -29,7 +29,7 @@ class Router {
     )
   }
 
-  getMainNavigatorRoute(currentScreen) {
+  getMainNavigatorRoute() {
     const self = this;
     return {
       renderScene(navigator) {
@@ -39,7 +39,7 @@ class Router {
             titleStyle={[SHEET.navBarTitleText, SHEET.baseText]}
             barButtonTextStyle={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}
             barButtonIconStyle={{ tintColor: 'white' }}
-            initialRoute={self.getTabScreenRoute(currentScreen)}
+            initialRoute={self.getTabScreenRoute()}
             style={{ flex: 1 }}
             navigationBarStyle={{ flex: 1, backgroundColor: '#64369C' }}
             sceneStyle={{ paddingTop: 64 }}
@@ -63,7 +63,7 @@ class Router {
     }
   }
 
-  getTabScreenRoute(currentScreen) {
+  getTabScreenRoute() {
     const self = this;
     return {
       renderScene(navigator) {
@@ -98,6 +98,7 @@ class Router {
         let LoginScreen = require('../components/onboarding/LoginScreen');
         return <LoginScreen
           navigator={navigator}
+          onPressLogout={self.props.onPressLogout}
           onPressLogin={self.props.onPressLogin} />;
       },
     }
@@ -181,7 +182,6 @@ class Router {
         return `Link ${serviceName}`
       },
     }
-
   }
 
   getConverstionRoute(conversationId) {
@@ -194,6 +194,130 @@ class Router {
           conversationId={conversationId}
         />
       },
+    }
+  }
+
+
+  // Onboarding
+  getOnboardingRoute() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        return (
+          <ExNavigator
+            navigator={navigator}
+            titleStyle={[SHEET.navBarTitleText, SHEET.baseText]}
+            barButtonTextStyle={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}
+            barButtonIconStyle={{ tintColor: 'white' }}
+            initialRoute={self.getJoinNetworkRoute()}
+            navigationBarStyle={{ flex: 1, backgroundColor: '#64369C' }}
+            sceneStyle={{ paddingTop: 64 }}
+          />
+        )
+      },
+    }
+  }
+
+  getJoinNetworkRoute() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let JoinNetworkScreen = require('../components/onboarding/JoinNetworkScreen');
+        return <JoinNetworkScreen
+          navigator={navigator}
+        />
+      },
+
+      getTitle() {
+        return 'Join Network'
+      },
+
+      renderLeftButton(navigator) {
+        return self.getButton('Back', () => {
+          navigator.parentNavigator.pop()
+        });
+      },
+    }
+  }
+
+  getUBCCWLRoute() {
+    const self = this;
+    const CampusWideLoginScreen = require('../components/onboarding/CampusWideLoginScreen');
+
+    return {
+      renderScene(navigator) {
+        return <CampusWideLoginScreen
+          navigator={navigator}
+        />
+      },
+
+      getTitle() {
+        return 'CWL'
+      },
+    }
+  }
+
+  getLinkServiceRoute() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let LinkServiceScreen = require('../components/onboarding/LinkServiceScreen');
+        return <LinkServiceScreen
+          onLinkFacebook={self.props.onLinkFacebook}
+          navigator={navigator}
+        />
+      },
+
+      renderRightButton(navigator) {
+        // TODO(qimingfang): double check.
+        return self.getButton('Next', () => {
+          navigator.push(self.getCreateProfileScreen());
+        }, { isLeft: false })
+      }
+    }
+  }
+
+  getCreateProfileScreen() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let CreateProfileScreen = require('../components/onboarding/CreateProfileScreen');
+        return <CreateProfileScreen
+          onUploadImage={self.props.onUploadImage}
+          onLinkFacebook={self.props.onLinkFacebook}
+          onEditProfileChange={self.props.onEditProfileChange}
+          onEditProfileFocus={self.props.onEditProfileFocus}
+          onEditProfileBlur={self.props.onEditProfileBlur}
+          updateProfile={self.props.updateProfile}
+          navigator={navigator}
+        />
+      },
+
+      renderRightButton(navigator) {
+        // TODO(qimingfang): double check.
+        return self.getButton('Next', () => {
+          navigator.push(self.getAddTagScreen());
+        }, { isLeft: false })
+      }
+    }
+  }
+
+  getAddTagScreen() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let AddTagScreen = require('../components/onboarding/AddTagScreen');
+        return <AddTagScreen
+          navigator={navigator}
+        />
+      },
+
+      renderRightButton(navigator) {
+        // TODO(qimingfang): DDP call, set isActive.
+        return self.getButton('Done', () => {
+          navigator.parentNavigator.push(self.getMainNavigatorRoute());
+        }, { isLeft: false })
+      }
     }
   }
 }

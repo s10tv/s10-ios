@@ -38,6 +38,7 @@ class LinkServiceScreen extends Screen {
 
 let styles = StyleSheet.create({
   webView: {
+    paddingTop: 64,
   },
 })
 

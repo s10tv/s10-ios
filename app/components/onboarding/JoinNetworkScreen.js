@@ -47,7 +47,7 @@ class JoinNetworkScreen extends Screen {
           <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                const route = Router.getUBCCWLRoute()
+                const route = Router.instance.getUBCCWLRoute()
                 this.props.navigator.push(route);
               }}>
             <Image source={require('../img/ic-lock.png')} style={{ height: 15, resizeMode: 'contain' }} />

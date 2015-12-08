@@ -44,7 +44,12 @@ class ResumeTokenHandler {
       return this.ddp.loginWithToken(resumeToken);
     })
     .then((loginResult) => {
-      if (loginResult && loginResult.resumeToken) {
+      if (loginResult) {
+        dispatch({
+          type: 'SET_IS_ACTIVE',
+          isActive: (loginResult.isActive || false)
+        })
+
         return Promise.resolve(loginResult);
       }
       return Promise.reject(ERRORS.EXPIRED_TOKEN)

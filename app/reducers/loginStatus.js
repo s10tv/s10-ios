@@ -41,7 +41,7 @@ function isCWLRequired(state = true, action) {
 function hasLoggedInThroughCWL(state = false, action) {
   switch (action.type) {
     case 'LOGGED_IN_THROUGH_CWL':
-      logger.debug(`setting loggedInThroughCWL to be ${action.loggedInThroughCWL}`);
+      logger.debug('loggedInThroughCWL = true');
       return action.loggedInThroughCWL;
     default:
       return false

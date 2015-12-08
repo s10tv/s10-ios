@@ -3,6 +3,7 @@ import React, {
   View,
   Text,
   ScrollView,
+  PropTypes,
   StyleSheet,
 } from 'react-native';
 
@@ -29,6 +30,12 @@ class LinkServiceView extends React.Component {
   static rightButton = (route, router) => null
   static title = () => null
 
+  static propTypes = {
+    integrations: PropTypes.object.isRequired,
+    onLinkFacebook: PropTypes.func.isRequired,
+    navigator: PropTypes.object.required,
+  }
+
   render() {
     let integrations = this.props.integrations;
     if (!integrations) {
@@ -54,7 +61,7 @@ class LinkServiceView extends React.Component {
           { linkServiceCard(
             this.props.integrations,
             this.props.onLinkFacebook,
-            this.props.onLinkViaWebView) }
+            this.props.navigator) }
         </ScrollView>
       </View>
     )

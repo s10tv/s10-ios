@@ -41,6 +41,8 @@ const logger = new (require('../../../modules/Logger'))('LoginScreen');
 
 function mapStateToProps(state) {
   return {
+    loggedIn: state.loggedIn,
+    isActive: state.isActive,
     ddp: state.ddp,
     me: state.me,
   }
@@ -51,6 +53,7 @@ class LoginScreen extends Screen {
 
   static propTypes = {
     onPressLogin: PropTypes.func.isRequired,
+    onPressLogout: PropTypes.func.isRequired,
     navigator: PropTypes.object.required,
   }
 
@@ -63,6 +66,14 @@ class LoginScreen extends Screen {
     this.props.dispatch({
       type: 'HIDE_NAV_BAR'
     })
+  }
+
+  _getRouteAfterLogin(isActive) {
+    if (isActive) {
+      return Routes.instance.getMainNavigatorRoute();
+    } else {
+      return Routes.instance.getOnboardingRoute();
+    }
   }
 
   onFacebookLogin(err, res) {
@@ -95,7 +106,7 @@ class LoginScreen extends Screen {
     .then((result) => {
       this.props.onPressLogin(result)
 
-      const route = Routes.instance.getMainNavigatorRoute(this.props);
+      const route = this._getRouteAfterLogin(result.isActive);
       this.props.navigator.push(route)
     })
     .catch(err => {
@@ -120,7 +131,8 @@ class LoginScreen extends Screen {
         <View style={styles.loginSheet}>
           <TouchableOpacity
             onPress={() => {
-              this.props.toSceneAfterLogin()
+              const route = this._getRouteAfterLogin(this.props.isActive);
+              this.props.navigator.push(route)
             }}>
               <View style={{ padding:10, borderColor: 'white', borderWidth: 1}}>
                 <Text style={[SHEET.baseText, {fontSize: 18, color: 'white'}]}>
@@ -142,7 +154,7 @@ class LoginScreen extends Screen {
           <FBSDKLoginButton
             style={styles.fbButton}
             onLoginFinished={this.onFacebookLogin.bind(this)}
-            onLogoutFinished={() => this.props.onPressLogout }
+            onLogoutFinished={() => this.props.onPressLogout() }
             readPermissions={['email', 'public_profile', 'user_about_me',
               'user_birthday', 'user_education_history',
               'user_friends', 'user_location', 'user_photos', 'user_posts']}

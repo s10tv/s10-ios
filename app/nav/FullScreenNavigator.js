@@ -17,6 +17,7 @@ function mapStateToProps(state) {
   return {
     loggedIn: state.loggedIn,
     isActive: state.isActive,
+    hasLoggedInThroughCWL: state.hasLoggedInThroughCWL,
     currentScreen: state.currentScreen,
   }
 }
@@ -63,16 +64,24 @@ class FullScreenNavigator extends React.Component {
   }
 
   render() {
+    logger.debug(`isLoggedIn=${this.props.loggedIn} isActive=${this.props.isActive}`)
+
     // TODO(qimingfang): This is probably not good practice since it introduces
     // side effects. However, I dont see any easy way of synchronizing the router's
     // current state with that of redux (without wiring router into redux).
     Router.instance.currentScreen = this.props.currentScreen;
+    Router.instance.hasLoggedInThroughCWL = this.props.hasLoggedInThroughCWL;
 
     let route;
     if (this.props.loggedIn && this.props.isActive) {
       route = Router.instance.getMainNavigatorRoute(this.props.currentScreen)
     } else {
       route = Router.instance.getLoginRoute();
+
+      const navigator = this.refs['fullScreenNav'];
+      if (navigator) {
+        navigator.immediatelyResetRouteStack([route])
+      }
     }
 
     return (
