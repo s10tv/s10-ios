@@ -28,6 +28,17 @@ describe('ResumeTokenHandler', () => {
     expect(resumeToken).toEqual('token')
   }
 
+  function assertDispatchedLogout() {
+    return handler.handle(DISPATCH_FN).then((val) => {
+      fail('should not have succeeded');
+    }).catch(err => {
+      const calls = DISPATCH_FN.mock.calls;
+      expect(calls.length).toEqual(1);
+      const [[{ type, userId, resumeToken }]] = calls;
+      expect(type).toEqual('LOGOUT')
+    })
+  }
+
   beforeEach(() => {
     DISPATCH_FN.mockClear();
   })
@@ -59,24 +70,19 @@ describe('ResumeTokenHandler', () => {
 
       pit('should not dispatch if session is undefined', () => {
         handler = new ResumeTokenHandler(ddp, undefined);
-        return assertNoDispatch()
+        return assertDispatchedLogout()
       })
 
       pit('should not dispatch if userId not present', () => {
-        handler = new ResumeTokenHandler(ddp, undefined);
-        return assertNoDispatch()
-      })
-
-      pit('should not dispatch if userId not present', () => {
-        handler = new ResumeTokenHandler(ddp, undefined);
-        return assertNoDispatch()
+        handler = new ResumeTokenHandler(ddp,  { initialValue: () => { return {}}});
+        return assertDispatchedLogout()
       })
     })
 
     describe('user has stored resume token', () => {
 
       beforeEach(() => {
-        session = { initialValue: { resumeToken: 'token', userId: 'userId' }};
+        session = { initialValue: () => { return { resumeToken: 'token', userId: 'userId' }}};
         handler = new ResumeTokenHandler(ddp, session);
       })
 
@@ -97,7 +103,16 @@ describe('ResumeTokenHandler', () => {
       describe('resume token is valid', () => {
         pit('should dispatch LOGIN_FROM_RESUME', () => {
           return handler.handle(DISPATCH_FN).then(() => {
-              assertDispatch();
+            const calls = DISPATCH_FN.mock.calls;
+            expect(calls.length).toEqual(2);
+
+            const [[ callone ], [calltwo]] = calls;
+            let { type, userId, resumeToken } = callone;
+            expect(type).toEqual('LOGIN_FROM_RESUME')
+            expect(userId).toEqual('userId')
+            expect(resumeToken).toEqual('token')
+
+            expect(calltwo.type).toEqual('SET_IS_ACTIVE')
           })
         })
       })

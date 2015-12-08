@@ -1,3 +1,4 @@
+/*
 class MockReactComponent {
   constructor(props) {
     this.props = props;
@@ -78,3 +79,4 @@ describe('LoginScreen', () => {
     })
   })
 })
+*/
