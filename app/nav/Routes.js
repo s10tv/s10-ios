@@ -197,6 +197,20 @@ class Router {
     }
   }
 
+  getSendMessageToUserRoute(recipientUser) {
+    logger.debug(`getSendMessageToUserRoute to ${JSON.stringify(recipientUser)}`)
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let ConversationScreen = require('../components/chat/ConversationScreen');
+        return <ConversationScreen
+          navigator={navigator}
+          recipientUser={recipientUser}
+        />
+      },
+    }
+  }
+
   getTagListRoute(category) {
     const self = this;
     return {

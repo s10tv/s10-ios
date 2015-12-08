@@ -210,6 +210,11 @@ class DDPService extends TSDDPClient {
         if (activeCandidates.length > 0) {
           const [ activeCandidate ] = activeCandidates;
           activeCandidate.user = this._formatUser(activeCandidate.user);
+
+          // because we ship the {@code view()} of the user down to the client, the user that
+          // gets shipped actually doesn't have an id field. Need to fill it in.
+          activeCandidate.user.userId = activeCandidate.userId
+
           dispatch({
             type: 'SET_ACTIVE_CANDIDATE',
             candidate: activeCandidate,
@@ -239,11 +244,19 @@ class DDPService extends TSDDPClient {
         if (indexedSettings.upgradeUrl && indexedSettings.hardMinBuild) {
           const currentBuild = BridgeManager.build();
           if (currentBuild < indexedSettings.hardMinBuild.value) {
-            this.props.store.dispatch({
+            dispatch({
               type: 'SHOW_HARD_UPGRADE_POPUP',
               url: indexedSettings.upgradeUrl.value,
             })
           }
+        }
+
+        if (indexedSettings.nextMatchDate) {
+          logger.debug(`got nextMatchDate=${indexedSettings.nextMatchDate.value}`)
+          dispatch({
+            type: 'SET_NEXT_MATCH_DATE',
+            nextMatchDate: indexedSettings.nextMatchDate.value,
+          })
         }
 
         if (indexedSettings.CWLWhitelist) {

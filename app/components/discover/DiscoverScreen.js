@@ -17,6 +17,7 @@ import iconTextRow from '../lib/iconTextRow';
 import HeaderBanner from '../lib/HeaderBanner';
 import { Card } from '../lib/Card';
 import Loader from '../lib/Loader';
+import CountdownTimer from '../lib/CountdownTimer';
 import { SCREEN_TODAY } from '../../constants';
 import { SHEET, COLORS } from '../../CommonStyles';
 import Router from '../../nav/Routes'
@@ -122,7 +123,9 @@ class DiscoverScreen extends Screen {
                   </Text>
                 </View>
 
-
+                <CountdownTimer
+                  navigator={this.props.navigator}
+                  candidateUser={candidate.user} />
               </Card>
             </View>
             </TouchableHighlight>

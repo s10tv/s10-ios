@@ -10,7 +10,7 @@ import { SCREEN_CONVERSATION_LIST } from '../../constants';
 import Screen from '../Screen';
 
 // styles
-import { SHEET } from '../../CommonStyles';
+import { SHEET, COLORS } from '../../CommonStyles';
 
 // display components
 import emptyStateContainer from '../lib/emptyStateContainer';
@@ -41,7 +41,9 @@ class ConversationListView extends React.Component {
     if (this.props.layer.allConversationCount > 0) {
       return (
         <View style={[SHEET.container]}>
-          <TSConversationListView currentUser={this.props.me} {...this.props} />
+          <TSConversationListView
+            currentUser={this.props.me}
+            style={{backgroundColor: COLORS.background, flex: 1}} />
         </View>
       )
     }

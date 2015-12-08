@@ -41,10 +41,20 @@ function isCWLRequired(state = true, action) {
 function hasLoggedInThroughCWL(state = false, action) {
   switch (action.type) {
     case 'LOGGED_IN_THROUGH_CWL':
-      logger.debug('loggedInThroughCWL = true');
       return action.loggedInThroughCWL;
     default:
       return false
+  }
+}
+
+function nextMatchDate(state = null, action) {
+  switch (action.type) {
+    case 'SET_NEXT_MATCH_DATE':
+      logger.debug(`set nextMatchDate=${action.nextMatchDate}`)
+      return action.nextMatchDate;
+
+    default:
+      return state;
   }
 }
 
@@ -53,4 +63,5 @@ export {
   isCWLRequired,
   isActive,
   hasLoggedInThroughCWL,
+  nextMatchDate,
 }

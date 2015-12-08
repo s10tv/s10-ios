@@ -75,9 +75,13 @@ class FullScreenNavigator extends React.Component {
     let route;
     if (this.props.loggedIn && this.props.isActive) {
       route = Router.instance.getMainNavigatorRoute(this.props.currentScreen)
+
+      const navigator = this.refs['fullScreenNav'];
+      if (navigator) {
+        navigator.immediatelyResetRouteStack([route])
+      }
     } else {
       route = Router.instance.getLoginRoute();
-
       const navigator = this.refs['fullScreenNav'];
       if (navigator) {
         navigator.immediatelyResetRouteStack([route])

@@ -1,4 +1,11 @@
-import { loggedIn, isActive, isCWLRequired, hasLoggedInThroughCWL } from './loginStatus';
+import {
+  loggedIn,
+  isActive,
+  isCWLRequired,
+  hasLoggedInThroughCWL,
+  nextMatchDate,
+} from './settings';
+
 import { showNavBar } from './nav';
 import layer from './layer/index';
 import apphub from './apphub';
@@ -14,6 +21,7 @@ import { candidate, pastCandidates } from './ddp/candidates.js';
 export {
   showNavBar,
   loggedIn,
+  nextMatchDate,
   isActive,
   isCWLRequired,
   hasLoggedInThroughCWL,
