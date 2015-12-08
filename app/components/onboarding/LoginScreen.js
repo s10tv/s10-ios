@@ -54,7 +54,7 @@ class LoginScreen extends Screen {
   static propTypes = {
     onPressLogin: PropTypes.func.isRequired,
     onPressLogout: PropTypes.func.isRequired,
-    navigator: PropTypes.object.required,
+    navigator: PropTypes.object.isRequired,
   }
 
   constructor(props = {}) {

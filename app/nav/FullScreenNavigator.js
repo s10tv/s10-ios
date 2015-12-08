@@ -1,6 +1,7 @@
 import ExNavigator from '@exponent/react-native-navigator';
 
 import React, {
+  AlertIOS,
   NativeAppEventEmitter,
   StyleSheet,
 } from 'react-native';
@@ -15,6 +16,7 @@ const logger = new (require('../../modules/Logger'))('FullScreenNavigator');
 
 function mapStateToProps(state) {
   return {
+    ddp: state.ddp,
     loggedIn: state.loggedIn,
     isActive: state.isActive,
     hasLoggedInThroughCWL: state.hasLoggedInThroughCWL,
@@ -26,7 +28,15 @@ class FullScreenNavigator extends React.Component {
 
   constructor(props = {}) {
     super(props);
-    Router.instance = new Router(props);
+
+    const amendedProps = Object.assign({}, props, {
+      onEditProfileChange: this.onEditProfileChange.bind(this),
+      onEditProfileFocus: this.onEditProfileFocus.bind(this),
+      onEditProfileBlur: this.onEditProfileBlur.bind(this),
+      updateProfile: this.updateProfile.bind(this),
+    });
+
+    Router.instance = new Router(amendedProps);
   }
 
   componentWillMount() {
@@ -63,6 +73,35 @@ class FullScreenNavigator extends React.Component {
     }
   }
 
+  onEditProfileChange(activeText) {
+    logger.debug('onEditProfileChange')
+    Router.instance.currentlyEditing = activeText;
+  }
+
+  onEditProfileFocus(key) {
+    logger.debug('onEditProfileFocus')
+    Router.instance.editProfileFocused = true;
+    Router.instance.editProfileKey = key;
+  }
+
+  onEditProfileBlur() {
+    logger.debug('onEditProfileBlur')
+    Router.instance.editProfileFocus = false;
+  }
+
+  updateProfile(key, value) {
+    // TODO(qimingfang)
+    logger.debug('updateProfile')
+
+    let myInfo = {};
+    myInfo[key] = value;
+    return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
+    .catch(err => {
+      logger.error(err);
+      AlertIOS.alert('Missing Some Info!', err.reason);
+    })
+  }
+
   render() {
     logger.debug(`isLoggedIn=${this.props.loggedIn} isActive=${this.props.isActive}`)
 
@@ -75,18 +114,8 @@ class FullScreenNavigator extends React.Component {
     let route;
     if (this.props.loggedIn && this.props.isActive) {
       route = Router.instance.getMainNavigatorRoute()
-
-      const navigator = this.refs['fullScreenNav'];
-      if (navigator) {
-        navigator.immediatelyResetRouteStack([route])
-      }
     } else {
       route = Router.instance.getLoginRoute();
-
-      const navigator = this.refs['fullScreenNav'];
-      if (navigator) {
-        navigator.immediatelyResetRouteStack([route])
-      }
     }
 
     return (

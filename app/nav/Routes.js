@@ -14,8 +14,6 @@ class Router {
   static instance = null;
 
   constructor(props = {}) {
-    logger.debug(`created a new Router ${JSON.stringify(props)}`);
-    logger.debug(`created a new Router ${props.onPressLogout === undefined}`);
     this.props = props;
   }
 
@@ -167,6 +165,13 @@ class Router {
           updateProfile={self.props.updateProfile}
           navigator={navigator} />
       },
+
+      renderLeftButton(navigator) {
+        return self.getButton('Back', () => {
+          self.__saveProfileIfCurrentlyInEditMode()
+          navigator.pop()
+        })
+      }
     }
   }
 
@@ -346,6 +351,13 @@ class Router {
           navigator.parentNavigator.push(self.getMainNavigatorRoute());
         }, { isLeft: false })
       }
+    }
+  }
+
+  __saveProfileIfCurrentlyInEditMode() {
+    if (this.editProfileFocused) {
+      this.editProfileFocused = false;
+      this.props.updateProfile(this.editProfileKey, this.currentlyEditing)
     }
   }
 }

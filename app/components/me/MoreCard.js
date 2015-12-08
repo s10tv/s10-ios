@@ -37,7 +37,7 @@ class MoreCard extends React.Component {
             logger.debug('pressed logout');
             this.props.onPressLogout()
 
-            const route = Routes.instance.getLoginRoute(this.props);
+            const route = Routes.instance.getLoginRoute();
             this.props.navigator.parentNavigator.push(route)
           }}>
           <Text style={[SHEET.baseText]}>Logout</Text>

@@ -312,26 +312,6 @@ class LayoutContainer extends React.Component {
     })
   }
 
-  onEditProfileChange() {
-    // TODO(qimingfang)
-    logger.debug('onEditProfileChange')
-  }
-
-  onEditProfileFocus() {
-    // TODO(qimingfang)
-    logger.debug('onEditProfileFocus')
-  }
-
-  onEditProfileBlur() {
-    // TODO(qimingfang)
-    logger.debug('onEditProfileBlur')
-  }
-
-  updateProfile() {
-    // TODO(qimingfang)
-    logger.debug('updateProfile')
-  }
-
   render() {
     return (
       <FullScreenNavigator
@@ -341,10 +321,6 @@ class LayoutContainer extends React.Component {
         onPressLogout={this.onPressLogout.bind(this)}
         onUploadImage={this.onUploadImage.bind(this)}
         onLinkFacebook={this.onLinkFacebook.bind(this)}
-        onEditProfileChange={this.onEditProfileChange.bind(this)}
-        onEditProfileFocus={this.onEditProfileFocus.bind(this)}
-        onEditProfileBlur={this.onEditProfileBlur.bind(this)}
-        updateProfile={this.updateProfile.bind(this)}
       />
     )
   }

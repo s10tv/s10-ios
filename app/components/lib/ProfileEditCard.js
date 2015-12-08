@@ -64,8 +64,6 @@ class ProfileEditCard extends React.Component {
   }
 
   renderTextField(info) {
-    logger.debug(`rendering ${this.props.me[info.key]}`)
-
     return (
       <Card
         key={info.key}
@@ -85,6 +83,7 @@ class ProfileEditCard extends React.Component {
             this.props.onEditProfileFocus(info.key);
           }}
           onBlur={(text) => {
+            logger.debug('blurred')
             this.props.onEditProfileBlur();
             this.props.updateProfile(info.key, text);
           }} />
