@@ -5,10 +5,12 @@ let {
   View,
   Text,
   Image,
+  PropTypes,
   StyleSheet
 } = React;
 
 import { connect } from 'react-redux/native';
+import Routes from '../../nav/Routes';
 let SHEET = require('../../CommonStyles').SHEET;
 
 let TappableCard = require('./Card').TappableCard;
@@ -24,6 +26,12 @@ function mapStateToProps(state) {
 }
 
 class HashtagCategory extends React.Component {
+
+  static propTypes = {
+    myTags: PropTypes.object.isRequired,
+    categories: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired,
+  };
 
   _renderItem(category) {
     var myTagsRendered = [];
@@ -45,7 +53,8 @@ class HashtagCategory extends React.Component {
 
     return (
       <TappableCard key={category.displayName} onPress={(event) => {
-          return this.props.handleCategoryTouch(category)}}>
+          const route = Routes.instance.getTagListRoute(category);
+          this.props.navigator.push(route)}}>
         <View>
           <View style={[styles.categoryHeader]}>
             {icon}

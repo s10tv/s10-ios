@@ -197,6 +197,18 @@ class Router {
     }
   }
 
+  getTagListRoute(category) {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let TagListScreen= require('../components/taglist/TagListScreen');
+        return <TagListScreen
+          navigator={navigator}
+          category={category}
+        />
+      },
+    }
+  }
 
   // Onboarding
   getOnboardingRoute() {

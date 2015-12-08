@@ -36,24 +36,24 @@ class CreateProfileScreen extends React.Component {
 
     return (
       <View style={SHEET.container}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false}>
 
-            { editPhotoHeader(
-                this.props.onUploadImage,
-                this.props.me.avatarUrl,
-                this.props.me.coverUrl)}
+          { editPhotoHeader(
+              this.props.onUploadImage,
+              this.props.me.avatarUrl,
+              this.props.me.coverUrl)}
 
-            <View style={SHEET.innerContainer}>
-              <ProfileEditCard
-                onEditProfileChange={this.props.onEditProfileChange}
-                onEditProfileFocus={this.props.onEditProfileFocus}
-                onEditProfileBlur={this.props.onEditProfileBlur}
-                updateProfile={this.props.updateProfile}
-              />
-            </View>
+          <View style={SHEET.innerContainer}>
+            <ProfileEditCard
+              onEditProfileChange={this.props.onEditProfileChange}
+              onEditProfileFocus={this.props.onEditProfileFocus}
+              onEditProfileBlur={this.props.onEditProfileBlur}
+              updateProfile={this.props.updateProfile}
+            />
+          </View>
 
-            <View style={SHEET.bottomTile} />
-          </ScrollView>
+          <View style={SHEET.bottomTile} />
+        </ScrollView>
       </View>
     )
   }

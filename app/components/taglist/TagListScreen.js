@@ -18,7 +18,7 @@ let Card = require('../lib/Card').Card;
 let Hashtag = require('../lib/Hashtag');
 let Loader = require('../lib/Loader');
 
-const logger = new (require('../../../modules/Logger'))('CategoryListScreen');
+const logger = new (require('../../../modules/Logger'))('TagListScreen');
 
 function mapStateToProps(state) {
   return {
@@ -28,7 +28,7 @@ function mapStateToProps(state) {
   }
 }
 
-class CategoryListScreen extends Screen {
+class TagListScreen extends Screen {
 
   static id = SCREEN_CATEGORY_LIST;
   static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
@@ -176,7 +176,7 @@ class CategoryListScreen extends Screen {
     return (
       <View style={SHEET.container}>
         <Card
-          style={[SHEET.navTop, SHEET.innerContainer, { flex: 1 }]}
+          style={[SHEET.innerContainer, { flex: 1 }]}
           cardOverride={{ padding: 0 }}
           hideSeparator={true} >
 
@@ -246,4 +246,4 @@ var styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps)(CategoryListScreen)
+export default connect(mapStateToProps)(TagListScreen)
