@@ -54,7 +54,10 @@ class LayoutContainer extends React.Component {
     .then(() => {
       return this.resumeTokenHandler.handle(this.props.dispatch)
     })
-    .then((loginResult) => {
+    .then((result) => {
+      const { intercomHash, userId } = result;
+      Intercom.setHMAC(intercomHash, userId);
+
       this._onUserHasLoggedIn();
     })
     .catch(err => {
@@ -78,7 +81,6 @@ class LayoutContainer extends React.Component {
 
     // set up 3p integrations
     this._setupLayer();
-    this._setupIntercom();
   }
 
   _setupLayer() {
@@ -125,13 +127,6 @@ class LayoutContainer extends React.Component {
     })
   }
 
-  _setupIntercom() {
-    this.props.ddp.call({ methodName: 'intercom/auth' })
-    .then(({ hash, identifier }) => {
-      Intercom.setHMAC(hash, identifier);
-    });
-  }
-
   onPressLogout() {
     logger.debug('onPressLogout called');
 
@@ -152,7 +147,7 @@ class LayoutContainer extends React.Component {
     Analytics.userDidLogout();
   }
 
-  onPressLogin({ userId, resumeToken, expiryDate}) {
+  onPressLogin({ userId, resumeToken, expiryDate, isNewUser }) {
     Analytics.userDidLogin(isNewUser);
 
     // Reset the tab bar to 'Today'

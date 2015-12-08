@@ -35,6 +35,8 @@ import { SCREEN_OB_LOGIN } from '../../constants';
 import { SHEET, COLORS } from '../../CommonStyles';
 import Routes from '../../nav/Routes'
 
+import Intercom from '../../../modules/Intercom';
+
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 let Video = require('react-native-video');
@@ -92,6 +94,9 @@ class LoginScreen extends Screen {
 
     this.digitsLoginHandler.onLogin(response, this.props.dispatch)
     .then((result) => {
+      const { intercomHash, userId } = result;
+      Intercom.setHMAC(intercomHash, userId);
+
       this.props.onPressLogin(result)
 
       const route = this._getRouteAfterLogin(result.isActive);
@@ -130,6 +135,9 @@ class LoginScreen extends Screen {
       return Promise.reject('No Token');
     })
     .then((result) => {
+      const { intercomHash, userId } = result;
+      Intercom.setHMAC(intercomHash, userId);
+
       this.props.onPressLogin(result)
 
       const route = this._getRouteAfterLogin(result.isActive);
