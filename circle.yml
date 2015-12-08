@@ -8,25 +8,25 @@ dependencies:
     - brew update
     - brew install node
     - npm install -g npm@2.14.13 # npm 3 sucks
-    # - sudo gem update fastlane gym
-    # - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
+    - sudo gem update fastlane gym
+    - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
   override:
     - npm install
     - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
-    # - cd ios && pod install
+    - cd ios && pod install
   post:
-    # - fastlane import_certs
-    # - fastlane download_profiles dev:true adhoc:true appstore:true
+    - fastlane import_certs
+    - fastlane download_profiles dev:true adhoc:true appstore:true
   cache_directories:
     - "node_modules"
-    # - "ios/Pods"
+    - "ios/Pods"
 
 test:
   override:
     - npm test
-    # - fastlane archive variant:$([ "$CIRCLE_BRANCH" = 'prod' ] && echo 'appstore' || echo 'dev')
-    #- zip -FSr $CIRCLE_ARTIFACTS/node_modules.zip node_modules/
-    # - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/
+    - fastlane archive variant:$([ "$CIRCLE_BRANCH" = 'prod' ] && echo 'appstore' || echo 'dev')
+    - zip -FSr $CIRCLE_ARTIFACTS/node_modules.zip node_modules/
+    - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/
     # TODO: Figure out path to xcarchive and backup the archive along with the Pods
     # fastlane backup_xcarchive(destination: ENV['CIRCLE_ARTIFACTS'])
     # Also consider combining test and deployment into a single lane called circle_run to simplify
