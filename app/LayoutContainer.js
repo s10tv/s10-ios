@@ -338,6 +338,11 @@ class LayoutContainer extends React.Component {
 
   upgrade() {
     logger.debug('Upgraded from Apphub');
+
+    this.props.dispatch({
+      type: 'FINISHED_UPGRADING_APPHUB'
+    })
+
     return BridgeManager.reloadBridge();
   }
 
@@ -372,6 +377,7 @@ class LayoutContainer extends React.Component {
         <FullScreenNavigator
           style={{ flex: 1 }}
           sceneStyle={{ paddingTop: 64 }}
+          upgrade={this.upgrade.bind(this)}
           onPressLogin={this.onPressLogin.bind(this)}
           onPressLogout={this.onPressLogout.bind(this)}
           onUploadImage={this.onUploadImage.bind(this)}

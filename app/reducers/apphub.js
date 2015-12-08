@@ -19,4 +19,20 @@ function apphub(state = defaultApphub, action) {
   }
 }
 
-module.exports = apphub;
+function shouldShowUpgradeCard(state = false, action) {
+  switch(action.type) {
+    case 'UPDATE_APPHUB_DETAILS':
+      return true;
+
+    case 'FINISHED_UPGRADING_APPHUB':
+      return false;
+
+    default:
+      return state;
+  }
+}
+
+export {
+  apphub,
+  shouldShowUpgradeCard,
+}

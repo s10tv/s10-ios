@@ -32,6 +32,7 @@ function mapStateToProps(state) {
   return {
     me: state.me,
     apphub: state.apphub,
+    shouldShowUpgradeCard: state.shouldShowUpgradeCard,
   }
 }
 
@@ -39,9 +40,10 @@ class MeScreen extends React.Component {
 
   static id = SCREEN_ME;
   static propTypes = {
-    ...MoreCard.PropTypes,
     me: PropTypes.object.isRequired,
     apphub: PropTypes.object.isRequired,
+    shouldShowUpgradeCard: PropTypes.bool.isRequired,
+    upgrade: PropTypes.func.isRequired,
   };
 
   render() {
@@ -64,15 +66,18 @@ class MeScreen extends React.Component {
             <HashtagCategory {...props} />
 
             { sectionTitle('MORE') }
-            <MoreCard navigator={this.props.navigator} onPressLogout={this.props.onPressLogout} />
+            <MoreCard
+              navigator={this.props.navigator}
+              shouldShowUpgradeCard={this.props.shouldShowUpgradeCard}
+              upgrade={this.props.upgrade}
+              onPressLogout={this.props.onPressLogout} />
           </View>
 
           <View style={styles.versionTextContainer}>
-          <Text style={[styles.versionText, SHEET.innerContainer, SHEET.baseText]}>
-            { this.props.apphub.buildName }
-          </Text>
+            <Text style={[styles.versionText, SHEET.innerContainer, SHEET.baseText]}>
+              { this.props.apphub.buildName }
+            </Text>
           </View>
-          <View style={SHEET.bottomTile} />
         </ScrollView>
       </View>
     )
@@ -83,7 +88,7 @@ class MeScreen extends React.Component {
 var styles = StyleSheet.create({
   versionTextContainer: {
     flex: 1,
-    height: 64,
+    top: 24,
     alignItems: 'center',
     justifyContent: 'center',
   },

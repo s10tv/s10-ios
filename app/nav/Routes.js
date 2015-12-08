@@ -69,6 +69,7 @@ class Router {
         let TabNavigatorScreen = require('./TabNavigatorScreen');
         return <TabNavigatorScreen
           navigator={navigator}
+          upgrade={self.props.upgrade}
           onPressLogout={self.props.onPressLogout}
           onViewProfile={self.props.onViewProfile}
           onEditProfile={self.props.onEditProfile}

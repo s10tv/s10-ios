@@ -10,7 +10,7 @@ import { showOverlayLoader, dialog } from './overlay';
 
 import { showNavBar } from './nav';
 import layer from './layer/index';
-import apphub from './apphub';
+import { apphub, shouldShowUpgradeCard } from './apphub';
 import currentScreen from './currentScreen';
 
 // ddp
@@ -31,13 +31,16 @@ export {
   showOverlayLoader,
   dialog,
 
+  currentScreen,
+
+  layer,
+  apphub,
+  shouldShowUpgradeCard,
+
   candidate,
   pastCandidates,
   me,
   integrations,
-  layer,
-  apphub,
-  currentScreen,
   myTags,
   categories,
 }

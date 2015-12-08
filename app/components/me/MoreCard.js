@@ -27,11 +27,24 @@ class MoreCard extends React.Component {
   }
 
   render() {
+
+    let optionalUpgradeCard = null
+    if (this.props.shouldShowUpgradeCard) {
+      optionalUpgradeCard = (
+        <TappableCard style={styles.card} onPress={this.props.upgrade}>
+          <Text style={[SHEET.baseText]}>Upgrade Available</Text>
+        </TappableCard>
+      )
+    }
+
     return (
       <View>
+        { optionalUpgradeCard }
+        
         <TappableCard style={styles.card} onPress={this.contactUs}>
           <Text style={[SHEET.baseText]}>Contact Us</Text>
         </TappableCard>
+
         <TappableCard style={styles.card}
           onPress={ () => {
             logger.debug('pressed logout');
