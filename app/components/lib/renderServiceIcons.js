@@ -24,7 +24,7 @@ export default function renderServiceIcons(
   return serviceIcons.map(icon => {
     return (
       <Image
-        key={icon.key}
+        key={icon.id}
         source={icon.source}
         style={[SHEET.smallIcon, styles.serviceIcon]}
       />

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@exponent/react-native-navigator": "^0.3.5",
     "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
     "lodash": "^3.6.0",
     "react-native": "^0.15.0",

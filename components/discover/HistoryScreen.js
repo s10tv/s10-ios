@@ -149,25 +149,22 @@ class HistoryScreen extends React.Component {
         secondList = [second].concat(secondList)
       }
 
-      historyView = (
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.scroll}>
-          <View style={styles.wrapper}>
-              <View style={styles.row}>
-                {this.createProfiles(firstList)}
-              </View>
-
-              <View style={[styles.row, {marginRight: 0}]}>
-                {this.createProfiles(secondList)}
-              </View>
-          </View>
-        </ScrollView>
-      )
     }
 
     return (
       <View style={SHEET.container}>
-        <View style={{flex: 1, paddingTop: 64,}}>
-          { historyView } 
+        <View style={{flex: 1 }}>
+          <ScrollView showsVerticalScrollIndicator={false} style={styles.scroll}>
+            <View style={styles.wrapper}>
+                <View style={styles.row}>
+                  {this.createProfiles(firstList)}
+                </View>
+
+                <View style={[styles.row, {marginRight: 0}]}>
+                  {this.createProfiles(secondList)}
+                </View>
+            </View>
+          </ScrollView>
         </View>
       </View>
     )
@@ -179,7 +176,7 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginRight: 8,
-    marginLeft: 8, 
+    marginLeft: 8,
   },
   scroll: {
     flex: 1,

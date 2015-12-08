@@ -16,15 +16,14 @@ import { FBSDKLoginManager } from 'react-native-fbsdklogin';
 import { FBSDKAccessToken } from 'react-native-fbsdkcore';
 
 // internal dependencies
-import FullScreenNavigator from './navigation/FullScreenNavigator';
-import OnboardingNavigator from './navigation/OnboardingNavigator';
+import FullScreenNavigator from './nav/FullScreenNavigator';
 import Session from '../native_modules/Session';
 import Intercom from '../modules/Intercom';
 import ResumeTokenHandler from './util/ResumeTokenHandler'
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
 const UIImagePickerManager = NativeModules.UIImagePickerManager;
-const TSAzureClient = NativeModules.TSAzureClient;
+const AzureClient = NativeModules.TSAzureClient;
 
 class LayoutContainer extends React.Component {
 
@@ -121,6 +120,8 @@ class LayoutContainer extends React.Component {
   }
 
   onPressLogout() {
+    logger.debug('onPressLogout called');
+
     TSLayerService.deauthenticateAsync() // TODO(qimingfang): this can throw if already connected.
     .catch(err => {
       logger.warning(err);
@@ -160,6 +161,8 @@ class LayoutContainer extends React.Component {
       ERROR_UPLOAD_CANCELLED: 'ERROR_UPLOAD_CANCELLED'
     };
 
+    let localFileURI;
+
     switch (type) {
       case 'PROFILE_PIC': // fallthrough intentional
       case 'COVER_PIC':
@@ -185,7 +188,7 @@ class LayoutContainer extends React.Component {
           })
         })
         .then((response) => {
-          const localFileURI = response.uri.replace('file://', '');
+          localFileURI = response.uri.replace('file://', '');
 
           this.props.dispatch({
             type: 'UPLOAD_START',
@@ -196,13 +199,13 @@ class LayoutContainer extends React.Component {
           return this.props.ddp.call({
             methodName: 'startTask',
             params:[taskId, type, {
-              width: width,
-              height: height,
+              width: dimensions.width,
+              height: dimensions.height,
             }]
           })
         })
-        .then(({ azureUrl }) => {
-          return AzureClient.putAsync(azureUrl, localFileURI, contentType);
+        .then(({ url }) => {
+          return AzureClient.putAsync(url, localFileURI, contentType);
         })
         .then(() => {
           return this.props.ddp.call({ methodName: 'finishTask', params: [taskId] });
@@ -219,7 +222,7 @@ class LayoutContainer extends React.Component {
               return;
 
             default:
-              logger.warning(err);
+              logger.error(err);
               this.props.dispatch({
                 type: 'UPLOAD_FINISH'
               });

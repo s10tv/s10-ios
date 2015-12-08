@@ -23,6 +23,8 @@ let Loader = require('../lib/Loader');
 import { SCREEN_OB_CWL } from '../../constants';
 import Screen from '../Screen';
 
+import Router from '../../nav/Routes'
+
 class JoinNetworkScreen extends Screen {
 
   static id = SCREEN_OB_CWL;
@@ -33,7 +35,7 @@ class JoinNetworkScreen extends Screen {
   render() {
     return (
       <View style={SHEET.container}>
-        <View style={[SHEET.navTop]}>
+        <View>
           <Image source={require('../img/bg-sauder.jpg')} style={styles.bgimage} />
         </View>
 
@@ -44,7 +46,10 @@ class JoinNetworkScreen extends Screen {
 
           <TouchableOpacity
               style={styles.button}
-              onPress={() => { this.props.toCWLLoginScreen() }}>
+              onPress={() => {
+                const route = Router.getUBCCWLRoute()
+                this.props.navigator.push(route);
+              }}>
             <Image source={require('../img/ic-lock.png')} style={{ height: 15, resizeMode: 'contain' }} />
             <Text style={[styles.buttonText, SHEET.baseText]}>Campus Wide Login</Text>
           </TouchableOpacity>

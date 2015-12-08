@@ -15,4 +15,4 @@ function currentScreen(state = { id: 'SCREEN_TODAY' }, action) {
   }
 }
 
-module.exports = undoable(currentScreen, { filter: distinctState() });
+module.exports = currentScreen;

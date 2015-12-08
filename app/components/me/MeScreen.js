@@ -4,6 +4,7 @@ import React, {
   View,
   ScrollView,
   TouchableOpacity,
+  PropTypes,
   StyleSheet,
 } from 'react-native'
 
@@ -37,19 +38,22 @@ function mapStateToProps(state) {
 class MeScreen extends React.Component {
 
   static id = SCREEN_ME;
-  static leftButton = () => Screen.generateButton(null, null);
-  static rightButton = () => Screen.generateButton(null, null);
-  static title = () => Screen.generateTitleBar('Me');
+  static propTypes = {
+    ...MoreCard.PropTypes,
+    me: PropTypes.object.isRequired,
+    apphub: PropTypes.object.isRequired,
+  };
 
   render() {
+    const props = this.props;
+
     return (
       <View style={SHEET.container}>
         <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={[{ top: 64 }]}>
+          showsVerticalScrollIndicator={false}>
 
           <HeaderBanner url={this.props.me.coverUrl} height={height/4}>
-            { renderMeHeader(this.props.me, this.props.onViewProfile, this.props.onEditProfile) }
+            { renderMeHeader(this.props.me, this.props.navigator) }
           </HeaderBanner>
 
           <View style={SHEET.innerContainer}>
@@ -57,10 +61,10 @@ class MeScreen extends React.Component {
             { networkCard() }
 
             { sectionTitle('MY HASHTAGS') }
-            <HashtagCategory {...this.props} />
+            <HashtagCategory {...props} />
 
             { sectionTitle('MORE') }
-            <MoreCard onPressLogout={this.props.onPressLogout} />
+            <MoreCard navigator={this.props.navigator} onPressLogout={this.props.onPressLogout} />
           </View>
 
           <View style={styles.versionTextContainer}>

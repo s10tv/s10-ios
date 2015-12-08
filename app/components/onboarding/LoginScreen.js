@@ -8,6 +8,7 @@ import React, {
   NavigatorIOS,
   TabBarIOS,
   WebView,
+  PropTypes,
   StyleSheet,
 } from 'react-native';
 
@@ -29,7 +30,7 @@ import Screen from '../Screen';
 import { Card } from '../lib/Card';
 import { SCREEN_OB_LOGIN } from '../../constants';
 import { SHEET, COLORS } from '../../CommonStyles';
-
+import Routes from '../../nav/Routes'
 
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
@@ -47,13 +48,21 @@ function mapStateToProps(state) {
 
 class LoginScreen extends Screen {
   static id = SCREEN_OB_LOGIN;
-  static leftButton = () => null
-  static rightButton = (route, router) => null
-  static title = () => null
+
+  static propTypes = {
+    onPressLogin: PropTypes.func.isRequired,
+    navigator: PropTypes.object.required,
+  }
 
   constructor(props = {}) {
     super(props);
     this.facebookLoginHandler = new FacebookLoginHandler(props.ddp);
+  }
+
+  componentWillMount() {
+    this.props.dispatch({
+      type: 'HIDE_NAV_BAR'
+    })
   }
 
   onFacebookLogin(err, res) {
@@ -84,7 +93,10 @@ class LoginScreen extends Screen {
       return Promise.reject('No Token');
     })
     .then((result) => {
-      return this.props.onPressLogin(result)
+      this.props.onPressLogin(result)
+
+      const route = Routes.instance.getMainNavigatorRoute(this.props);
+      this.props.navigator.push(route)
     })
     .catch(err => {
       logger.error(err)
@@ -167,8 +179,10 @@ class LoginScreen extends Screen {
                   }
                 }
 
-                DigitsAuthenticateManager
-                  .authenticateDigitsWithOptions(options, this.digitsLogin.bind(this));
+                this.props.navigator.push(Routes.getOnboardingNavigatorRoute())
+
+                // DigitsAuthenticateManager
+                //  .authenticateDigitsWithOptions(options, this.digitsLogin.bind(this));
             }}>Login with Phone</Text>
           </View>
         </View>

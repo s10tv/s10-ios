@@ -1,9 +1,10 @@
 import React, {
   Dimensions,
   ScrollView,
-  StyleSheet,
   Text,
   View,
+  PropTypes,
+  StyleSheet,
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
@@ -30,9 +31,16 @@ function mapStateToProps(state) {
 class EditProfileScreen extends Screen {
 
   static id = SCREEN_EDIT_PROFILE;
-  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
-  static rightButton = () => null
-  static title = () => Screen.generateTitleBar('Edit');
+
+  static propTypes = {
+    me: PropTypes.object.isRequired,
+    onUploadImage: PropTypes.func.isRequired,
+    onLinkFacebook: PropTypes.func.isRequired,
+    onEditProfileChange: PropTypes.func.isRequired,
+    onEditProfileFocus: PropTypes.func.isRequired,
+    onEditProfileBlur: PropTypes.func.isRequired,
+    updateProfile: PropTypes.func.isRequired,
+  };
 
   render() {
     logger.debug(`[integrations]: render edit profile got ${this.props.integrations.length} integrations`);
@@ -40,8 +48,7 @@ class EditProfileScreen extends Screen {
     return (
       <View style={SHEET.container}>
         <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={[SHEET.navTop]}>
+          showsVerticalScrollIndicator={false}>
 
           { editPhotoHeader(
             this.props.onUploadImage,
@@ -53,7 +60,7 @@ class EditProfileScreen extends Screen {
             { linkServiceCard(
                 this.props.integrations,
                 this.props.onLinkFacebook,
-                this.props.onLinkViaWebView) }
+                this.props.navigator) }
 
             {sectionTitle('MY INFO')}
             <View style={SHEET.separator} />

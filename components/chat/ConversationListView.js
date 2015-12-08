@@ -46,7 +46,7 @@ var UserSchema = React.PropTypes.shape({
 })
 
 ConversationListView.propTypes = {
-  currentUser: UserSchema,
+  currentUser: UserSchema.isRequired,
 }
 
 var styles = StyleSheet.create({

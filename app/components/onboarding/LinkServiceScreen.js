@@ -39,7 +39,7 @@ class LinkServiceView extends React.Component {
       <View style={SHEET.container}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={[SHEET.innerContainer, SHEET.navTop]}>
+          style={[SHEET.innerContainer]}>
 
           <View style={styles.instructions}>
             <Text style={[styles.instructionItem, SHEET.baseText]}>

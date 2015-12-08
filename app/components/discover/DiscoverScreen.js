@@ -6,6 +6,7 @@ import React, {
   Image,
   TouchableHighlight,
   TouchableOpacity,
+  PropTypes,
   StyleSheet,
 } from 'react-native';
 
@@ -18,6 +19,7 @@ import { Card } from '../lib/Card';
 import Loader from '../lib/Loader';
 import { SCREEN_TODAY } from '../../constants';
 import { SHEET, COLORS } from '../../CommonStyles';
+import Router from '../../nav/Routes'
 
 const logger = new (require('../../../modules/Logger'))('DiscoverScreen');
 const { width, height } = Dimensions.get('window');
@@ -30,6 +32,11 @@ function mapStateToProps(state) {
 
 class DiscoverScreen extends Screen {
 
+  static propTypes = {
+    candidate: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired,
+  };
+
   static id = SCREEN_TODAY;
   static leftButton = () => Screen.generateButton(null, null);
   static rightButton = (route, router) => {
@@ -40,7 +47,7 @@ class DiscoverScreen extends Screen {
   render() {
     const candidate = this.props.candidate;
 
-    if (!candidate) {
+    if (!candidate.loaded) {
       return <Loader />;
     }
 
@@ -66,9 +73,12 @@ class DiscoverScreen extends Screen {
             Every good friend was once a stranger.
           </Text>
         </View>
-        <View style={{flex: 1, paddingTop: 74}}>
+        <View style={{flex: 1, paddingTop: 10}}>
           <TouchableHighlight
-              onPress={() => this.props.onViewProfile({ userId: candidate.userId })}
+              onPress={() => {
+                const route = Router.instance.getProfileRoute(candidate.userId);
+                this.props.navigator.parentNavigator.push(route)
+              }}
               style={{ flex: 1}}
               underlayColor={'transparent'}>
 

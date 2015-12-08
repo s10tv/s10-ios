@@ -10,7 +10,6 @@ var TSConversationView = React.requireNativeComponent('TSConversationView', Conv
 function mapStateToProps(state) {
   return {
     me: state.me,
-    currentProps: state.routes.fullscreen.currentProps,
   }
 }
 
@@ -25,7 +24,8 @@ class ConversationScreen extends React.Component {
     return (
       <TSConversationView
         currentUser={this.props.me}
-        {...this.props}
+        conversationId={this.props.conversationId}
+        recipientUser={this.props.recipientUser}
       />
     );
   }

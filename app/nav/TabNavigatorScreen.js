@@ -1,13 +1,13 @@
 import React, {
   Image,
   View,
+  PropTypes,
   StyleSheet,
 } from 'react-native'
 
 import { connect } from 'react-redux/native';
 import TabNavigator from 'react-native-tab-navigator';
 
-import TabRouter from './TabRouter';
 import MeScreen from '../components/me/MeScreen';
 import DiscoverScreen from '../components/discover/DiscoverScreen';
 import ConversationListView from '../components/chat/ConversationListView';
@@ -24,21 +24,6 @@ function mapStateToProps(state) {
 
 class TabNavigatorScreen extends React.Component {
 
-  static id = TAB_SCREEN_CONTAINER;
-  static router = new TabRouter();
-
-  static leftButton(route, router) {
-    return TabNavigatorScreen.router.leftButton(route, router)
-  }
-
-  static rightButton(route, router) {
-    return TabNavigatorScreen.router.rightButton(route, router)
-  }
-
-  static title(route, router) {
-    return TabNavigatorScreen.router.title(route, router)
-  }
-
   render() {
     return (
       <TabNavigator>
@@ -52,7 +37,7 @@ class TabNavigatorScreen extends React.Component {
               id: MeScreen.id,
             })
           }}
-          selected={this.props.currentScreen.present.id == MeScreen.id}>
+          selected={this.props.currentScreen.id == MeScreen.id}>
 
           <MeScreen {...this.props} />
 
@@ -67,7 +52,7 @@ class TabNavigatorScreen extends React.Component {
               id: DiscoverScreen.id,
             })
           }}
-          selected={this.props.currentScreen.present.id == DiscoverScreen.id}>
+          selected={this.props.currentScreen.id == DiscoverScreen.id}>
 
           <DiscoverScreen {...this.props} />
 
@@ -83,7 +68,7 @@ class TabNavigatorScreen extends React.Component {
               id: ConversationListView.id,
             })
           }}
-          selected={this.props.currentScreen.present.id == ConversationListView.id}>
+          selected={this.props.currentScreen.id == ConversationListView.id}>
 
           <ConversationListView {...this.props} />
         </TabNavigator.Item>

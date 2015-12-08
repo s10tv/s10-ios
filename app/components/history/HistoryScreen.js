@@ -5,6 +5,7 @@ import React, {
   Image,
   StyleSheet,
   View,
+  PropTypes,
   ScrollView,
 } from 'react-native';
 
@@ -16,6 +17,7 @@ import Screen from '../Screen';
 import { TappableCard } from '../lib/Card';
 import Loader from '../lib/Loader';
 import { SHEET, COLORS } from '../../CommonStyles';
+import Routes from '../../nav/Routes';
 
 const { width, height } = Dimensions.get('window');
 
@@ -26,7 +28,12 @@ function mapStateToProps(state) {
   }
 }
 
-class HistoryProfile extends Screen {
+class HistoryProfile extends React.Component {
+
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  };
+
   render() {
     let candidate = this.props.candidate;
     let user = this.props.user;
@@ -37,7 +44,10 @@ class HistoryProfile extends Screen {
         key={candidate._id}
         style={[styles.imgContainer, {height: height} ]}
         cardOverride={{ padding: 0 }}
-        onPress={() => { this.props.onViewProfile({ userId: user.userId })}}>
+        onPress={() => {
+          const route = Routes.instance.getProfileRoute(user.userId);
+          this.props.navigator.parentNavigator.push(route);
+      }}>
           <View style={[styles.imgContainer, {height: height} ]}>
             <Image style={{ flex: 1, resizeMode: 'cover' }} source={{ uri: user.avatar.url }}>
               <View style={{ width: width / 2 - 10, height: 35, backgroundColor: 'black',
@@ -58,10 +68,9 @@ class HistoryProfile extends Screen {
 
 class HistoryScreen extends Screen {
 
-  static id = SCREEN_HISTORY;
-  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
-  static rightButton = () => null
-  static title = () => null
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  };
 
   // TODO: COPY/PASTE alert. From Activities
   _timeDifference(current, previous) {
@@ -99,7 +108,7 @@ class HistoryScreen extends Screen {
             candidate={candidate}
             user={user}
             height={cardHeight}
-            onViewProfile={this.props.onViewProfile}/>
+            navigator={this.props.navigator}/>
         </View>
       );
     });
@@ -166,7 +175,7 @@ class HistoryScreen extends Screen {
 
     return (
       <View style={SHEET.container}>
-        <View style={{flex: 1, paddingTop: 64,}}>
+        <View style={{flex: 1 }}>
           { historyView }
         </View>
       </View>

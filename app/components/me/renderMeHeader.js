@@ -9,11 +9,12 @@ import Dimensions from 'Dimensions'
 import renderMeHeaderButton from './renderMeHeaderButton'
 import { SHEET, COLORS } from '../../CommonStyles';
 import renderServiceIcons from '../lib/renderServiceIcons';
+import Routes from '../../nav/Routes'
 
 const logger = new (require('../../../modules/Logger'))('renderMeHeader');
 const { width, height } = Dimensions.get('window');
 
-export default function renderMeHeader(user, onViewProfile, onEditProfile) {
+export default function renderMeHeader(user, navigator) {
 
   return (
     <View style={styles.meHeader}>
@@ -26,9 +27,15 @@ export default function renderMeHeader(user, onViewProfile, onEditProfile) {
           { renderServiceIcons(user.connectedProfiles) }
         </View>
         <View style={styles.headerContentLineItem}>
-          { renderMeHeaderButton('View', () => { onViewProfile({ userId: user.userId }) })}
+          { renderMeHeaderButton('View', () => {
+              const route = Routes.instance.getProfileRoute(user.userId);
+              navigator.parentNavigator.push(route);
+          })}
           { renderMeHeaderButton('Edit',
-            () => { onEditProfile() },
+            () => {
+              const route = Routes.instance.getEditProfileRoute();
+              navigator.push(route);
+            },
             { left: width / 32 })}
         </View>
       </View>
