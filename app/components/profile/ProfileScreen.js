@@ -376,11 +376,18 @@ class ProfileScreen extends Screen {
     }
 
     let messageButton = null;
-    if (this.props.isFromDiscoverViewOrHistory || this.props.isFromHistoryScreen) {
+    if (this.props.isFromDiscoveryScreen || this.props.isFromHistoryScreen) {
+
+      let overrideText = null;
+      if (this.props.isFromHistoryScreen) {
+        overrideText = `Message ${user.firstName}`;
+      }
+
       messageButton = (
         <CountdownTimer
           style={styles.messageButton}
           navigator={this.props.navigator}
+          overrideText={overrideText}
           candidateUser={user} />
       )
     }

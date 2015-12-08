@@ -56,6 +56,12 @@ class CountdownTimer extends React.Component {
 
   componentWillMount() {
     const self = this;
+
+    if (this.props.overrideText) {
+      this.setState({ countdown: this.props.overrideText });
+      return;
+    }
+
     let format = function(num) {
       return ("0" + num).slice(-2);
     }
