@@ -138,7 +138,9 @@ class Router {
               isFromMeScreen,
               isFromConversationScreen)
             }
-            navigationBarStyle={{ flex: 1, backgroundColor: 'transparent' }}
+            navigationBarStyle={{
+              flex: 1, backgroundColor: 'transparent',
+              borderBottomColor: 'transparent', borderBottomWidth: 0, }}
           />
         )
       },
