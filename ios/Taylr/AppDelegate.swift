@@ -32,7 +32,7 @@ struct Dependencies {
     let mixpanel: MixpanelProvider
     let intercom: IntercomProvider
     let segment: SegmentProvider
-    //let uxcam: UXCamProvider
+    let uxcam: UXCamProvider
     let layer: LayerService
     let digits: Digits
     let bridgeManager: BridgeManager // TODO: Deprecate me, be modular
@@ -66,9 +66,9 @@ struct Dependencies {
         mixpanel = MixpanelProvider(apiToken: config.mixpanel.token, launchOptions: launchOptions)
         intercom = IntercomProvider(config: config)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
-        //uxcam = UXCamProvider(apiKey: config.uxcamKey)
+        uxcam = UXCamProvider(apiKey: config.uxcamKey)
         analytics = Analytics(session: session)
-        analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, ouralabs, crashlytics])
+        analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         Analytics.defaultInstance = analytics
         
         // MARK: Setup 3rd party SDKs (used for receiving remote notifications and such)
