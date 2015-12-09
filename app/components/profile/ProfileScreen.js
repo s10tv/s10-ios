@@ -20,7 +20,7 @@ import { COLORS, SHEET } from '../../CommonStyles';
 import Loader from '../lib/Loader';
 import iconTextRow from '../lib/iconTextRow';
 import CountdownTimer from '../lib/CountdownTimer';
-
+import SoundcloudActivity from '../lib/SoundcloudActivity'
 const logger = new (require('../../../modules/Logger'))('ProfileScreen');
 const { height, width } = Dimensions.get('window');
 
@@ -307,12 +307,22 @@ class ProfileScreen extends Screen {
     })
 
     let activities = activityData.map((activity) => {
-      return <Activity
-        key={activity._id}
-        me={user}
-        connectedProfiles={connectedProfiles}
-        activeProfile={this.state.activeProfile}
-        activity={activity} />
+      if (this.state.activeProfile.integrationName == 'soundcloud')
+      {
+        return <SoundcloudActivity
+          key={activity._id}
+          me={user}
+          connectedProfiles={connectedProfiles}
+          activeProfile={this.state.activeProfile}
+          activity={activity} />
+      } else {
+        return <Activity
+          key={activity._id}
+          me={user}
+          connectedProfiles={connectedProfiles}
+          activeProfile={this.state.activeProfile}
+          activity={activity} />
+      }
     })
 
     let infoCard = null;
