@@ -13,6 +13,7 @@ import { connect } from 'react-redux/native';
 import Dimensions from 'Dimensions'
 import Screen from '../Screen';
 import { SCREEN_ME } from '../../constants';
+import BridgeManager from '../../../modules/BridgeManager';
 
 // constants
 const logger = new (require('../../../modules/Logger'))('MeScreen');
@@ -75,7 +76,8 @@ class MeScreen extends React.Component {
 
           <View style={styles.versionTextContainer}>
             <Text style={[styles.versionText, SHEET.innerContainer, SHEET.baseText]}>
-              { this.props.apphub.buildName }
+              { `v${BridgeManager.version()} | ${BridgeManager.build()}` +
+               ` | AH: ${this.props.apphub.buildName}` }
             </Text>
           </View>
         </ScrollView>
