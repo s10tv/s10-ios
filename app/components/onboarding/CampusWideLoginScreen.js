@@ -29,17 +29,22 @@ class CampusWideLoginScreen extends Screen {
   }
 
   onCWLLoginNavStateChange(navState) {
-    const cookieName = 'CASTGC';
+    const CASTGC = 'CASTGC';
+    const JSESSIONID = 'JSESSIONID';
+    const csjdk6 = 'csjdk6';
 
     if (!navState.loading && navState.title.length > 0) {
       logger.info('handling onCWLLoginNavStateChange');
 
       CookieManager.getAll((cookies, res) => {
-        if (cookies && cookies[cookieName]) {
-          this.props.ddp.call({
-            methodName: 'network/join',
-            params: [cookies[cookieName].value]
-          });
+        if (cookies && cookies[CASTGC]) {
+
+          if (cookies[JSESSIONID] && cookies[csjdk6]) {
+            this.props.ddp.call({
+              methodName: 'network/join',
+              params: [cookies[JSESSIONID].value, cookies[csjdk6].value]
+            });
+          }
 
           const route = Router.instance.getLinkServiceRoute();
           this.props.navigator.push(route);
@@ -49,7 +54,9 @@ class CampusWideLoginScreen extends Screen {
   }
 
   render() {
-    const url = 'https://cas.id.ubc.ca/ubc-cas/login';
+    const url = 'https://cas.id.ubc.ca/ubc-cas/login?TARGET=https%3A%2F%2F' +
+      'courses.students.ubc.ca%2Fcs%2Fsecure%2Flogin%3' +
+      'FIMGSUBMIT.x%3D29%26IMGSUBMIT.y%3D3%26IMGSUBMIT%3DIMGSUBMIT';
 
     if (!this.props.navigator) {
       return <Loader />
