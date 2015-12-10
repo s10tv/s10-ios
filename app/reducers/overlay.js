@@ -34,6 +34,7 @@ function dialog(state = defaultDialogState, action) {
 
     case 'DISPLAY_ERROR':
       return Object.assign({}, state, {
+        visible: true,
         title: action.title,
         message: action.message,
         buttons: null, // will default to 'okay button'
