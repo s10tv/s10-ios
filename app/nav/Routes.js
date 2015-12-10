@@ -70,6 +70,8 @@ class Router {
         return <TabNavigatorScreen
           navigator={navigator}
           upgrade={self.props.upgrade}
+          onFetchCourses={self.props.onFetchCourses}
+          onRemoveCourse={self.props.onRemoveCourse}
           onPressLogout={self.props.onPressLogout}
           onViewProfile={self.props.onViewProfile}
           onEditProfile={self.props.onEditProfile}
@@ -292,13 +294,34 @@ class Router {
       },
 
       getTitle() {
-        return 'Join Network'
+        return 'CWL'
       },
 
       renderLeftButton(navigator) {
         return self.getButton('Back', () => {
           navigator.parentNavigator.pop()
         });
+      },
+    }
+  }
+
+  getReloginForCourseFetchRoute() {
+    const self = this;
+    const CampusWideLoginScreen = require('../components/onboarding/CampusWideLoginScreen');
+
+    return {
+      renderScene(navigator) {
+        return <CampusWideLoginScreen
+          navigator={navigator}
+          onFinishedCWL={() => {
+            navigator.pop()
+            return self.props.onFetchCourses() // if there is an error, it will pop up error.
+          }}
+        />
+      },
+
+      getTitle() {
+        return 'UBC'
       },
     }
   }
@@ -311,6 +334,10 @@ class Router {
       renderScene(navigator) {
         return <CampusWideLoginScreen
           navigator={navigator}
+          onFinishedCWL={() => {
+            const route = self.getLinkServiceRoute();
+            navigator.push(route);
+          }}
         />
       },
 

@@ -22,6 +22,7 @@ const BANNER_HEIGHT = height / 4;
 
 // styles
 import networkCard from './networkCard';
+import myCourses from './myCourses';
 import renderMeHeader from './renderMeHeader';
 import MoreCard from './MoreCard';
 import HeaderBanner from '../lib/HeaderBanner';
@@ -31,7 +32,9 @@ import { SHEET, COLORS } from '../../CommonStyles';
 
 function mapStateToProps(state) {
   return {
+    ddp: state.ddp,
     me: state.me,
+    myCourses: state.myCourses,
     apphub: state.apphub,
     shouldShowUpgradeCard: state.shouldShowUpgradeCard,
   }
@@ -45,6 +48,7 @@ class MeScreen extends React.Component {
     apphub: PropTypes.object.isRequired,
     shouldShowUpgradeCard: PropTypes.bool.isRequired,
     upgrade: PropTypes.func.isRequired,
+    onFetchCourses: PropTypes.func.isRequired,
   };
 
   render() {
@@ -63,12 +67,16 @@ class MeScreen extends React.Component {
             { sectionTitle('MY SCHOOL') }
             { networkCard() }
 
+            { sectionTitle('MY COURSES') }
+            { myCourses(this.props.myCourses, this.props.onRemoveCourse) }
+
             { sectionTitle('MY HASHTAGS') }
             <HashtagCategory {...props} />
 
             { sectionTitle('MORE') }
             <MoreCard
               navigator={this.props.navigator}
+              onFetchCourses={this.props.onFetchCourses}
               shouldShowUpgradeCard={this.props.shouldShowUpgradeCard}
               upgrade={this.props.upgrade}
               onPressLogout={this.props.onPressLogout} />

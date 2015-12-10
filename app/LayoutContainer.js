@@ -4,6 +4,7 @@ import React, {
   View,
   Text,
   LinkingIOS,
+  AlertIOS,
   NativeModules,
   TouchableOpacity
 } from 'react-native';
@@ -15,6 +16,7 @@ let TSLayerService = React.NativeModules.TSLayerService;
 import { connect } from 'react-redux/native';
 import { FBSDKLoginManager } from 'react-native-fbsdklogin';
 import { FBSDKAccessToken } from 'react-native-fbsdkcore';
+import FechUBCClasses from 'ubc-classes';
 
 // internal dependencies
 import FullScreenNavigator from './nav/FullScreenNavigator';
@@ -260,6 +262,54 @@ class LayoutContainer extends React.Component {
     }
   }
 
+  onFetchCourses() {
+    fetch('https://courses.students.ubc.ca/cs/main?pname=regiregisteredcourses&tname=regiregisteredcourses', {
+      credentials: 'include'
+    })
+    .then((response) => response.text())
+    .then(responseText => {
+      const courses = new FechUBCClasses().scrape(responseText);
+      const promises = courses.map(course => {
+
+        // dont insert courses that are not lectures.
+        if (course.type !== 'Lecture') {
+          return Promise.resolve()
+        }
+
+        return this.props.ddp.call({ methodName: 'courses/add', params: [course] });
+      })
+
+      if (promises.length == 0) {
+        logger.warning(`NO classes were imported for userId=${this.props.ddp.currentUserId}`);
+      }
+
+      return Promise.all(promises);
+    })
+    .then(() => {
+      AlertIOS.alert('Success', 'Your courses are now imported.');
+    })
+    .catch(err => {
+      logger.error(err);
+      this.props.dispatch({
+        type: 'DISPLAY_ERROR',
+        title: 'Importing Classes',
+        message: 'There was a problem importing your classes :C Investigation is underway.',
+      });
+    })
+  }
+
+  onRemoveCourse(courseId) {
+    this.props.ddp.call({ methodName: 'courses/remove', params: [courseId] })
+    .catch(err => {
+      logger.error(err);
+      this.props.dispatch({
+        type: 'DISPLAY_ERROR',
+        title: 'Removing Course',
+        message: 'There was a problem removing your course. :C Investigation is underway.',
+      });
+    })
+  }
+
   /**
    * When a user clicks on a Facebook tile to link Facbeook, we want to leverage the FB SDK.
    */
@@ -378,6 +428,8 @@ class LayoutContainer extends React.Component {
           style={{ flex: 1 }}
           sceneStyle={{ paddingTop: 64 }}
           upgrade={this.upgrade.bind(this)}
+          onFetchCourses={this.onFetchCourses.bind(this)}
+          onRemoveCourse={this.onRemoveCourse.bind(this)}
           onPressLogin={this.onPressLogin.bind(this)}
           onPressLogout={this.onPressLogout.bind(this)}
           onUploadImage={this.onUploadImage.bind(this)}

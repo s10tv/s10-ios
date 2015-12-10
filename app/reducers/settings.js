@@ -20,7 +20,7 @@ function loggedIn(state = defaultLoggedIn, action) {
   }
 }
 
-function isActive(state = false, action) {
+function isActive(state = true, action) {
   switch (action.type) {
     case 'SET_IS_ACTIVE':
       return action.isActive;

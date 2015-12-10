@@ -6,6 +6,7 @@ import React, {
 
 import { connect } from 'react-redux/native';
 import CookieManager from 'react-native-cookies';
+import FechUBCClasses from 'ubc-classes';
 
 import { SCREEN_OB_CWL_LOGIN } from '../../constants';
 import Loader from '../lib/Loader';
@@ -25,7 +26,7 @@ class CampusWideLoginScreen extends Screen {
   static id = SCREEN_OB_CWL_LOGIN;
 
   static propTypes = {
-    navigator: PropTypes.object.required,
+    onFinishedCWL: PropTypes.func.required,
   }
 
   onCWLLoginNavStateChange(navState) {
@@ -37,18 +38,9 @@ class CampusWideLoginScreen extends Screen {
       logger.info('handling onCWLLoginNavStateChange');
 
       CookieManager.getAll((cookies, res) => {
-        if (cookies && cookies[CASTGC]) {
-
-          if (cookies[JSESSIONID] && cookies[csjdk6]) {
-            this.props.ddp.call({
-              methodName: 'network/join',
-              params: [cookies[JSESSIONID].value, cookies[csjdk6].value]
-            });
-          }
-
-          const route = Router.instance.getLinkServiceRoute();
-          this.props.navigator.push(route);
-        }
+         if (cookies && cookies[CASTGC] && cookies[JSESSIONID] && cookies[csjdk6]) {
+           this.props.onFinishedCWL();
+         }
       })
     }
   }

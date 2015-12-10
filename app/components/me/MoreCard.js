@@ -1,4 +1,5 @@
 import React, {
+  AlertIOS,
   Image,
   Text,
   View,
@@ -26,8 +27,20 @@ class MoreCard extends React.Component {
     Intercom.presentConversationList();
   }
 
-  render() {
+  onImportCourses() {
+    AlertIOS.alert(
+      `Import Courses`,
+      "We will need you to authenticate through UBC so we can get your course info.",
+      [
+        {text: 'Cancel', onPress: () => null },
+        {text: 'Okay', onPress: () => {
+          const route = Routes.instance.getReloginForCourseFetchRoute()
+          this.props.navigator.push(route);
+        }}
+    ])
+  }
 
+  render() {
     let optionalUpgradeCard = null
     if (this.props.shouldShowUpgradeCard) {
       optionalUpgradeCard = (
@@ -40,7 +53,11 @@ class MoreCard extends React.Component {
     return (
       <View>
         { optionalUpgradeCard }
-        
+
+        <TappableCard style={styles.card} onPress={ this.onImportCourses.bind(this)}>
+          <Text style={[SHEET.baseText]}>Import Courses</Text>
+        </TappableCard>
+
         <TappableCard style={styles.card} onPress={this.contactUs}>
           <Text style={[SHEET.baseText]}>Contact Us</Text>
         </TappableCard>
@@ -50,6 +67,7 @@ class MoreCard extends React.Component {
             logger.debug('pressed logout');
             this.props.onPressLogout()
 
+            // TODO(qimingfang): onlogout -> immediately reset nav stack.
             const route = Routes.instance.getLoginRoute();
             this.props.navigator.parentNavigator.push(route)
           }}>
