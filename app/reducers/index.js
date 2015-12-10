@@ -12,6 +12,7 @@ import { showNavBar } from './nav';
 import layer from './layer/index';
 import { apphub, shouldShowUpgradeCard } from './apphub';
 import currentScreen from './currentScreen';
+import { isConnected, shouldShowNetworkBanner }  from './isConnected';
 
 // ddp
 import me from './ddp/me';
@@ -26,6 +27,8 @@ export {
   loggedIn,
   nextMatchDate,
   isActive,
+  isConnected,
+  shouldShowNetworkBanner,
   isCWLRequired,
   hasLoggedInThroughCWL,
 
