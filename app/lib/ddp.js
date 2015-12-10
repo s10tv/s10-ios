@@ -229,6 +229,23 @@ class DDPService extends TSDDPClient {
     })
   }
 
+  _subscribeMyTags(dispatch) {
+    this.subscribe({ pubName: 'my-courses' })
+    .then((subId) => {
+      this.collections.observe(() => {
+        return this.collections.mycourses.findOne({});
+      }).subscribe(user => {
+        if (user && user.courses) {
+          dispatch({
+            type: 'SET_MY_COURSES',
+            mycourses: user.courses,
+          })
+        }
+      });
+    })
+  }
+
+
   _subscribeCandidates(dispatch) {
     this.subscribe({ pubName: 'candidate-discover' })
     .then(() => {
