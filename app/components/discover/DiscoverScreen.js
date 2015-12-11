@@ -89,7 +89,7 @@ class DiscoverScreen extends Screen {
                   isFromDiscoveryScreen: true,
                 });
 
-                // this.props.navigator.parentNavigator.push(route)
+                this.props.navigator.parentNavigator.push(route)
               }}
               style={{ flex: 1}}
               underlayColor={'transparent'}>

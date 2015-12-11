@@ -14,8 +14,10 @@ import { connect } from 'react-redux/native';
 import { SCREEN_PROFILE } from '../../constants';
 import Screen from '../Screen';
 
+import renderCommonSection from './renderCommonSection';
 import { Card } from '../lib/Card';
 import HeaderBanner from '../lib/HeaderBanner';
+import sectionTitle from '../lib/sectionTitle';
 import { COLORS, SHEET } from '../../CommonStyles';
 import Loader from '../lib/Loader';
 import iconTextRow from '../lib/iconTextRow';
@@ -26,6 +28,7 @@ const { height, width } = Dimensions.get('window');
 
 function mapStateToProps(state) {
   return {
+    me: state.me,
     ddp: state.ddp,
   }
 }
@@ -307,6 +310,8 @@ class ProfileScreen extends Screen {
     })
 
     let activities = activityData.map((activity) => {
+
+      // TODO consolidate this into one renderer.
       if (this.state.activeProfile.integrationName == 'soundcloud')
       {
         return <SoundcloudActivity
@@ -325,21 +330,35 @@ class ProfileScreen extends Screen {
       }
     })
 
+    const commonSection = renderCommonSection(this.props.me, user);
+
     let infoCard = null;
     if (this.state.activeProfile.id == 'taylr') {
-      infoCard = (
-        <Card style={styles.card}>
-          <View style={{ marginBottom: 10 }}>
-            {iconTextRow(require('../img/ic-mortar.png'), user.major)}
-            {iconTextRow(require('../img/ic-house.png'), user.hometown)}
-          </View>
+      let aboutSection = !user.about ? null : (
+        <View>
           <View style={SHEET.separator} />
-
           <View style={{ marginTop: 10 }}>
-            <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About {user.firstName}</Text>
             <Text stlye={[SHEET.baseText]}>{user.about}</Text>
           </View>
-        </Card>
+        </View>
+      )
+
+      infoCard = (
+        <View>
+          { commonSection }
+
+          { sectionTitle('ABOUT') }
+          <Card style={styles.card}>
+            <View style={{ marginBottom: 10 }}>
+              {iconTextRow(require('../img/ic-mortar.png'), user.major)}
+              {iconTextRow(require('../img/ic-house.png'), user.hometown)}
+            </View>
+
+            { aboutSection }
+
+          </Card>
+
+        </View>
       )
     } else {
       profile = connectedProfiles[this.state.activeProfile.id]
