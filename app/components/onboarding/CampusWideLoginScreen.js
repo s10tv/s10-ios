@@ -23,10 +23,24 @@ function mapStateToProps(state) {
 
 class CampusWideLoginScreen extends Screen {
 
+  constructor(props = {}) {
+    super(props);
+    this.state = { loading: false };
+  }
+
   static id = SCREEN_OB_CWL_LOGIN;
 
   static propTypes = {
     onFinishedCWL: PropTypes.func.required,
+  }
+
+  componentWillMount() {
+    if (this.props.clearCookies) {
+      this.setState({ loading: true })
+      CookieManager.clearAll(() => {
+        this.setState({ loading: false })
+      })
+    }
   }
 
   onCWLLoginNavStateChange(navState) {
@@ -50,7 +64,7 @@ class CampusWideLoginScreen extends Screen {
       'courses.students.ubc.ca%2Fcs%2Fsecure%2Flogin%3' +
       'FIMGSUBMIT.x%3D29%26IMGSUBMIT.y%3D3%26IMGSUBMIT%3DIMGSUBMIT';
 
-    if (!this.props.navigator) {
+    if (!this.props.navigator || this.state.loading) {
       return <Loader />
     }
 
