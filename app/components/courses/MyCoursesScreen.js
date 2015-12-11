@@ -12,12 +12,14 @@ import React, {
 import { connect } from 'react-redux/native';
 import { SHEET } from '../../CommonStyles'
 import { formatCourse } from '../courses/coursesCommon'
-import Routes from '../../nav/Routes.js'
+import Routes from '../../nav/Routes'
+import { activeCourseCard, courseActionCard } from './coursesCommon'
 const logger = new (require('../../../modules/Logger'))('MyCoursesScreen')
 
 function mapStateToProps(state) {
   return {
     courses: state.myCourses,
+    ddp: state.ddp,
   }
 }
 
@@ -31,7 +33,7 @@ class MyCoursesScreen extends React.Component {
   render() {
     let importCourseButton = null;
     if (this.props.isOnboarding) {
-      importCourseButton = renderActionButton('Import Courses', () => {
+      importCourseButton = courseActionCard('Import Courses', () => {
         AlertIOS.alert(
           'Import courses',
           'We will be importing your course from CWL.',
@@ -47,41 +49,18 @@ class MyCoursesScreen extends React.Component {
       <View style={SHEET.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={[SHEET.baseText, styles.headerReminderText]}>We compiled a list of courses that you take, please make sure we did not make any mistakes.</Text>
-            <View style={[SHEET.innerContainer, styles.courseCardsContainer]}>
+            <View style={SHEET.innerContainer}>
               { this.props.courses.loadedCourses.map(course => {
-                return this._renderCourseCard(course);
+                return activeCourseCard(course, true, () => this._removeCourse(course))
               })}
 
               { importCourseButton }
-              { renderActionButton('Add new course...', () => {
+              { courseActionCard('Add new course...', () => {
                 const route = Routes.instance.getAllCoursesListRoute();
                 this.props.navigator.push(route);
               })}
             </View>
         </ScrollView>
-      </View>
-    )
-  }
-
-  _renderCourseCard(course) {
-    return (
-      <View style={styles.courseCardContainer} key={course._id}>
-        <View style={styles.courseCardHeaderContainer}>
-          <View style={styles.courseCardLeftSideContainer}>
-            <Image
-              style={styles.courseIcon}
-              source={require('../img/ic-class-icon.png')} />
-            <Text style={[SHEET.baseText, styles.courseCardTitle]}>{formatCourse(course.dept, course.course)}</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.courseCardArrowButton}
-            onPress={() => this._removeCourse(course)}>
-            <Image
-              style={styles.courseCardArrowIcon}
-              source={require('../img/ic-cross.png')} />
-          </TouchableOpacity>
-        </View>
-        <Text style={[SHEET.baseText, styles.courseDescriptionText]}>{course.description}</Text>
       </View>
     )
   }
@@ -99,91 +78,14 @@ class MyCoursesScreen extends React.Component {
   }
 }
 
-function renderActionButton(text, onPress) {
-  return (
-    <TouchableOpacity style={styles.courseCardContainer} onPress={onPress}>
-      <View style={styles.courseCardHeaderContainer}>
-        <View style={styles.courseCardLeftSideContainer}>
-          <Image
-            style={styles.grayCourseIcon}
-            source={require('../img/ic-class-icon.png')} />
-          <Text style={[SHEET.baseText, styles.courseCardTitle, styles.addNewCourseText]}>{text}</Text>
-        </View>
-        <View style={styles.addNewCourseIconWrapper}>
-          <Image
-            style={styles.addNewCourseIcon}
-            source={require('../img/ic-add.png')} />
-        </View>
-      </View>
-    </TouchableOpacity>
-  )
-}
 
 var styles = StyleSheet.create({
-  courseIcon: {
-    width: 26,
-    height: 20,
-    tintColor: '#000000',
-  },
-  grayCourseIcon: {
-    width: 26,
-    height: 20,
-    tintColor: '#9B9B9B',
-  },
   headerReminderText: {
     marginTop: 10,
     fontSize: 18,
     color: '#4A4A4A',
     textAlign: 'center',
   },
-  courseCardContainer: {
-    flexDirection: 'column',
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    marginVertical: 5,
-    borderRadius: 3,
-    padding: 1
-  },
-  courseCardHeaderContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  courseCardLeftSideContainer: {
-    flexDirection: 'row',
-    padding: 10,
-    alignSelf: 'center',
-  },
-  courseCardTitle: {
-    marginLeft: 7,
-    fontSize: 16,
-  },
-  addNewCourseText: {
-    color: '#9B9B9B'
-  },
-  addNewCourseIcon: {
-    width: 28,
-    height: 28,
-  },
-  addNewCourseIconWrapper: {
-    alignSelf: 'center',
-    padding: 8,
-  },
-  courseCardArrowButton: {
-    alignSelf: 'center',
-    padding: 15,
-    borderRadius: 3,
-  },
-  courseCardArrowIcon: {
-    width: 15,
-    height: 15,
-    tintColor: '#737373',
-  },
-  courseDescriptionText: {
-    fontSize: 11,
-    paddingHorizontal: 10,
-    paddingBottom: 10,
-  }
 });
 
-exports.renderActionButton = renderActionButton;
 exports.MyCoursesScreen = connect(mapStateToProps)(MyCoursesScreen)
