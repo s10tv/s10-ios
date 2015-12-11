@@ -10,8 +10,9 @@ import React, {
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
-import { SHEET, COLORS } from '../../CommonStyles'
+import { SHEET } from '../../CommonStyles'
 import { formatCourse } from '../courses/coursesCommon'
+import Routes from '../../nav/Routes.js'
 const logger = new (require('../../../modules/Logger'))('MyCoursesScreen')
 
 function mapStateToProps(state) {
@@ -28,34 +29,15 @@ class MyCoursesScreen extends React.Component {
   };
 
   render() {
-    logger.info(`courses=${JSON.stringify(this.props.courses)}`)
-    var addNewCourse = (
-      <TouchableOpacity style={styles.courseCardContainer} onPress={this._addNewCourse}>
-        <View style={styles.courseCardHeaderContainer}>
-          <View style={styles.courseCardLeftSideContainer}>
-            <Image
-              style={styles.grayCourseIcon}
-              source={require('../img/ic-class-icon.png')} />
-            <Text style={[SHEET.baseText, styles.courseCardTitle, styles.addNewCourseText]}>Add new course...</Text>
-          </View>
-          <View style={styles.addNewCourseIconWrapper}>
-            <Image
-              style={styles.addNewCourseIcon}
-              source={require('../img/ic-add.png')} />
-          </View>
-        </View>
-      </TouchableOpacity>
-    )
-
     return (
       <View style={SHEET.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={[SHEET.baseText, styles.headerReminderText]}>We compiled a list of courses that you take, please make sure we didn't make any mistakes.</Text>
             <View style={[SHEET.innerContainer, styles.courseCardsContainer]}>
-              { this.props.courses.map(course => {
+              { this.props.courses.loadedCourses.map(course => {
                 return this._renderCourseCard(course);
               })}
-              {addNewCourse}
+              <AddNewClassCard navigator={this.props.navigator} />
             </View>
         </ScrollView>
       </View>
@@ -97,8 +79,32 @@ class MyCoursesScreen extends React.Component {
     )
   }
 
-  _addNewCourse() {
+}
 
+class AddNewClassCard extends React.Component {
+  render() {
+    return (
+      <TouchableOpacity style={styles.courseCardContainer} onPress={() => this._addNewCourse()}>
+        <View style={styles.courseCardHeaderContainer}>
+          <View style={styles.courseCardLeftSideContainer}>
+            <Image
+              style={styles.grayCourseIcon}
+              source={require('../img/ic-class-icon.png')} />
+            <Text style={[SHEET.baseText, styles.courseCardTitle, styles.addNewCourseText]}>Add new course...</Text>
+          </View>
+          <View style={styles.addNewCourseIconWrapper}>
+            <Image
+              style={styles.addNewCourseIcon}
+              source={require('../img/ic-add.png')} />
+          </View>
+        </View>
+      </TouchableOpacity>
+    )
+  }
+
+  _addNewCourse() {
+    const route = Routes.instance.getAllCoursesListRoute();
+    this.props.navigator.push(route);
   }
 }
 
@@ -149,7 +155,6 @@ var styles = StyleSheet.create({
   },
   addNewCourseIconWrapper: {
     alignSelf: 'center',
-    //borderRadius: 3,
     padding: 8,
   },
   courseCardArrowButton: {
@@ -170,3 +175,4 @@ var styles = StyleSheet.create({
 });
 
 export default connect(mapStateToProps)(MyCoursesScreen)
+export { AddNewClassCard }

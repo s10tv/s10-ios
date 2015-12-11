@@ -68,7 +68,7 @@ class MeScreen extends React.Component {
             { networkCard() }
 
             { sectionTitle('MY COURSES') }
-            { myCourses(this.props.myCourses, this.props.onRemoveCourse, this.props.navigator) }
+            { myCourses(this.props.myCourses, this.props.navigator) }
 
             { sectionTitle('MY HASHTAGS') }
             <HashtagCategory {...props} />

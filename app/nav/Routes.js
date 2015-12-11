@@ -280,6 +280,22 @@ class Router {
     }
   }
 
+  getAllCoursesListRoute() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let AddNewCourseScreen = require('../components/courses/AddNewCourse');
+        return <AddNewCourseScreen
+          navigator={navigator}
+        />
+      },
+
+      getTitle() {
+        return 'Add New Course'
+      }
+    }
+  }
+
   // Onboarding
   getOnboardingRoute() {
     const self = this;

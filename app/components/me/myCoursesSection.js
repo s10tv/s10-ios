@@ -11,11 +11,19 @@ import Loader from '../lib/Loader';
 import { SHEET, COLORS } from '../../CommonStyles'
 import Routes from '../../nav/Routes'
 import { formatCourse } from '../courses/coursesCommon'
+import { AddNewClassCard } from '../courses/MyCoursesScreen'
 const logger = new (require('../../../modules/Logger'))('renderCourse');
 
-function renderCourses(courses, onRemoveCourse, navigator) {
-  if (courses.length == 0) {
+function renderCourses(courses, navigator) {
+
+  if (!courses.loaded) {
     return (<Loader />)
+  }
+
+  if (courses.loadedCourses.length == 0) {
+    return (
+      <AddNewClassCard navigator={navigator} />
+    )
   }
 
   return (
@@ -24,7 +32,7 @@ function renderCourses(courses, onRemoveCourse, navigator) {
         navigator.push(route);
       }}>
       <View style={styles.courseContainer}>
-        {courses.map(course => { return renderCourseTag(course) })}
+        {courses.loadedCourses.map(course => { return renderCourseTag(course) })}
       </View>
     </TappableCard>
   )
