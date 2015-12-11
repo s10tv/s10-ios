@@ -24,18 +24,8 @@ export function activeCourseCard(course, isRemovable, onPress) {
         </TouchableOpacity>
       ) : null
 
-  return (
-    <View style={courseCardStyles.courseCardContainer} key={course._id}>
-      <View style={courseCardStyles.courseCardHeaderContainer}>
-        <View style={courseCardStyles.courseCardLeftSideContainer}>
-          <Image
-            style={courseCardStyles.courseIcon}
-            source={require('../img/ic-class-icon.png')} />
-          <Text style={[SHEET.baseText, courseCardStyles.courseCardTitle]}>{formatCourse(course.dept, course.course)}</Text>
-        </View>
-        {courseCardRemoveButton}
-      </View>
-      <Text style={[SHEET.baseText, courseCardStyles.courseDescriptionText]}>{course.description}</Text>
+  var usersInCourseSection = (!course.usersInCourse || course.usersInCourse.length == 0) ? null : (
+    <View>
       <View style={[SHEET.separator, courseCardStyles.separator]} />
       <View style={courseCardStyles.courseCardAvatarContainer}>
         {course.usersInCourse.map(courseUser => {
@@ -48,6 +38,22 @@ export function activeCourseCard(course, isRemovable, onPress) {
           )
         })}
       </View>
+    </View>
+  );
+
+  return (
+    <View style={courseCardStyles.courseCardContainer} key={course._id}>
+      <View style={courseCardStyles.courseCardHeaderContainer}>
+        <View style={courseCardStyles.courseCardLeftSideContainer}>
+          <Image
+            style={courseCardStyles.courseIcon}
+            source={require('../img/ic-class-icon.png')} />
+          <Text style={[SHEET.baseText, courseCardStyles.courseCardTitle]}>{formatCourse(course.dept, course.course)}</Text>
+        </View>
+        {courseCardRemoveButton}
+      </View>
+      <Text style={[SHEET.baseText, courseCardStyles.courseDescriptionText]}>{course.description}</Text>
+      { usersInCourseSection }
     </View>
   )
 }

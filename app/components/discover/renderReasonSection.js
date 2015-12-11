@@ -24,7 +24,6 @@ import React, {
 import { COLORS } from '../../CommonStyles';
 import SimilarityCalculator from '../../util/SimilarityCalculator';
 
-
 function renderTag(tag) {
   return (
     <View style={styles.tag}>
