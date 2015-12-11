@@ -267,7 +267,7 @@ class Router {
     const self = this;
     return {
       renderScene(navigator) {
-        let MyCoursesScreen = require('../components/courses/MyCoursesScreen');
+        let MyCoursesScreen = require('../components/courses/MyCoursesScreen').MyCoursesScreen;
         return <MyCoursesScreen
           navigator={navigator}
           onRemoveCourse={self.props.onRemoveCourse}

@@ -32,7 +32,7 @@ class MyCoursesScreen extends React.Component {
     return (
       <View style={SHEET.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-            <Text style={[SHEET.baseText, styles.headerReminderText]}>We compiled a list of courses that you take, please make sure we didn't make any mistakes.</Text>
+            <Text style={[SHEET.baseText, styles.headerReminderText]}>We compiled a list of courses that you take, please make sure we did not make any mistakes.</Text>
             <View style={[SHEET.innerContainer, styles.courseCardsContainer]}>
               { this.props.courses.loadedCourses.map(course => {
                 return this._renderCourseCard(course);
@@ -174,5 +174,5 @@ var styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps)(MyCoursesScreen)
-export { AddNewClassCard }
+exports.AddNewClassCard = AddNewClassCard;
+exports.MyCoursesScreen = connect(mapStateToProps)(MyCoursesScreen)
