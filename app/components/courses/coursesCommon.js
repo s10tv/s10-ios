@@ -6,12 +6,25 @@ import React, {
   View,
 } from 'react-native';
 
-import { SHEET } from '../../CommonStyles';
+import { SHEET, COLORS } from '../../CommonStyles';
+let logger = new (require('../../../modules/Logger'))('coursesCommon');
+
+// MISC
+
+export function giveUsersInCoursesWithoutMyAvatar(course, me) {
+  if (course.usersInCourse) {
+    return course.usersInCourse.filter(user => {
+      return me.userId != user.userId;
+    })
+  }
+}
 
 export function formatCourse(dept, course) {
   var lowercaseDept = dept.toLowerCase()
   return `${lowercaseDept.charAt(0).toUpperCase() + lowercaseDept.slice(1)} ${course}`
 }
+
+// CARDS
 
 export function activeCourseCard(course, isRemovable, onPress) {
   var courseCardRemoveButton = isRemovable ? (
@@ -36,18 +49,7 @@ export function activeCourseCard(course, isRemovable, onPress) {
         {courseCardRemoveButton}
       </View>
       <Text style={[SHEET.baseText, courseCardStyles.courseDescriptionText]}>{course.description}</Text>
-      <View style={[SHEET.separator, courseCardStyles.separator]} />
-      <View style={courseCardStyles.courseCardAvatarContainer}>
-        {course.usersInCourse.map(courseUser => {
-          return (
-            <View key={courseUser.userId}>
-              <Image
-              source={{ uri: courseUser.avatarUrl }}
-              style={courseCardStyles.courseCardAvatar} />
-            </View>
-          )
-        })}
-      </View>
+      {separatorAndUserAvatars(course)}
     </View>
   )
 }
@@ -71,6 +73,7 @@ export function inactiveCourseCard(course, onPress) {
         </TouchableOpacity>
       </View>
       <Text style={[SHEET.baseText, courseCardStyles.courseDescriptionText, courseCardStyles.addNewCourseText]}>{course.description}</Text>
+      {separatorAndUserAvatars(course)}
     </View>
   )
 }
@@ -92,6 +95,54 @@ export function courseActionCard(text, onPress) {
         </View>
       </View>
     </TouchableOpacity>
+  )
+}
+
+// CARD'S SMALLER COMPONENTS
+
+function separatorAndUserAvatars(course) {
+  if (course.usersInCourse) {
+    return course.usersInCourse.length == 0 ? null :
+      (
+        <View>
+          <View style={[SHEET.separator, courseCardStyles.separator]} />
+          <View style={courseCardStyles.courseCardAvatarContainer}>
+            {userAvatars(course)}
+          </View>
+        </View>
+      )
+  }
+}
+
+function userAvatars(course) {
+  var userAvatar = function(courseUser) {
+    return (
+      <View key={courseUser.userId}>
+        <Image
+        source={{ uri: courseUser.avatarUrl }}
+        style={courseCardStyles.courseCardAvatar} />
+      </View>
+    )
+  }
+
+  let maxRenderedAvatarCount = 3;
+  let usersInCourseCount = course.usersInCourse.length;
+  if (course.usersInCourse.length > maxRenderedAvatarCount) {
+    return course.usersInCourse.slice(0, maxRenderedAvatarCount).map(courseUser => {
+      return userAvatar(courseUser)
+    }).concat([moreUsersCircle(usersInCourseCount - maxRenderedAvatarCount)]);
+  } else {
+    return course.usersInCourse.map(courseUser => {
+      return userAvatar(courseUser)
+    });
+  }
+}
+
+function moreUsersCircle(numOfMoreUsers) {
+  return (
+    <View style={[courseCardStyles.courseCardAvatar, courseCardStyles.courseCardMoreUsersCircle]}>
+      <Text numberOfLines={1} style={[SHEET.baseText, courseCardStyles.courseCardMoreUsersText]} allowFontScaling={true}>+{numOfMoreUsers}</Text>
+    </View>
   )
 }
 
@@ -136,7 +187,7 @@ var courseCardStyles = StyleSheet.create({
   },
   addNewCourseIconWrapper: {
     alignSelf: 'center',
-    padding: 8,
+    padding: 10,
   },
   courseCardRemoveButton: {
     alignSelf: 'center',
@@ -155,7 +206,7 @@ var courseCardStyles = StyleSheet.create({
   },
   addNewCourseButton: {
     alignSelf: 'center',
-    padding: 8,
+    padding: 10,
   },
   separator: {
     marginHorizontal: 10,
@@ -171,8 +222,18 @@ var courseCardStyles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    marginHorizontal: 3,
+    marginLeft: 6,
     borderWidth: 1,
     borderColor: '#737373',
   },
+  courseCardMoreUsersCircle: {
+    backgroundColor: COLORS.background,
+    overflow: 'hidden',
+    justifyContent: 'center',
+  },
+  courseCardMoreUsersText: {
+    fontSize: 11,
+    textAlign: 'center',
+    marginBottom: 1,
+  }
 });

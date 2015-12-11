@@ -10,20 +10,21 @@ import React, {
 import { connect } from 'react-redux/native';
 import { SHEET } from '../../CommonStyles';
 import { Card } from '../lib/Card';
-import { formatCourse } from '../courses/coursesCommon';
 import AllCoursesListView from '../lib/AllCoursesListView';
-import { inactiveCourseCard } from './coursesCommon'
+import { inactiveCourseCard, giveUsersInCoursesWithoutMyAvatar } from './coursesCommon'
 const logger = new (require('../../../modules/Logger'))('AddNewCourseScreen')
 
 function mapStateToProps(state) {
   return {
-    ddp: state.ddp
+    ddp: state.ddp,
+    me: state.me
   }
 }
 
 class AddNewCourseScreen extends React.Component {
 
   renderCourse(course) {
+    course.usersInCourse = giveUsersInCoursesWithoutMyAvatar(course, this.props.me);
     return inactiveCourseCard(course, () => {
       try {
         this.props.ddp.call({ methodName: 'courses/add', params:[course] })

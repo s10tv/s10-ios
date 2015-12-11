@@ -11,15 +11,15 @@ import React, {
 
 import { connect } from 'react-redux/native';
 import { SHEET } from '../../CommonStyles'
-import { formatCourse } from '../courses/coursesCommon'
+import { formatCourse, giveUsersInCoursesWithoutMyAvatar, activeCourseCard, courseActionCard } from '../courses/coursesCommon'
 import Routes from '../../nav/Routes'
-import { activeCourseCard, courseActionCard } from './coursesCommon'
 const logger = new (require('../../../modules/Logger'))('MyCoursesScreen')
 
 function mapStateToProps(state) {
   return {
     courses: state.myCourses,
     ddp: state.ddp,
+    me: state.me
   }
 }
 
@@ -51,6 +51,7 @@ class MyCoursesScreen extends React.Component {
             <Text style={[SHEET.baseText, styles.headerReminderText]}>We compiled a list of courses that you take, please make sure we did not make any mistakes.</Text>
             <View style={SHEET.innerContainer}>
               { this.props.courses.loadedCourses.map(course => {
+                course.usersInCourse = giveUsersInCoursesWithoutMyAvatar(course, this.props.me);
                 return activeCourseCard(course, true, () => this._removeCourse(course))
               })}
 
