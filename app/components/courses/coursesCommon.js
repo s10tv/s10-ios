@@ -51,7 +51,7 @@ export function activeCourseCard(course, isRemovable, onPress) {
       <Text style={[SHEET.baseText, courseCardStyles.courseDescriptionText]}>{course.description}</Text>
       {separatorAndUserAvatars(course)}
     </View>
-  )
+  );
 }
 
 export function inactiveCourseCard(course, onPress) {

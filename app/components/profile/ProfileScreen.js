@@ -15,6 +15,7 @@ import { SCREEN_PROFILE } from '../../constants';
 import Screen from '../Screen';
 
 import renderCommonSection from './renderCommonSection';
+import { activeCourseCard } from '../courses/coursesCommon';
 import { Card } from '../lib/Card';
 import HeaderBanner from '../lib/HeaderBanner';
 import sectionTitle from '../lib/sectionTitle';
@@ -275,6 +276,8 @@ class ProfileScreen extends Screen {
       return <Loader />
     }
 
+    logger.debug(JSON.stringify(user));
+
     let connectedProfiles = {};
 
     let profiles = null;
@@ -355,8 +358,13 @@ class ProfileScreen extends Screen {
             </View>
 
             { aboutSection }
-
           </Card>
+
+          { sectionTitle('COURSES') }
+          { user.courses.map(course => {
+            course.usersInCourse = [];
+            return activeCourseCard(course, false, null)
+          })}
 
         </View>
       )
