@@ -168,7 +168,7 @@ class LayoutContainer extends React.Component {
 
     TSLayerService.deauthenticateAsync() // TODO(qimingfang): this can throw if already connected.
     .catch(err => {
-      logger.warning(err);
+      logger.warning(JSOn.stringify(err));
     });
 
     this.props.ddp.logout()
