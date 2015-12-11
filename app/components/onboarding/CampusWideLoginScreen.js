@@ -52,9 +52,9 @@ class CampusWideLoginScreen extends Screen {
       logger.info('handling onCWLLoginNavStateChange');
 
       CookieManager.getAll((cookies, res) => {
-         if (cookies && cookies[CASTGC] && cookies[JSESSIONID] && cookies[csjdk6]) {
+         //if (cookies && cookies[CASTGC] && cookies[JSESSIONID] && cookies[csjdk6]) {
            this.props.onFinishedCWL();
-         }
+         //}
       })
     }
   }

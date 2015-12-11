@@ -2,12 +2,13 @@ import React, {
   ListView,
   View,
   Text,
+  StyleSheet,
 } from 'react-native';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 import SearchBar from 'react-native-search-bar';
 import Loader from './Loader';
-
+import { SHEET } from '../../CommonStyles'
 const logger = new (require('../../../modules/Logger'))('AllCoursesListView');
 
 class AllCoursesListView extends React.Component {
@@ -60,7 +61,7 @@ class AllCoursesListView extends React.Component {
       })
     })
     .catch(err => {
-      logger.warning(JSON.stringify(err));
+      logger.error(err);
     })
   }
 
@@ -78,12 +79,13 @@ class AllCoursesListView extends React.Component {
         <SearchBar
           ref='searchBar'
           text={this.state.searchText}
-          style={{ height: 50 }}
+          style={styles.searchBar}
           placeholder={'Search'}
           hideBackground={false}
           onChangeText={(text) => this.search.bind(this)(text)} />
 
         <ListView
+          style={SHEET.innerContainer}
           distanceToLoadMore = {0}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
           dataSource={this.state.dataSource}
@@ -95,5 +97,11 @@ class AllCoursesListView extends React.Component {
     )
   }
 }
+
+var styles = StyleSheet.create({
+  searchBar: {
+    height: 50,
+  },
+});
 
 export default AllCoursesListView;

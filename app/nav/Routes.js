@@ -281,10 +281,9 @@ class Router {
   }
 
   getAllCoursesListRoute() {
-    const self = this;
     return {
       renderScene(navigator) {
-        let AddNewCourseScreen = require('../components/courses/AddNewCourse');
+        let AddNewCourseScreen = require('../components/courses/AddNewCourseScreen');
         return <AddNewCourseScreen
           navigator={navigator}
         />

@@ -10,18 +10,16 @@ import { TappableCard } from '../lib/Card';
 import Loader from '../lib/Loader';
 import { SHEET, COLORS } from '../../CommonStyles'
 import Routes from '../../nav/Routes'
-import { formatCourse } from '../courses/coursesCommon'
-import { renderActionButton } from '../courses/MyCoursesScreen'
-const logger = new (require('../../../modules/Logger'))('renderCourse');
+import { formatCourse, courseActionCard } from '../courses/coursesCommon'
+const logger = new (require('../../../modules/Logger'))('myCoursesCard');
 
 function renderCourses(courses, navigator) {
-
   if (!courses.loaded) {
     return (<Loader />)
   }
 
-  if (courses.loadedCourses.length == 0) {
-    return renderActionButton('Add new course...', () => {
+  if (courses.loaded && courses.loadedCourses.length == 0) {
+    return courseActionCard('Add new course...', () => {
       const route = Routes.instance.getAllCoursesListRoute();
       navigator.push(route);
     })
@@ -59,6 +57,7 @@ var styles = StyleSheet.create({
     marginVertical: -5,
     alignItems: 'flex-start',
   },
+
   courseTag: {
     backgroundColor: COLORS.taylr,
     padding: 7,
