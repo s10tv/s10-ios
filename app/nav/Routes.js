@@ -313,6 +313,7 @@ class Router {
       renderScene(navigator) {
         return <CampusWideLoginScreen
           navigator={navigator}
+          clearCookies={true}
           onFinishedCWL={() => {
             navigator.pop()
             return self.props.onFetchCourses() // if there is an error, it will pop up error.
@@ -334,6 +335,7 @@ class Router {
       renderScene(navigator) {
         return <CampusWideLoginScreen
           navigator={navigator}
+          clearCookies={true}
           onFinishedCWL={() => {
             const route = self.getLinkServiceRoute();
             navigator.push(route);

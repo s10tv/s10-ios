@@ -3,6 +3,7 @@ import React, {
   Component,
   View,
   Text,
+  NetInfo,
   LinkingIOS,
   AlertIOS,
   NativeModules,
@@ -22,6 +23,7 @@ import FechUBCClasses from 'ubc-classes';
 import FullScreenNavigator from './nav/FullScreenNavigator';
 import OverlayLoader from './components/lib/OverlayLoader';
 import PopupDialog from './components/lib/PopupDialog';
+import NetworkStatusOverlay from './components/lib/NetworkStatusOverlay';
 import Session from '../native_modules/Session';
 import Intercom from '../modules/Intercom';
 import Analytics from '../modules/Analytics';
@@ -37,6 +39,8 @@ function mapStateToProps(state) {
     ddp: state.ddp,
     showOverlayLoader: state.showOverlayLoader,
     dialog: state.dialog,
+    isConnected: state.isConnected,
+    shouldShowNetworkBanner: state.shouldShowNetworkBanner,
   }
 }
 
@@ -48,6 +52,11 @@ class LayoutContainer extends React.Component {
   }
 
   componentWillMount() {
+    this._setupNetinfo()
+    this._setupDDP()
+  }
+
+  _setupDDP() {
     this.props.ddp.initialize()
     .then(() => {
       // subscribe to settings before we log in
@@ -126,6 +135,31 @@ class LayoutContainer extends React.Component {
         default:
           logger.error(err);
       }
+    })
+  }
+
+  _setupNetinfo() {
+    NetInfo.isConnected.fetch().done((isConnected) => {
+      this._handleConnectivityChange(isConnected);
+    })
+
+    NetInfo.isConnected.addEventListener('change', this._handleConnectivityChange.bind(this))
+  }
+
+  _handleConnectivityChange(isConnected) {
+    logger.debug(`Network isConnected is now ${isConnected}`)
+
+    // if we change from previously unconnected to internet to now connected
+    if (!this.props.isConnected && isConnected) {
+      logger.debug(`resubscribing as a result of regaining network`)
+
+      // reconnect to DDP
+      this._setupDDP()
+    }
+
+    this.props.dispatch({
+      type: 'CHANGE_IS_CONNECTED',
+      isConnected: isConnected,
     })
   }
 
@@ -409,9 +443,19 @@ class LayoutContainer extends React.Component {
     }
   }
 
+  closeNetworkConnectingPopup() {
+    this.props.dispatch({
+      type: 'HIDE_BANNER',
+    })
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <NetworkStatusOverlay
+          isVisible={this.props.shouldShowNetworkBanner}
+          closePopup={this.closeNetworkConnectingPopup.bind(this)}/>
+
         <OverlayLoader isVisible={this.props.showOverlayLoader} />
 
         <PopupDialog
