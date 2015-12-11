@@ -370,7 +370,7 @@ class Router {
           navigator={navigator}
           clearCookies={true}
           onFinishedCWL={() => {
-            const route = self.getLinkServiceRoute();
+            const route = self.getAddCourseDuringOnboarding();
             navigator.push(route);
           }}
         />
@@ -379,6 +379,28 @@ class Router {
       getTitle() {
         return 'CWL'
       },
+    }
+  }
+
+  getAddCourseDuringOnboarding() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let MyCoursesScreen = require('../components/courses/MyCoursesScreen').MyCoursesScreen;
+        return <MyCoursesScreen
+          navigator={navigator}
+          isOnboarding={true}
+          onFetchCourses={self.props.onFetchCourses}
+          onRemoveCourse={self.props.onRemoveCourse}
+        />
+      },
+
+      renderRightButton(navigator) {
+        return self.getButton('Next', () => {
+          const route = self.getLinkServiceRoute();
+          navigator.push(route);
+        }, { isLeft: false })
+      }
     }
   }
 

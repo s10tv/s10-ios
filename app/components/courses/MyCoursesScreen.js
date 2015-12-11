@@ -29,6 +29,20 @@ class MyCoursesScreen extends React.Component {
   };
 
   render() {
+    let importCourseButton = null;
+    if (this.props.isOnboarding) {
+      importCourseButton = renderActionButton('Import Courses', () => {
+        AlertIOS.alert(
+          'Import courses',
+          'We will be importing your course from CWL.',
+          [
+            { text: 'Cancel', style: 'cancel'},
+            { text: 'Okay', onPress: this.props.onFetchCourses() }
+          ]
+        )
+      })
+    }
+
     return (
       <View style={SHEET.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -37,7 +51,12 @@ class MyCoursesScreen extends React.Component {
               { this.props.courses.loadedCourses.map(course => {
                 return this._renderCourseCard(course);
               })}
-              <AddNewClassCard navigator={this.props.navigator} />
+
+              { importCourseButton }
+              { renderActionButton('Add new course...', () => {
+                const route = Routes.instance.getAllCoursesListRoute();
+                this.props.navigator.push(route);
+              })}
             </View>
         </ScrollView>
       </View>
@@ -78,34 +97,26 @@ class MyCoursesScreen extends React.Component {
       ]
     )
   }
-
 }
 
-class AddNewClassCard extends React.Component {
-  render() {
-    return (
-      <TouchableOpacity style={styles.courseCardContainer} onPress={() => this._addNewCourse()}>
-        <View style={styles.courseCardHeaderContainer}>
-          <View style={styles.courseCardLeftSideContainer}>
-            <Image
-              style={styles.grayCourseIcon}
-              source={require('../img/ic-class-icon.png')} />
-            <Text style={[SHEET.baseText, styles.courseCardTitle, styles.addNewCourseText]}>Add new course...</Text>
-          </View>
-          <View style={styles.addNewCourseIconWrapper}>
-            <Image
-              style={styles.addNewCourseIcon}
-              source={require('../img/ic-add.png')} />
-          </View>
+function renderActionButton(text, onPress) {
+  return (
+    <TouchableOpacity style={styles.courseCardContainer} onPress={onPress}>
+      <View style={styles.courseCardHeaderContainer}>
+        <View style={styles.courseCardLeftSideContainer}>
+          <Image
+            style={styles.grayCourseIcon}
+            source={require('../img/ic-class-icon.png')} />
+          <Text style={[SHEET.baseText, styles.courseCardTitle, styles.addNewCourseText]}>{text}</Text>
         </View>
-      </TouchableOpacity>
-    )
-  }
-
-  _addNewCourse() {
-    const route = Routes.instance.getAllCoursesListRoute();
-    this.props.navigator.push(route);
-  }
+        <View style={styles.addNewCourseIconWrapper}>
+          <Image
+            style={styles.addNewCourseIcon}
+            source={require('../img/ic-add.png')} />
+        </View>
+      </View>
+    </TouchableOpacity>
+  )
 }
 
 var styles = StyleSheet.create({
@@ -174,5 +185,5 @@ var styles = StyleSheet.create({
   }
 });
 
-exports.AddNewClassCard = AddNewClassCard;
+exports.renderActionButton = renderActionButton;
 exports.MyCoursesScreen = connect(mapStateToProps)(MyCoursesScreen)

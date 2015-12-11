@@ -11,7 +11,7 @@ import Loader from '../lib/Loader';
 import { SHEET, COLORS } from '../../CommonStyles'
 import Routes from '../../nav/Routes'
 import { formatCourse } from '../courses/coursesCommon'
-import { AddNewClassCard } from '../courses/MyCoursesScreen'
+import { renderActionButton } from '../courses/MyCoursesScreen'
 const logger = new (require('../../../modules/Logger'))('renderCourse');
 
 function renderCourses(courses, navigator) {
@@ -21,9 +21,10 @@ function renderCourses(courses, navigator) {
   }
 
   if (courses.loadedCourses.length == 0) {
-    return (
-      <AddNewClassCard navigator={navigator} />
-    )
+    return renderActionButton('Add new course...', () => {
+      const route = Routes.instance.getAllCoursesListRoute();
+      this.props.navigator.push(route);
+    })
   }
 
   return (
