@@ -23,7 +23,7 @@ function renderCourses(courses, navigator) {
   if (courses.loadedCourses.length == 0) {
     return renderActionButton('Add new course...', () => {
       const route = Routes.instance.getAllCoursesListRoute();
-      this.props.navigator.push(route);
+      navigator.push(route);
     })
   }
 
