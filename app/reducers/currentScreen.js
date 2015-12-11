@@ -2,7 +2,7 @@ import undoable, { distinctState } from 'redux-undo';
 import { SCREEN_TODAY, SCREEN_ME } from '../constants';
 
 const logger = new (require('../../modules/Logger'))('currentscreen');
-const defaultTabScreen = { id: 'SCREEN_ME' };
+const defaultTabScreen = { id: 'SCREEN_TODAY' };
 
 function currentScreen(state = defaultTabScreen, action) {
   switch (action.type) {

@@ -12,6 +12,7 @@ import React, {
 
 import { connect } from 'react-redux/native';
 
+import renderReasonSection from './renderReasonSection';
 import Screen from '../Screen';
 import iconTextRow from '../lib/iconTextRow';
 import HeaderBanner from '../lib/HeaderBanner';
@@ -28,6 +29,7 @@ const { width, height } = Dimensions.get('window');
 
 function mapStateToProps(state) {
   return {
+    me: state.me,
     candidate: state.candidate,
   }
 }
@@ -65,6 +67,8 @@ class DiscoverScreen extends Screen {
           source={{ uri: profile.icon.url }} />
     }));
 
+
+
     return (
       <View style={SHEET.container}>
         <View style={styles.background}>
@@ -75,7 +79,7 @@ class DiscoverScreen extends Screen {
             Every good friend was once a stranger.
           </Text>
         </View>
-        <View style={{flex: 1, paddingTop: 10}}>
+        <ScrollView style={{flex: 1, paddingTop: 10}}>
           <TouchableHighlight
               onPress={() => {
                 Analytics.track('Today: TapProfile');
@@ -124,11 +128,7 @@ class DiscoverScreen extends Screen {
 
                 <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
 
-                <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
-                  <Text style={[SHEET.baseText]}>
-                    { candidate.reason }
-                  </Text>
-                </View>
+                { renderReasonSection(candidate, this.props.me, candidate.user) }
 
                 <CountdownTimer
                   navigator={this.props.navigator}
@@ -136,7 +136,7 @@ class DiscoverScreen extends Screen {
               </Card>
             </View>
             </TouchableHighlight>
-          </View>
+          </ScrollView>
 
       </View>
     )
