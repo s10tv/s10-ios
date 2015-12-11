@@ -333,7 +333,7 @@ class LayoutContainer extends React.Component {
     'user_birthday', 'user_education_history',
     'user_friends', 'user_location', 'user_photos', 'user_posts']
 
-    return new Promsie((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       FBSDKLoginManager.logInWithReadPermissions(permissions, (error, result) => {
         if (error) {
           logger.error(error);
