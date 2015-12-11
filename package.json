@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@exponent/react-native-navigator": "^0.3.5",
-    "ubc-classes": "git+https://github.com/s10tv/ubc-classes.git",
     "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
     "lodash": "^3.6.0",
     "moment": "^2.10.6",
@@ -17,6 +16,7 @@
     "react-native-fbsdkcore": "0.0.7",
     "react-native-fbsdklogin": "0.0.7",
     "react-native-image-picker": "^0.9.0",
+    "react-native-infinite-scroll-view": "^0.2.2",
     "react-native-overlay": "^0.3.0",
     "react-native-search-bar": "git+https://github.com/s10tv/react-native-search-bar.git",
     "react-native-tab-navigator": "^0.2.11",
@@ -27,6 +27,7 @@
     "redux-undo": "^0.5.0",
     "regenerator": "^0.8.42",
     "s10-common": "git+https://github.com/s10tv/s10-common.git",
+    "ubc-classes": "git+https://github.com/s10tv/ubc-classes.git",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
