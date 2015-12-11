@@ -13,6 +13,7 @@ class DDPService extends TSDDPClient {
     this._subscribeMe(dispatch);
     this._subscribeIntegrations(dispatch);
     this._subscribeMyTags(dispatch);
+    this._subscribeMyCourses(dispatch);
     this._subscribeTagCategories(dispatch)
     this._subscribeCandidates(dispatch)
   }
@@ -229,7 +230,7 @@ class DDPService extends TSDDPClient {
     })
   }
 
-  _subscribeMyTags(dispatch) {
+  _subscribeMyCourses(dispatch) {
     this.subscribe({ pubName: 'my-courses' })
     .then((subId) => {
       this.collections.observe(() => {

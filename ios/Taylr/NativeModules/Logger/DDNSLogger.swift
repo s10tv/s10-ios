@@ -26,11 +26,11 @@ class DDNSLogger : DDAbstractLogger {
     init(viewerHostName: String?) {
         let hostName = NSProcessInfo().environment["NSLoggerViewerHost"] ?? viewerHostName ?? "localhost"
         let bonjourName = NSProcessInfo().environment["NSLoggerBonjourName"] ?? "taylr-nslogger"
-        LoggerSetViewerHost(logger, hostName, 50000)
+//        LoggerSetViewerHost(logger, hostName, 50000)
         LoggerSetupBonjour(logger, nil, bonjourName)
         LoggerSetOptions(logger, UInt32(
             kLoggerOption_BufferLogsUntilConnection |
-            kLoggerOption_UseSSL |
+//            kLoggerOption_UseSSL |
             kLoggerOption_BrowseBonjour |
             kLoggerOption_BrowseOnlyLocalDomain
         ))

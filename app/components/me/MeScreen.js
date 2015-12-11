@@ -22,7 +22,7 @@ const BANNER_HEIGHT = height / 4;
 
 // styles
 import networkCard from './networkCard';
-import myCourses from './myCourses';
+import myCourses from './myCoursesSection';
 import renderMeHeader from './renderMeHeader';
 import MoreCard from './MoreCard';
 import HeaderBanner from '../lib/HeaderBanner';
@@ -68,7 +68,7 @@ class MeScreen extends React.Component {
             { networkCard() }
 
             { sectionTitle('MY COURSES') }
-            { myCourses(this.props.myCourses, this.props.onRemoveCourse) }
+            { myCourses(this.props.myCourses, this.props.onRemoveCourse, this.props.navigator) }
 
             { sectionTitle('MY HASHTAGS') }
             <HashtagCategory {...props} />
