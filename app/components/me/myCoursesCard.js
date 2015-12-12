@@ -57,21 +57,20 @@ var styles = StyleSheet.create({
     marginVertical: -5,
     alignItems: 'flex-start',
   },
-
   courseTag: {
     backgroundColor: COLORS.taylr,
-    padding: 7,
+    padding: 5,
     flexDirection: 'row',
-    margin: 8,
+    margin: 5,
   },
   courseTagIcon: {
-    width: 26,
-    height: 20,
+    width: 22,
+    height: 17,
   },
   courseTagText: {
     fontSize: 14,
     color: 'white',
-    marginLeft: 6,
+    marginLeft: 5,
   },
 });
 

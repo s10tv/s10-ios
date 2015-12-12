@@ -1,41 +1,37 @@
-
-// let resonSection;
-// if (candidate.reason) {
-//   reasonSection = (
-//     <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
-//       <Text style={[SHEET.baseText]}>
-//         { candidate.reason }
-//       </Text>
-//     </View>
-//   )
-// }
-//
-// // TODO override for now
-// reasonSection = (
-//
-// )
-
 import React, {
   View,
   Text,
   StyleSheet,
+  Image
 } from 'react-native';
 
-import { COLORS } from '../../CommonStyles';
+import { SHEET, COLORS } from '../../CommonStyles';
 import SimilarityCalculator from '../../util/SimilarityCalculator';
+import { formatCourse } from '../courses/coursesCommon'
 
 function renderTag(tag) {
   return (
     <View style={styles.tag}>
-      <Text style={{ color: COLORS.taylr}}>{ tag.text }</Text>
+      <Text style={[SHEET.baseText, styles.hashtagText]}>#{tag.text}</Text>
+    </View>
+  )
+}
+
+function renderMoreTag(numMore) {
+  return (
+    <View style={styles.tag}>
+      <Text style={[SHEET.baseText, styles.hashtagText]}>+{numMore} more</Text>
     </View>
   )
 }
 
 function renderCourse(course) {
   return (
-    <View style={styles.tag}>
-      <Text style={{ color: COLORS.taylr }}>{ course.dept } { course.course }</Text>
+    <View style={[styles.tag, styles.courseTag]}>
+      <Image
+        style={styles.courseIcon}
+        source={require('../img/ic-class-icon.png')} />
+      <Text style={[SHEET.baseText, styles.hashtagText, styles.courseTagText]}>{formatCourse(course.dept, course.course)}</Text>
     </View>
   )
 }
@@ -53,6 +49,9 @@ export default function renderReasonSection(candidate, forUser, toUser) {
   }
 
   let toRender = renderables.length > 6 ? renderables.slice(0, 6) : renderables;
+  if (renderables.length > 6) {
+    toRender.push(renderMoreTag(renderables.length - 6))
+  }
 
   return (
     <View style={styles.container}>
@@ -63,18 +62,28 @@ export default function renderReasonSection(candidate, forUser, toUser) {
 
 var styles = StyleSheet.create({
   container: {
-    padding: 6,
+    padding: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'center',
   },
   tag: {
-    padding: 6,
-    margin: 6,
+    padding: 5,
+    margin: 5,
     borderWidth: 1,
     borderColor: COLORS.taylr,
   },
   hashtagText: {
-    color: COLORS.white,
-  }
+    color: COLORS.taylr,
+  },
+  courseTagText: {
+    marginLeft: 5,
+  },
+  courseTag: {
+    flexDirection: 'row',
+  },
+  courseIcon: {
+    width: 22,
+    height: 17,
+    tintColor: COLORS.taylr,
+  },
 });

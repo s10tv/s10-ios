@@ -67,8 +67,6 @@ class DiscoverScreen extends Screen {
           source={{ uri: profile.icon.url }} />
     }));
 
-
-
     return (
       <View style={SHEET.container}>
         <View style={styles.background}>
@@ -126,7 +124,10 @@ class DiscoverScreen extends Screen {
                   {iconTextRow(require('../img/ic-house.png'), hometown)}
                 </View>
 
-                <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
+                <View style={styles.inCommonAndSeparatorContainer}>
+                  <Text style={[SHEET.baseText, styles.inCommonText]}>In common:</Text>
+                  <View style={[SHEET.separator, styles.separator]} />
+                </View>
 
                 { renderReasonSection(candidate, this.props.me, candidate.user) }
 
@@ -202,7 +203,6 @@ var styles = StyleSheet.create({
     fontSize: 24,
   },
   infoSection: {
-    paddingHorizontal: width / 64,
     paddingVertical: 10,
   },
   messageButton: {
@@ -226,6 +226,20 @@ var styles = StyleSheet.create({
   },
   serviceIcon: {
     marginRight: 5,
+  },
+  inCommonAndSeparatorContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingHorizontal: 10
+  },
+  inCommonText: {
+    fontSize: 14,
+  },
+  separator: {
+    flex: 1,
+    marginTop: 3,
+    alignSelf: 'center',
+    marginLeft: 10,
   },
 });
 
