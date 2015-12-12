@@ -351,8 +351,8 @@ class ProfileScreen extends Screen {
           { commonSection }
 
           { sectionTitle('ABOUT') }
-          <Card style={styles.card}>
-            <View style={{ marginBottom: 10 }}>
+          <Card hideSeparator={true} style={styles.card} cardOverride={{padding: 10}}>
+            <View>
               {iconTextRow(require('../img/ic-mortar.png'), user.major)}
               {iconTextRow(require('../img/ic-house.png'), user.hometown)}
             </View>
