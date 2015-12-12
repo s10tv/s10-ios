@@ -290,7 +290,7 @@ class Router {
       },
 
       getTitle() {
-        return 'Add New Course'
+        return 'Add Course'
       }
     }
   }
