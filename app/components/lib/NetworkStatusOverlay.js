@@ -21,14 +21,16 @@ class NetworkStatusOverlay extends React.Component {
     return (
       <Overlay isVisible={this.props.isVisible}>
         <View style={styles.container}>
-          <View style={[{ flex: 1}, styles.containerSubview]}>
-            <ActivityIndicatorIOS animating={true} size="small"  />
-            <Text style={[styles.overlayText, SHEET.baseText]}>Connecting to Network</Text>
-          </View>
-          <View style={[{ width: 25}, styles.containerSubview]}>
-            <TouchableOpacity onPress={this.props.closePopup}>
-              <Image source={ require('../img/close.png')} />
-            </TouchableOpacity>
+          <View style={styles.horizontalAlignContainer}>
+            <View style={[{ flex: 1}, styles.containerSubview]}>
+              <ActivityIndicatorIOS animating={true} size="small"  />
+              <Text style={[styles.overlayText, SHEET.baseText]}>Connecting to Network</Text>
+            </View>
+            <View style={[{ width: 25}, styles.containerSubview]}>
+              <TouchableOpacity onPress={this.props.closePopup}>
+                <Image source={ require('../img/close.png')} />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Overlay>
@@ -39,15 +41,17 @@ class NetworkStatusOverlay extends React.Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    top: 27,
+    top: 0,
     width: width,
     paddingHorizontal: 0.05 * width,
-    height: 30,
-
-    justifyContent: 'center',
+    height: 64,
     backgroundColor: '#64369C',
     position: 'absolute',
+  },
+  horizontalAlignContainer: {
+    paddingTop: 25,
     flexDirection: 'row',
+    flex: 1
   },
   containerSubview: {
     flexDirection: 'row',
