@@ -276,8 +276,6 @@ class ProfileScreen extends Screen {
       return <Loader />
     }
 
-    logger.debug(JSON.stringify(user));
-
     let connectedProfiles = {};
 
     let profiles = null;
@@ -333,7 +331,7 @@ class ProfileScreen extends Screen {
       }
     })
 
-    const commonSection = renderCommonSection(this.props.me, user);
+    const commonSection = this.props.me._id == user._id ? null : renderCommonSection(this.props.me, user);
 
     let infoCard = null;
     if (this.state.activeProfile.id == 'taylr') {
