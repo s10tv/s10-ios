@@ -10,12 +10,12 @@ function isConnected(state = true, action) {
 
 function shouldShowNetworkBanner(state = false, action) {
   switch(action.type) {
-    case 'SHOW_BANNER':
-      return true
+    case 'CHANGE_IS_CONNECTED':
+      return !action.isConnected
 
     case 'HIDE_BANNER':
       return false;
-
+      
     default:
       return state;
   }
