@@ -143,7 +143,7 @@ class DDPService extends TSDDPClient {
     const coverUrlOverride = (user.cover && user.cover.url) ?
       { coverUrl: user.cover.url } : {};
 
-    return Object.assign({}, user, avatarUrlOverride, coverUrlOverride, {
+    return Object.assign({ courses: [] }, user, avatarUrlOverride, coverUrlOverride, {
       userId: user._id,
       displayName: this._generateShortDisplayName(user, 20),
       longDisplayName: this._generateShortDisplayName(user, 30),
