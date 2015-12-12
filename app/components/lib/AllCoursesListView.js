@@ -1,5 +1,6 @@
 import React, {
   ListView,
+  InteractionManager,
   View,
   Text,
   StyleSheet,
@@ -31,38 +32,40 @@ class AllCoursesListView extends React.Component {
   }
 
   loadMore() {
-    this.setState({
-      isLoadingMore: true
-    })
-
-    return this.props.ddp.call({
-      methodName: 'courses/get',
-      params: [this.state.searchText, this.state.offset]})
-    .then(result => {
-      result.courses.forEach(course => {
-        this.courses[course._id] = course
-      })
-
-      let courseValues = Object.keys(this.courses).map(key => this.courses[key])
-
-      if (this.state.searchText) {
-        const regex = new RegExp(`^${this.state.searchText}`);
-        courseValues = courseValues.filter(course => {
-          logger.info(`course=${JSON.stringify(course)}`)
-          return regex.exec(course.courseCode) != null
-        })
-      }
-
+    InteractionManager.runAfterInteractions(() => {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(courseValues),
-        offset: result.offset,
-        canLoadMore: result.canLoadMore,
-        isLoadingMore: false
+        isLoadingMore: true
       })
-    })
-    .catch(err => {
-      logger.error(err);
-    })
+
+      return this.props.ddp.call({
+        methodName: 'courses/get',
+        params: [this.state.searchText, this.state.offset]})
+      .then(result => {
+        result.courses.forEach(course => {
+          this.courses[course._id] = course
+        })
+
+        let courseValues = Object.keys(this.courses).map(key => this.courses[key])
+
+        if (this.state.searchText) {
+          const regex = new RegExp(`^${this.state.searchText}`);
+          courseValues = courseValues.filter(course => {
+            logger.info(`course=${JSON.stringify(course)}`)
+            return regex.exec(course.courseCode) != null
+          })
+        }
+
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(courseValues),
+          offset: result.offset,
+          canLoadMore: result.canLoadMore,
+          isLoadingMore: false
+        })
+      })
+      .catch(err => {
+        logger.error(err);
+      })
+    });
   }
 
   search(text) {
@@ -87,6 +90,7 @@ class AllCoursesListView extends React.Component {
         <ListView
           style={SHEET.innerContainer}
           distanceToLoadMore = {0}
+          initialListSize={1}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
           dataSource={this.state.dataSource}
           renderRow={this.props.renderCourse}

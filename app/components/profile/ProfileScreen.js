@@ -3,6 +3,7 @@ import React, {
   Text,
   Image,
   ScrollView,
+  InteractionManager,
   TouchableOpacity,
   View,
   LinkingIOS,
@@ -235,17 +236,27 @@ class ProfileScreen extends Screen {
   }
 
   componentWillMount() {
-    let ddp = this.props.ddp;
-    ddp.subscribe({ pubName: 'activities', params: [this.props.userId] })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.activities) {
-          return ddp.collections.activities.find({ userId: this.props.userId });
-        }
-      }).subscribe(activities => {
-        this.setState({ activities: activities });
-      });
-    })
+    InteractionManager.runAfterInteractions(() => {
+      let ddp = this.props.ddp;
+      ddp.subscribe({ pubName: 'activities', params: [this.props.userId] })
+      .then((subId) => {
+        this.subId = subId;
+
+        ddp.collections.observe(() => {
+          if (ddp.collections.activities) {
+            return ddp.collections.activities.find({ userId: this.props.userId });
+          }
+        }).subscribe(activities => {
+          this.setState({ activities: activities });
+        });
+      })
+    });
+  }
+
+  componentWillUnmount() {
+    if (this.subId) {
+      this.props.ddp.unsubscribe(this.subId);
+    }
   }
 
   render() {

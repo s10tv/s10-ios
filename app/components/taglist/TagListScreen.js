@@ -2,6 +2,7 @@ import React, {
   View,
   Text,
   ScrollView,
+  InteractionManager,
   TouchableHighlight,
   StyleSheet,
 } from 'react-native';
@@ -46,8 +47,14 @@ class TagListScreen extends Screen {
   }
 
   componentWillUnmount() {
-    if (this.state.observer) {
-      this.state.observer.dispose();
+    if (this.observer) {
+      this.observer.dispose();
+      this.observer = null;
+    }
+
+    if (this.subId) {
+      this.props.ddp.unsubscribe(this.subId);
+      this.subId = null;
     }
   }
 
@@ -58,12 +65,14 @@ class TagListScreen extends Screen {
       pubName: 'suggested-tags',
       params: [this.props.category.type]
     })
-    .then((res) => {
+    .then((subId) => {
+      this.subId = subId;
+
       let observer = ddp.collections.observe(() => {
         return ddp.collections.suggestions.findOne({ _id: this.props.category.type });
       });
 
-      this.setState({observer: observer});
+      this.observer = observer;
 
       observer.subscribe((user) => {
         let suggestions = user.tags.map((suggestion) => {
@@ -73,7 +82,9 @@ class TagListScreen extends Screen {
 
         logger.debug(`searching for lenght = ${suggestions.length}`)
 
-        this.setState({ suggestions: suggestions });
+        InteractionManager.runAfterInteractions(() => {
+          this.setState({ suggestions: suggestions });
+        });
       });
     });
   }
