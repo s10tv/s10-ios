@@ -41,7 +41,10 @@ export default function renderCommonSection(forUser, toUser) {
     return (
       <View>
         { sectionTitle('IN COMMON') }
-        <Card cardOverride={styles.container}>
+        <Card
+            style={styles.card}
+            hideSeparator={true}
+            cardOverride={styles.container}>
           { renderables }
         </Card>
       </View>
@@ -57,6 +60,12 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
+  },
+  card: {
+    flex: 1,
+    marginTop: 8,
+    borderRadius: 3,
+    paddingVertical: 3,
   },
   tag: {
     padding: 5,

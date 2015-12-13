@@ -19,7 +19,7 @@ export default function sectionTitle(text) {
 var styles = StyleSheet.create({
   titleView: {
     paddingBottom: 4,
-    paddingTop: 24,
+    paddingTop: 20,
   },
   title: {
     fontSize: 14,

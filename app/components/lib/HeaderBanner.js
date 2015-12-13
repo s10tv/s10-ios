@@ -16,8 +16,8 @@ class HeaderBanner extends React.Component {
 
   render() {
     return (
-      <View style={[styles.cover, { height: this.props.height }]}>
-        <Image style={styles.cover} source={{ uri: this.props.url }}>
+      <View style={{ height: this.props.height }}>
+        <Image style={{height: this.props.height}} source={{ uri: this.props.url }}>
           { this.renderShadow() }
         </Image>
 
@@ -28,9 +28,6 @@ class HeaderBanner extends React.Component {
 }
 
 var styles = StyleSheet.create({
-  cover: {
-    flex: 1,
-  },
   coverShadow: {
     flex: 1,
     backgroundColor: 'black',

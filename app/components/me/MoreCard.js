@@ -42,13 +42,13 @@ class MoreCard extends React.Component {
 
   render() {
     let optionalUpgradeCard = null
-    if (this.props.shouldShowUpgradeCard) {
+    // if (this.props.shouldShowUpgradeCard) {
       optionalUpgradeCard = (
         <TappableCard style={styles.card} onPress={this.props.upgrade}>
           <Text style={[SHEET.baseText]}>Upgrade Available</Text>
         </TappableCard>
       )
-    }
+    //}
 
     return (
       <View>
