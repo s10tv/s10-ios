@@ -126,6 +126,7 @@ class Router {
       isFromHistoryScreen = false,
       isFromMeScreen = false,
       isFromConversationScreen = false,
+      isFromCoursesView = false,
   }) {
     const self = this;
     return {
@@ -133,12 +134,14 @@ class Router {
         return (
           <ExNavigator
             navigator={navigator}
+            barButtonIconStyle={{ tintColor: '#ffffff' }}
             initialRoute={self.__getProfileScreen(
               userId,
               isFromDiscoveryScreen,
               isFromHistoryScreen,
               isFromMeScreen,
-              isFromConversationScreen)
+              isFromConversationScreen,
+              isFromCoursesView)
             }
             navigationBarStyle={{
               flex: 1, backgroundColor: 'transparent',
@@ -154,7 +157,8 @@ class Router {
       isFromDiscoveryScreen = false,
       isFromHistoryScreen = false,
       isFromMeScreen = false,
-      isFromConversationScreen = false) {
+      isFromConversationScreen = false,
+      isFromCoursesView = false) {
     const self = this;
     return {
       renderScene(navigator) {
@@ -163,6 +167,7 @@ class Router {
           navigator={navigator}
           isFromDiscoveryScreen={isFromDiscoveryScreen}
           isFromHistoryScreen={isFromHistoryScreen}
+          isFromCoursesView={isFromCoursesView}
           userId={userId}
         />
       },
@@ -263,6 +268,46 @@ class Router {
     }
   }
 
+  getCourseDetailRoute(course, isFromProfile) {
+    const self = this;
+    if (isFromProfile) {
+      return {
+        renderScene(navigator) {
+          return (
+            <ExNavigator
+              navigator={navigator}
+              titleStyle={[SHEET.navBarTitleText, SHEET.baseText]}
+              barButtonTextStyle={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}
+              barButtonIconStyle={{ tintColor: '#ffffff' }}
+              initialRoute={self.__getCourseDetailRoute(course)}
+              navigationBarStyle={{ flex: 1, backgroundColor: '#64369C' }}
+              sceneStyle={{ paddingTop: 64 }}
+            />
+          )
+        }
+      }
+    } else {
+      return self.__getCourseDetailRoute(course);
+    }
+  }
+
+  __getCourseDetailRoute(course) {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let CourseDetailsScreen = require('../components/courses/CourseDetailsScreen');
+        return <CourseDetailsScreen
+          navigator={navigator}
+          courseCode={course.courseCode}
+        />
+      },
+
+      getTitle() {
+        return `${course.dept} ${course.course}`
+      },
+    }
+  }
+
   getMyCoursesListRoute() {
     const self = this;
     return {
@@ -275,7 +320,7 @@ class Router {
       },
 
       getTitle() {
-        return 'My Courses'
+        return 'Courses'
       },
     }
   }

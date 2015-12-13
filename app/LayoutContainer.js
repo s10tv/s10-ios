@@ -468,17 +468,18 @@ class LayoutContainer extends React.Component {
           hardUpgrade={this.hardUpgrade.bind(this)}
           hidePopup={this.hidePopup.bind(this)} />
 
-        <FullScreenNavigator
-          style={{ flex: 1 }}
-          sceneStyle={{ paddingTop: 64 }}
-          upgrade={this.upgrade.bind(this)}
-          onFetchCourses={this.onFetchCourses.bind(this)}
-          onRemoveCourse={this.onRemoveCourse.bind(this)}
-          onPressLogin={this.onPressLogin.bind(this)}
-          onPressLogout={this.onPressLogout.bind(this)}
-          onUploadImage={this.onUploadImage.bind(this)}
-          onLinkFacebook={this.onLinkFacebook.bind(this)}
-        />
+          <FullScreenNavigator
+            style={{ flex: 1 }}
+            sceneStyle={{ paddingTop: 64 }}
+            upgrade={this.upgrade.bind(this)}
+            onFetchCourses={this.onFetchCourses.bind(this)}
+            onRemoveCourse={this.onRemoveCourse.bind(this)}
+            onPressLogin={this.onPressLogin.bind(this)}
+            onPressLogout={this.onPressLogout.bind(this)}
+            onUploadImage={this.onUploadImage.bind(this)}
+            onLinkFacebook={this.onLinkFacebook.bind(this)}
+          />
+
       </View>
     )
   }

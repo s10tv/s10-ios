@@ -26,7 +26,7 @@ export function formatCourse(dept, course) {
 
 // CARDS
 
-export function activeCourseCard(course, isRemovable, onPress) {
+export function activeCourseCard(course, isRemovable, onPress, onCardPress= null, extraStyle={}) {
   var courseCardRemoveButton = isRemovable ? (
         <TouchableOpacity
           style={courseCardStyles.courseCardRemoveButton}
@@ -37,8 +37,8 @@ export function activeCourseCard(course, isRemovable, onPress) {
         </TouchableOpacity>
       ) : null
 
-  return (
-    <View style={courseCardStyles.courseCardContainer} key={course._id}>
+  const cardInfo = (
+    <View style={[courseCardStyles.courseCardContainer, extraStyle]} key={course._id}>
       <View style={courseCardStyles.courseCardHeaderContainer}>
         <View style={courseCardStyles.courseCardLeftSideContainer}>
           <Image
@@ -52,6 +52,15 @@ export function activeCourseCard(course, isRemovable, onPress) {
       {separatorAndUserAvatars(course)}
     </View>
   );
+
+  if (onCardPress) {
+    return (
+      <TouchableOpacity key={course._id} onPress={onCardPress}>
+        { cardInfo }
+      </TouchableOpacity>
+    )
+  }
+  return cardInfo;
 }
 
 export function inactiveCourseCard(course, onPress) {
@@ -112,10 +121,12 @@ function separatorAndUserAvatars(course) {
         </View>
       )
   }
+
+  return null;
 }
 
 function userAvatars(course) {
-  var userAvatar = function(courseUser) {
+  var userAvatar = (courseUser) => {
     return (
       <View key={courseUser.userId}>
         <Image
@@ -140,7 +151,7 @@ function userAvatars(course) {
 
 function moreUsersCircle(numOfMoreUsers) {
   return (
-    <View style={[courseCardStyles.courseCardAvatar, courseCardStyles.courseCardMoreUsersCircle]}>
+    <View key={'more'} style={[courseCardStyles.courseCardAvatar, courseCardStyles.courseCardMoreUsersCircle]}>
       <Text numberOfLines={1} style={[SHEET.baseText, courseCardStyles.courseCardMoreUsersText]} allowFontScaling={true}>+{numOfMoreUsers}</Text>
     </View>
   )
@@ -162,7 +173,6 @@ var courseCardStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     marginVertical: 5,
-    borderRadius: 3,
     padding: 1
   },
   courseCardHeaderContainer: {

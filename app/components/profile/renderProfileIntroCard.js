@@ -18,10 +18,12 @@ import TimeDifferenceCalculator from '../../util/TimeDifferenceCalculator';
 import { SHEET, COLORS } from '../../CommonStyles'
 import { Card } from '../lib/Card';
 import iconTextRow from '../lib/iconTextRow';
+import Routes from '../../nav/Routes';
 
 const { height, width } = Dimensions.get('window');
 
-export default function renderProfileIntroCard(user, activeProfile, connectedProfiles, me = {}) {
+export default function renderProfileIntroCard(
+    navigator, user, activeProfile, connectedProfiles, me = {}) {
   switch(activeProfile) {
     case 'taylr':
 
@@ -45,12 +47,14 @@ export default function renderProfileIntroCard(user, activeProfile, connectedPro
             { sectionTitle('COURSES') }
             { user.courses.map(course => {
               course.usersInCourse = [];
-              return activeCourseCard(course, false, null)
+              return activeCourseCard(course, false, null, () => {
+                const route = Routes.instance.getCourseDetailRoute(course, true)
+                navigator.push(route);
+              })
             })}
           </View>
         )
       }
-
 
       return (
         <View style={SHEET.innerContainer}>
@@ -69,7 +73,7 @@ export default function renderProfileIntroCard(user, activeProfile, connectedPro
             { aboutSection }
           </Card>
 
-          { coursesSection }
+           { coursesSection }
         </View>
       )
 

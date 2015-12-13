@@ -158,8 +158,6 @@ class DDPService extends TSDDPClient {
         return this.collections.users.findOne({ _id: this.currentUserId });
       }).subscribe(currentUser => {
         if (currentUser) {
-          logger.info(`got current user=${this._formatUser(currentUser)}`);
-
           dispatch({
             type: 'SET_ME',
             me: this._formatUser(currentUser)

@@ -16,7 +16,6 @@ import { SCREEN_PROFILE } from '../../constants';
 import Screen from '../Screen';
 
 import renderCommonSection from './renderCommonSection';
-import { activeCourseCard } from '../courses/coursesCommon';
 import { Card } from '../lib/Card';
 import HeaderBanner from '../lib/HeaderBanner';
 import sectionTitle from '../lib/sectionTitle';
@@ -69,8 +68,8 @@ class ProfileScreen extends Screen {
   }
 
   _updateActivities() {
-    const filteredActivities = this.state.activities.filter(activity => {
-      return activity.profileId == this.state.activeProfileId
+    const filteredActivities = this.props.ddp.collections.activities.find({
+      profileId: this.state.activeProfileId
     })
 
     this.setState({
@@ -83,16 +82,6 @@ class ProfileScreen extends Screen {
     .then((subId) => {
       this.subId = subId;
     })
-
-    this.props.ddp.collections.observe(() => {
-      return this.props.ddp.collections.activities.find({ userId: this.props.userId });
-    }).subscribe(activities => {
-      InteractionManager.runAfterInteractions(() => {
-        this.setState({
-          activities: activities,
-        })
-      });
-    });
   }
 
   componentWillUnmount() {
@@ -110,6 +99,7 @@ class ProfileScreen extends Screen {
           this.state.activeProfileName,
           this._switchProfile.bind(this)) }
         { renderProfileIntroCard(
+          this.props.navigator,
           user,
           this.state.activeProfileName,
           connectedProfiles,
@@ -119,7 +109,9 @@ class ProfileScreen extends Screen {
   }
 
   renderMessageButton(user) {
-    if (this.props.isFromDiscoveryScreen || this.props.isFromHistoryScreen) {
+    if (this.props.isFromDiscoveryScreen ||
+        this.props.isFromHistoryScreen ||
+        this.props.isFromCoursesView) {
 
       let overrideText = null;
       if (this.props.isFromHistoryScreen) {

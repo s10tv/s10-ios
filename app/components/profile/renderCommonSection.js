@@ -13,7 +13,7 @@ import { formatCourse } from '../courses/coursesCommon'
 
 function renderTag(tag) {
   return (
-    <View style={styles.tag}>
+    <View key={tag.text} style={styles.tag}>
       <Text style={[SHEET.baseText, styles.hashtagText]}>#{tag.text}</Text>
     </View>
   )
@@ -21,7 +21,7 @@ function renderTag(tag) {
 
 function renderCourse(course) {
   return (
-    <View style={[styles.tag, styles.courseTag]}>
+    <View key={course.courseCode} style={[styles.tag, styles.courseTag]}>
       <Image
         style={styles.courseIcon}
         source={require('../img/ic-class-icon.png')} />

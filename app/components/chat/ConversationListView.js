@@ -35,8 +35,6 @@ class ConversationListView extends React.Component {
   }
 
   render() {
-    logger.debug(`rendering conversation list with currentuser=${JSON.stringify(this.props.me)}`)
-
     // verbose but more readable IMO
     if (this.props.layer.allConversationCount > 0) {
       return (

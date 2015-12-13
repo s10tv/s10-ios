@@ -7,11 +7,11 @@ import React, {
 
 import { SHEET } from '../../CommonStyles';
 
-export default function iconTextRow(iconSource, text) {
+export default function iconTextRow(iconSource, text, rowStyle={}, iconStyle={}, textStyle={}) {
   return (
-    <View style={styles.row}>
-      <Image source={iconSource} />
-      <Text style={[styles.text, SHEET.baseText]}>{text}</Text>
+    <View style={[styles.row, rowStyle]}>
+      <Image source={iconSource} style={iconStyle} />
+      <Text style={[styles.text, SHEET.baseText, textStyle]}>{text}</Text>
     </View>
   )
 }
