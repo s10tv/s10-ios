@@ -43,14 +43,14 @@ class MoreCard extends React.Component {
   render() {
     let optionalUpgradeCard = null
     let hideSeparatorForImportCourses = true;
-    // if (this.props.shouldShowUpgradeCard) {
+    if (this.props.shouldShowUpgradeCard) {
       optionalUpgradeCard = (
         <TappableCard hideSeparator={true} style={styles.card} onPress={this.props.upgrade}>
           <Text style={[SHEET.baseText]}>Upgrade Available</Text>
         </TappableCard>
       )
       hideSeparatorForImportCourses = false;
-    //}
+    }
 
     return (
       <View style={styles.container}>
@@ -72,9 +72,8 @@ class MoreCard extends React.Component {
             logger.debug('pressed logout');
             this.props.onPressLogout()
 
-            // TODO(qimingfang): onlogout -> immediately reset nav stack.
             const route = Routes.instance.getLoginRoute();
-            this.props.navigator.parentNavigator.push(route)
+            this.props.navigator.parentNavigator.immediatelyResetRouteStack([route]);
           }}>
           <Text style={[SHEET.baseText]}>Logout</Text>
         </TappableCard>
