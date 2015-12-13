@@ -117,9 +117,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginHorizontal: 10,
     backgroundColor: COLORS.button,
-    marginBottom: 10,
     borderRadius : 3,
   },
   messageButtonText: {

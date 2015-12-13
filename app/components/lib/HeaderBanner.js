@@ -15,9 +15,16 @@ class HeaderBanner extends React.Component {
   }
 
   render() {
+
+    const styleOverride = {};
+    if (this.props.roundTopCorners) {
+      styleOverride.borderRadius = 5;
+      styleOverride.borderColor = 'transparent';
+    }
+
     return (
-      <View style={{ height: this.props.height }}>
-        <Image style={{height: this.props.height}} source={{ uri: this.props.url }}>
+      <View style={[{ height: this.props.height}, styleOverride]}>
+        <Image style={[{height: this.props.height}, styleOverride]} source={{ uri: this.props.url }}>
           { this.renderShadow() }
         </Image>
 
