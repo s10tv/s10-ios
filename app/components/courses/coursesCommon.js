@@ -63,8 +63,8 @@ export function activeCourseCard(course, isRemovable, onPress, onCardPress= null
   return cardInfo;
 }
 
-export function inactiveCourseCard(course, onPress) {
-  return (
+export function inactiveCourseCard(course, onPress, onCardPress) {
+  const cardInfo = (
     <View style={courseCardStyles.courseCardContainer} key={course._id}>
       <View style={courseCardStyles.courseCardHeaderContainer}>
         <View style={courseCardStyles.courseCardLeftSideContainer}>
@@ -85,6 +85,16 @@ export function inactiveCourseCard(course, onPress) {
       {separatorAndUserAvatars(course)}
     </View>
   )
+
+  if (onCardPress) {
+    return (
+      <TouchableOpacity key={course._id} onPress={onCardPress}>
+        { cardInfo }
+      </TouchableOpacity>
+    )
+  }
+
+  return cardInfo;
 }
 
 export function courseActionCard(text, onPress) {
