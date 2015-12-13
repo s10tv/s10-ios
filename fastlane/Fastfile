@@ -177,6 +177,7 @@ platform :ios do
     command << "-H 'X-AppHub-Application-ID: #{app_id}'"
     command << "-H 'X-AppHub-Application-Secret: #{app_secret}'"
     command << "-H 'X-AppHub-Build-Metadata: #{meta.to_json}'"
+    command << '-H "Content-Type: application/zip"'
     command << '-L https://api.apphub.io/v1/upload'
     command << "--upload-file #{ipa_path}"
 
