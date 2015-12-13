@@ -42,20 +42,25 @@ class MoreCard extends React.Component {
 
   render() {
     let optionalUpgradeCard = null
+    let hideSeparatorForImportCourses = true;
     // if (this.props.shouldShowUpgradeCard) {
       optionalUpgradeCard = (
-        <TappableCard style={styles.card} onPress={this.props.upgrade}>
+        <TappableCard hideSeparator={true} style={styles.card} onPress={this.props.upgrade}>
           <Text style={[SHEET.baseText]}>Upgrade Available</Text>
         </TappableCard>
       )
+      hideSeparatorForImportCourses = false;
     //}
 
     return (
-      <View>
+      <View style={styles.container}>
         { optionalUpgradeCard }
 
-        <TappableCard style={styles.card} onPress={ this.onImportCourses.bind(this)}>
-          <Text style={[SHEET.baseText]}>Import Courses</Text>
+        <TappableCard
+          hideSeparator={hideSeparatorForImportCourses}
+          style={styles.card}
+          onPress={ this.onImportCourses.bind(this)}>
+            <Text style={[SHEET.baseText]}>Import Courses</Text>
         </TappableCard>
 
         <TappableCard style={styles.card} onPress={this.contactUs}>
@@ -79,6 +84,11 @@ class MoreCard extends React.Component {
 }
 
 var styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    borderRadius: 3,
+    paddingVertical: 3,
+  },
   card: {
     flex: 1,
   }

@@ -33,7 +33,7 @@ class HashtagCategory extends React.Component {
     navigator: PropTypes.object.isRequired,
   };
 
-  _renderItem(category) {
+  _renderItem(category, idx) {
     var myTagsRendered = [];
     if (this.props.myTags) {
       myTagsRendered = this.props.myTags.filter(tag => {
@@ -52,7 +52,9 @@ class HashtagCategory extends React.Component {
       <Image style={SHEET.icon} source={require('../img/ic-checkmark.png')} />
 
     return (
-      <TappableCard key={category.displayName} onPress={(event) => {
+      <TappableCard
+        hideSeparator={idx == 0}
+        key={category.displayName} onPress={(event) => {
           const route = Routes.instance.getTagListRoute(category);
           this.props.navigator.push(route)}}>
         <View>
@@ -73,12 +75,12 @@ class HashtagCategory extends React.Component {
       return <Loader />;
     }
 
-    let rows = this.props.categories.map(category => {
-      return this._renderItem.bind(this)(category)
+    let rows = this.props.categories.map((category, idx) => {
+      return this._renderItem(category, idx)
     })
 
     return (
-      <View style={this.props.style}>
+      <View style={[styles.card, this.props.style]}>
         {rows}
       </View>
     );
@@ -86,6 +88,11 @@ class HashtagCategory extends React.Component {
 }
 
 var styles = StyleSheet.create({
+  card: {
+    backgroundColor: 'white',
+    paddingVertical: 3,
+    borderRadius: 3,
+  },
   categoryHeader: {
     flexDirection: 'row',
     alignItems: 'center',

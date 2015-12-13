@@ -26,7 +26,9 @@ function renderCourses(courses, navigator) {
   }
 
   return (
-    <TappableCard onPress={(event) => {
+    <TappableCard
+      style={styles.card}
+      onPress={(event) => {
         const route = Routes.instance.getMyCoursesListRoute(courses);
         navigator.push(route);
       }}>
@@ -50,6 +52,9 @@ function renderCourseTag(course) {
 }
 
 var styles = StyleSheet.create({
+  card: {
+    borderRadius: 3,
+  },
   courseContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
