@@ -69,6 +69,8 @@ class AllCoursesListView extends React.Component {
   }
 
   search(text) {
+    text = text.trim().toLowerCase();
+
     this.setState({
       searchText: text,
       offset: 0,
