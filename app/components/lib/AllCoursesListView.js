@@ -48,7 +48,7 @@ class AllCoursesListView extends React.Component {
         let courseValues = Object.keys(this.courses).map(key => this.courses[key])
 
         if (this.state.searchText) {
-          const regex = new RegExp(`^${this.state.searchText}`);
+          const regex = new RegExp(`^${this.state.searchText}`, 'i');
           courseValues = courseValues.filter(course => {
             logger.info(`course=${JSON.stringify(course)}`)
             return regex.exec(course.courseCode) != null
