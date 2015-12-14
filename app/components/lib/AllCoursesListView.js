@@ -84,7 +84,7 @@ class AllCoursesListView extends React.Component {
           text={this.state.searchText}
           style={styles.searchBar}
           placeholder={'Search'}
-          hideBackground={false}
+          hideBackground={true}
           onChangeText={(text) => this.search.bind(this)(text)} />
 
         <ListView
