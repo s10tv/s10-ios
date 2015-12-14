@@ -125,7 +125,7 @@ class ProfileScreen extends Screen {
         this.props.isFromCoursesView) {
 
       let overrideText = null;
-      if (this.props.isFromHistoryScreen) {
+      if (this.props.isFromHistoryScreen || this.props.isFromCoursesView) {
         overrideText = `Message ${user.firstName}`;
       }
 
