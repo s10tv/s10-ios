@@ -80,8 +80,6 @@ class TagListScreen extends Screen {
           return suggestion;
         })
 
-        logger.debug(`searching for lenght = ${suggestions.length}`)
-
         InteractionManager.runAfterInteractions(() => {
           this.setState({ suggestions: suggestions });
         });
