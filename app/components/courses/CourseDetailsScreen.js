@@ -133,7 +133,7 @@ class CourseDetailsScreen extends React.Component {
       <TappableCard key={user._id} style={[styles.card, SHEET.innerContainer]}
           onPress={() => {
             const route = Routes.instance.getProfileRoute({
-              userId: user._id, isFromCoursesView: true });
+              user: user, isFromCoursesView: true });
             this.props.navigator.parentNavigator.push(route);
           }}
           cardOverride={{padding: 10, borderRadius: 3}}

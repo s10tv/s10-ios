@@ -29,7 +29,7 @@ export default function renderMeHeader(user, navigator) {
         <View style={styles.headerContentLineItem}>
           { renderMeHeaderButton('View', () => {
               const route = Routes.instance.getProfileRoute({
-                userId: user.userId,
+                user: user,
                 isFromMeScreen: true,
               });
               navigator.parentNavigator.push(route);

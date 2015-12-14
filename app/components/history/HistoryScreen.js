@@ -46,7 +46,7 @@ class HistoryProfile extends React.Component {
         cardOverride={{ padding: 0 }}
         onPress={() => {
           const route = Routes.instance.getProfileRoute({
-            userId: user.userId,
+            user: user,
             isFromHistoryScreen: true,
           });
           this.props.navigator.parentNavigator.push(route);

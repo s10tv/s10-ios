@@ -121,6 +121,7 @@ class Router {
   }
 
   getProfileRoute({
+      user,
       userId,
       isFromDiscoveryScreen = false,
       isFromHistoryScreen = false,
@@ -136,6 +137,7 @@ class Router {
             navigator={navigator}
             barButtonIconStyle={{ tintColor: '#ffffff' }}
             initialRoute={self.__getProfileScreen(
+              user,
               userId,
               isFromDiscoveryScreen,
               isFromHistoryScreen,
@@ -153,6 +155,7 @@ class Router {
   }
 
   __getProfileScreen(
+      user,
       userId,
       isFromDiscoveryScreen = false,
       isFromHistoryScreen = false,
@@ -169,6 +172,7 @@ class Router {
           isFromHistoryScreen={isFromHistoryScreen}
           isFromCoursesView={isFromCoursesView}
           userId={userId}
+          user={user}
         />
       },
 

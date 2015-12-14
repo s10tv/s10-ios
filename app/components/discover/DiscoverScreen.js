@@ -75,7 +75,7 @@ class DiscoverScreen extends Screen {
                 Analytics.track('Today: TapProfile');
 
                 const route = Router.instance.getProfileRoute({
-                  userId: candidate.userId,
+                  user: candidate.user,
                   isFromDiscoveryScreen: true,
                 });
 
@@ -99,7 +99,7 @@ class DiscoverScreen extends Screen {
                   <View style={{ right: 10 }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={styles.serviceInfo}>
-                      
+                      { serviceIcons }
                     </View>
                   </View>
                 </View>

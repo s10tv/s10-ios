@@ -78,10 +78,21 @@ class ProfileScreen extends Screen {
   }
 
   componentWillMount() {
-    this.props.ddp.subscribe({ pubName: 'activities', params: [this.props.userId] })
-    .then((subId) => {
-      this.subId = subId;
-    })
+    let userId;
+    if (this.props.userId) {
+      userId = this.props.userId;
+    } else if (this.props.user) {
+      userId = this.props.user._id
+    }
+
+    if (userId) {
+      this.props.ddp.subscribe({ pubName: 'activities', params: [userId] })
+      .then((subId) => {
+        this.subId = subId;
+      })
+    } else {
+      logger.warning(`Subscribing to profiile with no userId`);
+    }
   }
 
   componentWillUnmount() {
@@ -131,9 +142,13 @@ class ProfileScreen extends Screen {
   }
 
   render() {
-    // TODO(qimingfang): should not be using private methods like this.
-    let user = this.props.ddp._formatUser(
-      this.props.ddp.collections.users.findOne({ _id: this.props.userId }));
+    let user;
+    if (this.props.userId) {
+      user = this.props.ddp._formatUser(
+        this.props.ddp.collections.users.findOne({ _id: this.props.userId }));
+    } else if (this.props.user) {
+      user = this.props.user;
+    }
 
     if (!user) {
       return <Loader />
