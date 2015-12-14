@@ -31,19 +31,8 @@ class MyCoursesScreen extends React.Component {
   };
 
   render() {
-    let importCourseButton = null;
     let instructions = null;
     if (this.props.isOnboarding) {
-      importCourseButton = courseActionCard('Import Courses', () => {
-        AlertIOS.alert(
-          'Import courses',
-          'We will be importing your course from CWL.',
-          [
-            { text: 'Cancel', style: 'cancel'},
-            { text: 'Okay', onPress: this.props.onFetchCourses() }
-          ]
-        )
-      })
       instructions = (
         <Text style={[SHEET.baseText, styles.headerReminderText]}>
           We compiled a list of courses that you take, please make sure we did not make any mistakes.
@@ -64,7 +53,6 @@ class MyCoursesScreen extends React.Component {
               })
             })}
 
-            { importCourseButton }
             { courseActionCard('Add new course...', () => {
               const route = Routes.instance.getAllCoursesListRoute();
               this.props.navigator.push(route);

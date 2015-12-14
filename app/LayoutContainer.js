@@ -296,7 +296,9 @@ class LayoutContainer extends React.Component {
     }
   }
 
-  onFetchCourses() {
+  onFetchCourses(options = { showCompletionAlert: true }) {
+    const acceptedCourseTypes = ['Lecture', 'Studio'];
+
     fetch('https://courses.students.ubc.ca/cs/main?pname=regiregisteredcourses&tname=regiregisteredcourses', {
       credentials: 'include'
     })
@@ -305,8 +307,9 @@ class LayoutContainer extends React.Component {
       const courses = new FechUBCClasses().scrape(responseText);
       const promises = courses.map(course => {
 
-        // dont insert courses that are not lectures.
-        if (course.type !== 'Lecture') {
+        // dont insert courses that are not accepted.
+        // dont insert courses that are not for spring semester.
+        if (acceptedCourseTypes.indexOf(course.type) < 0 || course.term != '2') {
           return Promise.resolve()
         }
 
@@ -320,7 +323,9 @@ class LayoutContainer extends React.Component {
       return Promise.all(promises);
     })
     .then(() => {
-      AlertIOS.alert('Success', 'Your courses are now imported.');
+      if (options.showCompletionAlert) {
+        AlertIOS.alert('Success', 'Your courses are now imported.');
+      }
     })
     .catch(err => {
       logger.error(err);

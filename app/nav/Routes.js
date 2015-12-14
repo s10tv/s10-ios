@@ -418,6 +418,9 @@ class Router {
           navigator={navigator}
           clearCookies={true}
           onFinishedCWL={() => {
+            // if there is an error, it will pop up error.
+            self.props.onFetchCourses({ showCompletionAlert: false });
+
             const route = self.getAddCourseDuringOnboarding();
             navigator.push(route);
           }}
