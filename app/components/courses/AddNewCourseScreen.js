@@ -13,6 +13,7 @@ import { Card } from '../lib/Card';
 import AllCoursesListView from '../lib/AllCoursesListView';
 import { inactiveCourseCard, giveUsersInCoursesWithoutMyAvatar } from './coursesCommon'
 import Routes from '../../nav/Routes';
+import Analytics from '../../../modules/Analytics';
 
 const logger = new (require('../../../modules/Logger'))('AddNewCourseScreen')
 
@@ -28,6 +29,10 @@ class AddNewCourseScreen extends React.Component {
   renderCourse(course) {
     course.usersInCourse = giveUsersInCoursesWithoutMyAvatar(course, this.props.me);
     return inactiveCourseCard(course, () => {
+      Analytics.track('Add Courses: Add', {
+        courseCode: course.courseCode
+      });
+
       this.props.ddp.call({ methodName: 'courses/add', params:[course] })
       .then(() => {
         this.props.navigator.pop();
@@ -41,6 +46,10 @@ class AddNewCourseScreen extends React.Component {
         })
       })
     }, () => {
+      Analytics.track('Add Courses: View Details', {
+        courseCode: course.courseCode
+      });
+
       const route = Routes.instance.getCourseDetailRoute(course, false);
       this.props.navigator.push(route);
     })

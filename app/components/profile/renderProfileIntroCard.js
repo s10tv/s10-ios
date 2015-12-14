@@ -19,6 +19,7 @@ import { SHEET, COLORS } from '../../CommonStyles'
 import { Card } from '../lib/Card';
 import iconTextRow from '../lib/iconTextRow';
 import Routes from '../../nav/Routes';
+import Analytics from '../../../modules/Analytics';
 
 const { height, width } = Dimensions.get('window');
 
@@ -48,6 +49,10 @@ export default function renderProfileIntroCard(
             { user.courses.map(course => {
               course.usersInCourse = [];
               return activeCourseCard(course, false, null, () => {
+                Analytics.track('Profile: View Course Details', {
+                  courseCode: course.courseCode
+                });
+
                 const route = Routes.instance.getCourseDetailRoute(course, true)
                 navigator.push(route);
               })

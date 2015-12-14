@@ -18,6 +18,7 @@ import SimilarityCalculator from '../../util/SimilarityCalculator';
 import { activeCourseCard } from './coursesCommon';
 import Loader from '../lib/Loader';
 import Routes from '../../nav/Routes';
+import Analytics from '../../../modules/Analytics';
 
 const { height, width } = Dimensions.get('window')
 const logger = new (require('../../../modules/Logger'))('CourseDetailsScreen');
@@ -132,6 +133,10 @@ class CourseDetailsScreen extends React.Component {
     return (
       <TappableCard key={user._id} style={[styles.card, SHEET.innerContainer]}
           onPress={() => {
+            Analytics.track('Courses Details: View User', {
+              courseCode: this.props.courseCode,
+            });
+
             const route = Routes.instance.getProfileRoute({
               user: user, isFromCoursesView: true });
             this.props.navigator.parentNavigator.push(route);

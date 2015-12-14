@@ -10,7 +10,8 @@ import { TappableCard } from '../lib/Card';
 import Loader from '../lib/Loader';
 import { SHEET, COLORS } from '../../CommonStyles'
 import Routes from '../../nav/Routes'
-import { formatCourse, courseActionCard } from '../courses/coursesCommon'
+import { formatCourse, courseActionCard } from '../courses/coursesCommon';
+import Analytics from '../../../modules/Analytics';
 const logger = new (require('../../../modules/Logger'))('myCoursesCard');
 
 function renderCourses(courses, navigator) {
@@ -20,6 +21,7 @@ function renderCourses(courses, navigator) {
 
   if (courses.loaded && courses.loadedCourses.length == 0) {
     return courseActionCard('Add new course...', () => {
+      Analytics.track('Me: Press Add New Course');
       const route = Routes.instance.getAllCoursesListRoute();
       navigator.push(route);
     })
@@ -29,6 +31,7 @@ function renderCourses(courses, navigator) {
     <TappableCard
       style={styles.card}
       onPress={(event) => {
+        Analytics.track('Me: View My Courses');
         const route = Routes.instance.getMyCoursesListRoute(courses);
         navigator.push(route);
       }}>

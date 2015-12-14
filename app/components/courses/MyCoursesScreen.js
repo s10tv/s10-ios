@@ -13,6 +13,8 @@ import { connect } from 'react-redux/native';
 import { SHEET } from '../../CommonStyles'
 import { formatCourse, giveUsersInCoursesWithoutMyAvatar, activeCourseCard, courseActionCard } from '../courses/coursesCommon'
 import Routes from '../../nav/Routes'
+import Analytics from '../../../modules/Analytics';
+
 const logger = new (require('../../../modules/Logger'))('MyCoursesScreen')
 
 function mapStateToProps(state) {
@@ -48,12 +50,18 @@ class MyCoursesScreen extends React.Component {
             { this.props.courses.loadedCourses.map(course => {
               course.usersInCourse = giveUsersInCoursesWithoutMyAvatar(course, this.props.me);
               return activeCourseCard(course, true, () => this._removeCourse(course), () => {
+                Analytics.track('My Courses: View Course Details', {
+                  courseCode: course.courseCode,
+                });
+
                 const route = Routes.instance.getCourseDetailRoute(course, false)
                 this.props.navigator.push(route);
               })
             })}
 
             { courseActionCard('Add new course...', () => {
+              Analytics.track('My Courses: Press Add New Course');
+
               const route = Routes.instance.getAllCoursesListRoute();
               this.props.navigator.push(route);
             })}
@@ -68,8 +76,15 @@ class MyCoursesScreen extends React.Component {
       'Remove Course',
       'Do you really want to remove this course?',
       [
+        // Delete Button
         {text: 'Delete', onPress: () => {
-          this.props.onRemoveCourse(course._id)}, style: 'destructive'},
+          Analytics.track('My Courses: Remove Course', {
+            courseCode: course.courseCode
+          });
+          this.props.onRemoveCourse(course._id)
+        }, style: 'destructive'},
+
+        // Cancel Button
         {text: 'Cancel', style: 'cancel'}
       ]
     )
