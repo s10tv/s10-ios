@@ -55,16 +55,22 @@ class CourseDetailsScreen extends React.Component {
         }).subscribe(courses => {
           if (courses.length > 0) {
             const [course] = courses;
-            const usersInCourse = course.usersInCourse.filter(user => {
-              return user._id != this.props.me._id
-            }).map(user => {
-              return this.props.ddp._formatUser(user);
-            })
 
             this.setState({
-              course: course,
-              dataSource: this.state.dataSource.cloneWithRows(usersInCourse),
+              course: course
             })
+
+            if (course.usersInCourse) {
+              const usersInCourse = course.usersInCourse.filter(user => {
+                return user._id != this.props.me._id
+              }).map(user => {
+                return this.props.ddp._formatUser(user);
+              })
+
+              this.setState({
+                dataSource: this.state.dataSource.cloneWithRows(usersInCourse)
+              })
+            }
           }
         });
       })
