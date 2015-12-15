@@ -72,24 +72,16 @@ class ProfileEditCard extends React.Component {
           ref={info.key}
           value={this.props.me[info.key]}
           placeHolder={info.display}
-          tapElement={info.tapElement}
+          tapElement={info.tapElement} // used by grad year only.
           isVisible={info.isVisible}
           ddp={this.props.ddp}
           multiline={info.multiline}
-          onChangeText={(text) => {
-            this.props.onEditProfileChange(text);
-          }}
-          onFocus={() => {
-            this.props.onEditProfileFocus(info.key);
-          }}
-          onBlur={(text) => {
-            logger.debug('blurred')
-            this.props.onEditProfileBlur();
-            this.props.updateProfile(info.key, text);
-          }} />
+        />
       </Card>
     )
   }
+
+  render
 
   render() {
     // TODO(qimingfang): We shouldnt need to wait for all data to be around. The logic for

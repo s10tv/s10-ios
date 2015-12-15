@@ -31,9 +31,9 @@ class LinkServiceView extends React.Component {
   static title = () => null
 
   static propTypes = {
-    integrations: PropTypes.object.isRequired,
+    integrations: PropTypes.array.isRequired,
     onLinkFacebook: PropTypes.func.isRequired,
-    navigator: PropTypes.object.required,
+    navigator: PropTypes.object.isRequired,
   }
 
   render() {

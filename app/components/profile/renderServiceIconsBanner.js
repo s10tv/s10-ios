@@ -9,6 +9,7 @@ import React, {
 
 import { Card } from '../lib/Card';
 import { SHEET } from '../../CommonStyles';
+import Routes from '../../nav/Routes';
 
 const grayToIconMapping = {
   facebook: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-facebook-gray.png',
@@ -44,33 +45,50 @@ function renderProfile(profile, activeProfile, onPress) {
     }
   }
 
-  const additionalStyles = { marginHorizontal: 5 };
-
   return (
     <TouchableOpacity
       key={profile.integrationName}
       onPress={() => { return onPress(profile) }}>
       <Image
-          style={[SHEET.iconCircle, additionalStyles]}
+          style={[SHEET.iconCircle, styles.icon]}
           source={source} />
     </TouchableOpacity>
   )
 }
 
-export default function renderServiceIconsBanner(profiles, activeProfile, onPress) {
+export default function renderServiceIconsBanner({
+    navigator,
+    profiles,
+    activeProfile,
+    onPress,
+    isEditable = false }) {
+
+  let addIntegrationButton = null;
+  if (isEditable) {
+    addIntegrationButton = (
+      <TouchableOpacity onPress={() => {
+        const route = Routes.instance.getLinkServiceRoute();
+        navigator.push(route);
+      }}>
+        <Image source={require('../img/ic-add.png')} style={[SHEET.iconCircle, { marginRight: 8 }]} />
+      </TouchableOpacity>
+    )
+  }
 
   return (
     <Card
       style={styles.card}
-      cardOverride={{ padding: 10 }}
+      cardOverride={{ flexDirection:'row', padding: 10 }}
       hideSeparator={true}>
+
       <ScrollView
+        style={styles.icons}
         showsHorizontalScrollIndicator={false}
         horizontal={true}>
-
         { profiles.map(profile => { return renderProfile(profile, activeProfile, onPress) })}
-
       </ScrollView>
+
+      { addIntegrationButton }
     </Card>
   )
 }
@@ -83,8 +101,12 @@ var styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    alignItems: 'center',
-    flexDirection: 'column',
+  },
+  icons: {
+    flex: 1,
+  },
+  icon: {
+    marginHorizontal: 5,
   },
   activityImage: {
     flex: 1,

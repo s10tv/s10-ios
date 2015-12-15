@@ -16,6 +16,13 @@ import { SCREEN_PROFILE } from '../../constants';
 import Screen from '../Screen';
 
 import renderCommonSection from './renderCommonSection';
+import renderMyCourses from './renderMyCourses';
+import renderAboutMe from './renderAboutMe';
+import HashtagCategory from '../lib/HashtagCategory';
+import editPhotoHeader from '../lib/editPhotoHeader';
+import EditProfileOverlay from './EditProfileOverlay';
+import MoreCard from '../me/MoreCard';
+
 import { Card } from '../lib/Card';
 import HeaderBanner from '../lib/HeaderBanner';
 import sectionTitle from '../lib/sectionTitle';
@@ -36,6 +43,8 @@ function mapStateToProps(state) {
   return {
     me: state.me,
     ddp: state.ddp,
+    categories: state.categories,
+    myTags: state.myTags,
   }
 }
 
@@ -44,6 +53,9 @@ class ProfileScreen extends Screen {
   static propTypes = {
     isFromDiscoveryScreen: PropTypes.bool,
     isFromHistoryScreen: PropTypes.bool,
+    isFromCoursesView: PropTypes.bool,
+    isFromMeScreen: PropTypes.bool,
+    isEditable: PropTypes.bool,
   }
 
   constructor(props) {
@@ -53,6 +65,7 @@ class ProfileScreen extends Screen {
       dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
       activeProfileName: 'taylr',
       activeProfileId: 'taylr',
+      isEditingMe: false,
     };
   }
 
@@ -77,6 +90,14 @@ class ProfileScreen extends Screen {
     })
   }
 
+  _pressEditMe() {
+    this.setState({ isEditingMe: true });
+  }
+
+  _closeEditMe() {
+    this.setState({ isEditingMe: false });
+  }
+
   componentWillMount() {
     let userId;
     if (this.props.userId) {
@@ -90,6 +111,7 @@ class ProfileScreen extends Screen {
       .then((subId) => {
         this.subId = subId;
       })
+
     } else {
       logger.warning(`Subscribing to profiile with no userId`);
     }
@@ -101,20 +123,79 @@ class ProfileScreen extends Screen {
     }
   }
 
-  renderHeader(user, serviceIconProfiles, connectedProfiles) {
+  renderHeader({ user, serviceIconProfiles, connectedProfiles, isEditable = false }) {
+    const hashtagCategories = !isEditable ? null : (
+      <View style={SHEET.innerContainer}>
+        { sectionTitle('MY TAGS') }
+        <HashtagCategory
+          myTags={this.props.myTags}
+          categories={this.props.categories}
+          navigator={this.props.navigator} />
+      </View>
+    )
+
+    let summaryCard;
+    if (this.state.activeProfileName == 'taylr') {
+      const moreCard = !this.props.isFromMeScreen ? null : (
+        <View style={SHEET.innerContainer}>
+          { sectionTitle('MORE') }
+          <MoreCard
+            navigator={this.props.navigator}
+            onFetchCourses={this.props.onFetchCourses}
+            shouldShowUpgradeCard={this.props.shouldShowUpgradeCard}
+            upgrade={this.props.upgrade}
+            onPressLogout={this.props.onPressLogout} />
+        </View>
+      )
+
+      summaryCard = (
+        <View>
+          { renderAboutMe({ user, isEditable, onPressEdit: this._pressEditMe.bind(this)}) }
+          { renderMyCourses({
+            courses: user.courses,
+            navigator: this.props.navigator,
+            isEditable})
+          }
+
+          { hashtagCategories }
+
+          { moreCard }
+        </View>
+      )
+    } else {
+      summaryCard = renderProfileIntroCard({
+        navigator: this.props.navigator,
+        activeProfile: this.state.activeProfileName,
+        me: this.props.me,
+        connectedProfiles,
+        user,
+      });
+    }
+
+    let header;
+    if (isEditable) {
+      header = editPhotoHeader(
+        this.props.onUploadImage,
+        this.props.me.avatarUrl,
+        this.props.me.coverUrl
+      )
+    } else {
+      header = renderActivityHeader(user);
+    }
+
+
     return (
       <View>
-        { renderActivityHeader(user) }
-        { renderServiceIconsBanner(
-          serviceIconProfiles,
-          this.state.activeProfileName,
-          this._switchProfile.bind(this)) }
-        { renderProfileIntroCard(
-          this.props.navigator,
-          user,
-          this.state.activeProfileName,
-          connectedProfiles,
-          this.props.me)}
+        { header }
+        { renderServiceIconsBanner({
+          navigator: this.props.navigator,
+          profiles: serviceIconProfiles,
+          activeProfile: this.state.activeProfileName,
+          onPress: this._switchProfile.bind(this),
+          isEditable})
+        }
+
+        { summaryCard }
       </View>
     )
   }
@@ -164,14 +245,26 @@ class ProfileScreen extends Screen {
       connectedProfilesByName[profile.integrationName] = profile
     });
 
+    const overlay = !this.props.isEditable ? null : (
+      <EditProfileOverlay
+        isVisible={this.state.isEditingMe}
+        hideModal={this._closeEditMe.bind(this)} />
+    )
+
     return (
       <View style={SHEET.container}>
+        { overlay }
         <ListView
           dataSource={this.state.dataSource}
-          renderHeader={() => { return this.renderHeader(user, serviceIconProfiles, connectedProfilesByName)}}
+          renderHeader={() => { return this.renderHeader({
+            user,
+            serviceIconProfiles,
+            connectedProfiles: connectedProfilesByName,
+            isEditable: this.props.isEditable })}}
+
           renderRow={(activity) => { return renderActivity(activity, connectedProfilesById) }}
           renderFooter={() => {
-            if (this.props.isFromDiscoveryScreen || this.props.isFromHistoryScreen) {
+            if (this.props.isFromDiscoveryScreen || this.props.isFromHistoryScreen || this.props.isEditable) {
               return <View style={{ paddingBottom: 64 }} />
             }
           }}

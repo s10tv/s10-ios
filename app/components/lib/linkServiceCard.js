@@ -18,8 +18,6 @@ function capitalizeFirstLetter(string) {
 }
 
 function renderCardInfo(iconUrl, status, serviceName, serviceUsername) {
-  logger.info('[integrations] renderCardInfo called too')
-
   const actionItemIcon = (status == 'linked') ?
     <Image source={require('../img/ic-checkmark.png')} style={[SHEET.icon]} /> :
     <Image source={require('../img/ic-add.png')} style={[SHEET.icon]} />
@@ -39,6 +37,8 @@ function renderCardInfo(iconUrl, status, serviceName, serviceUsername) {
 }
 
 function linkSingleIntegrationCard(integration, onPressToLink) {
+  console.log(integration);
+  
   const { id, status, name, username, icon } = integration;
 
   // i.e. @fanghai44

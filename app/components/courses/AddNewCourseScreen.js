@@ -50,7 +50,7 @@ class AddNewCourseScreen extends React.Component {
         courseCode: course.courseCode
       });
 
-      const route = Routes.instance.getCourseDetailRoute(course, false);
+      const route = Routes.instance.getCourseDetailRoute(course);
       this.props.navigator.push(route);
     })
   }

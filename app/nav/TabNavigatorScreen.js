@@ -8,7 +8,7 @@ import React, {
 import { connect } from 'react-redux/native';
 import TabNavigator from 'react-native-tab-navigator';
 
-import MeScreen from '../components/me/MeScreen';
+import Routes from './Routes';
 import DiscoverScreen from '../components/discover/DiscoverScreen';
 import ConversationListView from '../components/chat/ConversationListView';
 
@@ -18,6 +18,7 @@ const logger = new (require('../../modules/Logger'))('TabNavigatorScreen');
 
 function mapStateToProps(state) {
   return {
+    me: state.me,
     currentScreen: state.currentScreen,
   }
 }
@@ -34,12 +35,16 @@ class TabNavigatorScreen extends React.Component {
           onPress={() => {
             this.props.dispatch({
               type: 'CURRENT_SCREEN',
-              id: MeScreen.id,
+              id: 'SCREEN_ME'
             })
           }}
-          selected={this.props.currentScreen.id == MeScreen.id}>
+          selected={this.props.currentScreen.id == 'SCREEN_ME'}>
 
-          <MeScreen {...this.props} />
+          { Routes.instance.getProfileRoute({
+            user: this.props.me,
+            isEditable: true,
+            isFromMeScreen: true,
+            additionalProps: this.props }).renderScene(this.props.navigator)}
 
         </TabNavigator.Item>
         <TabNavigator.Item

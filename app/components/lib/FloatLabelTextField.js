@@ -61,9 +61,6 @@ var TextFieldHolder = React.createClass({
 class FloatLabelTextField extends React.Component {
   constructor(props) {
     super(props);
-
-    logger.info(`rendering in floating text: ${props.value}`)
-
     this.state = {
       focussed: false,
       text: props.value,
@@ -133,7 +130,7 @@ class FloatLabelTextField extends React.Component {
       focussed: false
     });
     try {
-      return this.props.onBlur(this.state.text);
+      return this.props.onBlur();
     } catch (_error) {}
   }
 

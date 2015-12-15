@@ -77,6 +77,7 @@ class DiscoverScreen extends Screen {
                 const route = Router.instance.getProfileRoute({
                   user: candidate.user,
                   isFromDiscoveryScreen: true,
+                  isEditable: false,
                 });
 
                 this.props.navigator.parentNavigator.push(route)

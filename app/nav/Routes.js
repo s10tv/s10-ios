@@ -123,6 +123,9 @@ class Router {
   getProfileRoute({
       user,
       userId,
+      additionalProps = {},
+      isEditable = false,
+      isFromMeScreen = false,
       isFromDiscoveryScreen = false,
       isFromHistoryScreen = false,
       isFromMeScreen = false,
@@ -130,6 +133,37 @@ class Router {
       isFromCoursesView = false,
   }) {
     const self = this;
+
+    if (isEditable) {
+      return Object.assign({}, self.__getProfileScreen(
+        user,
+        userId,
+        additionalProps,
+        isFromMeScreen,
+        isEditable), {
+          getTitle() {
+           return 'Profile'
+          },
+
+          renderRightButton(navigator) {
+            // TODO(qimingfang): DDP call, set isActive.
+            return self.getButton('Done', () => {
+              self.props.ddp.call({ methodName: 'confirmRegistration' })
+              .then(() => {
+                navigator.parentNavigator.push(self.getMainNavigatorRoute());
+              })
+              .catch(err => {
+                self.props.dispatch({
+                  type: 'DISPLAY_ERROR',
+                  title: 'One small issue ...',
+                  message: err.reason,
+                })
+              })
+            }, { isLeft: false })
+          }
+        });
+    }
+
     return {
       renderScene(navigator) {
         return (
@@ -139,6 +173,9 @@ class Router {
             initialRoute={self.__getProfileScreen(
               user,
               userId,
+              additionalProps,
+              isFromMeScreen,
+              isEditable,
               isFromDiscoveryScreen,
               isFromHistoryScreen,
               isFromMeScreen,
@@ -157,9 +194,11 @@ class Router {
   __getProfileScreen(
       user,
       userId,
+      additionalProps = {},
+      isFromMeScreen = false,
+      isEditable = false,
       isFromDiscoveryScreen = false,
       isFromHistoryScreen = false,
-      isFromMeScreen = false,
       isFromConversationScreen = false,
       isFromCoursesView = false) {
     const self = this;
@@ -168,11 +207,15 @@ class Router {
         let ProfileScreen = require('../components/profile/ProfileScreen');
         return <ProfileScreen
           navigator={navigator}
+          isEditable={isEditable}
           isFromDiscoveryScreen={isFromDiscoveryScreen}
           isFromHistoryScreen={isFromHistoryScreen}
           isFromCoursesView={isFromCoursesView}
+          isFromMeScreen={isFromMeScreen}
+          onUploadImage={self.props.onUploadImage}
           userId={userId}
           user={user}
+          {...additionalProps}
         />
       },
 
@@ -186,32 +229,6 @@ class Router {
             return self.props.reportUser(userId)
           }, { isLeft: false })
         }
-      }
-    }
-  }
-
-  getEditProfileRoute() {
-    const self = this;
-    return {
-      renderScene(navigator) {
-        let EditProfileScreen = require('../components/editprofile/EditProfileScreen');
-        return <EditProfileScreen
-          onUploadImage={self.props.onUploadImage}
-          onLinkFacebook={self.props.onLinkFacebook}
-          onEditProfileChange={self.props.onEditProfileChange}
-          onEditProfileFocus={self.props.onEditProfileFocus}
-          onEditProfileBlur={self.props.onEditProfileBlur}
-          updateProfile={self.props.updateProfile}
-          navigator={navigator} />
-      },
-
-      renderLeftButton(navigator) {
-        return self.getButton('Back', () => {
-          Analytics.track("Me: Edit Profile")
-
-          self.__saveProfileIfCurrentlyInEditMode()
-          navigator.pop()
-        })
       }
     }
   }
@@ -272,9 +289,9 @@ class Router {
     }
   }
 
-  getCourseDetailRoute(course, isFromProfile) {
+  getCourseDetailRoute({course, renderWithNewNav = false}) {
     const self = this;
-    if (isFromProfile) {
+    if (renderWithNewNav) {
       return {
         renderScene(navigator) {
           return (
@@ -421,7 +438,9 @@ class Router {
             // if there is an error, it will pop up error.
             self.props.onFetchCourses({ showCompletionAlert: false });
 
-            const route = self.getAddCourseDuringOnboarding();
+            const route = self.getProfileRoute({
+              userId: self.props.ddp.currentUserId,
+              isEditable: true });
             navigator.push(route);
           }}
         />
@@ -430,28 +449,6 @@ class Router {
       getTitle() {
         return 'CWL'
       },
-    }
-  }
-
-  getAddCourseDuringOnboarding() {
-    const self = this;
-    return {
-      renderScene(navigator) {
-        let MyCoursesScreen = require('../components/courses/MyCoursesScreen').MyCoursesScreen;
-        return <MyCoursesScreen
-          navigator={navigator}
-          isOnboarding={true}
-          onFetchCourses={self.props.onFetchCourses}
-          onRemoveCourse={self.props.onRemoveCourse}
-        />
-      },
-
-      renderRightButton(navigator) {
-        return self.getButton('Next', () => {
-          const route = self.getLinkServiceRoute();
-          navigator.push(route);
-        }, { isLeft: false })
-      }
     }
   }
 
@@ -464,77 +461,6 @@ class Router {
           onLinkFacebook={self.props.onLinkFacebook}
           navigator={navigator}
         />
-      },
-
-      renderRightButton(navigator) {
-        // TODO(qimingfang): double check.
-        return self.getButton('Next', () => {
-          navigator.push(self.getCreateProfileScreen());
-        }, { isLeft: false })
-      }
-    }
-  }
-
-  getCreateProfileScreen() {
-    const self = this;
-    return {
-      renderScene(navigator) {
-        let CreateProfileScreen = require('../components/onboarding/CreateProfileScreen');
-        return <CreateProfileScreen
-          onUploadImage={self.props.onUploadImage}
-          onLinkFacebook={self.props.onLinkFacebook}
-          onEditProfileChange={self.props.onEditProfileChange}
-          onEditProfileFocus={self.props.onEditProfileFocus}
-          onEditProfileBlur={self.props.onEditProfileBlur}
-          updateProfile={self.props.updateProfile}
-          navigator={navigator}
-        />
-      },
-
-      renderRightButton(navigator) {
-        // TODO(qimingfang): double check.
-        return self.getButton('Next', () => {
-          self.props.ddp.call({ methodName: 'completeProfile' })
-          .then(() => {
-            navigator.push(self.getAddTagScreen());
-          })
-          .catch(err => {
-            self.props.dispatch({
-              type: 'DISPLAY_ERROR',
-              title: 'Missing Some Info',
-              message: err.reason,
-            })
-          })
-        }, { isLeft: false })
-      }
-    }
-  }
-
-  getAddTagScreen() {
-    const self = this;
-    return {
-      renderScene(navigator) {
-        let AddTagScreen = require('../components/onboarding/AddTagScreen');
-        return <AddTagScreen
-          navigator={navigator}
-        />
-      },
-
-      renderRightButton(navigator) {
-        // TODO(qimingfang): DDP call, set isActive.
-        return self.getButton('Done', () => {
-          self.props.ddp.call({ methodName: 'confirmRegistration' })
-          .then(() => {
-            navigator.parentNavigator.push(self.getMainNavigatorRoute());
-          })
-          .catch(err => {
-            self.props.dispatch({
-              type: 'DISPLAY_ERROR',
-              title: 'One small issue ...',
-              message: err.reason,
-            })
-          })
-        }, { isLeft: false })
       }
     }
   }

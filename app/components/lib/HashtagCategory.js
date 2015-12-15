@@ -54,6 +54,7 @@ class HashtagCategory extends React.Component {
     return (
       <TappableCard
         hideSeparator={idx == 0}
+        cardOverride={{padding: 10}}
         key={category.displayName} onPress={(event) => {
           const route = Routes.instance.getTagListRoute(category);
           this.props.navigator.push(route)}}>

@@ -63,7 +63,7 @@ class Hashtag extends React.Component {
 
 var styles = StyleSheet.create({
   hashtag: {
-    padding: 12,
+    padding: 8,
     margin: 8,
   },
   hashtagText: {

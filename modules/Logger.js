@@ -11,7 +11,7 @@ class Logger {
     } else {
       this.domain = '';
     }
-    this.logToConsole = false;
+    this.logToConsole = true;
   }
 
   verbose(message) {
