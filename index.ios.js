@@ -40,6 +40,14 @@ new LayerService().listen(store);
 new ApphubService().listen(store);
 new PushHandler().listen(store, ddpClient);
 
+const deviceId = BridgeManager.deviceId();
+const deviceOptions = {};
+deviceOptions.appId = BridgeManager.appId();
+deviceOptions.version = BridgeManager.version();
+deviceOptions.build = BridgeManager.build();
+deviceOptions.deviceName = BridgeManager.deviceName();
+ddpClient.call({ methodName: 'connectDevice', params: [deviceId, deviceOptions]});
+
 class Main extends React.Component {
   render() {
     return (
