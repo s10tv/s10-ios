@@ -166,8 +166,15 @@ class DDPService extends TSDDPClient {
           Session.setFullname(`${currentUser.firstName} ${currentUser.lastName}`);
           Session.setFirstName(currentUser.firstName);
           Session.setLastName(currentUser.lastName);
-          Session.setAvatarURL(currentUser.avatar.url);
-          Session.setCoverURL(currentUser.cover.url);
+
+          if (currentUser.avatar) {
+            Session.setAvatarURL(currentUser.avatar.url);
+          }
+
+          if (currentUser.cover) {
+            Session.setCoverURL(currentUser.cover.url);
+          }
+
           Analytics.updateFullname();
         }
       });
