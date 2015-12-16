@@ -88,7 +88,6 @@ class EditProfileOverlay extends React.Component {
           onFocus={() => {
             const layout = this.state[`${key}_layout`];
             this.refs['editscroll'].scrollTo(Math.max(0, layout.y - height/4), 0)
-            console.log(layout);
           }}
           onBlur={() => {
             this.refs['editscroll'].scrollTo(0, 0)
