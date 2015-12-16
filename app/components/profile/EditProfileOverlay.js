@@ -1,6 +1,7 @@
 import React, {
   Dimensions,
   PickerIOS,
+  Modal,
   View,
   DeviceEventEmitter,
   Text,
@@ -47,12 +48,34 @@ class EditProfileOverlay extends React.Component {
       hometown: props.me.hometown,
       gradYearModalVisible: false,
       about: props.me.about,
+      bottomPad: 0,
     }
+  }
+
+  componentWillMount () {
+    DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this))
+    DeviceEventEmitter.addListener('keyboardWillHide', this.keyboardWillHide.bind(this))
+  }
+
+  keyboardWillShow (e) {
+    this.setState({
+      hasKeyboard: true,
+    })
+  }
+
+  keyboardWillHide (e) {
+    this.setState({
+      hasKeyboard: false,
+    })
   }
 
   renderTextField({ key, display, tapElement, multiline }) {
     return (
       <Card
+        onLayout={(event) => {
+          const layout = event.nativeEvent.layout;
+          this.onTextInputLayout(key, layout);
+        }}
         key={key}
         cardOverride={{padding: 5}}>
         <FloatLabelTextField
@@ -62,6 +85,14 @@ class EditProfileOverlay extends React.Component {
           tapElement={tapElement} // used by grad year only.
           ddp={this.props.ddp}
           multiline={multiline}
+          onFocus={() => {
+            const layout = this.state[`${key}_layout`];
+            this.refs['editscroll'].scrollTo(Math.max(0, layout.y - height/4), 0)
+            console.log(layout);
+          }}
+          onBlur={() => {
+            this.refs['editscroll'].scrollTo(0, 0)
+          }}
           onChangeText={(value) => {
             const newState = {};
             newState[key] = value;
@@ -70,6 +101,13 @@ class EditProfileOverlay extends React.Component {
         />
       </Card>
     )
+  }
+
+
+  onTextInputLayout(key, layout) {
+    const newState = {};
+    newState[`${key}_layout`] = layout;
+    this.setState(newState)
   }
 
   renderFirstNameCell() {
@@ -133,11 +171,13 @@ class EditProfileOverlay extends React.Component {
     const eligibleYears = ['2009', '2010', '2011', '2012', '2013', '2014', '2015',
       '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
 
+    const extraStyles = !this.state.hasKeyboard ? null : { top: -height / 4 };
+
     return (
       <Overlay isVisible={this.state.gradYearModalVisible}>
-        <View style={styles.pickerBackground}>
+        <View style={[styles.pickerBackground]}>
           <View style={styles.backdrop} />
-          <View style={styles.picker}>
+          <View style={[styles.picker, extraStyles]}>
             <PickerIOS
               selectedValue={this.state.gradYearPicker}
               onValueChange={(gradYear) => this.setState({gradYearPicker: gradYear})}>
@@ -184,7 +224,7 @@ class EditProfileOverlay extends React.Component {
     return this.renderTextField({
       key: 'about',
       display: 'About Me',
-      multiline: true
+      multiline: true,
     })
   }
 
@@ -217,7 +257,7 @@ class EditProfileOverlay extends React.Component {
         <Overlay style={{ flex: 1}} isVisible={this.props.isVisible}>
           <View style={styles.container}>
             <View style={styles.background} />
-            <ScrollView style={{height: 0.98 * height, flex: 1}}>
+            <ScrollView ref='editscroll' scrollable={false} style={{height: 0.98 * height, flex: 1}}>
               <Card
                   hideSeparator={true}
                   style={[styles.card, styles.roundCorners, SHEET.innerContainer]}
@@ -245,6 +285,7 @@ class EditProfileOverlay extends React.Component {
                 { this.renderAboutCell() }
 
               </Card>
+
             </ScrollView>
           </View>
         </Overlay>

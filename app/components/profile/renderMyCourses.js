@@ -26,9 +26,6 @@ export default function renderMyCourses({ courses, navigator, isEditable = false
     <View style={SHEET.innerContainer}>
       { sectionTitle('COURSES') }
       { courses.map(course => {
-        console.log(course);
-
-
         course.usersInCourse = [];
         return activeCourseCard(course, false, null, () => {
           Analytics.track('Profile: View Course Details', {
