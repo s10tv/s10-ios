@@ -21,7 +21,7 @@ import renderAboutMe from './renderAboutMe';
 import HashtagCategory from '../lib/HashtagCategory';
 import editPhotoHeader from '../lib/editPhotoHeader';
 import EditProfileOverlay from './EditProfileOverlay';
-import MoreCard from '../me/MoreCard';
+import MoreCard from './MoreCard';
 
 import { Card } from '../lib/Card';
 import HeaderBanner from '../lib/HeaderBanner';
