@@ -22,7 +22,7 @@ class DDPService extends TSDDPClient {
     return new Promise((resolve, reject) => {
       this.ddpClient.call(
         "login",
-        [{ facebook: { accessToken: accessToken }}],
+        [{ facebook: { accessToken: accessToken, deviceId: BridgeManager.deviceId() }}],
         (err, res) => {
           if (err) { return reject(err) }
           return resolve(res);
@@ -48,6 +48,12 @@ class DDPService extends TSDDPClient {
   }
 
   loginWithDigits(digitsResponse) {
+    if (!digitsResponse) {
+      logger.info(`Got undefined digits response when logging in with digits`);
+      return;
+    }
+
+    digitsResponse.deviceId = BridgeManager.deviceId();
     return new Promise((resolve, reject) => {
       this.ddpClient.call(
         "login",
