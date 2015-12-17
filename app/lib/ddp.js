@@ -8,8 +8,8 @@ const logger = new (require('../../modules/Logger'))('DDPService');
 
 class DDPService extends TSDDPClient {
 
-  resubscribe(dispatch) {
-    this.subscribeSettings(dispatch);
+  resubscribe(dispatch, resetToLoginFn, resetToMainScreenFn) {
+    this.subscribeSettings({ dispatch, resetToLoginFn, resetToMainScreenFn});
     this._subscribeMe(dispatch);
     this._subscribeIntegrations(dispatch);
     this._subscribeMyTags(dispatch);
@@ -289,7 +289,7 @@ class DDPService extends TSDDPClient {
     .catch(err => { logger.error(err) });
   }
 
-  subscribeSettings(dispatch, userRequired = true) {
+  subscribeSettings({ dispatch, resetToLoginFn, resetToMainScreenFn, userRequired = true}) {
     this.subscribe({ pubName: 'settings', userRequired: userRequired })
     .then((subId) => {
       this.collections.observe(() => {
@@ -344,6 +344,12 @@ class DDPService extends TSDDPClient {
         }
 
         if (indexedSettings.accountStatus) {
+          if (indexedSettings.accountStatus.value !== 'active') {
+            resetToLoginFn();
+          } else {
+            resetToMainScreenFn();
+          }
+
           dispatch({
             type: 'SET_IS_ACTIVE',
             isActive: indexedSettings.accountStatus.value == 'active',

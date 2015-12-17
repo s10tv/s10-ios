@@ -37,6 +37,7 @@ const AzureClient = NativeModules.TSAzureClient;
 function mapStateToProps(state) {
   return {
     ddp: state.ddp,
+    isActive: state.isActive,
     showOverlayLoader: state.showOverlayLoader,
     dialog: state.dialog,
     isConnected: state.isConnected,
@@ -60,7 +61,12 @@ class LayoutContainer extends React.Component {
     this.props.ddp.initialize()
     .then(() => {
       // subscribe to settings before we log in
-      return this.props.ddp.subscribeSettings(this.props.dispatch, false);
+      return this.props.ddp.subscribeSettings({
+        dispatch: this.props.dispatch,
+        userRequired: false,
+        resetToLoginFn: this._resetToLogin.bind(this),
+        resetToMainScreenFn: this._resetToMainScreen.bind(this)
+      });
     })
     .then(() => {
       return this.resumeTokenHandler.handle(this.props.dispatch)
@@ -88,10 +94,28 @@ class LayoutContainer extends React.Component {
     logger.debug('will execute _onUserHasLoggedIn');
 
     // subscribe to the user specific endpoints
-    this.props.ddp.resubscribe(this.props.dispatch);
+    this.props.ddp.resubscribe(this.props.dispatch,
+      this._resetToLogin.bind(this),
+      this._resetToMainScreen.bind(this));
 
     // set up 3p integrations
     this._setupLayer();
+  }
+
+  _resetToLogin() {
+    // need to guard agaist when the component hasnt fully mounted yet.
+    if (this.props.isActive && this.refs && this.refs['mainNav'] && this.refs['mainNav'].refs &&
+        this.refs['mainNav'].refs.wrappedInstance) {
+      return this.refs['mainNav'].refs.wrappedInstance.resetRouteStackToLogin();
+    }
+  }
+
+  _resetToMainScreen() {
+    // need to guard agaist when the component hasnt fully mounted yet.
+    if (this.props.isActive && this.refs && this.refs['mainNav'] && this.refs['mainNav'].refs &&
+        this.refs['mainNav'].refs.wrappedInstance) {
+      return this.refs['mainNav'].refs.wrappedInstance.resetRotueStackToMain();
+    }
   }
 
   _setupLayer() {
@@ -474,6 +498,7 @@ class LayoutContainer extends React.Component {
           hidePopup={this.hidePopup.bind(this)} />
 
           <FullScreenNavigator
+            ref='mainNav'
             style={{ flex: 1 }}
             sceneStyle={{ paddingTop: 64 }}
             upgrade={this.upgrade.bind(this)}

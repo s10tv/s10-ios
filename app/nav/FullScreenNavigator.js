@@ -31,10 +31,6 @@ class FullScreenNavigator extends React.Component {
     super(props);
 
     const amendedProps = Object.assign({}, props, {
-      onEditProfileChange: this.onEditProfileChange.bind(this),
-      onEditProfileFocus: this.onEditProfileFocus.bind(this),
-      onEditProfileBlur: this.onEditProfileBlur.bind(this),
-      updateProfile: this.updateProfile.bind(this),
       reportUser: this.reportUser.bind(this),
     });
 
@@ -84,33 +80,20 @@ class FullScreenNavigator extends React.Component {
     }
   }
 
-  onEditProfileChange(activeText) {
-    logger.debug('onEditProfileChange')
-    Router.instance.currentlyEditing = activeText;
+  resetRouteStackToLogin() {
+    const route = Router.instance.getLoginRoute();
+    const navigator = this.refs['fullScreenNav'];
+    if (navigator) {
+      navigator.immediatelyResetRouteStack([route])
+    }
   }
 
-  onEditProfileFocus(key) {
-    logger.debug('onEditProfileFocus')
-    Router.instance.editProfileFocused = true;
-    Router.instance.editProfileKey = key;
-  }
-
-  onEditProfileBlur() {
-    logger.debug('onEditProfileBlur')
-    Router.instance.editProfileFocus = false;
-  }
-
-  updateProfile(key, value) {
-    // TODO(qimingfang)
-    logger.debug('updateProfile')
-
-    let myInfo = {};
-    myInfo[key] = value;
-    return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
-    .catch(err => {
-      logger.error(err);
-      AlertIOS.alert('Missing Some Info!', err.reason);
-    })
+  resetRotueStackToMain() {
+    const route = Router.instance.getMainNavigatorRoute()
+    const navigator = this.refs['fullScreenNav'];
+    if (navigator) {
+      navigator.immediatelyResetRouteStack([route])
+    }
   }
 
   reportUser(userId) {
