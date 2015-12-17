@@ -30,6 +30,7 @@ import { COLORS, SHEET } from '../../CommonStyles';
 import Loader from '../lib/Loader';
 import iconTextRow from '../lib/iconTextRow';
 import CountdownTimer from '../lib/CountdownTimer';
+import BridgeManager from '../../../modules/BridgeManager';
 import SoundcloudActivity from '../lib/SoundcloudActivity'
 const logger = new (require('../../../modules/Logger'))('ProfileScreen');
 const { height, width } = Dimensions.get('window');
@@ -43,6 +44,7 @@ function mapStateToProps(state) {
   return {
     me: state.me,
     ddp: state.ddp,
+    apphub: state.apphub,
     categories: state.categories,
     myTags: state.myTags,
   }
@@ -264,8 +266,17 @@ class ProfileScreen extends Screen {
 
           renderRow={(activity) => { return renderActivity(activity, connectedProfilesById) }}
           renderFooter={() => {
-            if (this.props.isFromDiscoveryScreen || this.props.isFromHistoryScreen || this.props.isEditable) {
-              return <View style={{ paddingBottom: 64 }} />
+            if (this.props.isEditable) {
+              return (
+                <View style={styles.versionTextContainer}>
+                  <Text style={[styles.versionText, SHEET.innerContainer, SHEET.baseText]}>
+                    { `v${BridgeManager.version()} | ${BridgeManager.build()}` +
+                     ` | AH: ${this.props.apphub.buildName}` }
+                  </Text>
+                </View>
+              )
+            } else {
+              return <View style={{ paddingBottom: 64}} />
             }
           }}
         />
@@ -351,7 +362,18 @@ var styles = StyleSheet.create({
     height: 50,
     marginHorizontal: 0,
     borderRadius : 0,
-  }
+  },
+  versionTextContainer: {
+    flex: 1,
+    top: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  versionText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: COLORS.emptyHashtag,
+  },
 });
 
 export default connect(mapStateToProps)(ProfileScreen)
