@@ -55,6 +55,12 @@ RCT_EXPORT_METHOD(getAll:(RCTResponseSenderBlock)callback) {
         [d setObject:c.name forKey:@"name"];
         [d setObject:c.domain forKey:@"domain"];
         [d setObject:c.path forKey:@"path"];
+
+        if (c.expiresDate != nil) {
+            NSNumber *epoch = [NSNumber numberWithInteger:(NSInteger)[(NSDate *)c.expiresDate timeIntervalSince1970]];
+            [d setObject:epoch forKey:@"expiration"];
+        }
+
         [cookies setObject:d forKey:c.name];
     }
     callback(@[cookies, @"success"]);
