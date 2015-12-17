@@ -85,7 +85,7 @@ class DDPService extends TSDDPClient {
   loginWithToken(token) {
     if (token) {
       return new Promise((resolve, reject) => {
-        this.ddpClient.call("login", [{ tsresume: token }], (err, res) => {
+        this.ddpClient.call("login", [{ tsresume: token, deviceId: BridgeManager.deviceId() }], (err, res) => {
           if (err) {
             switch (err.error) {
               case 403: // You have been logged out by server (expired token)
