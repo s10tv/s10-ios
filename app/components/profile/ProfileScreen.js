@@ -138,6 +138,13 @@ class ProfileScreen extends Screen {
 
     let summaryCard;
     if (this.state.activeProfileName == 'taylr') {
+      const inCommonCard = this.props.isFromMeScreen && isEditable ?  null : (
+        <View style={SHEET.innerContainer}>
+          { renderCommonSection(this.props.me, user) }
+        </View>
+      )
+
+
       const moreCard = !this.props.isFromMeScreen ? null : (
         <View style={SHEET.innerContainer}>
           { sectionTitle('MORE') }
@@ -152,6 +159,7 @@ class ProfileScreen extends Screen {
 
       summaryCard = (
         <View>
+          { inCommonCard }
           { renderAboutMe({ user, isEditable, onPressEdit: this._pressEditMe.bind(this)}) }
           { renderMyCourses({
             courses: user.courses,
