@@ -120,7 +120,12 @@ class DDPService extends TSDDPClient {
   }
 
   _generateShortDisplayName = (user, length) => {
+    if (!user.firstName) {
+      return '';
+    }
+
     let displayName = user.firstName;
+
     if (user.lastName && displayName.length + user.lastName.length < length) {
       displayName += ` ${user.lastName}`;
     }
