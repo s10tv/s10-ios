@@ -83,7 +83,7 @@ class FullScreenNavigator extends React.Component {
   resetRouteStackToLogin() {
     const route = Router.instance.getLoginRoute();
     const navigator = this.refs['fullScreenNav'];
-    if (navigator) {
+    if (navigator && navigator.getCurrentRoutes().length > 1) {
       navigator.immediatelyResetRouteStack([route])
     }
   }
@@ -91,7 +91,7 @@ class FullScreenNavigator extends React.Component {
   resetRotueStackToMain() {
     const route = Router.instance.getMainNavigatorRoute()
     const navigator = this.refs['fullScreenNav'];
-    if (navigator) {
+    if (navigator && navigator.getCurrentRoutes().length > 1) {
       navigator.immediatelyResetRouteStack([route])
     }
   }
