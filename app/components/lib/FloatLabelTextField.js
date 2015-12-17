@@ -121,7 +121,9 @@ class FloatLabelTextField extends React.Component {
     });
     try {
       return this.props.onFocus();
-    } catch (_error) {}
+    } catch (_error) {
+      logger.warning(JSON.stringify(_error))
+    }
   }
 
   unsetFocus() {
@@ -130,7 +132,9 @@ class FloatLabelTextField extends React.Component {
     });
     try {
       return this.props.onBlur();
-    } catch (_error) {}
+    } catch (_error) {
+      logger.warning(JSON.stringify(_error))
+    }
   }
 
   labelStyle() {
@@ -146,12 +150,11 @@ class FloatLabelTextField extends React.Component {
   }
 
   setText(value) {
-    this.setState({
-      text: value
-    });
     try {
       return this.props.onChangeText(value);
-    } catch (_error) {}
+    } catch (_error) {
+      logger.warning(JSON.stringify(_error))
+    }
   }
 
   withMargin() {
