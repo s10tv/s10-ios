@@ -156,6 +156,7 @@ class ProfileScreen extends Screen {
           { renderMyCourses({
             courses: user.courses,
             navigator: this.props.navigator,
+            onRemoveCourse: this.props.onRemoveCourse,
             isEditable})
           }
 
