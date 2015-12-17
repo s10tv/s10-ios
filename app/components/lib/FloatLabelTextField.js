@@ -63,7 +63,6 @@ class FloatLabelTextField extends React.Component {
     super(props);
     this.state = {
       focussed: false,
-      text: props.value,
       height: 20,
     };
   }
@@ -82,7 +81,7 @@ class FloatLabelTextField extends React.Component {
       <TextInput
         placeholder={this.props.placeHolder}
         style={[styles.valueText, textInputExtra]}
-        value={this.state.text}
+        value={this.props.value}
         editable={this.props.ddp.connected && this.props.ddp.loggedIn}
         multiline={this.props.multiline}
         onFocus={this.setFocus.bind(this)}
@@ -97,17 +96,17 @@ class FloatLabelTextField extends React.Component {
          ref="hidden"
          onLayout={this.onHiddenLayout.bind(this)}
          style={[styles.hidden, SHEET.baseText]}>
-          {this.state.text}
+          {this.props.value}
         </Text>
         <View style={styles.viewContainer}>
           <View style={styles.paddingView}></View>
           <View style={styles.fieldContainer}>
-            <FloatingLabel visible={this.state.text || this.props.value}>
+            <FloatingLabel visible={this.props.value}>
               <Text style={[styles.fieldLabel, this.labelStyle(), SHEET.baseText]}>
                 {this.placeHolderValue()}
               </Text>
             </FloatingLabel>
-            <TextFieldHolder withValue={this.state.text}>
+            <TextFieldHolder withValue={this.props.value}>
               { changeableElement }
             </TextFieldHolder>
           </View>
@@ -141,7 +140,7 @@ class FloatLabelTextField extends React.Component {
   }
 
   placeHolderValue() {
-    if (this.state.text || this.props.value) {
+    if (this.props.value) {
       return this.props.placeHolder;
     }
   }
@@ -156,7 +155,7 @@ class FloatLabelTextField extends React.Component {
   }
 
   withMargin() {
-    if (this.state.text) {
+    if (this.props.value) {
       return styles.withMargin;
     }
   }
