@@ -3,18 +3,11 @@ import React, {
   WebView
 } from 'react-native';
 
-import { SCREEN_LINK_SERVICE } from '../../constants';
-import Screen from '../Screen';
 import BridgeManager from '../../../modules/BridgeManager';
 
 const logger = new (require('../../../modules/Logger'))('LinkServiceScreen');
 
-class LinkServiceScreen extends Screen {
-
-  static id = SCREEN_LINK_SERVICE;
-  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
-  static rightButton = () => null
-  static title = () => null
+class LinkServiceScreen extends React.Component {
 
   /**
    * Determines when to close the service link card.

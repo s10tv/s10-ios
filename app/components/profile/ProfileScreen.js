@@ -12,8 +12,6 @@ import React, {
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
-import { SCREEN_PROFILE } from '../../constants';
-import Screen from '../Screen';
 
 import renderCommonSection from './renderCommonSection';
 import renderMyCourses from './renderMyCourses';
@@ -50,7 +48,7 @@ function mapStateToProps(state) {
   }
 }
 
-class ProfileScreen extends Screen {
+class ProfileScreen extends React.Component {
 
   static propTypes = {
     isFromDiscoveryScreen: PropTypes.bool,

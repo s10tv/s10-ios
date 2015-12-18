@@ -6,8 +6,6 @@ import React, {
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
-import { SCREEN_CONVERSATION_LIST } from '../../constants';
-import Screen from '../Screen';
 
 // styles
 import { SHEET, COLORS } from '../../CommonStyles';
@@ -28,8 +26,6 @@ function mapStateToProps(state) {
 }
 
 class ConversationListView extends React.Component {
-
-  static id = SCREEN_CONVERSATION_LIST;
   static propTypes = {
     me: PropTypes.object.isRequired,
   }

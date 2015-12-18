@@ -11,9 +11,7 @@ import React, {
 
 import _ from 'lodash';
 import { connect } from 'react-redux/native';
-import { SCREEN_HISTORY } from '../../constants';
 
-import Screen from '../Screen';
 import { TappableCard } from '../lib/Card';
 import Loader from '../lib/Loader';
 import { SHEET, COLORS } from '../../CommonStyles';
@@ -69,7 +67,7 @@ class HistoryProfile extends React.Component {
   }
 }
 
-class HistoryScreen extends Screen {
+class HistoryScreen extends React.Component {
 
   static propTypes = {
     navigator: PropTypes.object.isRequired,

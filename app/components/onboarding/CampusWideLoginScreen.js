@@ -8,9 +8,7 @@ import { connect } from 'react-redux/native';
 import CookieManager from 'react-native-cookies';
 import FechUBCClasses from 'ubc-classes';
 
-import { SCREEN_OB_CWL_LOGIN } from '../../constants';
 import Loader from '../lib/Loader';
-import Screen from '../Screen';
 import Router from '../../nav/Routes'
 
 const logger = new (require('../../../modules/Logger'))('LinkServiceScreen');
@@ -21,14 +19,12 @@ function mapStateToProps(state) {
   }
 }
 
-class CampusWideLoginScreen extends Screen {
+class CampusWideLoginScreen extends React.Component {
 
   constructor(props = {}) {
     super(props);
     this.state = { loading: false };
   }
-
-  static id = SCREEN_OB_CWL_LOGIN;
 
   static propTypes = {
     onFinishedCWL: PropTypes.func.required,

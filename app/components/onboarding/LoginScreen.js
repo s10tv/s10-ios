@@ -29,9 +29,7 @@ import { connect } from 'react-redux/native';
 import FacebookLoginHandler from './FacebookLoginHandler';
 import DigitsLoginHandler from './DigitsLoginHandler';
 
-import Screen from '../Screen';
 import { Card } from '../lib/Card';
-import { SCREEN_OB_LOGIN } from '../../constants';
 import { SHEET, COLORS } from '../../CommonStyles';
 import Routes from '../../nav/Routes'
 
@@ -41,7 +39,6 @@ let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 let Video = require('react-native-video');
 
-// constants
 const logger = new (require('../../../modules/Logger'))('LoginScreen');
 
 function mapStateToProps(state) {
@@ -53,9 +50,7 @@ function mapStateToProps(state) {
   }
 }
 
-class LoginScreen extends Screen {
-  static id = SCREEN_OB_LOGIN;
-
+class LoginScreen extends React.Component {
   static propTypes = {
     onPressLogin: PropTypes.func.isRequired,
     onPressLogout: PropTypes.func.isRequired,

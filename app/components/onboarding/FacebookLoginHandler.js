@@ -1,4 +1,3 @@
-// constants
 const logger = new (require('../../../modules/Logger'))('FacebookLoginHandler');
 
 class FacebookLoginHandler {

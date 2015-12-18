@@ -12,8 +12,6 @@ import Routes from './Routes';
 import DiscoverScreen from '../components/discover/DiscoverScreen';
 import ConversationListView from '../components/chat/ConversationListView';
 
-import { SWITCH_BASE_TAB, TAB_SCREEN_CONTAINER } from '../constants'
-
 const logger = new (require('../../modules/Logger'))('TabNavigatorScreen');
 
 function mapStateToProps(state) {
@@ -53,14 +51,13 @@ class TabNavigatorScreen extends React.Component {
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
-              type: "CURRENT_SCREEN",
-              id: DiscoverScreen.id,
+              type: 'CURRENT_SCREEN',
+              id: 'SCREEN_TODAY'
             })
           }}
-          selected={this.props.currentScreen.id == DiscoverScreen.id}>
+          selected={this.props.currentScreen.id == 'SCREEN_TODAY'}>
 
           <DiscoverScreen {...this.props} />
-
         </TabNavigator.Item>
         <TabNavigator.Item
           badgeText={0} // TODO(qimingfang):
@@ -70,12 +67,28 @@ class TabNavigatorScreen extends React.Component {
           onPress={() => {
             this.props.dispatch({
               type: 'CURRENT_SCREEN',
-              id: ConversationListView.id,
+              id: 'SCREEN_CONVERSATION_LIST'
             })
           }}
-          selected={this.props.currentScreen.id == ConversationListView.id}>
+          selected={this.props.currentScreen.id == 'SCREEN_CONVERSATION_LIST'}>
 
           <ConversationListView {...this.props} />
+        </TabNavigator.Item>
+
+        <TabNavigator.Item
+          badgeText={0} // TODO(qimingfang):
+          renderIcon={() => <Image source={require('../components/img/ic-calendar.png')}/>}
+          renderSelectedIcon={() => <Image style={styles.selected} source={require('../components/img/ic-calendar.png')}/>}
+          selectedTitleStyle={styles.selectedText}
+          onPress={() => {
+            this.props.dispatch({
+              type: 'CURRENT_SCREEN',
+              id: 'SCREEN_EVENTS'
+            })
+          }}
+          selected={this.props.currentScreen.id == 'SCREEN_EVENTS'}>
+
+          <View />
         </TabNavigator.Item>
       </TabNavigator>
     )

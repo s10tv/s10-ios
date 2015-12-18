@@ -10,8 +10,6 @@ import React, {
 import { connect } from 'react-redux/native';
 import SearchBar from 'react-native-search-bar';
 
-import { SCREEN_CATEGORY_LIST } from '../../constants';
-import Screen from '../Screen';
 
 let SHEET = require('../../CommonStyles').SHEET;
 let COLORS = require('../../CommonStyles').COLORS;
@@ -29,13 +27,7 @@ function mapStateToProps(state) {
   }
 }
 
-class TagListScreen extends Screen {
-
-  static id = SCREEN_CATEGORY_LIST;
-  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
-  static rightButton = () => null
-  static title = (route) => Screen.generateTitleBar(route.props.category.displayName);
-
+class TagListScreen extends React.Component {
   constructor(props = {}) {
     super(props);
 

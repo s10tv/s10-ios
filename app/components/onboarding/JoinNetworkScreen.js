@@ -20,17 +20,9 @@ let COLORS = require('../../CommonStyles').COLORS;
 let ProfileEditCard = require('../lib/ProfileEditCard');
 let Loader = require('../lib/Loader');
 
-import { SCREEN_OB_CWL } from '../../constants';
-import Screen from '../Screen';
-
 import Router from '../../nav/Routes'
 
-class JoinNetworkScreen extends Screen {
-
-  static id = SCREEN_OB_CWL;
-  static leftButton = (route, router) => Screen.generateButton('Back', router.pop.bind(router));
-  static rightButton = (route, router) => null
-  static title = () => null
+class JoinNetworkScreen extends React.Component {
 
   render() {
     return (

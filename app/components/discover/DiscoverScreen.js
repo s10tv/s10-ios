@@ -13,13 +13,11 @@ import React, {
 import { connect } from 'react-redux/native';
 
 import renderReasonSection from './renderReasonSection';
-import Screen from '../Screen';
 import iconTextRow from '../lib/iconTextRow';
 import HeaderBanner from '../lib/HeaderBanner';
 import { Card } from '../lib/Card';
 import Loader from '../lib/Loader';
 import CountdownTimer from '../lib/CountdownTimer';
-import { SCREEN_TODAY } from '../../constants';
 import { SHEET, COLORS } from '../../CommonStyles';
 import Router from '../../nav/Routes';
 import Analytics from '../../../modules/Analytics';
@@ -34,18 +32,13 @@ function mapStateToProps(state) {
   }
 }
 
-class DiscoverScreen extends Screen {
+class DiscoverScreen extends React.Component {
 
   static propTypes = {
     candidate: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
   };
 
-  static id = SCREEN_TODAY;
-  static leftButton = () => Screen.generateButton(null, null);
-  static rightButton = (route, router) => {
-    return Screen.generateButton('History', router.toHistory.bind(router), { isLeft: false });
-  }
   static title = () => Screen.generateTitleBar('Today');
 
   render() {

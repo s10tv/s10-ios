@@ -56,6 +56,8 @@ class Router {
         return 'Me';
       case 'SCREEN_CONVERSATION_LIST':
         return 'Conversations';
+      case 'SCREEN_EVENTS':
+        return 'Events';
 
       default:
         return null
