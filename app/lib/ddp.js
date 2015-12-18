@@ -16,6 +16,7 @@ class DDPService extends TSDDPClient {
     this._subscribeMyCourses(dispatch);
     this._subscribeTagCategories(dispatch)
     this._subscribeCandidates(dispatch)
+    this._subscribeMyCheckins(dispatch)
   }
 
   loginWithFacebook(accessToken) {
@@ -295,6 +296,23 @@ class DDPService extends TSDDPClient {
           type: 'SET_HISTORY_CANDIDATE',
           candidates: historyCandidates,
         })
+      });
+    })
+    .catch(err => { logger.error(err) });
+  }
+
+  _subscribeMyCheckins(dispatch) {
+    this.subscribe({ pubName: 'my-events' })
+    .then(() => {
+      this.collections.observe(() => {
+        return this.collections.myevents.findOne({});
+      }).subscribe(user => {
+        if (user && user.checkins) {
+          dispatch({
+            type: 'SET_MY_CHECKINS',
+            checkins: user.checkins,
+          })
+        }
       });
     })
     .catch(err => { logger.error(err) });

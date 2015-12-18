@@ -20,6 +20,7 @@ import integrations from './ddp/integrations';
 import categories from './ddp/categories';
 import myTags from './ddp/myTags';
 import myCourses from './ddp/myCourses';
+import myCheckins from './ddp/myEvents';
 import { candidate, pastCandidates } from './ddp/candidates.js';
 
 export {
@@ -48,4 +49,5 @@ export {
   myTags,
   myCourses,
   categories,
+  myCheckins,
 }
