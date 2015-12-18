@@ -363,6 +363,31 @@ class Router {
     }
   }
 
+  // Events
+  getSpeedIntrosRoute(event) {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let SpeedIntros = require('../components/events/games/SpeedIntros');
+        return <SpeedIntros navigator={navigator} eventId={event._id} />;
+      },
+    }
+  }
+
+  getEventDetailScreen(event) {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let EventDetailScreen = require('../components/events/EventDetailScreen');
+        return <EventDetailScreen navigator={navigator} event={event} />;
+      },
+
+      getTitle() {
+        return event.title
+      }
+    }
+  }
+
   // Onboarding
   getOnboardingRoute() {
     const self = this;

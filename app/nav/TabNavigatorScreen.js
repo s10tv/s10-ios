@@ -11,6 +11,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import Routes from './Routes';
 import DiscoverScreen from '../components/discover/DiscoverScreen';
 import ConversationListView from '../components/chat/ConversationListView';
+import EventListScreen from '../components/events/EventListScreen';
 
 const logger = new (require('../../modules/Logger'))('TabNavigatorScreen');
 
@@ -88,7 +89,7 @@ class TabNavigatorScreen extends React.Component {
           }}
           selected={this.props.currentScreen.id == 'SCREEN_EVENTS'}>
 
-          <View />
+          <EventListScreen {...this.props} />
         </TabNavigator.Item>
       </TabNavigator>
     )
