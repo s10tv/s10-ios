@@ -63,7 +63,6 @@ var styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    marginTop: 8,
     borderRadius: 3,
     paddingVertical: 3,
   },

@@ -9,7 +9,6 @@ import React, {
   StyleSheet,
 } from 'react-native';
 
-import renderCommonSection from './renderCommonSection';
 import { activeCourseCard } from '../courses/coursesCommon';
 import sectionTitle from '../lib/sectionTitle';
 
