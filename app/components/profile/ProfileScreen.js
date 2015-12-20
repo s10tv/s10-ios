@@ -13,7 +13,7 @@ import React, {
 
 import { connect } from 'react-redux/native';
 
-import renderCommonSection from './renderCommonSection';
+import { renderCommonSection } from './renderCommonSection';
 import renderMyCourses from './renderMyCourses';
 import renderAboutMe from './renderAboutMe';
 import HashtagCategory from '../lib/HashtagCategory';

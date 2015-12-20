@@ -12,7 +12,7 @@ import React, {
 
 import { connect } from 'react-redux/native';
 
-import renderReasonSection from './renderReasonSection';
+import { renderReasonSection } from './renderReasonSection';
 import iconTextRow from '../lib/iconTextRow';
 import HeaderBanner from '../lib/HeaderBanner';
 import { Card } from '../lib/Card';

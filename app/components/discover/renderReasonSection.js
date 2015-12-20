@@ -9,25 +9,25 @@ import { SHEET, COLORS } from '../../CommonStyles';
 import SimilarityCalculator from '../../util/SimilarityCalculator';
 import { formatCourse } from '../courses/coursesCommon'
 
-function renderTag(tag) {
+export function renderTag(tag, styleOverride) {
   return (
-    <View key={tag.text} style={styles.tag}>
+    <View key={tag.text} style={[styles.tag, styleOverride]}>
       <Text style={[SHEET.baseText, styles.hashtagText]}>#{tag.text}</Text>
     </View>
   )
 }
 
-function renderMoreTag(numMore) {
+export function renderMoreTag(numMore, styleOverride) {
   return (
-    <View key={'more'} style={styles.tag}>
+    <View key={'more'} style={[styles.tag, styleOverride]}>
       <Text style={[SHEET.baseText, styles.hashtagText]}>+{numMore} more</Text>
     </View>
   )
 }
 
-function renderCourse(course) {
+export function renderCourse(course, styleOverride) {
   return (
-    <View key={course.courseCode} style={[styles.tag, styles.courseTag]}>
+    <View key={course.courseCode} style={[styles.tag, styles.courseTag, styleOverride]}>
       <Image
         style={styles.courseIcon}
         source={require('../img/ic-class-icon.png')} />
@@ -36,7 +36,7 @@ function renderCourse(course) {
   )
 }
 
-export default function renderReasonSection(candidate, forUser, toUser) {
+export function renderReasonSection(candidate, forUser, toUser) {
   const { same, other } = new SimilarityCalculator().calculate(forUser, toUser);
 
   let renderables = [];

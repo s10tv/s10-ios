@@ -6,9 +6,9 @@ import React, {
 
 import { SHEET } from '../../CommonStyles';
 
-export default function sectionTitle(text) {
+export default function sectionTitle(text, styleOverride) {
   return (
-    <View style={[styles.titleView]}>
+    <View style={[styles.titleView, styleOverride]}>
       <Text style={[styles.title, SHEET.baseText]}>
         { text }
       </Text>

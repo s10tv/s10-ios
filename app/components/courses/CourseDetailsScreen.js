@@ -19,8 +19,10 @@ import { activeCourseCard } from './coursesCommon';
 import Loader from '../lib/Loader';
 import Routes from '../../nav/Routes';
 import Analytics from '../../../modules/Analytics';
+import sectionTitle from '../lib/sectionTitle';
+import { renderCourse, renderTag, renderMoreTag } from '../discover/renderReasonSection';
 
-const { height, width } = Dimensions.get('window')
+const { height, width } = Dimensions.get('window');
 const logger = new (require('../../../modules/Logger'))('CourseDetailsScreen');
 
 function mapStateToProps(state) {
@@ -89,38 +91,39 @@ class CourseDetailsScreen extends React.Component {
   }
 
   renderHeader() {
-    return activeCourseCard(this.state.course, false, null, null, { borderRadius: 0, marginVertical: 0});
+    var takenBySectionTitle = this.state.dataSource.getRowCount() == 0 ? null :
+      sectionTitle('TAKEN BY', SHEET.innerContainer );
+    return (
+      <View>
+        { activeCourseCard(this.state.course, false, null, null, { borderRadius: 0, marginVertical: 0}) }
+        { takenBySectionTitle }
+      </View>
+    );
   }
 
   _renderSimilarities(user) {
     const similarities = this.similarityCalculator.calculate(this.props.me, user);
 
     const courseSimilarities = similarities.same.courses.map(course => {
-      return `${course.dept} ${course.course}`;
-    })
+      return renderCourse(course, { marginVertical: 8 });
+    });
     const tagSimilarities = similarities.same.tags.map(tag => {
-      return tag.text;
+      return renderTag(tag, { marginVertical: 8 });
     });
     const allSimilarities = courseSimilarities.concat(tagSimilarities);
 
     if (allSimilarities.length > 0) {
       const sampleSimilarities = allSimilarities.slice(0,1);
       if (allSimilarities.length > 1) {
-        sampleSimilarities.push(`${allSimilarities.length - 1} more`);
+        sampleSimilarities.push(renderMoreTag(allSimilarities.length - 1, { marginVertical: 8 }));
       }
 
       return (
         <View style={styles.similarityContainer}>
           <View style={SHEET.separator} />
           <View style={styles.similarities}>
-            <Text style={styles.inCommon}>Common:</Text>
-            { sampleSimilarities.map(similarity => {
-              return (
-                <View key={similarity} style={styles.similarity}>
-                  <Text style={[{ color: COLORS.taylr}]}>{ similarity }</Text>
-                </View>
-              )
-            })}
+            <Text style={[SHEET.baseText, styles.inCommon]}>In common:</Text>
+            { sampleSimilarities }
           </View>
         </View>
       )
@@ -129,9 +132,11 @@ class CourseDetailsScreen extends React.Component {
     return null;
   }
 
-  renderUserInCourse(user) {
+  renderUserInCourse(user, rowId) {
+    var similarities = this._renderSimilarities(user);
+
     return (
-      <TappableCard key={user._id} style={[styles.card, SHEET.innerContainer]}
+      <TappableCard key={user._id} style={[styles.card, SHEET.innerContainer, rowId == 0 && { marginTop: 0 }]}
           onPress={() => {
             Analytics.track('Courses Details: View User', {
               courseCode: this.props.courseCode,
@@ -141,18 +146,18 @@ class CourseDetailsScreen extends React.Component {
               user: user, isFromCoursesView: true });
             this.props.navigator.parentNavigator.push(route);
           }}
-          cardOverride={{padding: 10, borderRadius: 3}}
+          cardOverride={[{padding: 10, borderRadius: 3}, similarities && { paddingBottom: 0 }]}
           hideSeparator={true}>
         <View>
           <View style={{ flexDirection: 'row' }}>
             <Image source={{ uri: user.avatarUrl }} style={styles.avatar} />
             <View style={styles.userInfo}>
-              <Text>{user.displayName}</Text>
+              <Text style={[SHEET.baseText, styles.displayNameText]}>{user.displayName}</Text>
               {iconTextRow(require('../img/ic-mortar.png'), user.major, styles.userIconTextRow)}
               {iconTextRow(require('../img/ic-house.png'), user.hometown, styles.userIconTextRow)}
             </View>
           </View>
-          { this._renderSimilarities(user) }
+          { similarities }
         </View>
       </TappableCard>
     )
@@ -168,7 +173,7 @@ class CourseDetailsScreen extends React.Component {
         <ListView
           dataSource={this.state.dataSource}
           renderHeader={() => { return this.renderHeader()}}
-          renderRow={(userInCourse) => { return this.renderUserInCourse(userInCourse) }}
+          renderRow={(userInCourse, undefined, rowId) => { return this.renderUserInCourse(userInCourse, rowId) }}
         />
       </View>
     )
@@ -183,11 +188,11 @@ var styles = StyleSheet.create({
   userInfo: {
     flex: 1,
     flexDirection: 'column',
-    marginLeft: 5,
+    marginLeft: 10,
   },
   userIconTextRow: {
     padding: 0,
-    marginTop: 5,
+    marginTop: 7,
   },
   avatar: {
     width: width / 5,
@@ -203,7 +208,6 @@ var styles = StyleSheet.create({
   similarities: {
     flex: 1,
     flexDirection: 'row',
-    height: 35,
     alignItems: 'center',
   },
   similarity: {
@@ -213,7 +217,9 @@ var styles = StyleSheet.create({
     paddingVertical: 2,
     marginRight: 5,
   },
+  displayNameText: {
+    fontSize: 16,
+  },
 })
-
 
 export default connect(mapStateToProps)(CourseDetailsScreen)
