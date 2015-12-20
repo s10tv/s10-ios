@@ -8,6 +8,10 @@ import React, {
 import { SHEET } from '../../CommonStyles';
 
 export default function iconTextRow(iconSource, text, rowStyle={}, iconStyle={}, textStyle={}) {
+  if (text == undefined || text.includes('undefined')) {
+    text = '';
+  }
+
   return (
     <View style={[styles.row, rowStyle]}>
       <Image source={iconSource} style={iconStyle} />

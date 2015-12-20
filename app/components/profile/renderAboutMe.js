@@ -16,7 +16,7 @@ function hasOneRequiredField(user, field) {
   return user[field] && user[field].length > 0;
 }
 
-function hasALlRequiredFields(user) {
+function hasAllRequiredFields(user) {
   return ['firstName', 'lastName', 'hometown', 'major', 'gradYear'].reduce((acc, ele) => {
     return acc && hasOneRequiredField(user, ele);
   }, true);
@@ -33,11 +33,11 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
   )
 
   let nameSection = null;
-  let gradYearSection = null;
+  let majorAndGradYearSection = null;
   let editInfoButton = null;
 
   if (isEditable) {
-    const editInfoButtonImage = hasALlRequiredFields(user) ?
+    const editInfoButtonImage = hasAllRequiredFields(user) ?
         require('../img/ic-checkmark.png') :
         require('../img/ic-add.png');
 
@@ -53,7 +53,7 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
     }
 
     nameSection = iconTextRow(require('../img/ic-me-dark.png'), name);
-    gradYearSection = iconTextRow(require('../img/ic-mortar.png'), user.gradYear);
+    majorAndGradYearSection = iconTextRow(require('../img/ic-mortar.png'), `${user.major} ${user.gradYear}`);
     editInfoButton = (
       <TouchableOpacity onPress={onPressEdit}>
         <Image source={editInfoButtonImage} style={[SHEET.iconCircle, styles.icon]} />
@@ -71,8 +71,7 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
 
         <View style={styles.infoSection}>
           { nameSection }
-          { gradYearSection }
-          {iconTextRow(require('../img/ic-mortar.png'), user.major)}
+          { majorAndGradYearSection }
           {iconTextRow(require('../img/ic-house.png'), user.hometown)}
 
           { aboutSection }
