@@ -86,7 +86,7 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
 var styles = StyleSheet.create({
   card: {
     flex: 1,
-    marginTop: 8,
+    marginTop: 0,
     borderRadius: 3,
     paddingVertical: 3,
   },

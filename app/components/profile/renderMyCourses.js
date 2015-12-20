@@ -45,7 +45,7 @@ export default function renderMyCourses({ courses, navigator, onRemoveCourse, is
   return (
     <View style={SHEET.innerContainer}>
       { sectionTitle('COURSES') }
-      { courses.map(course => {
+      { courses.map((course, index) => {
         course.usersInCourse = [];
         return activeCourseCard(
           course,
@@ -61,7 +61,8 @@ export default function renderMyCourses({ courses, navigator, onRemoveCourse, is
               renderWithNewNav: isSomeoneElsesProfile // viewing from topnav-less requires new exnav.
             })
             navigator.push(route);
-          })
+          },
+          index == 0 && { marginTop: 0 }) // removes excess margin for the first course
       })}
       { addCourseButton }
     </View>

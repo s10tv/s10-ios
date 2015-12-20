@@ -183,7 +183,8 @@ var courseCardStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     marginVertical: 5,
-    padding: 1
+    padding: 1,
+    borderRadius: 3,
   },
   courseCardHeaderContainer: {
     flexDirection: 'row',
