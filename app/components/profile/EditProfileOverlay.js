@@ -144,7 +144,7 @@ class EditProfileOverlay extends React.Component {
   renderGradYearCell() {
     const gradYearText = this.state.gradYear.length > 0 ?
       <Text>{ this.state.gradYear } </Text> :
-      <Text style={{ color: '#B1B1B1' }}>Graduation Year *</Text>;
+      <Text style={[SHEET.baseText, { fontSize: 16, color: '#C7C7CD' }]}>Graduation Year *</Text>;
 
     const tapElement = (
       <TouchableOpacity
@@ -178,6 +178,7 @@ class EditProfileOverlay extends React.Component {
           <View style={styles.backdrop} />
           <View style={[styles.picker, extraStyles]}>
             <PickerIOS
+              itemStyle={[SHEET.baseText]}
               selectedValue={this.state.gradYearPicker}
               onValueChange={(gradYear) => this.setState({gradYearPicker: gradYear})}>
               {eligibleYears.map((year) => (
@@ -195,7 +196,7 @@ class EditProfileOverlay extends React.Component {
                    gradYearModalVisible: false,
                  });
               }}>
-                <Text style={styles.buttonText}>
+                <Text style={[SHEET.baseText, styles.buttonText]}>
                   Cancel
                 </Text>
               </TouchableOpacity>
@@ -208,7 +209,7 @@ class EditProfileOverlay extends React.Component {
                   gradYearModalVisible: false,
                 });
               }}>
-                <Text style={styles.buttonText}>
+                <Text style={[SHEET.baseText, styles.buttonText]}>
                   Save
                 </Text>
               </TouchableOpacity>

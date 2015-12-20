@@ -80,7 +80,7 @@ class FloatLabelTextField extends React.Component {
     let changeableElement = this.props.tapElement ? this.props.tapElement : (
       <TextInput
         placeholder={this.props.placeHolder}
-        style={[styles.valueText, textInputExtra]}
+        style={[SHEET.baseText, styles.valueText, textInputExtra]}
         value={this.props.value}
         editable={this.props.ddp.connected && this.props.ddp.loggedIn}
         multiline={this.props.multiline}
