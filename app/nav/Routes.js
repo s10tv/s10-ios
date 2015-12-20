@@ -90,7 +90,23 @@ class Router {
             const route = self.getHistoryRoute();
             navigator.push(route)
           }, { isLeft: false })
+        } else if (self.currentScreen.id == 'SCREEN_EVENTS') {
+          return self.getButton('History', () => {
+            const route = self.getEventListRoute();
+            navigator.push(route)
+          }, { isLeft: false })
         }
+      },
+    }
+  }
+
+  getEventListRoute() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let EventListScreen = require('../components/events/EventListScreen');
+        return <EventListScreen
+          navigator={navigator} />
       },
     }
   }
