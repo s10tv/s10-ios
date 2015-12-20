@@ -104,7 +104,7 @@ var styles = StyleSheet.create({
   },
   myHashtags: {
     marginHorizontal: -8, // offsets the hashtag.
-    marginVertical: 4,
+    marginTop: 4,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start'
