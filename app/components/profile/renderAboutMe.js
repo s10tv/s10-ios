@@ -23,11 +23,14 @@ function hasAllRequiredFields(user) {
 }
 
 export default function renderAboutMe({ user, onPressEdit, isEditable = false }) {
+  if (user != null) {
+      console.log('isEditable is ' + isEditable + ', user is ' + JSON.stringify(user));
+  }
   const aboutSection = !user.about ? null : (
     <View>
       <View style={SHEET.separator} />
       <View style={{ marginTop: 10 }}>
-        <Text stlye={[SHEET.baseText]}>{user.about}</Text>
+        <Text style={[SHEET.baseText]}>{user.about}</Text>
       </View>
     </View>
   )
@@ -36,11 +39,9 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
   let majorAndGradYearSection = null;
   let editInfoButton = null;
 
-  if (isEditable) {
-    const editInfoButtonImage = hasAllRequiredFields(user) ?
-        require('../img/ic-checkmark.png') :
-        require('../img/ic-add.png');
+  majorAndGradYearSection = iconTextRow(require('../img/ic-mortar.png'), `${user.major} ${user.gradYear}`);
 
+  if (isEditable) {
     let name;
     if (user.firstName && user.lastName) {
       name = `${user.firstName} ${user.lastName}`;
@@ -52,8 +53,10 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
       name = '';
     }
 
-    nameSection = iconTextRow(require('../img/ic-me-dark.png'), name);
-    majorAndGradYearSection = iconTextRow(require('../img/ic-mortar.png'), `${user.major} ${user.gradYear}`);
+    const editInfoButtonImage = hasAllRequiredFields(user) ?
+        require('../img/ic-checkmark.png') :
+        require('../img/ic-add.png');
+    nameSection = iconTextRow(require('../img/ic-me-dark.png'), name)
     editInfoButton = (
       <TouchableOpacity onPress={onPressEdit}>
         <Image source={editInfoButtonImage} style={[SHEET.iconCircle, styles.icon]} />
@@ -72,7 +75,7 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
         <View style={styles.infoSection}>
           { nameSection }
           { majorAndGradYearSection }
-          {iconTextRow(require('../img/ic-house.png'), user.hometown)}
+          {iconTextRow(require('../img/ic-house.png'), user.hometown, { marginBottom: 5 })}
 
           { aboutSection }
         </View>
@@ -91,6 +94,6 @@ var styles = StyleSheet.create({
     paddingVertical: 3,
   },
   infoSection: {
-    flex: 1
+    flex: 1,
   },
 });
