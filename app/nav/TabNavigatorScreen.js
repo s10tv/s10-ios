@@ -11,7 +11,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import Routes from './Routes';
 import DiscoverScreen from '../components/discover/DiscoverScreen';
 import ConversationListView from '../components/chat/ConversationListView';
-import EventListScreen from '../components/events/EventListScreen';
+import EventCheckinScreen from '../components/events/EventCheckinScreen';
 
 const logger = new (require('../../modules/Logger'))('TabNavigatorScreen');
 
@@ -78,8 +78,8 @@ class TabNavigatorScreen extends React.Component {
 
         <TabNavigator.Item
           badgeText={0} // TODO(qimingfang):
-          renderIcon={() => <Image source={require('../components/img/ic-calendar.png')}/>}
-          renderSelectedIcon={() => <Image style={styles.selected} source={require('../components/img/ic-calendar.png')}/>}
+          renderIcon={() => <Image source={require('../components/img/ic-events.png')}/>}
+          renderSelectedIcon={() => <Image style={styles.selected} source={require('../components/img/ic-events.png')}/>}
           selectedTitleStyle={styles.selectedText}
           onPress={() => {
             this.props.dispatch({
@@ -89,7 +89,7 @@ class TabNavigatorScreen extends React.Component {
           }}
           selected={this.props.currentScreen.id == 'SCREEN_EVENTS'}>
 
-          <EventListScreen {...this.props} />
+          <EventCheckinScreen {...this.props} />
         </TabNavigator.Item>
       </TabNavigator>
     )
