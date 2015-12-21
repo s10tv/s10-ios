@@ -6,15 +6,21 @@ import React, {
   TouchableOpacity,
   PropTypes,
   StyleSheet,
+  ScrollView,
+  Dimensions
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
 
 import { SHEET, COLORS } from '../../CommonStyles';
+import moment from 'moment';
+require('moment-duration-format');
 import Routes from '../../nav/Routes';
 import Analytics from '../../../modules/Analytics';
+import { renderEventCard } from './eventsCommon';
 
-const logger = new (require('../../../modules/Logger'))('CountdownTimer');
+const logger = new (require('../../../modules/Logger'))('EventCountdownTimer');
+const { width, height } = Dimensions.get('window');
 
 function mapStateToProps(state) {
   return {
@@ -25,7 +31,8 @@ function mapStateToProps(state) {
 class EventCountdownScreen extends React.Component {
 
   static propTypes = {
-    timerEndDate: PropTypes.object.isRequired,
+    timerStartDate: PropTypes.object.isRequired,
+    event: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -47,25 +54,15 @@ class EventCountdownScreen extends React.Component {
       return;
     }
 
-    let format = function(num) {
-      return ("0" + num).slice(-2);
-    }
-
     let timerFunction = function() {
-      let nextMatchDateSettings = self.props.timerEndDate;
+      let nextMatchDateSettings = self.props.timerStartDate;
       if (!nextMatchDateSettings) {
         return;
       }
 
-      let nextMatchDate = Math.floor(nextMatchDateSettings.getTime() / 1000);
-      let now = Math.floor(new Date().getTime() / 1000);
-
-      let interval = Math.max(nextMatchDate - now, 0)
-      let hours = Math.floor(interval / 3600);
-      let minutes = Math.floor((interval - hours * 3600) / 60);
-      let seconds = Math.floor((interval - hours * 3600) - minutes * 60);
-
-      this.setState({ countdown: `${format(hours)}:${format(minutes)}:${format(seconds)}`});
+      let formattedDate = moment.duration(nextMatchDateSettings - new Date()).format("H:mm:ss");
+      logger.debug(formattedDate);
+      this.setState({ countdown: formattedDate});
     }
 
     timerFunction.bind(this)();
@@ -74,13 +71,16 @@ class EventCountdownScreen extends React.Component {
 
   render() {
     return (
-      <View style={[styles.messageButton, this.props.style]}>
-        <Text style={[{ color: COLORS.background, fontSize: 24, marginBottom: 10 }, SHEET.baseText]}>
-          {this.props.title}
-        </Text>
-        <Text style={[styles.messageButtonText, SHEET.baseText]}>
-          { this.state.countdown }
-        </Text>
+      <View style={SHEET.container}>
+        <ScrollView>
+          { renderEventCard(this.props.event, null, true) }
+          <View style={SHEET.innerContainer}>
+            <View style={styles.timeLeftTillEventContainer}>
+              <Text style={[SHEET.baseText, styles.timeLeftTillEventText]}> There is {this.state.countdown} until the start
+                of this lovely event. Don’t forget to come! </Text>
+            </View>
+          </View>
+        </ScrollView>
       </View>
     )
   }
@@ -95,6 +95,16 @@ var styles = StyleSheet.create({
   messageButtonText: {
     fontSize: 18,
     color: COLORS.taylr,
+  },
+  timeLeftTillEventContainer: {
+    backgroundColor: '7947B3',
+    padding: 10,
+    borderRadius: 3,
+  },
+  timeLeftTillEventText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 18,
   },
 });
 

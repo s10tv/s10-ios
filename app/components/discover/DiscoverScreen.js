@@ -116,7 +116,7 @@ class DiscoverScreen extends React.Component {
                   <View style={[SHEET.separator, styles.separator]} />
                 </View>
 
-                { renderReasonSection(candidate, this.props.me, candidate.user) }
+                { renderReasonSection(this.props.me, candidate.user) }
 
                 <View style={{ marginHorizontal: 10, marginBottom: 10}}>
                   <CountdownTimer

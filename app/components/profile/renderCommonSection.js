@@ -10,25 +10,7 @@ import { Card } from '../lib/Card';
 import sectionTitle from '../lib/sectionTitle';
 import SimilarityCalculator from '../../util/SimilarityCalculator';
 import { formatCourse } from '../courses/coursesCommon'
-
-export function renderTag(tag) {
-  return (
-    <View key={tag.text} style={styles.tag}>
-      <Text style={[SHEET.baseText, styles.hashtagText]}>#{tag.text}</Text>
-    </View>
-  )
-}
-
-export function renderCourse(course) {
-  return (
-    <View key={course.courseCode} style={[styles.tag, styles.courseTag]}>
-      <Image
-        style={styles.courseIcon}
-        source={require('../img/ic-class-icon.png')} />
-      <Text style={[SHEET.baseText, styles.hashtagText, styles.courseTagText]}>{formatCourse(course.dept, course.course)}</Text>
-    </View>
-  )
-}
+import { renderCourse, renderTag } from '../discover/renderReasonSection';
 
 export function renderCommonSection(forUser, toUser) {
   const { same, other } = new SimilarityCalculator().calculate(forUser, toUser);

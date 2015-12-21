@@ -6,14 +6,16 @@ import React, {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-  Image
+  Image,
+  ActivityIndicatorIOS
 } from 'react-native';
 
 import { connect } from 'react-redux/native';
 import { SHEET, COLORS} from '../../CommonStyles';
 import { Card } from '../lib/Card';
 import sectionTitle from '../lib/sectionTitle';
-
+import Routes from '../../nav/Routes';
+const logger = new (require('../../../modules/Logger'))('EventCheckinScreen');
 function mapStateToProps(state) {
   return {
     ddp: state.ddp,
@@ -24,10 +26,20 @@ class EventCheckinScreen extends React.Component {
 
   constructor(props = {}) {
     super(props);
-    this.state = {}
+    this.state = {
+      isJoining: false
+    }
   }
 
   render() {
+    var joinButtonContents = this.state.isJoining ?
+      <ActivityIndicatorIOS
+        style={styles.isJoiningActivityIndicator}
+        size='small'
+        color='white'
+        animating={this.state.isLoading}/> :
+      <Text style={[SHEET.baseText, styles.joinButtonText]}>Join</Text>
+
     return (
       <View style={SHEET.container}>
         <View style={[SHEET.innerContainer, { flex: 1 }]}>
@@ -44,15 +56,30 @@ class EventCheckinScreen extends React.Component {
 
              <View style={styles.actions}>
                <TouchableOpacity style={styles.buttonContainer} onPress={() => {
-                 this.props.ddp.call({
-                   methodName: 'events/join',
-                   params: [this.state.text]
-                 })
-                 .catch(err => {
-                   AlertIOS.alert('Hmm', err.reason)
-                 })
+                 if (this.state.text == null) {
+                   AlertIOS.alert('Oops.', 'It seems that you forgot to enter the code.');
+                 } else {
+                   this.setState({ isJoining: true });
+                   this.props.ddp.call({
+                     methodName: 'events/join',
+                     params: [this.state.text]
+                   })
+                   .then(res => {
+                     const event = res;
+                     this.setState({ isJoining: false });
+                     const route = Routes.instance.getEventDetailScreen(event);
+                     this.props.navigator.push(route);
+                   })
+                   .catch(err => {
+                     logger.debug(err.message);
+                     this.setState({ isJoining: false });
+                     AlertIOS.alert('Oops.', err.reason);
+                   })
+                 }
                }}>
-                <Text style={[SHEET.baseText, styles.button]}>Join</Text>
+               <View style={styles.button}>
+                { joinButtonContents }
+               </View>
               </TouchableOpacity>
             </View>
             </Card>
@@ -78,11 +105,8 @@ var styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    color: COLORS.white,
     backgroundColor: COLORS.taylr,
     padding: 10,
-    textAlign: 'center',
-    fontSize: 16,
   },
   inviteCodeTextInput: {
     borderColor: COLORS.background,
@@ -106,7 +130,15 @@ var styles = StyleSheet.create({
     height: 208,
     marginTop: 17,
     alignSelf: 'center',
-  }
+  },
+  joinButtonText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: COLORS.white,
+  },
+  isJoiningActivityIndicator: {
+    alignSelf: 'center'
+  },
 })
 
 export default connect(mapStateToProps)(EventCheckinScreen);

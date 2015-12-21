@@ -108,6 +108,10 @@ class Router {
         return <EventListScreen
           navigator={navigator} />
       },
+
+      getTitle() {
+        return 'History';
+      },
     }
   }
 
@@ -380,15 +384,15 @@ class Router {
   }
 
   // Events
-  getSpeedIntrosRoute(event) {
-    const self = this;
-    return {
-      renderScene(navigator) {
-        let SpeedIntros = require('../components/events/games/SpeedIntros');
-        return <SpeedIntros navigator={navigator} eventId={event._id} />;
-      },
-    }
-  }
+  // getSpeedIntrosRoute(event) {
+  //   const self = this;
+  //   return {
+  //     renderScene(navigator) {
+  //       let SpeedIntros = require('../components/events/games/SpeedIntros');
+  //       return <SpeedIntros navigator={navigator} eventId={event._id} />;
+  //     },
+  //   }
+  // }
 
   getEventDetailScreen(event) {
     const self = this;
@@ -400,7 +404,28 @@ class Router {
 
       getTitle() {
         return event.title
-      }
+      },
+
+      renderRightButton(navigator) {
+          return self.getButton('Intros', () => {
+            const route = self.getEventCandidateHistoryRoute(event);
+            navigator.push(route)
+          }, { isLeft: false })
+      },
+    }
+  }
+
+  getEventCandidateHistoryRoute(event) {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let EventCandidateHistoryScreen = require('../components/events/EventCandidateHistoryScreen');
+        return <EventCandidateHistoryScreen navigator={navigator} event={event} />
+      },
+
+      getTitle() {
+        return 'Intros'
+      },
     }
   }
 

@@ -10,11 +10,12 @@ import EventCountdownScreen from './EventCountdownScreen';
 import SpeedIntros from './games/SpeedIntros';
 
 import { connect } from 'react-redux/native';
-import { SHEET, COLORS} from '../../CommonStyles';
+import { SHEET, COLORS } from '../../CommonStyles';
 import { TappableCard } from '../lib/Card';
 import sectionTitle from '../lib/sectionTitle';
 import Loader from '../lib/Loader';
 import Routes from '../../nav/Routes';
+import { renderEventCard } from './eventsCommon'
 
 function mapStateToProps(state) {
   return {
@@ -29,7 +30,8 @@ class EventListScreen extends React.Component {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(props.myCheckins)
+      dataSource: ds.cloneWithRows(props.myCheckins),
+      isLoading: true
     }
   }
 
@@ -39,7 +41,8 @@ class EventListScreen extends React.Component {
     }).subscribe(user => {
       if (user && user.checkins) {
         this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(user.checkins)
+          dataSource: this.state.dataSource.cloneWithRows(user.checkins),
+          isLoading: false
         })
       }
     });
@@ -52,29 +55,31 @@ class EventListScreen extends React.Component {
   }
 
   renderCheckin(checkin) {
-    return (
-      <TappableCard key={checkin._id} onPress={() => {
-        const route = Routes.instance.getEventDetailScreen(checkin);
-        this.props.navigator.push(route)
-      }}>
-        <View>
-          <Text>{ checkin.title }</Text>
-          <Text>{ checkin.desc }</Text>
-        </View>
-      </TappableCard>
-    )
+    return renderEventCard(checkin, () => {
+      const route = Routes.instance.getEventDetailScreen(checkin);
+      this.props.navigator.push(route);
+    });
   }
 
   render() {
+    var eventList = this.state.isLoading ? <Loader /> :
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(checkin) => { return this.renderCheckin(checkin) }}
+      />
     return (
       <View style={SHEET.container}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(checkin) => { return this.renderCheckin(checkin) }}
-        />
+        <View style={SHEET.innerContainer}>
+          { sectionTitle('CHECKED IN TO', { paddingTop: 10 }) }
+          { eventList }
+        </View>
       </View>
     )
   }
 }
+
+var styles = StyleSheet.create({
+
+});
 
 export default connect(mapStateToProps)(EventListScreen);

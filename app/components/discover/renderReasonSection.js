@@ -36,7 +36,7 @@ export function renderCourse(course, styleOverride) {
   )
 }
 
-export function renderReasonSection(candidate, forUser, toUser) {
+export function renderReasonSection(forUser, toUser, styleOverride) {
   const { same, other } = new SimilarityCalculator().calculate(forUser, toUser);
 
   let renderables = [];
@@ -48,13 +48,13 @@ export function renderReasonSection(candidate, forUser, toUser) {
     renderables = renderables.concat(other.tags.map(tag => { return renderTag(tag) }))
   }
 
-  let toRender = renderables.length > 6 ? renderables.slice(0, 6) : renderables;
-  if (renderables.length > 6) {
-    toRender.push(renderMoreTag(renderables.length - 6))
+  let toRender = renderables.length > 5 ? renderables.slice(0, 5) : renderables;
+  if (renderables.length > 5) {
+    toRender.push(renderMoreTag(renderables.length - 5))
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styleOverride]}>
       { toRender }
     </View>
   )
