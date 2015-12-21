@@ -61,7 +61,6 @@ class EventCountdownScreen extends React.Component {
       }
 
       let formattedDate = moment.duration(nextMatchDateSettings - new Date()).format("H:mm:ss");
-      logger.debug(formattedDate);
       this.setState({ countdown: formattedDate});
     }
 

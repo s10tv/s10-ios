@@ -11,7 +11,7 @@ import { SHEET, COLORS } from '../../CommonStyles'
 import moment from 'moment';
 const logger = new (require('../../../modules/Logger'))('eventsCommon');
 
-export function renderEventCard(event, onPress, hideDetailButton = false) {
+export function renderEventCard(event, onPress, hideDetailButton = false, styleOverride) {
   var detailButton = hideDetailButton ? null :
     (
       <TouchableOpacity onPress={onPress} style={styles.arrowRightButton}>
@@ -20,7 +20,7 @@ export function renderEventCard(event, onPress, hideDetailButton = false) {
     )
   return (
     <TappableCard
-      style={styles.card}
+      style={[styles.card, styleOverride]}
       hideSeparator={true}
       key={event._id}
       onPress={onPress}

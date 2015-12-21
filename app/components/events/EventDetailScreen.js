@@ -5,7 +5,7 @@ import React, {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
-  Image
+  Image,
 } from 'react-native';
 
 import EventCountdownScreen from './EventCountdownScreen';
@@ -48,7 +48,6 @@ class EventDetailScreen extends React.Component {
       }).subscribe(intros => {
         if (intros.length > 0) {
           const [currentIntro] = intros;
-
           currentIntro.user = this.props.ddp._formatUser(currentIntro.user);
           this.setState({ currentIntro: currentIntro });
         }
@@ -90,6 +89,18 @@ class EventDetailScreen extends React.Component {
           const intro = this.state.currentIntro;
           const user = intro.user;
 
+          var promptDetail = !intro.description ? null :
+            <View style={styles.candidateCardDetailContainer}>
+              <Image source={require('../img/ic-die-dark.png')} style={styles.dieIcon}/>
+              <Text style={[SHEET.baseText, styles.introPromptText]} numberOfLines={5}>{intro.description}</Text>
+            </View>
+
+          var locationDetail = !intro.location ? null :
+            <View style={styles.candidateCardDetailContainer}>
+              <Image source={require('../img/ic-pin-dark.png')} style={styles.pinIcon}/>
+              <Text style={[SHEET.baseText, styles.introLocationText]}>{intro.location}</Text>
+            </View>
+
           candidateCard = (
             <View>
               <TappableCard style={styles.card}
@@ -120,16 +131,8 @@ class EventDetailScreen extends React.Component {
 
                   { renderReasonSection(this.props.me, user, { paddingHorizontal: 0 }) }
                   <View style={SHEET.separator}/>
-
-                  <View style={styles.candidateCardDetailContainer}>
-                    <Image source={require('../img/ic-die-dark.png')} style={styles.dieIcon}/>
-                    <Text style={[SHEET.baseText, styles.introPromptText]} numberOfLines={5}>feliciatin</Text>
-                  </View>
-
-                  <View style={styles.candidateCardDetailContainer}>
-                    <Image source={require('../img/ic-pin-dark.png')} style={styles.pinIcon}/>
-                    <Text style={[SHEET.baseText, styles.introLocationText]}>Station 1A</Text>
-                  </View>
+                  { promptDetail }
+                  { locationDetail }
                 </View>
               </TappableCard>
               <View style={styles.goFindSomeoneContainer}>
@@ -142,7 +145,7 @@ class EventDetailScreen extends React.Component {
         return (
           <View style={SHEET.container}>
             <ScrollView>
-              { renderEventCard(event, null, true) }
+              { renderEventCard(event, null, true, { borderRadius: 0, padding: 0, marginBottom: 0}) }
               <View style={SHEET.innerContainer}>
                 { sectionTitle('CURRENT CANDIDATE') }
                 { candidateCard }
@@ -173,7 +176,6 @@ var styles = StyleSheet.create({
   },
   card: {
     marginTop: 8,
-    borderRadius: 3,
     padding: 1,
   },
   displayNameText: {
