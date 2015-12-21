@@ -81,6 +81,8 @@ PODS:
     - React/Core
   - React/RCTText (0.15.0):
     - React/Core
+  - React/RCTVibration (0.15.0):
+    - React/Core
   - React/RCTWebSocket (0.15.0):
     - React/Core
   - ReactiveCocoa (4.0.4-alpha-1):
@@ -138,6 +140,7 @@ DEPENDENCIES:
   - React/RCTLinkingIOS (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactiveCocoa (~> 4.0.2-alpha-1)
   - Reveal-iOS-SDK (~> 1.6)
