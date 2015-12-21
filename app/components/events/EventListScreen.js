@@ -4,6 +4,7 @@ import React, {
   ListView,
   TouchableOpacity,
   StyleSheet,
+  Image
 } from 'react-native';
 
 import EventCountdownScreen from './EventCountdownScreen';
@@ -16,6 +17,8 @@ import sectionTitle from '../lib/sectionTitle';
 import Loader from '../lib/Loader';
 import Routes from '../../nav/Routes';
 import { renderEventCard } from './eventsCommon'
+
+const logger = new (require('../../../modules/Logger'))('EventListScreen');
 
 function mapStateToProps(state) {
   return {
@@ -31,7 +34,8 @@ class EventListScreen extends React.Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(props.myCheckins),
-      isLoading: true
+      isLoading: true,
+      isEventListEmpty: false,
     }
   }
 
@@ -43,6 +47,17 @@ class EventListScreen extends React.Component {
         this.setState({
           dataSource: this.state.dataSource.cloneWithRows(user.checkins),
           isLoading: false
+        })
+        if (user.checkins.length == 0) {
+          this.setState({
+            isLoading: false,
+            isEventListEmpty: true
+          })
+        }
+      } else {
+        this.setState({
+          isLoading: false,
+          isEventListEmpty: true
         })
       }
     });
@@ -62,24 +77,55 @@ class EventListScreen extends React.Component {
   }
 
   render() {
-    var eventList = this.state.isLoading ? <Loader /> :
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={(checkin) => { return this.renderCheckin(checkin) }}
-      />
+    var eventListView;
+
+    if (this.state.isLoading) {
+      eventListView = <Loader />
+    } else if (this.state.isEventListEmpty) {
+      eventListView =
+      <View style={styles.emptyStateContainer}>
+        <Image source={require('../img/lonely-man.png')} style={styles.emptyStateImage} />
+        <Text style={[styles.emptyStateText, SHEET.baseText]}>
+          Don't be a loner. Come to an event and we will show it here!
+        </Text>
+      </View>
+    } else {
+      eventListView = 
+      <View style={SHEET.innerContainer}>
+        { sectionTitle('CHECKED IN TO', { paddingTop: 10}) }
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(checkin) => { return this.renderCheckin(checkin) }}
+        />
+      </View>
+    }
+
     return (
       <View style={SHEET.container}>
-        <View style={SHEET.innerContainer}>
-          { sectionTitle('CHECKED IN TO', { paddingTop: 10 }) }
-          { eventList }
-        </View>
+        { eventListView }
       </View>
     )
   }
 }
 
 var styles = StyleSheet.create({
-
+  emptyStateContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyStateImage: {
+    width: 102,
+    height: 200,
+    resizeMode: 'contain',
+  },
+  emptyStateText: {
+    fontSize: 20,
+    marginTop: 20,
+    paddingHorizontal: 30,
+    color: COLORS.attributes,
+    textAlign: 'center',
+  }
 });
 
 export default connect(mapStateToProps)(EventListScreen);
