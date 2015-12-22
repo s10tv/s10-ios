@@ -171,12 +171,14 @@ platform :ios do
     meta[:description] = options[:description] if options[:description]
     meta[:description] ||= release_notes
     meta[:app_versions] = [options[:app_version]] if options[:app_version]
+    
+    escaped_meta = meta.to_json.gsub! "'", ""
 
     # Need to get to correct working dir, see https://github.com/fastlane/fastlane/issues/155
     command = ['cd ..; curl -X PUT']
     command << "-H 'X-AppHub-Application-ID: #{app_id}'"
     command << "-H 'X-AppHub-Application-Secret: #{app_secret}'"
-    command << "-H 'X-AppHub-Build-Metadata: #{meta.to_json}'"
+    command << "-H 'X-AppHub-Build-Metadata: #{escaped_meta}'"
     command << '-H "Content-Type: application/zip"'
     command << '-L https://api.apphub.io/v1/upload'
     command << "--upload-file #{ipa_path}"
