@@ -8,6 +8,7 @@
 
 import Foundation
 import DTFoundation
+import CocoaLumberjack
 
 public enum ApsEnvironment : String {
     case Sandbox = "development"
@@ -51,7 +52,12 @@ public class ProvisioningProfile {
     public class func embeddedProfile() -> ProvisioningProfile? {
         let profileURL = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent("embedded.mobileprovision")
         if let data = NSData(contentsOfURL: profileURL) {
-            return ProvisioningProfile(data: data)
+            if data.length > 0 {
+                return ProvisioningProfile(data: data)
+            } else {
+                // https://fabric.io/s10-inc2/ios/apps/tv.s10.taylr/issues/5660f702f5d3a7f76b129394/sessions/fb503306d51f47dcabdbcd42cc1a88e7
+                DDLogError("Provisioning profile data unexpectedly has length=0")
+            }
         }
         return nil
     }
