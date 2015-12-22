@@ -41,22 +41,22 @@ export default function renderAboutMe({ user, onPressEdit, isEditable = false })
 
   majorAndGradYearSection = iconTextRow(require('../img/ic-mortar.png'), `${user.major} ${user.gradYear}`);
 
-  if (isEditable) {
-    let name;
-    if (user.firstName && user.lastName) {
-      name = `${user.firstName} ${user.lastName}`;
-    } else if (user.firstName) {
-      name = user.firstName;
-    } else if (user.lastName) {
-      name = user.lastName;
-    } else {
-      name = '';
-    }
+  let name;
+  if (user.firstName && user.lastName) {
+    name = `${user.firstName} ${user.lastName}`;
+  } else if (user.firstName) {
+    name = user.firstName;
+  } else if (user.lastName) {
+    name = user.lastName;
+  } else {
+    name = '';
+  }
+  nameSection = iconTextRow(require('../img/ic-me-dark.png'), name)
 
+  if (isEditable) {
     const editInfoButtonImage = hasAllRequiredFields(user) ?
         require('../img/ic-checkmark.png') :
         require('../img/ic-add.png');
-    nameSection = iconTextRow(require('../img/ic-me-dark.png'), name)
     editInfoButton = (
       <TouchableOpacity onPress={onPressEdit}>
         <Image source={editInfoButtonImage} style={[SHEET.iconCircle, styles.icon]} />
