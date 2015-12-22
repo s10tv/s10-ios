@@ -6,11 +6,13 @@ import React, {
   StyleSheet,
   Dimensions,
   Image,
+  VibrationIOS
 } from 'react-native';
 
 import EventCountdownScreen from './EventCountdownScreen';
 import SpeedIntros from './games/SpeedIntros';
-
+import moment from 'moment';
+require('moment-duration-format');
 import { connect } from 'react-redux/native';
 import { SHEET, COLORS} from '../../CommonStyles';
 import { TappableCard } from '../lib/Card';
@@ -28,6 +30,7 @@ function mapStateToProps(state) {
   return {
     me: state.me,
     ddp: state.ddp,
+    nextMatchDate: state.nextMatchDate,
   }
 }
 
@@ -35,7 +38,11 @@ class EventDetailScreen extends React.Component {
 
   constructor(props = {}) {
     super(props);
-    this.state = {}
+    this.state = {
+      currentIntro: {},
+      loaded: false,
+      countdown: '',
+    }
   }
 
   componentWillMount() {
@@ -48,8 +55,49 @@ class EventDetailScreen extends React.Component {
       }).subscribe(intros => {
         if (intros.length > 0) {
           const [currentIntro] = intros;
+          if (currentIntro._id != this.state.currentIntro._id) {
+            try {
+              VibrationIOS.vibrate();
+              clearTimeout(this.state.timer);
+            } catch(err) {
+              logger.warning('Cannot Vibrate: ' + JSON.stringify(err));
+            }
+          }
           currentIntro.user = this.props.ddp._formatUser(currentIntro.user);
-          this.setState({ currentIntro: currentIntro });
+
+          this.setState({
+            currentIntro: currentIntro,
+            loaded: true,
+          });
+
+          if (this.state.loaded) {
+            logger.debug('im here');
+            try {
+              if (this.props.overrideText) {
+                this.setState({ countdown: this.props.overrideText });
+                return;
+              }
+
+              let timerFunction = function() {
+                let nextMatchDateSettings = currentIntro.nextMatchDate;
+                if (!nextMatchDateSettings) {
+                  return;
+                }
+
+                let formattedDate = '00:00'
+                if (nextMatchDateSettings > new Date()) {
+                  formattedDate = moment.duration(nextMatchDateSettings - new Date()).format("mm:ss");
+                }
+                logger.debug(formattedDate);
+                this.setState({ countdown: formattedDate});
+              }
+
+              timerFunction.bind(this)();
+              this.setState({ timer: setInterval(timerFunction.bind(this), 1000) })
+            } catch(err) {
+              logger.error(err);
+            }
+          }
         }
       });
     })
@@ -63,6 +111,8 @@ class EventDetailScreen extends React.Component {
     if (this.observer) {
       this.observer.dispose()
     }
+
+    clearTimeout(this.state.timer);
   }
 
   render() {
@@ -84,8 +134,7 @@ class EventDetailScreen extends React.Component {
 
         var candidateCard = <Loader />
 
-        if (this.state.currentIntro) {
-          logger.debug(JSON.stringify(this.state.currentIntro));
+        if (this.state.loaded) {
           const intro = this.state.currentIntro;
           const user = intro.user;
 
@@ -136,7 +185,7 @@ class EventDetailScreen extends React.Component {
                 </View>
               </TappableCard>
               <View style={styles.goFindSomeoneContainer}>
-                <Text style={[SHEET.baseText, styles.goFindSomeoneText]}> Go find {user.firstName}! You still have x. </Text>
+                <Text style={[SHEET.baseText, styles.goFindSomeoneText]}> Go find {user.firstName}! You still have {this.state.countdown}. </Text>
               </View>
             </View>
           )
