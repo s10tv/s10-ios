@@ -9,14 +9,14 @@ const logger = new (require('../../modules/Logger'))('DDPService');
 
 class DDPService extends TSDDPClient {
 
-  constructor(wsurl, dispatch) {
+  constructor(wsurl) {
     super(wsurl);
 
     this.resumeTokenHandler = new ResumeTokenHandler(this, Session);
 
     this.ddpClient.addListener('connected', (error) => {
       this.connected = true;
-      
+
       logger.debug('[ddp] connected');
       if(this.closeReason) {
         logger.debug('[ddp] was closed before with close reason ' + this.closeReason);
@@ -51,11 +51,7 @@ class DDPService extends TSDDPClient {
   }
 
   resubscribe() {
-    this.subscribeSettings({
-      dispatch: this.dispatch,
-      resetToLoginFn: this.resetToLoginFn,
-      resetToMainScreenFn: this.resetToMainScreenFn
-    });
+    this.subscribeSettings();
     this._subscribeMe(this.dispatch);
     this._subscribeIntegrations(this.dispatch);
     this._subscribeMyTags(this.dispatch);
@@ -364,7 +360,7 @@ class DDPService extends TSDDPClient {
     .catch(err => { logger.error(err) });
   }
 
-  subscribeSettings({ dispatch, resetToLoginFn, resetToMainScreenFn, userRequired = true}) {
+  subscribeSettings({ userRequired } = { userRequired: true}) {
     this.subscribe({ pubName: 'settings', userRequired: userRequired })
     .then((subId) => {
       this.collections.observe(() => {
@@ -378,7 +374,7 @@ class DDPService extends TSDDPClient {
         if (indexedSettings.upgradeUrl && indexedSettings.hardMinBuild) {
           const currentBuild = BridgeManager.build();
           if (currentBuild < indexedSettings.hardMinBuild.value) {
-            dispatch({
+            this.dispatch({
               type: 'DISPLAY_POPUP_MESSAGE',
               dialog: {
                 visible: true,
@@ -393,7 +389,7 @@ class DDPService extends TSDDPClient {
 
         if (indexedSettings.nextMatchDate) {
           logger.debug(`got nextMatchDate=${indexedSettings.nextMatchDate.value}`)
-          dispatch({
+          this.dispatch({
             type: 'SET_NEXT_MATCH_DATE',
             nextMatchDate: indexedSettings.nextMatchDate.value,
           })
@@ -412,7 +408,7 @@ class DDPService extends TSDDPClient {
           })
 
           logger.debug(`checking CWL: isCWLRequired=${isCWLRequired}`);
-          dispatch({
+          this.dispatch({
             type: 'SET_IS_CWL_REQUIRED',
             isCWLRequired,
           })
@@ -420,15 +416,11 @@ class DDPService extends TSDDPClient {
 
         if (indexedSettings.accountStatus) {
           if (indexedSettings.accountStatus.value !== 'active') {
-            resetToLoginFn();
+            this.resetToLoginFn();
           } else {
-            resetToMainScreenFn();
+            this.resetToMainScreenFn();
           }
 
-          dispatch({
-            type: 'SET_IS_ACTIVE',
-            isActive: indexedSettings.accountStatus.value == 'active',
-          });
         }
       });
     })

@@ -81,9 +81,15 @@ class FullScreenNavigator extends React.Component {
   }
 
   resetRouteStackToLogin() {
+    console.log('resetRouteStackToLogin called');
     const route = Router.instance.getLoginRoute();
     const navigator = this.refs['fullScreenNav'];
-    if (navigator && navigator.getCurrentRoutes().length > 1) {
+
+    if (navigator && this.props.isActive) {
+      this.props.dispatch({
+        type: 'SET_IS_ACTIVE',
+        isActive: false,
+      })
       navigator.immediatelyResetRouteStack([route])
     }
   }
@@ -91,7 +97,12 @@ class FullScreenNavigator extends React.Component {
   resetRotueStackToMain() {
     const route = Router.instance.getMainNavigatorRoute()
     const navigator = this.refs['fullScreenNav'];
-    if (navigator && navigator.getCurrentRoutes().length > 1) {
+
+    if (navigator && !this.props.isActive) {
+      this.props.dispatch({
+        type: 'SET_IS_ACTIVE',
+        isActive: true,
+      })
       navigator.immediatelyResetRouteStack([route])
     }
   }

@@ -63,10 +63,7 @@ class LayoutContainer extends React.Component {
     .then(() => {
       // subscribe to settings before we log in
       return this.props.ddp.subscribeSettings({
-        dispatch: this.props.dispatch,
         userRequired: false,
-        resetToLoginFn: this._resetToLogin.bind(this),
-        resetToMainScreenFn: this._resetToMainScreen.bind(this)
       });
     })
     .then(() => {
@@ -103,7 +100,7 @@ class LayoutContainer extends React.Component {
 
   _resetToLogin() {
     // need to guard agaist when the component hasnt fully mounted yet.
-    if (this.props.isActive && this.refs && this.refs['mainNav'] && this.refs['mainNav'].refs &&
+    if (this.refs && this.refs['mainNav'] && this.refs['mainNav'].refs &&
         this.refs['mainNav'].refs.wrappedInstance) {
       return this.refs['mainNav'].refs.wrappedInstance.resetRouteStackToLogin();
     }
@@ -111,7 +108,7 @@ class LayoutContainer extends React.Component {
 
   _resetToMainScreen() {
     // need to guard agaist when the component hasnt fully mounted yet.
-    if (this.props.isActive && this.refs && this.refs['mainNav'] && this.refs['mainNav'].refs &&
+    if (this.refs && this.refs['mainNav'] && this.refs['mainNav'].refs &&
         this.refs['mainNav'].refs.wrappedInstance) {
       return this.refs['mainNav'].refs.wrappedInstance.resetRotueStackToMain();
     }
