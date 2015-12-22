@@ -54,11 +54,6 @@ class EventListScreen extends React.Component {
             isEventListEmpty: true
           })
         }
-      } else {
-        this.setState({
-          isLoading: false,
-          isEventListEmpty: true
-        })
       }
     });
   }
@@ -90,7 +85,7 @@ class EventListScreen extends React.Component {
         </Text>
       </View>
     } else {
-      eventListView = 
+      eventListView =
       <View style={SHEET.innerContainer}>
         { sectionTitle('CHECKED IN TO', { paddingTop: 10}) }
         <ListView
