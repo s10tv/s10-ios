@@ -6,7 +6,7 @@ let defaultSession = Session.initialValue() || {};
 
 logger.info(`default session=${JSON.stringify(defaultSession)}`)
 
-const defaultMe = Object.assign({}, {
+const defaultUser = {
   userId: '',
   firstName: '',
   lastName: '',
@@ -16,12 +16,17 @@ const defaultMe = Object.assign({}, {
   shortDisplayName: '',
   displayName: '',
   connectedProfiles: [],
-}, defaultSession);
+};
+
+const defaultMe = Object.assign({}, defaultUser, defaultSession);
 
 export default function me(state = defaultMe, action) {
   switch (action.type) {
     case 'SET_ME':
       return Object.assign({}, state, action.me);
+
+    case 'LOGOUT':
+      return defaultUser;
 
     default:
       return state;

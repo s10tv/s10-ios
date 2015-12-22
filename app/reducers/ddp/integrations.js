@@ -8,6 +8,9 @@ export default function integrations(state = [], action) {
       // TODO(qimingfang): better merge these arrays using Array.reduce.
       return action.integrations;
 
+    case 'LOGOUT':
+      return [];
+
     default:
       return state;
   }

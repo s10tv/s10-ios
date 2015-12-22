@@ -7,6 +7,9 @@ export default function categories(state = [], action) {
       // TODO(qimingfang): better merge these arrays using Array.reduce.
       return action.categories;
 
+    case 'LOGOUT':
+      return [];
+
     default:
       return state;
   }

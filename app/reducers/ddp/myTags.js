@@ -7,6 +7,9 @@ export default function myTags(state = [], action) {
       // TODO(qimingfang): better merge these arrays using Array.reduce.
       return action.mytags;
 
+    case 'LOGOUT':
+      return [];
+
     default:
       return state;
   }

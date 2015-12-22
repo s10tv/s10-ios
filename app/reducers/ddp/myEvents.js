@@ -7,6 +7,9 @@ export default function myCheckins(state = [], action) {
       // TODO(qimingfang): better merge these arrays using Array.reduce.
       return action.checkins;
 
+    case 'LOGOUT':
+      return []
+
     default:
       return state;
   }
