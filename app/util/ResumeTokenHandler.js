@@ -24,6 +24,7 @@ class ResumeTokenHandler {
     return Promise.resolve(true)
     .then(() => {
       if (!this.session || !this.session.initialValue) {
+      logger.warning('Cannot connect to DDP server.');
         return Promise.reject(ERRORS.NOT_LOGGED_IN);
       }
 

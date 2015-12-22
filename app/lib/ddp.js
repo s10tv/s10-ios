@@ -3,20 +3,66 @@ import BridgeManager from '../../modules/BridgeManager';
 import CWLChecker from '../util/CWLChecker';
 import Session from '../../native_modules/Session';
 import Analytics from '../../modules/Analytics';
+import ResumeTokenHandler from '../util/ResumeTokenHandler'
 
 const logger = new (require('../../modules/Logger'))('DDPService');
 
 class DDPService extends TSDDPClient {
 
-  resubscribe(dispatch, resetToLoginFn, resetToMainScreenFn) {
-    this.subscribeSettings({ dispatch, resetToLoginFn, resetToMainScreenFn});
-    this._subscribeMe(dispatch);
-    this._subscribeIntegrations(dispatch);
-    this._subscribeMyTags(dispatch);
-    this._subscribeMyCourses(dispatch);
-    this._subscribeTagCategories(dispatch)
-    this._subscribeCandidates(dispatch)
-    this._subscribeMyCheckins(dispatch)
+  constructor(wsurl, dispatch) {
+    super(wsurl);
+
+    this.resumeTokenHandler = new ResumeTokenHandler(this, Session);
+
+    this.ddpClient.addListener('connected', (error) => {
+      this.connected = true;
+      
+      logger.debug('[ddp] connected');
+      if(this.closeReason) {
+        logger.debug('[ddp] was closed before with close reason ' + this.closeReason);
+        // if this is a result of a reconnect of any kind
+        this.resumeTokenHandler.handle(this.dispatch)
+        .then(() => {
+          this.resubscribe();
+        })
+      }
+    })
+
+    this.ddpClient.addListener('failed', (error) => {
+      logger.debug('[ddp] failed occurred');
+      this.connected = false;
+      this.loggedIn = false;
+      this.closeReason = 'failed'
+    })
+
+    this.ddpClient.addListener('socket-close', (error) => {
+      logger.debug('[ddp] socket-close occurred');
+      this.connected = false;
+      this.loggedIn = false;
+      this.closeReason = 'socket-close'
+    })
+
+    this.ddpClient.addListener('socket-error', (error) => {
+      logger.debug('[ddp] socket-error occurred');
+      this.connected = false;
+      this.loggedIn = false;
+      this.closeReason = 'socket-error'
+    })
+  }
+
+  resubscribe() {
+    this.subscribeSettings({
+      dispatch: this.dispatch,
+      resetToLoginFn: this.resetToLoginFn,
+      resetToMainScreenFn: this.resetToMainScreenFn
+    });
+    this._subscribeMe(this.dispatch);
+    this._subscribeIntegrations(this.dispatch);
+    this._subscribeMyTags(this.dispatch);
+    this._subscribeMyCourses(this.dispatch);
+    this._subscribeTagCategories(this.dispatch)
+    this._subscribeCandidates(this.dispatch)
+    this._subscribeMyCheckins(this.dispatch)
   }
 
   loginWithFacebook(accessToken) {

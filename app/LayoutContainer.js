@@ -28,7 +28,6 @@ import Session from '../native_modules/Session';
 import Intercom from '../modules/Intercom';
 import Analytics from '../modules/Analytics';
 import BridgeManager from '../modules/BridgeManager';
-import ResumeTokenHandler from './util/ResumeTokenHandler'
 
 const logger = new (require('../modules/Logger'))('LayoutContainer');
 const UIImagePickerManager = NativeModules.UIImagePickerManager;
@@ -49,7 +48,6 @@ class LayoutContainer extends React.Component {
 
   constructor(props = {}) {
     super(props);
-    this.resumeTokenHandler = new ResumeTokenHandler(props.ddp, Session);
   }
 
   componentWillMount() {
@@ -58,7 +56,10 @@ class LayoutContainer extends React.Component {
   }
 
   _setupDDP() {
-    this.props.ddp.initialize()
+    this.props.ddp.initialize(
+      this.props.dispatch,
+      this._resetToLogin.bind(this),
+      this._resetToMainScreen.bind(this))
     .then(() => {
       // subscribe to settings before we log in
       return this.props.ddp.subscribeSettings({
@@ -69,7 +70,7 @@ class LayoutContainer extends React.Component {
       });
     })
     .then(() => {
-      return this.resumeTokenHandler.handle(this.props.dispatch)
+      return this.props.ddp.resumeTokenHandler.handle(this.props.dispatch)
     })
     .then((result) => {
       const { intercomHash, userId } = result;
@@ -79,7 +80,7 @@ class LayoutContainer extends React.Component {
     })
     .catch(err => {
       switch(err) {
-        case this.resumeTokenHandler.errors.COULD_NOT_LOG_IN:
+        case this.props.ddp.resumeTokenHandler.errors.COULD_NOT_LOG_IN:
           break;
         default:
           logger.error(err);
@@ -94,9 +95,7 @@ class LayoutContainer extends React.Component {
     logger.debug('will execute _onUserHasLoggedIn');
 
     // subscribe to the user specific endpoints
-    this.props.ddp.resubscribe(this.props.dispatch,
-      this._resetToLogin.bind(this),
-      this._resetToMainScreen.bind(this));
+    this.props.ddp.resubscribe();
 
     // set up 3p integrations
     this._setupLayer();
