@@ -40,6 +40,8 @@ new LayerService().listen(store);
 new ApphubService().listen(store);
 new PushHandler().listen(store, ddpClient);
 
+BridgeManager.registerForPushNotifications();
+
 const deviceId = BridgeManager.deviceId();
 const deviceOptions = {};
 deviceOptions.appId = BridgeManager.appId();
