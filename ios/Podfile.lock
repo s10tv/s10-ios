@@ -159,7 +159,7 @@ EXTERNAL SOURCES:
   NKRecorder:
     :git: git@github.com:s10tv/video-maker.git
   React:
-    :path: "../node_modules/react-native"
+    :path: ../node_modules/react-native
 
 CHECKOUT OPTIONS:
   AppHub:

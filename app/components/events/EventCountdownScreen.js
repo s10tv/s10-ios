@@ -78,6 +78,7 @@ class EventCountdownScreen extends React.Component {
               <Text style={[SHEET.baseText, styles.timeLeftTillEventText]}> There is {this.state.countdown} until the start
                 of this lovely event. Don’t forget to come! </Text>
             </View>
+            <Image source={require('../img/celebration.png')} style={styles.celebrationImage} />
           </View>
         </ScrollView>
       </View>
@@ -105,6 +106,12 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
+  celebrationImage: {
+    width: 195,
+    height: 200,
+    alignSelf: 'center',
+    marginTop: 30,
+  }
 });
 
 export default connect(mapStateToProps)(EventCountdownScreen);
