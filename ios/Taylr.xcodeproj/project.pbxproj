@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA6C7823A20B63EB451A15E /* Pods.framework */; };
+		E27113F21C2FC51A00BDD54B /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E27113F11C2FC50D00BDD54B /* libRCTCamera.a */; };
 		EA08BDF51C091BF300040D56 /* OneSingalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */; };
 		EA08BE011C092E8500040D56 /* Taylr-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08BE001C092E8500040D56 /* Taylr-Bridging.m */; };
 		EA0F4C2B1C0C55AA00B0BC69 /* METAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0F4C291C0C55AA00B0BC69 /* METAccount.m */; };
@@ -104,6 +105,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E27113F01C2FC50D00BDD54B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E27113EC1C2FC50D00BDD54B /* RCTCamera.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
+			remoteInfo = RCTCamera;
+		};
 		EA2421621BFD283D00AF16C4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */;
@@ -150,6 +158,7 @@
 
 /* Begin PBXFileReference section */
 		7AA6C7823A20B63EB451A15E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E27113EC1C2FC50D00BDD54B /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 		EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneSingalProvider.swift; sourceTree = "<group>"; };
 		EA08BE001C092E8500040D56 /* Taylr-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Taylr-Bridging.m"; sourceTree = "<group>"; };
 		EA0F4C291C0C55AA00B0BC69 /* METAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METAccount.m; sourceTree = "<group>"; };
@@ -270,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E27113F21C2FC51A00BDD54B /* libRCTCamera.a in Frameworks */,
 				F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */,
 				F9DDF73C1BFFACC400D7A2FC /* libRNOverlay.a in Frameworks */,
 				EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */,
@@ -311,6 +321,22 @@
 				EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E27113EB1C2FC4F700BDD54B /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E27113EC1C2FC50D00BDD54B /* RCTCamera.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		E27113ED1C2FC50D00BDD54B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E27113F11C2FC50D00BDD54B /* libRCTCamera.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EA0F4C301C0C571000B0BC69 /* AzureClient */ = {
@@ -517,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9F353C1A74CC6900E0C65D /* Taylr */,
+				E27113EB1C2FC4F700BDD54B /* Libraries */,
 				EA9F353B1A74CC6900E0C65D /* Products */,
 				DDD7116BC0015396F5321D26 /* Pods */,
 				2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */,
@@ -759,6 +786,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = E27113ED1C2FC50D00BDD54B /* Products */;
+					ProjectRef = E27113EC1C2FC50D00BDD54B /* RCTCamera.xcodeproj */;
+				},
+				{
 					ProductGroup = EA24215F1BFD283D00AF16C4 /* Products */;
 					ProjectRef = EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */;
 				},
@@ -791,6 +822,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E27113F11C2FC50D00BDD54B /* libRCTCamera.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTCamera.a;
+			remoteRef = E27113F01C2FC50D00BDD54B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EA2421631BFD283D00AF16C4 /* libRCTFBSDKCore.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
