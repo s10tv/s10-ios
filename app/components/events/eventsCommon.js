@@ -4,12 +4,14 @@ import React, {
   Image,
   StyleSheet,
   TouchableOpacity,
+  Dimensions
 } from 'react-native';
 
 import { TappableCard } from '../lib/Card';
 import { SHEET, COLORS } from '../../CommonStyles'
 import moment from 'moment';
 const logger = new (require('../../../modules/Logger'))('eventsCommon');
+const { width, height } = Dimensions.get('window');
 
 export function renderEventCard(event, onPress, hideDetailButton = false, styleOverride) {
   var detailButton = hideDetailButton ? null :
@@ -84,6 +86,7 @@ var styles = StyleSheet.create({
   eventDescText: {
     fontSize: 11,
     marginTop: 10,
+    width: width / 1.2
   },
   eventTimeText: {
     marginLeft: 10,
@@ -93,8 +96,6 @@ var styles = StyleSheet.create({
     marginLeft: 12,
     fontSize: 12,
   },
-
-
   calendarIcon: {
     width: 19,
     height: 20,
