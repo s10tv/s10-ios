@@ -57,8 +57,10 @@ class EventDetailScreen extends React.Component {
           const [currentIntro] = intros;
           if (currentIntro._id != this.state.currentIntro._id) {
             try {
+              logger.debug('not the same intro');
               VibrationIOS.vibrate();
-              clearTimeout(this.state.timer);
+              clearInterval(this.state.timer);
+              this.setState({ timer: undefined });
             } catch(err) {
               logger.warning('Cannot Vibrate: ' + JSON.stringify(err));
             }
@@ -71,8 +73,11 @@ class EventDetailScreen extends React.Component {
           });
 
           if (this.state.loaded) {
-            logger.debug('im here');
             try {
+              if (this.state.timer) {
+                clearInterval(this.state.timer);
+              }
+              
               if (this.props.overrideText) {
                 this.setState({ countdown: this.props.overrideText });
                 return;
@@ -86,10 +91,9 @@ class EventDetailScreen extends React.Component {
 
                 let formattedDate = '00:00'
                 if (nextMatchDateSettings > new Date()) {
-                  formattedDate = moment.duration(nextMatchDateSettings - new Date()).format("mm:ss");
+                  formattedDate = moment.duration(nextMatchDateSettings - new Date()).format("mm:ss", { trim: false });
                 }
-                logger.debug(formattedDate);
-                this.setState({ countdown: formattedDate});
+                this.setState({ countdown: formattedDate });
               }
 
               timerFunction.bind(this)();
@@ -112,7 +116,7 @@ class EventDetailScreen extends React.Component {
       this.observer.dispose()
     }
 
-    clearTimeout(this.state.timer);
+    clearInterval(this.state.timer);
   }
 
   render() {
