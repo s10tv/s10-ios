@@ -95,6 +95,11 @@ class Router {
             const route = self.getEventListRoute();
             navigator.push(route)
           }, { isLeft: false })
+        } else if (self.currentScreen.id == 'SCREEN_ME') {
+          return self.getButton('My QR Code', () => {
+            const route = self.getUserQRCodeRoute();
+            navigator.push(route);
+          }, { isLeft: false });
         }
       },
     }
@@ -393,6 +398,20 @@ class Router {
   //     },
   //   }
   // }
+
+  getUserQRCodeRoute() {
+    const self = this;
+    return {
+      renderScene(navigator) {
+        let MyQRCodeScreen = require('../components/profile/MyQRCodeScreen');
+        return <MyQRCodeScreen navigator={navigator} />;
+      },
+
+      getTitle() {
+        return 'My QR Code'
+      }
+    }
+  }
 
   getEventDetailScreen(event) {
     const self = this;
