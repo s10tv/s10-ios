@@ -5,7 +5,7 @@
   "dependencies": {
     "@exponent/react-native-navigator": "^0.3.5",
     "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
-    "lodash": "^3.6.0",
+    "lodash": "^4.17.19",
     "moment": "^2.10.6",
     "moment-duration-format": "^1.3.0",
     "numeral": "^1.5.3",
